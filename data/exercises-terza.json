@@ -25,7 +25,12 @@
     "topic": "moltiplicazione",
     "type": "multiple-choice",
     "prompt": "Quale addizione ripetuta corrisponde a 5 x 3?",
-    "options": ["3 + 3 + 3 + 3 + 3", "5 + 5 + 5", "3 + 5", "5 + 3 + 2"],
+    "options": [
+      "3 + 3 + 3 + 3 + 3",
+      "5 + 5 + 5",
+      "3 + 5",
+      "5 + 3 + 2"
+    ],
     "correctAnswer": "3 + 3 + 3 + 3 + 3",
     "explanation": "5 x 3 significa 5 gruppi da 3.",
     "difficulty": 1
@@ -46,7 +51,12 @@
     "topic": "moltiplicazione",
     "type": "multiple-choice",
     "prompt": "Quale risultato è corretto?",
-    "options": ["7 x 5 = 35", "7 x 5 = 30", "7 x 5 = 40", "7 x 5 = 25"],
+    "options": [
+      "7 x 5 = 35",
+      "7 x 5 = 30",
+      "7 x 5 = 40",
+      "7 x 5 = 25"
+    ],
     "correctAnswer": "7 x 5 = 35",
     "explanation": "7 gruppi da 5 fanno 35.",
     "difficulty": 2
@@ -56,21 +66,108 @@
     "grade": "terza",
     "topic": "moltiplicazione",
     "type": "bar-model",
-    "prompt": "Una barra mostra 3 gruppi uguali da 7. Qual è il totale?",
-    "options": ["21", "10", "14", "28"],
+    "options": [
+      "21",
+      "10",
+      "14",
+      "28"
+    ],
     "correctAnswer": "21",
+    "prompt": "Una barra mostra 3 gruppi uguali da 7. Qual è il totale?",
     "explanation": "3 x 7 = 21.",
     "difficulty": 2,
     "visualModel": "3 parti uguali da 7 = totale ?"
+  },
+  {
+    "id": "s3-mul-7",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "word-problem",
+    "prompt": "Ogni tavolo ha 8 seggioline. I tavoli sono 5. Quante seggioline ci sono?",
+    "correctAnswer": 40,
+    "explanation": "5 x 8 = 40.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-tab-1",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "numeric-input",
+    "prompt": "Completa la tabellina del 2: 2 x 9 = ?",
+    "correctAnswer": 18,
+    "explanation": "2 moltiplicato per 9 fa 18.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-tab-2",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "numeric-input",
+    "prompt": "Completa la tabellina del 5: 5 x 7 = ?",
+    "correctAnswer": 35,
+    "explanation": "5 x 7 = 35.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-tab-3",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "multiple-choice",
+    "prompt": "Quale fatto della tabellina del 10 è corretto?",
+    "options": [
+      "10 x 6 = 60",
+      "10 x 6 = 16",
+      "10 x 6 = 50",
+      "10 x 6 = 600"
+    ],
+    "correctAnswer": "10 x 6 = 60",
+    "explanation": "Moltiplicare per 10 aggiunge uno zero.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-tab-4",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "numeric-input",
+    "prompt": "Completa: 4 x 7 = ?",
+    "correctAnswer": 28,
+    "explanation": "4 gruppi da 7 fanno 28.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-tab-5",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "multiple-choice",
+    "prompt": "Quale numero completa 9 x __ = 27?",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "6"
+    ],
+    "correctAnswer": "3",
+    "explanation": "9 x 3 = 27.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-tab-6",
+    "grade": "terza",
+    "topic": "tabelline",
+    "type": "word-problem",
+    "prompt": "Un mazzo ha 3 file da 6 carte. Quante carte ci sono?",
+    "correctAnswer": 18,
+    "explanation": "3 x 6 = 18.",
+    "difficulty": 2
   },
   {
     "id": "s3-div-1",
     "grade": "terza",
     "topic": "divisione",
     "type": "numeric-input",
-    "prompt": "Calcola: 24 diviso 6",
-    "correctAnswer": 4,
-    "explanation": "24 diviso 6 = 4.",
+    "prompt": "Calcola: 18 : 3",
+    "correctAnswer": 6,
+    "explanation": "18 diviso 3 fa 6.",
     "difficulty": 1
   },
   {
@@ -78,9 +175,9 @@
     "grade": "terza",
     "topic": "divisione",
     "type": "numeric-input",
-    "prompt": "Calcola: 21 diviso 3",
-    "correctAnswer": 7,
-    "explanation": "21 diviso 3 = 7.",
+    "prompt": "Calcola: 20 : 5",
+    "correctAnswer": 4,
+    "explanation": "20 diviso 5 fa 4.",
     "difficulty": 1
   },
   {
@@ -88,15 +185,15 @@
     "grade": "terza",
     "topic": "divisione",
     "type": "multiple-choice",
-    "prompt": "Quale frase descrive 18 diviso 2?",
+    "prompt": "Quale frase descrive 24 : 6?",
     "options": [
-      "18 oggetti divisi in 2 gruppi uguali",
-      "2 gruppi da 18",
-      "18 + 2",
-      "18 tolgo 2"
+      "24 oggetti in 6 gruppi uguali",
+      "24 + 6 oggetti",
+      "6 gruppi da 24",
+      "24 tolgo 6 una volta"
     ],
-    "correctAnswer": "18 oggetti divisi in 2 gruppi uguali",
-    "explanation": "Dividere significa distribuire o raggruppare in parti uguali.",
+    "correctAnswer": "24 oggetti in 6 gruppi uguali",
+    "explanation": "La divisione distribuisce o raggruppa in parti uguali.",
     "difficulty": 1
   },
   {
@@ -104,453 +201,476 @@
     "grade": "terza",
     "topic": "divisione",
     "type": "word-problem",
-    "prompt": "24 caramelle vengono distribuite a 4 bambini in parti uguali. Quante caramelle riceve ogni bambino?",
+    "prompt": "24 caramelle vengono divise tra 4 bambini. Quante caramelle riceve ogni bambino?",
     "correctAnswer": 6,
-    "explanation": "24 diviso 4 = 6.",
+    "explanation": "24 : 4 = 6.",
     "difficulty": 2
   },
   {
     "id": "s3-div-5",
     "grade": "terza",
     "topic": "divisione",
-    "type": "multiple-choice",
-    "prompt": "Quale operazione completa la frase? 'Se 30 figurine sono in 5 gruppi uguali, ogni gruppo ha ___ figurine.'",
-    "options": ["30 diviso 5", "30 + 5", "30 - 5", "5 x 5"],
-    "correctAnswer": "30 diviso 5",
-    "explanation": "Per trovare quante figurine in ogni gruppo devi dividere.",
-    "difficulty": 2
+    "type": "bar-model",
+    "options": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "correctAnswer": "4",
+    "prompt": "Una barra totale vale 28 ed è divisa in 7 parti uguali. Quanto vale ogni parte?",
+    "explanation": "28 : 7 = 4.",
+    "difficulty": 2,
+    "visualModel": "Totale 28 diviso in 7 parti uguali"
   },
   {
     "id": "s3-div-6",
     "grade": "terza",
     "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale divisione dà come risultato 8?",
+    "options": [
+      "32 : 4",
+      "24 : 4",
+      "28 : 2",
+      "18 : 3"
+    ],
+    "correctAnswer": "32 : 4",
+    "explanation": "32 diviso 4 fa 8.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-div-7",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "word-problem",
+    "prompt": "48 figurine vengono messe in album da 6 figurine per pagina. Quante pagine servono?",
+    "correctAnswer": 8,
+    "explanation": "48 : 6 = 8.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-passi-1",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione fai per prima? '3 sacchetti da 5 biscotti e poi ne aggiungo 4'.",
+    "options": [
+      "3 x 5",
+      "5 + 4",
+      "3 + 5",
+      "4 - 3"
+    ],
+    "correctAnswer": "3 x 5",
+    "explanation": "Prima trovi i biscotti nei sacchetti, poi aggiungi 4.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-passi-2",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
+    "type": "word-problem",
+    "prompt": "Ci sono 4 scatole da 6 pennarelli. Se ne rompono 3. Quanti pennarelli restano?",
+    "correctAnswer": 21,
+    "explanation": "4 x 6 = 24, poi 24 - 3 = 21.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-passi-3",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
+    "type": "multiple-choice",
+    "prompt": "Quale piano è corretto per: 5 pacchi da 8 quaderni, poi regalo 6 quaderni?",
+    "options": [
+      "Moltiplico, poi sottraggo",
+      "Sommo, poi moltiplico",
+      "Sottraggo, poi divido",
+      "Divido, poi sommo"
+    ],
+    "correctAnswer": "Moltiplico, poi sottraggo",
+    "explanation": "Prima trovi il totale, poi togli quelli regalati.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-passi-4",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
+    "type": "word-problem",
+    "prompt": "Nel teatro ci sono 6 file da 7 posti. 5 posti restano vuoti. Quanti posti sono occupati?",
+    "correctAnswer": 37,
+    "explanation": "6 x 7 = 42, poi 42 - 5 = 37.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-passi-5",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
     "type": "bar-model",
-    "prompt": "Una barra totale di 28 viene divisa in 4 parti uguali. Quanto vale ogni parte?",
-    "options": ["7", "6", "8", "24"],
-    "correctAnswer": "7",
-    "explanation": "28 diviso 4 = 7.",
-    "difficulty": 2,
-    "visualModel": "Totale 28 diviso in 4 parti uguali"
+    "options": [
+      "28",
+      "25",
+      "8",
+      "6"
+    ],
+    "correctAnswer": "28",
+    "prompt": "Una barra totale vale 30, costruita con 5 gruppi uguali. Poi tolgo 2. Quanto resta?",
+    "explanation": "Dal totale 30, togli 2 e restano 28.",
+    "difficulty": 3,
+    "visualModel": "Totale 30 | tolgo 2 | resto ?"
+  },
+  {
+    "id": "s3-passi-6",
+    "grade": "terza",
+    "topic": "problemi-a-passi",
+    "type": "word-problem",
+    "prompt": "7 amici raccolgono 4 conchiglie ciascuno. Ne regalano 8 al museo. Quante ne restano?",
+    "correctAnswer": 20,
+    "explanation": "7 x 4 = 28, poi 28 - 8 = 20.",
+    "difficulty": 3
   },
   {
     "id": "s3-bar-1",
     "grade": "terza",
     "topic": "bar-model",
     "type": "bar-model",
-    "prompt": "Le barre mostrano 18 mele rosse e 12 verdi. Quante mele ci sono in tutto?",
-    "options": ["30", "20", "6", "28"],
-    "correctAnswer": "30",
-    "explanation": "Sommi 18 + 12 = 30.",
+    "options": [
+      "11",
+      "10",
+      "9",
+      "25"
+    ],
+    "correctAnswer": "11",
+    "prompt": "Una barra totale vale 18. Una parte vale 7. Quanto vale l'altra parte?",
+    "explanation": "18 - 7 = 11.",
     "difficulty": 1,
-    "visualModel": "Parte 18 + parte 12 = totale ?"
+    "visualModel": "Totale 18 | parte 7 | parte mancante ?"
   },
   {
     "id": "s3-bar-2",
     "grade": "terza",
     "topic": "bar-model",
-    "type": "word-problem",
-    "prompt": "In una libreria ci sono 36 libri. Ne arrivano altri 14. Quanti libri ci sono ora?",
-    "correctAnswer": 50,
-    "explanation": "36 + 14 = 50.",
-    "difficulty": 2
+    "type": "bar-model",
+    "options": [
+      "15",
+      "10",
+      "8",
+      "20"
+    ],
+    "correctAnswer": "15",
+    "prompt": "Tre barre uguali valgono 5 ciascuna. Quanto vale il totale?",
+    "explanation": "3 x 5 = 15.",
+    "difficulty": 1,
+    "visualModel": "3 parti uguali da 5 = totale"
   },
   {
     "id": "s3-bar-3",
     "grade": "terza",
     "topic": "bar-model",
     "type": "multiple-choice",
-    "prompt": "Quale operazione risolve un problema con totale 45 e parte nota 18?",
-    "options": ["45 - 18", "45 + 18", "18 + 18", "45 x 18"],
-    "correctAnswer": "45 - 18",
-    "explanation": "Se conosci il totale e una parte, per trovare l'altra parte fai una sottrazione.",
+    "prompt": "Quale disegno rappresenta 12 diviso in 3 parti uguali?",
+    "options": [
+      "3 barre uguali da 4",
+      "2 barre da 6",
+      "Una barra da 12 e una da 3",
+      "4 barre da 3 e una da 1"
+    ],
+    "correctAnswer": "3 barre uguali da 4",
+    "explanation": "12 : 3 = 4 per ogni parte.",
     "difficulty": 2
   },
   {
     "id": "s3-bar-4",
     "grade": "terza",
     "topic": "bar-model",
-    "type": "numeric-input",
-    "prompt": "Totale 52, una parte 17. Quanto vale la parte mancante?",
-    "correctAnswer": 35,
-    "explanation": "52 - 17 = 35.",
-    "difficulty": 2
+    "type": "bar-model",
+    "options": [
+      "6",
+      "8",
+      "4",
+      "12"
+    ],
+    "correctAnswer": "6",
+    "prompt": "Una barra lunga 24 è divisa in 4 parti uguali. Quanto vale ogni parte?",
+    "explanation": "24 : 4 = 6.",
+    "difficulty": 2,
+    "visualModel": "Totale 24 | 4 parti uguali"
   },
   {
     "id": "s3-bar-5",
     "grade": "terza",
     "topic": "bar-model",
     "type": "word-problem",
-    "prompt": "Ci sono 4 sacchetti con 5 biglie ciascuno. Poi se ne perdono 3. Quante biglie restano?",
-    "correctAnswer": 17,
-    "explanation": "Prima 4 x 5 = 20, poi 20 - 3 = 17.",
-    "difficulty": 3
+    "prompt": "Marco ha 9 figurine. Giulia ne ha il doppio. Quante figurine ha Giulia?",
+    "correctAnswer": 18,
+    "explanation": "Il doppio di 9 è 18.",
+    "difficulty": 2,
+    "visualModel": "Barra di Giulia lunga il doppio della barra di Marco"
   },
   {
     "id": "s3-bar-6",
     "grade": "terza",
     "topic": "bar-model",
-    "type": "multiple-choice",
-    "prompt": "Quale domanda si adatta a 4 x 6?",
-    "options": [
-      "Ci sono 4 gruppi da 6. Quanti sono in tutto?",
-      "Ho 4 e tolgo 6.",
-      "Dopo il 4 viene il 6.",
-      "Ho 6 gruppi da 1."
-    ],
-    "correctAnswer": "Ci sono 4 gruppi da 6. Quanti sono in tutto?",
-    "explanation": "Il bar model aiuta a vedere gruppi uguali e totale.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-7",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 8 x 4",
-    "correctAnswer": 32,
-    "explanation": "8 gruppi da 4 fanno 32.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-mul-8",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "multiple-choice",
-    "prompt": "Quale addizione ripetuta corrisponde a 6 x 2?",
-    "options": ["2 + 2 + 2 + 2 + 2 + 2", "6 + 6", "2 + 6", "6 + 2 + 2"],
-    "correctAnswer": "2 + 2 + 2 + 2 + 2 + 2",
-    "explanation": "6 x 2 significa 6 gruppi da 2.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-mul-9",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "word-problem",
-    "prompt": "Ci sono 9 file con 3 sedie in ogni fila. Quante sedie ci sono in tutto?",
-    "correctAnswer": 27,
-    "explanation": "9 x 3 = 27.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-10",
-    "grade": "terza",
-    "topic": "moltiplicazione",
     "type": "bar-model",
-    "prompt": "Una barra mostra 4 gruppi uguali da 9. Qual è il totale?",
-    "options": ["36", "13", "32", "45"],
-    "correctAnswer": "36",
-    "explanation": "4 x 9 = 36.",
-    "difficulty": 2,
-    "visualModel": "4 parti uguali da 9 = totale ?"
-  },
-  {
-    "id": "s3-div-7",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 32 diviso 4",
-    "correctAnswer": 8,
-    "explanation": "32 diviso 4 = 8.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-div-8",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "multiple-choice",
-    "prompt": "Quale frase descrive 27 diviso 9?",
     "options": [
-      "27 oggetti divisi in 9 gruppi uguali",
-      "9 gruppi da 27",
-      "27 + 9",
-      "27 tolgo 9"
+      "8",
+      "6",
+      "4",
+      "12"
     ],
-    "correctAnswer": "27 oggetti divisi in 9 gruppi uguali",
-    "explanation": "Dividere significa distribuire in gruppi uguali.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-div-9",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "word-problem",
-    "prompt": "40 biscotti vengono distribuiti a 5 bambini in parti uguali. Quanti biscotti riceve ogni bambino?",
-    "correctAnswer": 8,
-    "explanation": "40 diviso 5 = 8.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-div-10",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 36 viene divisa in 6 parti uguali. Quanto vale ogni parte?",
-    "options": ["6", "5", "7", "12"],
-    "correctAnswer": "6",
-    "explanation": "36 diviso 6 = 6.",
-    "difficulty": 2,
-    "visualModel": "Totale 36 diviso in 6 parti uguali"
+    "correctAnswer": "8",
+    "prompt": "Due parti uguali valgono 16 in tutto. Quanto vale una parte?",
+    "explanation": "16 : 2 = 8.",
+    "difficulty": 3,
+    "visualModel": "Totale 16 | 2 parti uguali"
   },
   {
     "id": "s3-bar-7",
     "grade": "terza",
     "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Le barre mostrano 24 quaderni e 16 libri. Quanti oggetti ci sono in tutto?",
-    "options": ["40", "32", "8", "48"],
-    "correctAnswer": "40",
-    "explanation": "Sommi 24 + 16 = 40.",
-    "difficulty": 1,
-    "visualModel": "Parte 24 + parte 16 = totale ?"
-  },
-  {
-    "id": "s3-bar-8",
-    "grade": "terza",
-    "topic": "bar-model",
-    "type": "numeric-input",
-    "prompt": "Totale 61, una parte 28. Quanto vale la parte mancante?",
-    "correctAnswer": 33,
-    "explanation": "61 - 28 = 33.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-bar-9",
-    "grade": "terza",
-    "topic": "bar-model",
     "type": "word-problem",
-    "prompt": "Ci sono 5 sacchetti con 6 palline ciascuno. Poi si rompono 4 palline. Quante palline restano?",
-    "correctAnswer": 26,
-    "explanation": "Prima 5 x 6 = 30, poi 30 - 4 = 26.",
-    "difficulty": 3
+    "prompt": "Una classe raccoglie 27 euro. La seconda barra mostra 9 euro in meno della prima. Di quanti euro potrebbe essere la prima barra se il totale è 27?",
+    "correctAnswer": 18,
+    "explanation": "Se una parte è 18 e l'altra è 9, il totale è 27.",
+    "difficulty": 3,
+    "visualModel": "Barra A = ? | Barra B = 9 | Totale 27"
   },
   {
-    "id": "s3-bar-10",
+    "id": "s3-mis-1",
     "grade": "terza",
-    "topic": "bar-model",
+    "topic": "misure",
     "type": "multiple-choice",
-    "prompt": "Quale operazione risolve un totale di 70 con una parte nota di 26?",
-    "options": ["70 - 26", "70 + 26", "26 + 26", "70 x 26"],
-    "correctAnswer": "70 - 26",
-    "explanation": "Per trovare la parte mancante fai una sottrazione.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-11",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 9 x 5",
-    "correctAnswer": 45,
-    "explanation": "9 gruppi da 5 fanno 45.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-mul-12",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "multiple-choice",
-    "prompt": "Quale addizione ripetuta corrisponde a 4 x 7?",
-    "options": ["7 + 7 + 7 + 7", "4 + 4 + 4 + 4 + 4 + 4 + 4", "4 + 7", "7 + 4 + 3"],
-    "correctAnswer": "7 + 7 + 7 + 7",
-    "explanation": "4 x 7 significa 4 gruppi da 7.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-mul-13",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "word-problem",
-    "prompt": "Ci sono 7 scatole con 8 pennarelli in ogni scatola. Quanti pennarelli ci sono in tutto?",
-    "correctAnswer": 56,
-    "explanation": "7 x 8 = 56.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-14",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 6 x 9",
-    "correctAnswer": 54,
-    "explanation": "6 gruppi da 9 fanno 54.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-15",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "multiple-choice",
-    "prompt": "Quale risultato è corretto?",
-    "options": ["8 x 7 = 56", "8 x 7 = 48", "8 x 7 = 54", "8 x 7 = 64"],
-    "correctAnswer": "8 x 7 = 56",
-    "explanation": "8 gruppi da 7 fanno 56.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-mul-16",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "bar-model",
-    "prompt": "Una barra mostra 5 gruppi uguali da 8. Qual è il totale?",
-    "options": ["40", "13", "48", "35"],
-    "correctAnswer": "40",
-    "explanation": "5 x 8 = 40.",
-    "difficulty": 2,
-    "visualModel": "5 parti uguali da 8 = totale ?"
-  },
-  {
-    "id": "s3-mul-17",
-    "grade": "terza",
-    "topic": "moltiplicazione",
-    "type": "word-problem",
-    "prompt": "In palestra ci sono 4 file da 12 bambini. Quanti bambini ci sono in tutto?",
-    "correctAnswer": 48,
-    "explanation": "4 x 12 = 48.",
-    "difficulty": 3
-  },
-  {
-    "id": "s3-div-11",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 45 diviso 5",
-    "correctAnswer": 9,
-    "explanation": "45 diviso 5 = 9.",
-    "difficulty": 1
-  },
-  {
-    "id": "s3-div-12",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "multiple-choice",
-    "prompt": "Quale frase descrive 36 diviso 6?",
+    "prompt": "Quale misura è maggiore?",
     "options": [
-      "36 oggetti divisi in 6 gruppi uguali",
-      "6 gruppi da 36",
-      "36 + 6",
-      "36 tolgo 6"
+      "2 m",
+      "90 cm",
+      "Sono uguali"
     ],
-    "correctAnswer": "36 oggetti divisi in 6 gruppi uguali",
-    "explanation": "Dividere significa distribuire in gruppi uguali.",
+    "correctAnswer": "2 m",
+    "explanation": "2 m corrispondono a 200 cm, quindi sono maggiori di 90 cm.",
     "difficulty": 1
   },
   {
-    "id": "s3-div-13",
+    "id": "s3-mis-2",
     "grade": "terza",
-    "topic": "divisione",
-    "type": "word-problem",
-    "prompt": "54 caramelle vengono distribuite a 6 bambini in parti uguali. Quante caramelle riceve ogni bambino?",
-    "correctAnswer": 9,
-    "explanation": "54 diviso 6 = 9.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-div-14",
-    "grade": "terza",
-    "topic": "divisione",
+    "topic": "misure",
     "type": "numeric-input",
-    "prompt": "Calcola: 42 diviso 7",
-    "correctAnswer": 6,
-    "explanation": "42 diviso 7 = 6.",
-    "difficulty": 2
+    "prompt": "Quanti centimetri sono 1 metro?",
+    "correctAnswer": 100,
+    "explanation": "1 metro = 100 centimetri.",
+    "difficulty": 1
   },
   {
-    "id": "s3-div-15",
+    "id": "s3-mis-3",
     "grade": "terza",
-    "topic": "divisione",
-    "type": "multiple-choice",
-    "prompt": "Quale operazione completa la frase? '48 biscotti in 8 piatti uguali: ogni piatto ha ___ biscotti.'",
-    "options": ["48 diviso 8", "48 + 8", "48 - 8", "8 x 8"],
-    "correctAnswer": "48 diviso 8",
-    "explanation": "Per trovare quanti biscotti per piatto devi dividere.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-div-16",
-    "grade": "terza",
-    "topic": "divisione",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 63 viene divisa in 9 parti uguali. Quanto vale ogni parte?",
-    "options": ["7", "8", "9", "6"],
-    "correctAnswer": "7",
-    "explanation": "63 diviso 9 = 7.",
-    "difficulty": 2,
-    "visualModel": "Totale 63 diviso in 9 parti uguali"
-  },
-  {
-    "id": "s3-div-17",
-    "grade": "terza",
-    "topic": "divisione",
+    "topic": "misure",
     "type": "word-problem",
-    "prompt": "56 biglie vengono distribuite in 8 sacchetti uguali. Quante biglie in ogni sacchetto?",
-    "correctAnswer": 7,
-    "explanation": "56 diviso 8 = 7.",
-    "difficulty": 3
+    "prompt": "Una bottiglia contiene 2 litri d'acqua e ne verso 1 litro. Quanti litri restano?",
+    "correctAnswer": 1,
+    "explanation": "2 - 1 = 1 litro.",
+    "difficulty": 1
   },
   {
-    "id": "s3-bar-11",
+    "id": "s3-mis-4",
     "grade": "terza",
-    "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Le barre mostrano 27 matite e 19 pennarelli. Quanti oggetti ci sono in tutto?",
-    "options": ["46", "38", "8", "56"],
-    "correctAnswer": "46",
-    "explanation": "Sommi 27 + 19 = 46.",
-    "difficulty": 1,
-    "visualModel": "Parte 27 + parte 19 = totale ?"
+    "topic": "misure",
+    "type": "multiple-choice",
+    "prompt": "Quale strumento usi per misurare la lunghezza del banco?",
+    "options": [
+      "Righello o metro",
+      "Bilancia",
+      "Orologio",
+      "Termometro"
+    ],
+    "correctAnswer": "Righello o metro",
+    "explanation": "La lunghezza si misura con righello o metro.",
+    "difficulty": 2
   },
   {
-    "id": "s3-bar-12",
+    "id": "s3-mis-5",
     "grade": "terza",
-    "topic": "bar-model",
+    "topic": "misure",
     "type": "numeric-input",
-    "prompt": "Totale 73, una parte 25. Quanto vale la parte mancante?",
-    "correctAnswer": 48,
-    "explanation": "73 - 25 = 48.",
+    "prompt": "Quanti grammi sono mezzo chilo?",
+    "correctAnswer": 500,
+    "explanation": "Mezzo chilogrammo corrisponde a 500 grammi.",
     "difficulty": 2
   },
   {
-    "id": "s3-bar-13",
+    "id": "s3-mis-6",
     "grade": "terza",
-    "topic": "bar-model",
+    "topic": "misure",
     "type": "word-problem",
-    "prompt": "Ci sono 6 pacchi con 7 biscotti ciascuno. Poi ne mangiamo 5. Quanti biscotti restano?",
-    "correctAnswer": 37,
-    "explanation": "Prima 6 x 7 = 42, poi 42 - 5 = 37.",
-    "difficulty": 3
-  },
-  {
-    "id": "s3-bar-14",
-    "grade": "terza",
-    "topic": "bar-model",
-    "type": "multiple-choice",
-    "prompt": "Quale operazione risolve un totale di 81 con una parte nota di 36?",
-    "options": ["81 - 36", "81 + 36", "36 + 36", "81 x 36"],
-    "correctAnswer": "81 - 36",
-    "explanation": "Per trovare la parte mancante fai una sottrazione.",
-    "difficulty": 2
-  },
-  {
-    "id": "s3-bar-15",
-    "grade": "terza",
-    "topic": "bar-model",
-    "type": "word-problem",
-    "prompt": "In una biblioteca ci sono 8 scaffali con 9 libri ciascuno. Poi 12 libri vengono prestati. Quanti libri restano?",
+    "prompt": "Due corde misurano 35 cm e 25 cm. Quanto misurano insieme?",
     "correctAnswer": 60,
-    "explanation": "8 x 9 = 72, poi 72 - 12 = 60.",
+    "explanation": "35 + 25 = 60 cm.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-geo-1",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "multiple-choice",
+    "prompt": "Quale figura ha 4 lati tutti uguali?",
+    "options": [
+      "Quadrato",
+      "Triangolo",
+      "Cerchio",
+      "Rettangolo"
+    ],
+    "correctAnswer": "Quadrato",
+    "explanation": "Il quadrato ha 4 lati uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-geo-2",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "multiple-choice",
+    "prompt": "Quanti lati ha un triangolo?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "0"
+    ],
+    "correctAnswer": "3",
+    "explanation": "Il triangolo ha 3 lati.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-geo-3",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "multiple-choice",
+    "prompt": "Quale figura non ha lati?",
+    "options": [
+      "Cerchio",
+      "Quadrato",
+      "Rettangolo",
+      "Pentagono"
+    ],
+    "correctAnswer": "Cerchio",
+    "explanation": "Il cerchio è una linea curva chiusa.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-geo-4",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "numeric-input",
+    "prompt": "Quanti vertici ha un rettangolo?",
+    "correctAnswer": 4,
+    "explanation": "Il rettangolo ha 4 vertici.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-geo-5",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "multiple-choice",
+    "prompt": "Quale figura ha 5 lati?",
+    "options": [
+      "Pentagono",
+      "Esagono",
+      "Triangolo",
+      "Quadrato"
+    ],
+    "correctAnswer": "Pentagono",
+    "explanation": "Il pentagono ha 5 lati.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-geo-6",
+    "grade": "terza",
+    "topic": "geometria",
+    "type": "multiple-choice",
+    "prompt": "Una figura ha 4 lati, due lunghi e due corti, e 4 angoli retti. Che figura è?",
+    "options": [
+      "Rettangolo",
+      "Triangolo",
+      "Cerchio",
+      "Esagono"
+    ],
+    "correctAnswer": "Rettangolo",
+    "explanation": "La descrizione corrisponde a un rettangolo.",
     "difficulty": 3
   },
   {
-    "id": "s3-bar-16",
+    "id": "s3-log-1",
     "grade": "terza",
-    "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 64 è divisa in 4 parti uguali. Quanto vale ogni parte?",
-    "options": ["16", "14", "18", "12"],
-    "correctAnswer": "16",
-    "explanation": "64 diviso 4 = 16.",
-    "difficulty": 2,
-    "visualModel": "Totale 64 diviso in 4 parti uguali"
+    "topic": "dati-e-logica",
+    "type": "multiple-choice",
+    "prompt": "Nella tabella mele=4, pere=6, banane=3. Quale frutto è più numeroso?",
+    "options": [
+      "Pere",
+      "Mele",
+      "Banane",
+      "Sono uguali"
+    ],
+    "correctAnswer": "Pere",
+    "explanation": "6 è il numero più grande.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-log-2",
+    "grade": "terza",
+    "topic": "dati-e-logica",
+    "type": "numeric-input",
+    "prompt": "Completa la regola: 2, 4, 6, 8, __",
+    "correctAnswer": 10,
+    "explanation": "La regola è +2.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-log-3",
+    "grade": "terza",
+    "topic": "dati-e-logica",
+    "type": "multiple-choice",
+    "prompt": "Quale numero non appartiene alla serie 5, 10, 15, 19, 20?",
+    "options": [
+      "19",
+      "10",
+      "15",
+      "20"
+    ],
+    "correctAnswer": "19",
+    "explanation": "La serie cresce di 5, quindi 19 rompe la regola.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-log-4",
+    "grade": "terza",
+    "topic": "dati-e-logica",
+    "type": "word-problem",
+    "prompt": "In un grafico, il lunedì ci sono 7 libri letti e il martedì 9. Quanti libri in più martedì?",
+    "correctAnswer": 2,
+    "explanation": "9 - 7 = 2.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-log-5",
+    "grade": "terza",
+    "topic": "dati-e-logica",
+    "type": "multiple-choice",
+    "prompt": "Se ogni figura blu vale 2 punti e ne vedo 4, quanti punti ottengo?",
+    "options": [
+      "8",
+      "6",
+      "4",
+      "2"
+    ],
+    "correctAnswer": "8",
+    "explanation": "4 x 2 = 8.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-log-6",
+    "grade": "terza",
+    "topic": "dati-e-logica",
+    "type": "word-problem",
+    "prompt": "Tre amici hanno 5, 8 e 8 figurine. Quanti amici hanno lo stesso numero di figurine?",
+    "correctAnswer": 2,
+    "explanation": "Due amici hanno 8 figurine.",
+    "difficulty": 3
   }
 ]

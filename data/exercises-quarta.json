@@ -25,7 +25,12 @@
     "topic": "problemi-avanzati",
     "type": "multiple-choice",
     "prompt": "Quale coppia di operazioni risolve: 3 scatole da 8 quaderni e poi ne regalo 5?",
-    "options": ["3 x 8, poi -5", "3 + 8, poi -5", "8 - 5, poi x3", "3 x 5, poi +8"],
+    "options": [
+      "3 x 8, poi -5",
+      "3 + 8, poi -5",
+      "8 - 5, poi x3",
+      "3 x 5, poi +8"
+    ],
     "correctAnswer": "3 x 8, poi -5",
     "explanation": "Prima trovi il totale, poi togli quelli regalati.",
     "difficulty": 2
@@ -55,22 +60,42 @@
     "grade": "quarta",
     "topic": "problemi-avanzati",
     "type": "bar-model",
-    "prompt": "Un totale di 36 è formato da 4 parti uguali e poi tolgo 3. Quanto resta?",
-    "options": ["33", "9", "6", "12"],
+    "options": [
+      "33",
+      "9",
+      "6",
+      "12"
+    ],
     "correctAnswer": "33",
+    "prompt": "Un totale di 36 è formato da 4 parti uguali e poi tolgo 3. Quanto resta?",
     "explanation": "Il totale è 36. Se togli 3, restano 33.",
     "difficulty": 3,
     "visualModel": "Totale 36 | parte tolta 3 | resto ?"
+  },
+  {
+    "id": "s4-prob-7",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "word-problem",
+    "prompt": "Un autobus fa 3 viaggi con 24 bambini per viaggio. Nell'ultimo viaggio 5 bambini scendono prima. Quanti bambini arrivano in tutto?",
+    "correctAnswer": 67,
+    "explanation": "3 x 24 = 72, poi 72 - 5 = 67.",
+    "difficulty": 3
   },
   {
     "id": "s4-fra-1",
     "grade": "quarta",
     "topic": "frazioni",
     "type": "multiple-choice",
-    "prompt": "Quale frazione rappresenta una metà?",
-    "options": ["1/2", "1/3", "2/3", "3/4"],
-    "correctAnswer": "1/2",
-    "explanation": "Una metà è una parte su due parti uguali.",
+    "prompt": "Quale frazione rappresenta una torta divisa in 4 parti uguali con 1 parte colorata?",
+    "options": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "4/1"
+    ],
+    "correctAnswer": "1/4",
+    "explanation": "Una parte su quattro è un quarto.",
     "difficulty": 1
   },
   {
@@ -78,54 +103,84 @@
     "grade": "quarta",
     "topic": "frazioni",
     "type": "multiple-choice",
-    "prompt": "Se una pizza è divisa in 4 parti uguali e ne mangio 1, quale frazione ho mangiato?",
-    "options": ["1/4", "1/2", "3/4", "4/1"],
-    "correctAnswer": "1/4",
-    "explanation": "Hai mangiato una parte su quattro.",
+    "prompt": "Quale frazione è più grande?",
+    "options": [
+      "3/4",
+      "1/4",
+      "2/8",
+      "1/8"
+    ],
+    "correctAnswer": "3/4",
+    "explanation": "Tre quarti sono maggiori delle altre frazioni proposte.",
     "difficulty": 1
   },
   {
     "id": "s4-fra-3",
     "grade": "quarta",
     "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quale frazione è più grande?",
-    "options": ["1/2", "1/4", "1/8", "1/6"],
-    "correctAnswer": "1/2",
-    "explanation": "A parità di intero, una metà è più grande di un quarto o di un ottavo.",
+    "type": "numeric-input",
+    "prompt": "Quante parti su 8 rappresentano 1/2?",
+    "correctAnswer": 4,
+    "explanation": "Metà di 8 parti è 4 parti, quindi 4/8.",
     "difficulty": 2
   },
   {
     "id": "s4-fra-4",
     "grade": "quarta",
     "topic": "frazioni",
-    "type": "bar-model",
-    "prompt": "Una barra è divisa in 3 parti uguali e ne sono colorate 2. Quale frazione rappresenta la parte colorata?",
-    "options": ["2/3", "1/3", "3/2", "2/1"],
-    "correctAnswer": "2/3",
-    "explanation": "Sono colorate 2 parti su 3 parti uguali.",
-    "difficulty": 2,
-    "visualModel": "Barra divisa in 3 parti uguali, 2 parti colorate"
+    "type": "multiple-choice",
+    "prompt": "Quale frazione è equivalente a 1/2?",
+    "options": [
+      "2/4",
+      "1/4",
+      "3/4",
+      "4/4"
+    ],
+    "correctAnswer": "2/4",
+    "explanation": "2/4 rappresenta la stessa quantità di 1/2.",
+    "difficulty": 2
   },
   {
     "id": "s4-fra-5",
     "grade": "quarta",
     "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quali due quarti fanno una metà?",
-    "options": ["2/4", "1/4", "3/4", "4/4"],
-    "correctAnswer": "2/4",
-    "explanation": "Due quarti equivalgono a una metà.",
-    "difficulty": 2
+    "type": "bar-model",
+    "options": [
+      "3/6",
+      "6/3",
+      "1/6",
+      "5/6"
+    ],
+    "correctAnswer": "3/6",
+    "prompt": "Una barra è divisa in 6 parti uguali. Ne coloro 3. Che frazione ho colorato?",
+    "explanation": "3 parti colorate su 6 totali.",
+    "difficulty": 2,
+    "visualModel": "Barra divisa in 6 parti uguali, 3 colorate"
   },
   {
     "id": "s4-fra-6",
     "grade": "quarta",
     "topic": "frazioni",
     "type": "word-problem",
-    "prompt": "Una torta è divisa in 8 fette uguali. Ne mangio 4. Quale frazione della torta ho mangiato?",
-    "correctAnswer": "4/8",
-    "explanation": "Hai mangiato 4 fette su 8. Si può anche dire 1/2.",
+    "prompt": "Di 12 biscotti, 1/3 è al cioccolato. Quanti biscotti sono al cioccolato?",
+    "correctAnswer": 4,
+    "explanation": "12 diviso 3 fa 4.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-fra-7",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione indica 'tutto intero'?",
+    "options": [
+      "4/4",
+      "1/4",
+      "2/4",
+      "3/4"
+    ],
+    "correctAnswer": "4/4",
+    "explanation": "Quattro quarti formano l'intero.",
     "difficulty": 3
   },
   {
@@ -133,423 +188,495 @@
     "grade": "quarta",
     "topic": "bar-model",
     "type": "bar-model",
-    "prompt": "Una barra totale di 84 è divisa in una parte da 29 e una parte mancante. Quanto vale la parte mancante?",
-    "options": ["55", "45", "65", "113"],
-    "correctAnswer": "55",
-    "explanation": "84 - 29 = 55.",
-    "difficulty": 2,
-    "visualModel": "Totale 84 | parte 29 | parte ?"
+    "options": [
+      "27",
+      "23",
+      "63",
+      "17"
+    ],
+    "correctAnswer": "27",
+    "prompt": "Una barra totale vale 45. Una parte vale 18. Quanto vale l'altra parte?",
+    "explanation": "45 - 18 = 27.",
+    "difficulty": 1,
+    "visualModel": "Totale 45 | parte 18 | parte ?"
   },
   {
     "id": "s4-bar-2",
     "grade": "quarta",
     "topic": "bar-model",
-    "type": "word-problem",
-    "prompt": "In una libreria arrivano 6 scatole con 7 libri ciascuna. Poi vengono venduti 8 libri. Quanti libri restano?",
-    "correctAnswer": 34,
-    "explanation": "6 x 7 = 42, poi 42 - 8 = 34.",
-    "difficulty": 3
+    "type": "bar-model",
+    "options": [
+      "12",
+      "9",
+      "18",
+      "6"
+    ],
+    "correctAnswer": "12",
+    "prompt": "Tre parti uguali valgono in tutto 36. Quanto vale una parte?",
+    "explanation": "36 : 3 = 12.",
+    "difficulty": 1,
+    "visualModel": "Totale 36 | 3 parti uguali"
   },
   {
     "id": "s4-bar-3",
     "grade": "quarta",
     "topic": "bar-model",
     "type": "multiple-choice",
-    "prompt": "Quale operazione usi per trovare una parte mancante se conosci il totale e un'altra parte?",
-    "options": ["Sottrazione", "Addizione", "Moltiplicazione", "Divisione"],
-    "correctAnswer": "Sottrazione",
-    "explanation": "Per trovare una parte mancante parti dal totale e togli la parte nota.",
-    "difficulty": 1
+    "prompt": "Quale schema mostra 'il doppio di 7'?",
+    "options": [
+      "Due barre uguali da 7",
+      "Una barra da 7 e una da 3",
+      "Tre barre da 7",
+      "Una barra da 14 e una da 1"
+    ],
+    "correctAnswer": "Due barre uguali da 7",
+    "explanation": "Il doppio significa due parti uguali della stessa grandezza.",
+    "difficulty": 2
   },
   {
     "id": "s4-bar-4",
     "grade": "quarta",
     "topic": "bar-model",
-    "type": "numeric-input",
-    "prompt": "Totale 125, una parte 48. Quanto vale la parte mancante?",
-    "correctAnswer": 77,
-    "explanation": "125 - 48 = 77.",
-    "difficulty": 2
+    "type": "bar-model",
+    "options": [
+      "7",
+      "6",
+      "8",
+      "4"
+    ],
+    "correctAnswer": "7",
+    "prompt": "Una barra vale 28. È composta da 4 parti uguali. Quanto vale ogni parte?",
+    "explanation": "28 : 4 = 7.",
+    "difficulty": 2,
+    "visualModel": "Totale 28 | 4 parti uguali"
   },
   {
     "id": "s4-bar-5",
     "grade": "quarta",
     "topic": "bar-model",
     "type": "word-problem",
-    "prompt": "La scuola compra 5 confezioni da 9 quaderni. Poi ne usa 11. Quanti quaderni restano?",
-    "correctAnswer": 34,
-    "explanation": "5 x 9 = 45, poi 45 - 11 = 34.",
-    "difficulty": 3
+    "prompt": "Giulia ha 15 figurine. Paolo ne ha 9 in più. Quante figurine ha Paolo?",
+    "correctAnswer": 24,
+    "explanation": "15 + 9 = 24.",
+    "difficulty": 2,
+    "visualModel": "Barra di Paolo più lunga di 9 rispetto a Giulia"
   },
   {
     "id": "s4-bar-6",
     "grade": "quarta",
     "topic": "bar-model",
-    "type": "multiple-choice",
-    "prompt": "Quale domanda si adatta a un bar model con 3 parti uguali da 12?",
+    "type": "bar-model",
     "options": [
-      "Quanti sono in tutto 3 gruppi da 12?",
-      "Qual è il numero dopo 12?",
-      "Quanto fa 12 - 3?",
-      "Qual è la metà di 12?"
+      "20",
+      "10",
+      "80",
+      "15"
     ],
-    "correctAnswer": "Quanti sono in tutto 3 gruppi da 12?",
-    "explanation": "Tre parti uguali da 12 indicano un totale costruito con gruppi uguali.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-7",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "word-problem",
-    "prompt": "Una classe compra 7 confezioni da 8 pennarelli. Poi ne perde 6. Quanti pennarelli restano?",
-    "correctAnswer": 50,
-    "explanation": "Prima 7 x 8 = 56, poi 56 - 6 = 50.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-8",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "multiple-choice",
-    "prompt": "Quale coppia di operazioni risolve: 5 scatole da 9 gomme e poi ne uso 12?",
-    "options": ["5 x 9, poi -12", "5 + 9, poi -12", "9 - 5, poi x12", "5 x 12, poi +9"],
-    "correctAnswer": "5 x 9, poi -12",
-    "explanation": "Prima trovi il totale, poi togli quelle usate.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-9",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "numeric-input",
-    "prompt": "Una fettuccia è lunga 250 cm. Ne taglio 75 cm. Quanti centimetri restano?",
-    "correctAnswer": 175,
-    "explanation": "250 - 75 = 175.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-10",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "bar-model",
-    "prompt": "Un totale di 48 è formato da 6 parti uguali. Quanto vale ogni parte?",
-    "options": ["8", "6", "7", "42"],
-    "correctAnswer": "8",
-    "explanation": "48 diviso 6 = 8.",
+    "correctAnswer": "20",
+    "prompt": "Due barre insieme fanno 50. La prima vale 30. Quanto vale la seconda?",
+    "explanation": "50 - 30 = 20.",
     "difficulty": 3,
-    "visualModel": "Totale 48 diviso in 6 parti uguali"
-  },
-  {
-    "id": "s4-fra-7",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Se una barretta è divisa in 5 parti uguali e ne mangio 2, quale frazione ho mangiato?",
-    "options": ["2/5", "2/3", "5/2", "1/5"],
-    "correctAnswer": "2/5",
-    "explanation": "Hai mangiato 2 parti su 5 parti uguali.",
-    "difficulty": 1
-  },
-  {
-    "id": "s4-fra-8",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quale frazione è più grande?",
-    "options": ["3/4", "1/4", "2/8", "1/2"],
-    "correctAnswer": "3/4",
-    "explanation": "Tre quarti sono più grandi di un quarto, due ottavi e una metà.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-fra-9",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "bar-model",
-    "prompt": "Una barra è divisa in 6 parti uguali e ne sono colorate 3. Quale frazione rappresenta la parte colorata?",
-    "options": ["3/6", "6/3", "3/5", "1/6"],
-    "correctAnswer": "3/6",
-    "explanation": "Sono colorate 3 parti su 6 parti uguali.",
-    "difficulty": 2,
-    "visualModel": "Barra divisa in 6 parti uguali, 3 parti colorate"
-  },
-  {
-    "id": "s4-fra-10",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "word-problem",
-    "prompt": "Una torta è divisa in 10 fette uguali. Ne mangio 5. Quale frazione della torta ho mangiato?",
-    "correctAnswer": "5/10",
-    "explanation": "Hai mangiato 5 fette su 10. Si può anche dire una metà.",
-    "difficulty": 3
+    "visualModel": "Totale 50 | prima barra 30 | seconda barra ?"
   },
   {
     "id": "s4-bar-7",
     "grade": "quarta",
     "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 96 è divisa in una parte da 38 e una parte mancante. Quanto vale la parte mancante?",
-    "options": ["58", "48", "68", "134"],
-    "correctAnswer": "58",
-    "explanation": "96 - 38 = 58.",
-    "difficulty": 2,
-    "visualModel": "Totale 96 | parte 38 | parte ?"
-  },
-  {
-    "id": "s4-bar-8",
-    "grade": "quarta",
-    "topic": "bar-model",
-    "type": "numeric-input",
-    "prompt": "Totale 143, una parte 59. Quanto vale la parte mancante?",
-    "correctAnswer": 84,
-    "explanation": "143 - 59 = 84.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-bar-9",
-    "grade": "quarta",
-    "topic": "bar-model",
     "type": "word-problem",
-    "prompt": "La scuola compra 8 confezioni da 6 quaderni. Poi ne usa 9. Quanti quaderni restano?",
-    "correctAnswer": 39,
-    "explanation": "8 x 6 = 48, poi 48 - 9 = 39.",
-    "difficulty": 3
-  },
-  {
-    "id": "s4-bar-10",
-    "grade": "quarta",
-    "topic": "bar-model",
-    "type": "multiple-choice",
-    "prompt": "Quale domanda si adatta a un bar model con totale 72 e una parte 27?",
-    "options": [
-      "Quanto vale la parte mancante?",
-      "Qual è il doppio di 27?",
-      "Quanto fa 72 + 27?",
-      "Qual è il numero dopo 72?"
-    ],
-    "correctAnswer": "Quanto vale la parte mancante?",
-    "explanation": "Se conosci il totale e una parte, il bar model serve a trovare la parte mancante.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-11",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "word-problem",
-    "prompt": "Una cartoleria vende 8 confezioni da 7 penne. Poi ne restano invendute 11. Quante penne sono state vendute?",
-    "correctAnswer": 45,
-    "explanation": "8 x 7 = 56, poi 56 - 11 = 45.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-12",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "multiple-choice",
-    "prompt": "Quale coppia di operazioni risolve: 6 scatole da 9 pastelli e poi ne regalo 8?",
-    "options": ["6 x 9, poi -8", "6 + 9, poi -8", "9 - 8, poi x6", "6 x 8, poi +9"],
-    "correctAnswer": "6 x 9, poi -8",
-    "explanation": "Prima trovi il totale, poi togli quelli regalati.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-13",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "numeric-input",
-    "prompt": "Un nastro è lungo 320 cm. Ne taglio 85 cm. Quanti centimetri restano?",
-    "correctAnswer": 235,
-    "explanation": "320 - 85 = 235.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-14",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "word-problem",
-    "prompt": "In teatro ci sono 9 file con 8 sedie ciascuna. 14 sedie restano vuote. Quante sedie sono occupate?",
-    "correctAnswer": 58,
-    "explanation": "9 x 8 = 72, poi 72 - 14 = 58.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-prob-15",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "bar-model",
-    "prompt": "Un totale di 72 è formato da 8 parti uguali. Quanto vale ogni parte?",
-    "options": ["9", "8", "10", "64"],
-    "correctAnswer": "9",
-    "explanation": "72 diviso 8 = 9.",
+    "prompt": "Un nastro lungo 72 cm è diviso in 6 parti uguali. Quanto misura ogni parte?",
+    "correctAnswer": 12,
+    "explanation": "72 : 6 = 12.",
     "difficulty": 3,
-    "visualModel": "Totale 72 diviso in 8 parti uguali"
+    "visualModel": "Totale 72 | 6 parti uguali"
   },
   {
-    "id": "s4-prob-16",
+    "id": "s4-dec-1",
     "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "word-problem",
-    "prompt": "Una biblioteca compra 7 pacchi da 12 libri. Poi 9 libri vengono prestati. Quanti libri restano sugli scaffali?",
-    "correctAnswer": 75,
-    "explanation": "7 x 12 = 84, poi 84 - 9 = 75.",
-    "difficulty": 3
-  },
-  {
-    "id": "s4-prob-17",
-    "grade": "quarta",
-    "topic": "problemi-avanzati",
-    "type": "multiple-choice",
-    "prompt": "Quale operazione usi per trovare il costo totale di 8 quaderni da 4 euro ciascuno?",
-    "options": ["8 x 4", "8 + 4", "8 - 4", "8 diviso 4"],
-    "correctAnswer": "8 x 4",
-    "explanation": "Per trovare il costo totale di gruppi uguali usi una moltiplicazione.",
-    "difficulty": 1
-  },
-  {
-    "id": "s4-fra-11",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quale frazione rappresenta tre parti su otto?",
-    "options": ["3/8", "8/3", "3/4", "1/8"],
-    "correctAnswer": "3/8",
-    "explanation": "Tre parti su otto si scrive 3/8.",
-    "difficulty": 1
-  },
-  {
-    "id": "s4-fra-12",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quale frazione è più piccola?",
-    "options": ["1/6", "1/3", "1/2", "3/4"],
-    "correctAnswer": "1/6",
-    "explanation": "A parità di intero, sesti più piccoli di terzi o metà.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-fra-13",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "bar-model",
-    "prompt": "Una barra è divisa in 5 parti uguali e ne sono colorate 4. Quale frazione rappresenta la parte colorata?",
-    "options": ["4/5", "5/4", "4/6", "1/5"],
-    "correctAnswer": "4/5",
-    "explanation": "Sono colorate 4 parti su 5 parti uguali.",
-    "difficulty": 2,
-    "visualModel": "Barra divisa in 5 parti uguali, 4 parti colorate"
-  },
-  {
-    "id": "s4-fra-14",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "word-problem",
-    "prompt": "Una tavoletta è divisa in 12 pezzi uguali. Ne mangio 3. Quale frazione ho mangiato?",
-    "correctAnswer": "3/12",
-    "explanation": "Hai mangiato 3 pezzi su 12.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-fra-15",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Quale frazione equivale a una metà?",
-    "options": ["3/6", "2/6", "1/6", "5/6"],
-    "correctAnswer": "3/6",
-    "explanation": "Tre sesti equivalgono a una metà.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-fra-16",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "multiple-choice",
-    "prompt": "Se coloro 2 parti su 10, quale frazione ottengo?",
-    "options": ["2/10", "10/2", "2/5", "1/10"],
-    "correctAnswer": "2/10",
-    "explanation": "Due parti su dieci si scrive 2/10.",
-    "difficulty": 1
-  },
-  {
-    "id": "s4-fra-17",
-    "grade": "quarta",
-    "topic": "frazioni",
-    "type": "word-problem",
-    "prompt": "Una pizza è divisa in 6 fette uguali. Ne mangio 3. Quale frazione della pizza ho mangiato?",
-    "correctAnswer": "3/6",
-    "explanation": "Hai mangiato 3 fette su 6.",
-    "difficulty": 2
-  },
-  {
-    "id": "s4-bar-11",
-    "grade": "quarta",
-    "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 132 è divisa in una parte da 47 e una parte mancante. Quanto vale la parte mancante?",
-    "options": ["85", "75", "95", "179"],
-    "correctAnswer": "85",
-    "explanation": "132 - 47 = 85.",
-    "difficulty": 2,
-    "visualModel": "Totale 132 | parte 47 | parte ?"
-  },
-  {
-    "id": "s4-bar-12",
-    "grade": "quarta",
-    "topic": "bar-model",
+    "topic": "numeri-decimali",
     "type": "numeric-input",
-    "prompt": "Totale 168, una parte 79. Quanto vale la parte mancante?",
-    "correctAnswer": 89,
-    "explanation": "168 - 79 = 89.",
+    "prompt": "Completa: 2,5 + 0,5 = ?",
+    "correctAnswer": 3,
+    "explanation": "Cinque decimi più cinque decimi fanno un intero.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-dec-2",
+    "grade": "quarta",
+    "topic": "numeri-decimali",
+    "type": "multiple-choice",
+    "prompt": "Quale numero è maggiore?",
+    "options": [
+      "1,7",
+      "1,07",
+      "1,5",
+      "1,09"
+    ],
+    "correctAnswer": "1,7",
+    "explanation": "1,7 corrisponde a 1 intero e 7 decimi.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-dec-3",
+    "grade": "quarta",
+    "topic": "numeri-decimali",
+    "type": "numeric-input",
+    "prompt": "Quanto vale 3 euro e 50 centesimi scritto in euro?",
+    "correctAnswer": 3.5,
+    "explanation": "3 euro e 50 centesimi si scrive 3,50.",
     "difficulty": 2
   },
   {
-    "id": "s4-bar-13",
+    "id": "s4-dec-4",
     "grade": "quarta",
-    "topic": "bar-model",
+    "topic": "numeri-decimali",
+    "type": "multiple-choice",
+    "prompt": "Quale confronto è corretto?",
+    "options": [
+      "0,8 > 0,5",
+      "0,3 > 0,7",
+      "1,2 < 1,1",
+      "0,9 = 0,09"
+    ],
+    "correctAnswer": "0,8 > 0,5",
+    "explanation": "Otto decimi sono maggiori di cinque decimi.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-dec-5",
+    "grade": "quarta",
+    "topic": "numeri-decimali",
     "type": "word-problem",
-    "prompt": "La scuola compra 9 confezioni da 7 righelli. Poi ne usa 15. Quanti righelli restano?",
-    "correctAnswer": 48,
-    "explanation": "9 x 7 = 63, poi 63 - 15 = 48.",
+    "prompt": "Una bottiglia contiene 1,5 litri e ne verso 0,5 litri. Quanti litri restano?",
+    "correctAnswer": 1,
+    "explanation": "1,5 - 0,5 = 1 litro.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-dec-6",
+    "grade": "quarta",
+    "topic": "numeri-decimali",
+    "type": "numeric-input",
+    "prompt": "Calcola: 4,2 + 0,3",
+    "correctAnswer": 4.5,
+    "explanation": "Due decimi più tre decimi fanno cinque decimi.",
     "difficulty": 3
   },
   {
-    "id": "s4-bar-14",
+    "id": "s4-eq-1",
     "grade": "quarta",
-    "topic": "bar-model",
+    "topic": "equivalenze",
     "type": "multiple-choice",
-    "prompt": "Quale domanda si adatta a un bar model con 4 parti uguali da 15?",
+    "prompt": "Quanti centimetri sono 2 metri?",
     "options": [
-      "Quanti sono in tutto 4 gruppi da 15?",
-      "Qual è il numero dopo 15?",
-      "Quanto fa 15 - 4?",
-      "Qual è la metà di 15?"
+      "200",
+      "20",
+      "2000",
+      "120"
     ],
-    "correctAnswer": "Quanti sono in tutto 4 gruppi da 15?",
-    "explanation": "Quattro parti uguali da 15 indicano un totale costruito con gruppi uguali.",
+    "correctAnswer": "200",
+    "explanation": "1 metro = 100 cm, quindi 2 metri = 200 cm.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-eq-2",
+    "grade": "quarta",
+    "topic": "equivalenze",
+    "type": "numeric-input",
+    "prompt": "Quanti grammi sono 3 kg?",
+    "correctAnswer": 3000,
+    "explanation": "1 kg = 1000 g, quindi 3 kg = 3000 g.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-eq-3",
+    "grade": "quarta",
+    "topic": "equivalenze",
+    "type": "multiple-choice",
+    "prompt": "Quale equivalenza è corretta?",
+    "options": [
+      "1 l = 1000 ml",
+      "1 l = 100 ml",
+      "1 km = 100 m",
+      "1 h = 10 min"
+    ],
+    "correctAnswer": "1 l = 1000 ml",
+    "explanation": "Un litro corrisponde a mille millilitri.",
     "difficulty": 2
   },
   {
-    "id": "s4-bar-15",
+    "id": "s4-eq-4",
     "grade": "quarta",
-    "topic": "bar-model",
-    "type": "bar-model",
-    "prompt": "Una barra totale di 144 è divisa in 12 parti uguali. Quanto vale ogni parte?",
-    "options": ["12", "14", "10", "16"],
-    "correctAnswer": "12",
-    "explanation": "144 diviso 12 = 12.",
-    "difficulty": 3,
-    "visualModel": "Totale 144 diviso in 12 parti uguali"
+    "topic": "equivalenze",
+    "type": "numeric-input",
+    "prompt": "Quanti minuti sono 2 ore?",
+    "correctAnswer": 120,
+    "explanation": "Ogni ora ha 60 minuti, quindi 2 ore hanno 120 minuti.",
+    "difficulty": 2
   },
   {
-    "id": "s4-bar-16",
+    "id": "s4-eq-5",
     "grade": "quarta",
-    "topic": "bar-model",
+    "topic": "equivalenze",
     "type": "word-problem",
-    "prompt": "In un magazzino ci sono 8 scaffali con 11 scatole ciascuno. 20 scatole vengono spedite. Quante scatole restano?",
-    "correctAnswer": 68,
-    "explanation": "8 x 11 = 88, poi 88 - 20 = 68.",
+    "prompt": "Una gara misura 2 km. Quanti metri sono?",
+    "correctAnswer": 2000,
+    "explanation": "1 km = 1000 m, quindi 2 km = 2000 m.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-eq-6",
+    "grade": "quarta",
+    "topic": "equivalenze",
+    "type": "multiple-choice",
+    "prompt": "Qual è la stessa quantità di 500 ml?",
+    "options": [
+      "0,5 l",
+      "5 l",
+      "50 l",
+      "0,05 l"
+    ],
+    "correctAnswer": "0,5 l",
+    "explanation": "500 ml sono mezzo litro.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-per-1",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "numeric-input",
+    "prompt": "Qual è il perimetro di un quadrato con lato 5 cm?",
+    "correctAnswer": 20,
+    "explanation": "Il perimetro del quadrato è 4 x lato.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-per-2",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "numeric-input",
+    "prompt": "Qual è il perimetro di un rettangolo con lati 4 cm e 7 cm?",
+    "correctAnswer": 22,
+    "explanation": "4 + 7 + 4 + 7 = 22.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-per-3",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "multiple-choice",
+    "prompt": "L'area misura:",
+    "options": [
+      "Lo spazio interno",
+      "Il bordo",
+      "Il numero di lati",
+      "L'altezza"
+    ],
+    "correctAnswer": "Lo spazio interno",
+    "explanation": "L'area indica quanto spazio occupa la figura.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-per-4",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "numeric-input",
+    "prompt": "Qual è l'area di un rettangolo 3 x 6?",
+    "correctAnswer": 18,
+    "explanation": "Area = base x altezza = 18.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-per-5",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "word-problem",
+    "prompt": "Un giardino rettangolare misura 8 m per 5 m. Qual è il perimetro?",
+    "correctAnswer": 26,
+    "explanation": "8 + 5 + 8 + 5 = 26 m.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-per-6",
+    "grade": "quarta",
+    "topic": "perimetro-area",
+    "type": "multiple-choice",
+    "prompt": "Quale figura ha area 16 se i lati misurano 4 e 4?",
+    "options": [
+      "Quadrato",
+      "Triangolo",
+      "Cerchio",
+      "Pentagono"
+    ],
+    "correctAnswer": "Quadrato",
+    "explanation": "4 x 4 = 16.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-dati-1",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "multiple-choice",
+    "prompt": "In un grafico: lun=12, mar=15, mer=9. Quale giorno ha il valore più alto?",
+    "options": [
+      "Martedì",
+      "Lunedì",
+      "Mercoledì",
+      "Sono uguali"
+    ],
+    "correctAnswer": "Martedì",
+    "explanation": "15 è il valore più alto.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-dati-2",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "numeric-input",
+    "prompt": "Quanti voti in tutto se una tabella mostra 6, 8 e 7?",
+    "correctAnswer": 21,
+    "explanation": "6 + 8 + 7 = 21.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-dati-3",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "multiple-choice",
+    "prompt": "Quale domanda risponde bene a un grafico a barre?",
+    "options": [
+      "Quale categoria è più grande",
+      "Che forma ha un triangolo",
+      "Quanto pesa un metro",
+      "Quale frazione è equivalente"
+    ],
+    "correctAnswer": "Quale categoria è più grande",
+    "explanation": "Il grafico a barre confronta quantità.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-dati-4",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "word-problem",
+    "prompt": "In una tabella, il gruppo A ha 14 punti e il gruppo B 11. Di quanti punti A supera B?",
+    "correctAnswer": 3,
+    "explanation": "14 - 11 = 3.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-dati-5",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "multiple-choice",
+    "prompt": "Se una colonna sale da 4 a 10, di quanto aumenta?",
+    "options": [
+      "6",
+      "14",
+      "4",
+      "5"
+    ],
+    "correctAnswer": "6",
+    "explanation": "10 - 4 = 6.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-dati-6",
+    "grade": "quarta",
+    "topic": "dati-e-grafici",
+    "type": "word-problem",
+    "prompt": "Un grafico mostra 8 libri letti in aprile e 12 a maggio. Quanti libri in più a maggio?",
+    "correctAnswer": 4,
+    "explanation": "12 - 8 = 4.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-log-1",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "multiple-choice",
+    "prompt": "Quale numero completa la serie 3, 6, 12, 24, __?",
+    "options": [
+      "48",
+      "36",
+      "30",
+      "27"
+    ],
+    "correctAnswer": "48",
+    "explanation": "Ogni volta il numero raddoppia.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-log-2",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "multiple-choice",
+    "prompt": "Se oggi è martedì, tra 7 giorni sarà:",
+    "options": [
+      "Martedì",
+      "Mercoledì",
+      "Lunedì",
+      "Domenica"
+    ],
+    "correctAnswer": "Martedì",
+    "explanation": "Dopo 7 giorni si torna allo stesso giorno.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-log-3",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "numeric-input",
+    "prompt": "Quanti triangoli vedi se una figura è formata da 2 triangoli piccoli e 1 grande?",
+    "correctAnswer": 3,
+    "explanation": "Conti i 2 piccoli e anche il triangolo grande formato dall'insieme.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-log-4",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "multiple-choice",
+    "prompt": "Quale affermazione è vera?",
+    "options": [
+      "Tutti i quadrati sono rettangoli",
+      "Tutti i rettangoli sono quadrati",
+      "Nessun triangolo ha 3 lati",
+      "Un cerchio ha 4 vertici"
+    ],
+    "correctAnswer": "Tutti i quadrati sono rettangoli",
+    "explanation": "Il quadrato è un rettangolo con lati uguali.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-log-5",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "multiple-choice",
+    "prompt": "In una scatola ci sono palline rosse, blu e verdi. Se ne prendo una senza guardare, quale colore è certo?",
+    "options": [
+      "Nessuno",
+      "Rosso",
+      "Blu",
+      "Verde"
+    ],
+    "correctAnswer": "Nessuno",
+    "explanation": "Senza altre informazioni nessun colore è sicuro al 100%.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-log-6",
+    "grade": "quarta",
+    "topic": "logica",
+    "type": "multiple-choice",
+    "prompt": "Quale numero manca? 100, 90, 81, 73, __",
+    "options": [
+      "66",
+      "65",
+      "64",
+      "63"
+    ],
+    "correctAnswer": "66",
+    "explanation": "La regola è -10, poi -9, poi -8, quindi -7.",
     "difficulty": 3
   }
 ]

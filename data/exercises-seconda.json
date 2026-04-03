@@ -5,7 +5,12 @@
     "topic": "numeri",
     "type": "multiple-choice",
     "prompt": "Quale numero è maggiore?",
-    "options": ["34", "43", "31", "24"],
+    "options": [
+      "34",
+      "43",
+      "31",
+      "24"
+    ],
     "correctAnswer": "43",
     "explanation": "43 è il numero più grande tra quelli proposti.",
     "difficulty": 1
@@ -26,7 +31,12 @@
     "topic": "numeri",
     "type": "multiple-choice",
     "prompt": "Quale numero ha 5 decine e 2 unità?",
-    "options": ["25", "52", "50", "72"],
+    "options": [
+      "25",
+      "52",
+      "50",
+      "72"
+    ],
     "correctAnswer": "52",
     "explanation": "5 decine valgono 50 e con 2 unità si ottiene 52.",
     "difficulty": 1
@@ -37,7 +47,12 @@
     "topic": "numeri",
     "type": "multiple-choice",
     "prompt": "Quale coppia è in ordine crescente?",
-    "options": ["48, 51, 57", "62, 58, 64", "39, 35, 31", "70, 69, 71"],
+    "options": [
+      "48, 51, 57",
+      "62, 58, 64",
+      "39, 35, 31",
+      "70, 69, 71"
+    ],
     "correctAnswer": "48, 51, 57",
     "explanation": "In ordine crescente i numeri vanno dal più piccolo al più grande.",
     "difficulty": 2
@@ -57,12 +72,282 @@
     "grade": "seconda",
     "topic": "numeri",
     "type": "bar-model",
-    "prompt": "Una barra mostra 40 e una piccola parte da 7. Qual è il totale?",
-    "options": ["47", "33", "74", "57"],
+    "options": [
+      "47",
+      "33",
+      "74",
+      "57"
+    ],
     "correctAnswer": "47",
+    "prompt": "Una barra mostra 40 e una piccola parte da 7. Qual è il totale?",
     "explanation": "Sommi la parte da 40 con la parte da 7: 47.",
     "difficulty": 2,
     "visualModel": "Parte grande 40 + parte piccola 7 = totale"
+  },
+  {
+    "id": "s2-num-7",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "word-problem",
+    "prompt": "Nel cartellone ci sono 6 palloncini blu e 8 rossi. Quanti palloncini ci sono in tutto?",
+    "correctAnswer": 14,
+    "explanation": "6 + 8 = 14 palloncini.",
+    "difficulty": 3
+  },
+  {
+    "id": "s2-du-1",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "multiple-choice",
+    "prompt": "Quale numero è formato da 6 decine e 4 unità?",
+    "options": [
+      "46",
+      "64",
+      "60",
+      "24"
+    ],
+    "correctAnswer": "64",
+    "explanation": "6 decine valgono 60 e con 4 unità si arriva a 64.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-du-2",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "numeric-input",
+    "prompt": "Quante unità ci sono in 3 decine?",
+    "correctAnswer": 30,
+    "explanation": "3 decine valgono 30 unità.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-du-3",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "multiple-choice",
+    "prompt": "Quale numero ha 8 decine e 0 unità?",
+    "options": [
+      "80",
+      "8",
+      "18",
+      "108"
+    ],
+    "correctAnswer": "80",
+    "explanation": "8 decine e 0 unità fanno 80.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-du-4",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "numeric-input",
+    "prompt": "Scrivi il numero formato da 9 decine e 5 unità.",
+    "correctAnswer": 95,
+    "explanation": "9 decine sono 90 e con 5 unità ottieni 95.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-du-5",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "bar-model",
+    "options": [
+      "34",
+      "43",
+      "26",
+      "7"
+    ],
+    "correctAnswer": "34",
+    "prompt": "Una barra lunga vale 30 e una piccola barra vale 4. Che numero rappresentano insieme?",
+    "explanation": "30 + 4 = 34.",
+    "difficulty": 2,
+    "visualModel": "3 decine + 4 unità = numero"
+  },
+  {
+    "id": "s2-du-6",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "multiple-choice",
+    "prompt": "Quale scomposizione è corretta per 57?",
+    "options": [
+      "50 + 7",
+      "5 + 7",
+      "40 + 17",
+      "30 + 27"
+    ],
+    "correctAnswer": "50 + 7",
+    "explanation": "57 si scompone in 50 e 7.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-du-7",
+    "grade": "seconda",
+    "topic": "decine-unita",
+    "type": "word-problem",
+    "prompt": "Luca costruisce il numero 83 con cannucce e tappi. Quante decine usa?",
+    "correctAnswer": 8,
+    "explanation": "83 è composto da 8 decine e 3 unità.",
+    "difficulty": 3
+  },
+  {
+    "id": "s2-con-1",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "multiple-choice",
+    "prompt": "Quale simbolo completa: 48 __ 52?",
+    "options": [
+      "<",
+      ">",
+      "="
+    ],
+    "correctAnswer": "<",
+    "explanation": "48 è minore di 52.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-con-2",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "multiple-choice",
+    "prompt": "Quale numero è minore?",
+    "options": [
+      "67",
+      "76",
+      "70",
+      "71"
+    ],
+    "correctAnswer": "67",
+    "explanation": "67 è il più piccolo.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-con-3",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "numeric-input",
+    "prompt": "Scrivi il numero maggiore tra 39 e 93.",
+    "correctAnswer": 93,
+    "explanation": "93 ha più decine di 39.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-con-4",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia ha numeri uguali?",
+    "options": [
+      "45 e 45",
+      "56 e 65",
+      "31 e 13",
+      "70 e 71"
+    ],
+    "correctAnswer": "45 e 45",
+    "explanation": "I due numeri sono uguali.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-con-5",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "bar-model",
+    "options": [
+      "A",
+      "B",
+      "Sono uguali"
+    ],
+    "correctAnswer": "A",
+    "prompt": "La barra A vale 62 e la barra B vale 58. Quale barra è più lunga?",
+    "explanation": "62 è maggiore di 58.",
+    "difficulty": 2,
+    "visualModel": "Barra A 62 | Barra B 58"
+  },
+  {
+    "id": "s2-con-6",
+    "grade": "seconda",
+    "topic": "confronti",
+    "type": "multiple-choice",
+    "prompt": "Completa correttamente: 80 __ 79",
+    "options": [
+      ">",
+      "<",
+      "="
+    ],
+    "correctAnswer": ">",
+    "explanation": "80 è maggiore di 79 di una unità.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-seq-1",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "numeric-input",
+    "prompt": "Completa: 12, 14, 16, __",
+    "correctAnswer": 18,
+    "explanation": "La sequenza aumenta di 2.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-seq-2",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "numeric-input",
+    "prompt": "Completa: 30, 40, 50, __",
+    "correctAnswer": 60,
+    "explanation": "La sequenza aumenta di 10.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-seq-3",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "multiple-choice",
+    "prompt": "Quale numero manca? 5, 10, 15, __, 25",
+    "options": [
+      "18",
+      "20",
+      "30",
+      "35"
+    ],
+    "correctAnswer": "20",
+    "explanation": "Si conta a salti di 5.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-seq-4",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "numeric-input",
+    "prompt": "Completa al contrario: 21, 19, 17, __",
+    "correctAnswer": 15,
+    "explanation": "La sequenza scende di 2.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-seq-5",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "multiple-choice",
+    "prompt": "Quale sequenza è corretta?",
+    "options": [
+      "41, 43, 45, 47",
+      "20, 23, 26, 28",
+      "90, 80, 75, 70",
+      "14, 18, 21, 24"
+    ],
+    "correctAnswer": "41, 43, 45, 47",
+    "explanation": "Ogni volta si aggiungono 2.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-seq-6",
+    "grade": "seconda",
+    "topic": "sequenze",
+    "type": "word-problem",
+    "prompt": "Marta salta sui numeri 3, 6, 9, 12. Su quale numero atterra dopo?",
+    "correctAnswer": 15,
+    "explanation": "Continua a salti di 3.",
+    "difficulty": 3
   },
   {
     "id": "s2-add-1",
@@ -71,7 +356,7 @@
     "type": "numeric-input",
     "prompt": "Calcola: 27 + 15",
     "correctAnswer": 42,
-    "explanation": "27 + 15 = 42",
+    "explanation": "27 + 15 = 42.",
     "difficulty": 1
   },
   {
@@ -79,9 +364,9 @@
     "grade": "seconda",
     "topic": "addizione-sottrazione",
     "type": "numeric-input",
-    "prompt": "Calcola: 36 - 12",
-    "correctAnswer": 24,
-    "explanation": "36 meno 12 fa 24.",
+    "prompt": "Calcola: 54 - 21",
+    "correctAnswer": 33,
+    "explanation": "54 - 21 = 33.",
     "difficulty": 1
   },
   {
@@ -89,53 +374,144 @@
     "grade": "seconda",
     "topic": "addizione-sottrazione",
     "type": "multiple-choice",
-    "prompt": "Quale strategia aiuta in 29 + 4?",
-    "options": ["29 + 1 = 30, poi +3", "29 - 4", "20 + 4", "29 + 10"],
-    "correctAnswer": "29 + 1 = 30, poi +3",
-    "explanation": "Conviene arrivare prima alla decina successiva.",
-    "difficulty": 2
+    "prompt": "Quale risultato è corretto?",
+    "options": [
+      "36 + 4 = 40",
+      "36 + 4 = 30",
+      "36 + 4 = 44",
+      "36 + 4 = 32"
+    ],
+    "correctAnswer": "36 + 4 = 40",
+    "explanation": "36 più 4 fa 40.",
+    "difficulty": 1
   },
   {
     "id": "s2-add-4",
     "grade": "seconda",
     "topic": "addizione-sottrazione",
     "type": "numeric-input",
-    "prompt": "Calcola: 48 + 11",
-    "correctAnswer": 59,
-    "explanation": "48 + 10 = 58 e poi +1 = 59.",
+    "prompt": "Calcola: 61 - 9",
+    "correctAnswer": 52,
+    "explanation": "61 - 9 = 52.",
     "difficulty": 2
   },
   {
     "id": "s2-add-5",
     "grade": "seconda",
     "topic": "addizione-sottrazione",
-    "type": "multiple-choice",
-    "prompt": "Quale risultato è corretto?",
-    "options": ["64 - 20 = 44", "64 - 20 = 46", "64 - 20 = 54", "64 - 20 = 34"],
-    "correctAnswer": "64 - 20 = 44",
-    "explanation": "Togliere 2 decine da 64 lascia 44.",
-    "difficulty": 1
+    "type": "bar-model",
+    "options": [
+      "32",
+      "68",
+      "22",
+      "28"
+    ],
+    "correctAnswer": "32",
+    "prompt": "Una barra totale vale 50. Una parte è 18. Quanto vale l'altra parte?",
+    "explanation": "50 - 18 = 32.",
+    "difficulty": 2,
+    "visualModel": "Totale 50 | parte 18 | parte mancante ?"
   },
   {
     "id": "s2-add-6",
     "grade": "seconda",
     "topic": "addizione-sottrazione",
-    "type": "bar-model",
-    "prompt": "La barra totale è 53. Una parte è 20. Quanto vale l'altra parte?",
-    "options": ["33", "43", "23", "73"],
-    "correctAnswer": "33",
-    "explanation": "Per trovare la parte mancante fai 53 - 20 = 33.",
-    "difficulty": 2,
-    "visualModel": "Totale 53 | parte 20 | parte mancante ?"
+    "type": "word-problem",
+    "prompt": "Nel cesto ci sono 18 mele. Ne aggiungo 7. Quante mele ci sono ora?",
+    "correctAnswer": 25,
+    "explanation": "18 + 7 = 25.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-add-7",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "word-problem",
+    "prompt": "In biblioteca ci sono 45 libri sul tavolo. 12 vengono rimessi a posto. Quanti restano?",
+    "correctAnswer": 33,
+    "explanation": "45 - 12 = 33.",
+    "difficulty": 3
+  },
+  {
+    "id": "s2-cm-1",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "numeric-input",
+    "prompt": "Calcola a mente: 20 + 30",
+    "correctAnswer": 50,
+    "explanation": "Sommi le decine: 2 decine + 3 decine = 5 decine.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-cm-2",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "numeric-input",
+    "prompt": "Calcola a mente: 90 - 40",
+    "correctAnswer": 50,
+    "explanation": "9 decine meno 4 decine fanno 5 decine.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-cm-3",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia fa 10?",
+    "options": [
+      "6 e 4",
+      "7 e 2",
+      "8 e 1",
+      "5 e 2"
+    ],
+    "correctAnswer": "6 e 4",
+    "explanation": "6 + 4 = 10.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-cm-4",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "numeric-input",
+    "prompt": "Calcola a mente: 38 + 2",
+    "correctAnswer": 40,
+    "explanation": "Aggiungere 2 a 38 porta a 40.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-cm-5",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "multiple-choice",
+    "prompt": "Quale strategia aiuta per 49 + 1?",
+    "options": [
+      "Arrivo a 50",
+      "Tolgo 10",
+      "Raddoppio",
+      "Conto all'indietro"
+    ],
+    "correctAnswer": "Arrivo a 50",
+    "explanation": "49 + 1 è il numero tondo successivo: 50.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-cm-6",
+    "grade": "seconda",
+    "topic": "calcolo-mentale",
+    "type": "word-problem",
+    "prompt": "Sara ha 28 figurine e ne riceve 2. Quante figurine ha adesso?",
+    "correctAnswer": 30,
+    "explanation": "28 + 2 = 30.",
+    "difficulty": 2
   },
   {
     "id": "s2-prob-1",
     "grade": "seconda",
     "topic": "problemi",
     "type": "word-problem",
-    "prompt": "Luca ha 18 figurine e ne riceve 7. Quante figurine ha ora?",
-    "correctAnswer": 25,
-    "explanation": "È una somma: 18 + 7 = 25.",
+    "prompt": "Ci sono 14 bambini in palestra. Ne arrivano altri 5. Quanti bambini ci sono adesso?",
+    "correctAnswer": 19,
+    "explanation": "14 + 5 = 19.",
     "difficulty": 1
   },
   {
@@ -143,9 +519,9 @@
     "grade": "seconda",
     "topic": "problemi",
     "type": "word-problem",
-    "prompt": "Nel cestino ci sono 32 mele. Ne mangiamo 9. Quante mele restano?",
-    "correctAnswer": 23,
-    "explanation": "È una sottrazione: 32 - 9 = 23.",
+    "prompt": "Luca ha 23 biglie e ne perde 6. Quante gliene restano?",
+    "correctAnswer": 17,
+    "explanation": "23 - 6 = 17.",
     "difficulty": 1
   },
   {
@@ -153,398 +529,152 @@
     "grade": "seconda",
     "topic": "problemi",
     "type": "multiple-choice",
-    "prompt": "Quale operazione risolve questo problema? 'Ho 24 caramelle e ne regalo 6.'",
-    "options": ["24 - 6", "24 + 6", "6 + 6", "24 + 24"],
-    "correctAnswer": "24 - 6",
-    "explanation": "Se regali una parte, la togli dal totale.",
-    "difficulty": 1
+    "prompt": "Quale operazione scegli per risolvere: 'Avevo 30 euro, ne spendo 8'?",
+    "options": [
+      "30 - 8",
+      "30 + 8",
+      "8 + 8",
+      "30 x 8"
+    ],
+    "correctAnswer": "30 - 8",
+    "explanation": "Se spendi, devi togliere.",
+    "difficulty": 2
   },
   {
     "id": "s2-prob-4",
     "grade": "seconda",
     "topic": "problemi",
     "type": "bar-model",
-    "prompt": "Una barra mostra 16 matite rosse e 8 blu. Quante matite ci sono in tutto?",
-    "options": ["24", "18", "8", "26"],
-    "correctAnswer": "24",
-    "explanation": "Sommi le due parti: 16 + 8 = 24.",
+    "options": [
+      "17",
+      "35",
+      "15",
+      "19"
+    ],
+    "correctAnswer": "17",
+    "prompt": "Una barra totale vale 26. Una parte vale 9. Quanti oggetti ci sono nell'altra parte?",
+    "explanation": "26 - 9 = 17.",
     "difficulty": 2,
-    "visualModel": "Parte rossa 16 + parte blu 8 = totale"
+    "visualModel": "Totale 26 | parte 9 | parte ?"
   },
   {
     "id": "s2-prob-5",
     "grade": "seconda",
     "topic": "problemi",
     "type": "word-problem",
-    "prompt": "Una corda è lunga 40 cm. Ne taglio 15 cm. Quanto resta?",
-    "correctAnswer": 25,
-    "explanation": "Fai 40 - 15 = 25.",
+    "prompt": "In giardino ci sono 8 fiori gialli e 12 rossi. Quanti fiori ci sono in tutto?",
+    "correctAnswer": 20,
+    "explanation": "8 + 12 = 20.",
     "difficulty": 2
   },
   {
     "id": "s2-prob-6",
     "grade": "seconda",
     "topic": "problemi",
-    "type": "multiple-choice",
-    "prompt": "Quale domanda si risolve con 21 + 14?",
-    "options": [
-      "Ci sono 21 libri e ne arrivano altri 14. Quanti sono in tutto?",
-      "Ci sono 21 libri e ne prestiamo 14. Quanti restano?",
-      "Ci sono 21 libri in 14 scatole. Quanti per scatola?",
-      "Quale numero viene dopo 21?"
-    ],
-    "correctAnswer": "Ci sono 21 libri e ne arrivano altri 14. Quanti sono in tutto?",
-    "explanation": "La parola 'in tutto' suggerisce una somma.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-num-7",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale numero è il più piccolo?",
-    "options": ["46", "64", "40", "54"],
-    "correctAnswer": "40",
-    "explanation": "40 è il numero più piccolo tra quelli proposti.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-8",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "numeric-input",
-    "prompt": "Scrivi il numero che viene prima di 81.",
-    "correctAnswer": 80,
-    "explanation": "Prima di 81 viene 80.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-9",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale numero ha 8 decine e 4 unità?",
-    "options": ["48", "84", "80", "44"],
-    "correctAnswer": "84",
-    "explanation": "8 decine valgono 80 e con 4 unità ottieni 84.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-10",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "bar-model",
-    "prompt": "Una barra mostra 60 e una parte da 9. Qual è il totale?",
-    "options": ["69", "51", "79", "90"],
-    "correctAnswer": "69",
-    "explanation": "Sommi 60 e 9: il totale è 69.",
-    "difficulty": 2,
-    "visualModel": "Parte grande 60 + parte piccola 9 = totale"
-  },
-  {
-    "id": "s2-add-7",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 54 - 18",
-    "correctAnswer": 36,
-    "explanation": "54 meno 18 fa 36.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-8",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "multiple-choice",
-    "prompt": "Quale risultato è corretto?",
-    "options": ["45 + 12 = 57", "45 + 12 = 56", "45 + 12 = 67", "45 + 12 = 47"],
-    "correctAnswer": "45 + 12 = 57",
-    "explanation": "45 + 12 si calcola come 45 + 10 + 2 = 57.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-add-9",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 63 - 21",
-    "correctAnswer": 42,
-    "explanation": "63 meno 21 fa 42.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-add-10",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "bar-model",
-    "prompt": "La barra totale è 68. Una parte è 35. Quanto vale l'altra parte?",
-    "options": ["33", "43", "23", "31"],
-    "correctAnswer": "33",
-    "explanation": "Per trovare la parte mancante fai 68 - 35 = 33.",
-    "difficulty": 2,
-    "visualModel": "Totale 68 | parte 35 | parte mancante ?"
+    "type": "word-problem",
+    "prompt": "Un autobus porta 32 bambini. 10 scendono. Quanti restano sull'autobus?",
+    "correctAnswer": 22,
+    "explanation": "32 - 10 = 22.",
+    "difficulty": 3
   },
   {
     "id": "s2-prob-7",
     "grade": "seconda",
     "topic": "problemi",
-    "type": "word-problem",
-    "prompt": "Marta ha 26 perline e ne compra altre 13. Quante perline ha in tutto?",
-    "correctAnswer": 39,
-    "explanation": "È una somma: 26 + 13 = 39.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-prob-8",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "word-problem",
-    "prompt": "Nel parco ci sono 41 bambini. 16 vanno via. Quanti bambini restano?",
-    "correctAnswer": 25,
-    "explanation": "È una sottrazione: 41 - 16 = 25.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-prob-9",
-    "grade": "seconda",
-    "topic": "problemi",
     "type": "multiple-choice",
-    "prompt": "Quale operazione risolve questo problema? 'Ho 35 euro e ne spendo 12.'",
-    "options": ["35 - 12", "35 + 12", "12 + 12", "35 + 35"],
-    "correctAnswer": "35 - 12",
-    "explanation": "Se spendi una parte, la togli dal totale.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-prob-10",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "bar-model",
-    "prompt": "Una barra mostra 22 palline rosse e 15 blu. Quante palline ci sono in tutto?",
-    "options": ["37", "27", "7", "32"],
-    "correctAnswer": "37",
-    "explanation": "Sommi le due parti: 22 + 15 = 37.",
-    "difficulty": 2,
-    "visualModel": "Parte rossa 22 + parte blu 15 = totale"
-  },
-  {
-    "id": "s2-num-11",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale numero è compreso tra 67 e 69?",
-    "options": ["68", "70", "66", "79"],
-    "correctAnswer": "68",
-    "explanation": "Tra 67 e 69 c'è 68.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-12",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "numeric-input",
-    "prompt": "Completa: 45, 50, 55, __, 65",
-    "correctAnswer": 60,
-    "explanation": "La sequenza aumenta di 5 ogni volta.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-num-13",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale numero ha 9 decine e 1 unità?",
-    "options": ["19", "91", "90", "81"],
-    "correctAnswer": "91",
-    "explanation": "9 decine valgono 90 e con 1 unità ottieni 91.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-14",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "numeric-input",
-    "prompt": "Scrivi il numero che viene dopo 99.",
-    "correctAnswer": 100,
-    "explanation": "Dopo 99 viene 100.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-num-15",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale numero è il più grande?",
-    "options": ["87", "78", "76", "67"],
-    "correctAnswer": "87",
-    "explanation": "87 è il numero più grande tra quelli proposti.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-num-16",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "bar-model",
-    "prompt": "Una barra mostra 70 e una parte da 8. Qual è il totale?",
-    "options": ["78", "62", "87", "68"],
-    "correctAnswer": "78",
-    "explanation": "Sommi 70 e 8: il totale è 78.",
-    "difficulty": 2,
-    "visualModel": "Parte grande 70 + parte piccola 8 = totale"
-  },
-  {
-    "id": "s2-num-17",
-    "grade": "seconda",
-    "topic": "numeri",
-    "type": "multiple-choice",
-    "prompt": "Quale serie è in ordine crescente?",
-    "options": ["23, 29, 31", "45, 41, 49", "70, 69, 71", "58, 54, 52"],
-    "correctAnswer": "23, 29, 31",
-    "explanation": "In ordine crescente i numeri vanno dal più piccolo al più grande.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-11",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 35 + 27",
-    "correctAnswer": 62,
-    "explanation": "35 + 27 = 62.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-12",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 72 - 19",
-    "correctAnswer": 53,
-    "explanation": "72 meno 19 fa 53.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-13",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "multiple-choice",
-    "prompt": "Quale strategia aiuta in 58 + 6?",
-    "options": ["58 + 2 = 60, poi +4", "58 - 6", "50 + 6", "58 + 10"],
-    "correctAnswer": "58 + 2 = 60, poi +4",
-    "explanation": "Conviene arrivare prima alla decina successiva.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-14",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "multiple-choice",
-    "prompt": "Quale risultato è corretto?",
-    "options": ["81 - 30 = 51", "81 - 30 = 61", "81 - 30 = 41", "81 - 30 = 48"],
-    "correctAnswer": "81 - 30 = 51",
-    "explanation": "Togliere 3 decine da 81 lascia 51.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-add-15",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "numeric-input",
-    "prompt": "Calcola: 44 + 18",
-    "correctAnswer": 62,
-    "explanation": "44 + 18 = 62.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-add-16",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "bar-model",
-    "prompt": "La barra totale è 74. Una parte è 29. Quanto vale l'altra parte?",
-    "options": ["45", "55", "35", "43"],
-    "correctAnswer": "45",
-    "explanation": "Per trovare la parte mancante fai 74 - 29 = 45.",
-    "difficulty": 2,
-    "visualModel": "Totale 74 | parte 29 | parte mancante ?"
-  },
-  {
-    "id": "s2-add-17",
-    "grade": "seconda",
-    "topic": "addizione-sottrazione",
-    "type": "multiple-choice",
-    "prompt": "Quale operazione completa la frase? 'A 46 aggiungo 14 e arrivo a ___'",
-    "options": ["60", "50", "52", "70"],
-    "correctAnswer": "60",
-    "explanation": "46 + 14 = 60.",
-    "difficulty": 1
-  },
-  {
-    "id": "s2-prob-11",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "word-problem",
-    "prompt": "Paolo ha 33 adesivi e ne riceve 18. Quanti adesivi ha ora?",
-    "correctAnswer": 51,
-    "explanation": "È una somma: 33 + 18 = 51.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-prob-12",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "word-problem",
-    "prompt": "Su un autobus ci sono 46 persone. 17 scendono. Quante persone restano?",
-    "correctAnswer": 29,
-    "explanation": "È una sottrazione: 46 - 17 = 29.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-prob-13",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "multiple-choice",
-    "prompt": "Quale domanda si risolve con 52 - 24?",
+    "prompt": "Quale risposta è ragionevole per 9 + 8?",
     "options": [
-      "Avevo 52 matite e ne uso 24. Quante restano?",
-      "Avevo 52 matite e ne compro 24. Quante ho in tutto?",
-      "Divido 52 matite in 24 gruppi. Quante per gruppo?",
-      "Quale numero viene dopo 52?"
+      "17",
+      "2",
+      "98",
+      "40"
     ],
-    "correctAnswer": "Avevo 52 matite e ne uso 24. Quante restano?",
-    "explanation": "Se una parte viene usata o tolta, fai una sottrazione.",
-    "difficulty": 2
+    "correctAnswer": "17",
+    "explanation": "9 + 8 fa 17.",
+    "difficulty": 3
   },
   {
-    "id": "s2-prob-14",
+    "id": "s2-mis-1",
     "grade": "seconda",
-    "topic": "problemi",
-    "type": "bar-model",
-    "prompt": "Una barra mostra 31 fiori rossi e 12 gialli. Quanti fiori ci sono in tutto?",
-    "options": ["43", "41", "19", "52"],
-    "correctAnswer": "43",
-    "explanation": "Sommi le due parti: 31 + 12 = 43.",
-    "difficulty": 2,
-    "visualModel": "Parte rossa 31 + parte gialla 12 = totale"
-  },
-  {
-    "id": "s2-prob-15",
-    "grade": "seconda",
-    "topic": "problemi",
-    "type": "word-problem",
-    "prompt": "Una scatola contiene 60 pennarelli. Ne regalo 22. Quanti pennarelli restano?",
-    "correctAnswer": 38,
-    "explanation": "Fai 60 - 22 = 38.",
-    "difficulty": 2
-  },
-  {
-    "id": "s2-prob-16",
-    "grade": "seconda",
-    "topic": "problemi",
+    "topic": "misure-semplici",
     "type": "multiple-choice",
-    "prompt": "Quale operazione risolve questo problema? 'Ci sono 28 palloncini blu e 17 rossi.'",
-    "options": ["28 + 17", "28 - 17", "28 x 17", "28 diviso 17"],
-    "correctAnswer": "28 + 17",
-    "explanation": "Se metti insieme due gruppi, fai una somma.",
+    "prompt": "Quale oggetto è più lungo?",
+    "options": [
+      "Una corda di 80 cm",
+      "Una matita di 12 cm",
+      "Sono uguali"
+    ],
+    "correctAnswer": "Una corda di 80 cm",
+    "explanation": "80 cm è maggiore di 12 cm.",
     "difficulty": 1
+  },
+  {
+    "id": "s2-mis-2",
+    "grade": "seconda",
+    "topic": "misure-semplici",
+    "type": "numeric-input",
+    "prompt": "Quanti euro servono per comprare un gioco da 7 euro e una penna da 2 euro?",
+    "correctAnswer": 9,
+    "explanation": "7 + 2 = 9 euro.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-mis-3",
+    "grade": "seconda",
+    "topic": "misure-semplici",
+    "type": "multiple-choice",
+    "prompt": "Quanti minuti ci sono in mezz'ora?",
+    "options": [
+      "30",
+      "20",
+      "60",
+      "15"
+    ],
+    "correctAnswer": "30",
+    "explanation": "Mezz'ora corrisponde a 30 minuti.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-mis-4",
+    "grade": "seconda",
+    "topic": "misure-semplici",
+    "type": "word-problem",
+    "prompt": "Un nastro è lungo 25 cm e un altro è lungo 15 cm. Quanti cm misurano insieme?",
+    "correctAnswer": 40,
+    "explanation": "25 + 15 = 40 cm.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-mis-5",
+    "grade": "seconda",
+    "topic": "misure-semplici",
+    "type": "multiple-choice",
+    "prompt": "Quale moneta manca per arrivare da 6 euro a 10 euro?",
+    "options": [
+      "4 euro",
+      "2 euro",
+      "3 euro",
+      "5 euro"
+    ],
+    "correctAnswer": "4 euro",
+    "explanation": "10 - 6 = 4.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-mis-6",
+    "grade": "seconda",
+    "topic": "misure-semplici",
+    "type": "bar-model",
+    "options": [
+      "25 minuti",
+      "35 minuti",
+      "15 minuti",
+      "45 minuti"
+    ],
+    "correctAnswer": "25 minuti",
+    "prompt": "Il percorso totale è di 1 ora. Hai camminato per 35 minuti. Quanto manca?",
+    "explanation": "1 ora sono 60 minuti. 60 - 35 = 25.",
+    "difficulty": 3,
+    "visualModel": "Totale 60 min | parte 35 min | parte mancante ?"
   }
 ]
