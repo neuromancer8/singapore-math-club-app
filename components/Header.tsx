@@ -60,7 +60,7 @@ export function Header() {
                 window.location.reload();
               }}
             >
-              Esci ({session.username})
+              Esci ({session.firstName})
             </button>
           ) : null}
         </nav>

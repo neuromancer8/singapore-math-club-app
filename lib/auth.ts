@@ -9,8 +9,18 @@ const demoCredentials = {
   password: "admin",
 } as const;
 
+const demoProfile = {
+  firstName: "Giulia",
+  lastName: "Rossi",
+  learnerGrade: "seconda",
+} as const;
+
 export function getDemoCredentials() {
   return demoCredentials;
+}
+
+export function getDemoProfile() {
+  return demoProfile;
 }
 
 export function getAuthSession(): AuthSession | undefined {
@@ -24,7 +34,20 @@ export function getAuthSession(): AuthSession | undefined {
   }
 
   try {
-    return JSON.parse(raw) as AuthSession;
+    const parsed = JSON.parse(raw) as Partial<AuthSession>;
+
+    return {
+      username: typeof parsed.username === "string" ? parsed.username : demoCredentials.username,
+      role: "admin",
+      loggedInAt: typeof parsed.loggedInAt === "string" ? parsed.loggedInAt : new Date().toISOString(),
+      firstName: typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName,
+      lastName: typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName,
+      fullName:
+        typeof parsed.fullName === "string"
+          ? parsed.fullName
+          : `${typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName} ${typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName}`,
+      learnerGrade: parsed.learnerGrade ?? demoProfile.learnerGrade,
+    };
   } catch {
     return undefined;
   }
@@ -42,6 +65,10 @@ export function login(username: string, password: string) {
     username: demoCredentials.username,
     role: "admin",
     loggedInAt: new Date().toISOString(),
+    firstName: demoProfile.firstName,
+    lastName: demoProfile.lastName,
+    fullName: `${demoProfile.firstName} ${demoProfile.lastName}`,
+    learnerGrade: demoProfile.learnerGrade,
   };
 
   localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));

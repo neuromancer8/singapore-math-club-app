@@ -54,6 +54,10 @@ export interface AuthSession {
   username: string;
   role: "admin";
   loggedInAt: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  learnerGrade: Grade;
 }
 
 export interface SessionHistoryItem {
