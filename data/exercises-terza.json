@@ -1,0 +1,204 @@
+[
+  {
+    "id": "s3-mul-1",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 4 x 6",
+    "correctAnswer": 24,
+    "explanation": "4 gruppi da 6 fanno 24.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-2",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 3 x 8",
+    "correctAnswer": 24,
+    "explanation": "3 gruppi da 8 fanno 24.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-3",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "multiple-choice",
+    "prompt": "Quale addizione ripetuta corrisponde a 5 x 3?",
+    "options": ["3 + 3 + 3 + 3 + 3", "5 + 5 + 5", "3 + 5", "5 + 3 + 2"],
+    "correctAnswer": "3 + 3 + 3 + 3 + 3",
+    "explanation": "5 x 3 significa 5 gruppi da 3.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-4",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "word-problem",
+    "prompt": "Ci sono 6 scatole con 4 matite in ogni scatola. Quante matite ci sono in tutto?",
+    "correctAnswer": 24,
+    "explanation": "6 x 4 = 24.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-5",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "multiple-choice",
+    "prompt": "Quale risultato è corretto?",
+    "options": ["7 x 5 = 35", "7 x 5 = 30", "7 x 5 = 40", "7 x 5 = 25"],
+    "correctAnswer": "7 x 5 = 35",
+    "explanation": "7 gruppi da 5 fanno 35.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-6",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 3 gruppi uguali da 7. Qual è il totale?",
+    "options": ["21", "10", "14", "28"],
+    "correctAnswer": "21",
+    "explanation": "3 x 7 = 21.",
+    "difficulty": 2,
+    "visualModel": "3 parti uguali da 7 = totale ?"
+  },
+  {
+    "id": "s3-div-1",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 24 diviso 6",
+    "correctAnswer": 4,
+    "explanation": "24 diviso 6 = 4.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-2",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 21 diviso 3",
+    "correctAnswer": 7,
+    "explanation": "21 diviso 3 = 7.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-3",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale frase descrive 18 diviso 2?",
+    "options": [
+      "18 oggetti divisi in 2 gruppi uguali",
+      "2 gruppi da 18",
+      "18 + 2",
+      "18 tolgo 2"
+    ],
+    "correctAnswer": "18 oggetti divisi in 2 gruppi uguali",
+    "explanation": "Dividere significa distribuire o raggruppare in parti uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-4",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "word-problem",
+    "prompt": "24 caramelle vengono distribuite a 4 bambini in parti uguali. Quante caramelle riceve ogni bambino?",
+    "correctAnswer": 6,
+    "explanation": "24 diviso 4 = 6.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-5",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione completa la frase? 'Se 30 figurine sono in 5 gruppi uguali, ogni gruppo ha ___ figurine.'",
+    "options": ["30 diviso 5", "30 + 5", "30 - 5", "5 x 5"],
+    "correctAnswer": "30 diviso 5",
+    "explanation": "Per trovare quante figurine in ogni gruppo devi dividere.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-6",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 28 viene divisa in 4 parti uguali. Quanto vale ogni parte?",
+    "options": ["7", "6", "8", "24"],
+    "correctAnswer": "7",
+    "explanation": "28 diviso 4 = 7.",
+    "difficulty": 2,
+    "visualModel": "Totale 28 diviso in 4 parti uguali"
+  },
+  {
+    "id": "s3-bar-1",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Le barre mostrano 18 mele rosse e 12 verdi. Quante mele ci sono in tutto?",
+    "options": ["30", "20", "6", "28"],
+    "correctAnswer": "30",
+    "explanation": "Sommi 18 + 12 = 30.",
+    "difficulty": 1,
+    "visualModel": "Parte 18 + parte 12 = totale ?"
+  },
+  {
+    "id": "s3-bar-2",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "In una libreria ci sono 36 libri. Ne arrivano altri 14. Quanti libri ci sono ora?",
+    "correctAnswer": 50,
+    "explanation": "36 + 14 = 50.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-3",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione risolve un problema con totale 45 e parte nota 18?",
+    "options": ["45 - 18", "45 + 18", "18 + 18", "45 x 18"],
+    "correctAnswer": "45 - 18",
+    "explanation": "Se conosci il totale e una parte, per trovare l'altra parte fai una sottrazione.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-4",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "numeric-input",
+    "prompt": "Totale 52, una parte 17. Quanto vale la parte mancante?",
+    "correctAnswer": 35,
+    "explanation": "52 - 17 = 35.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-5",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "Ci sono 4 sacchetti con 5 biglie ciascuno. Poi se ne perdono 3. Quante biglie restano?",
+    "correctAnswer": 17,
+    "explanation": "Prima 4 x 5 = 20, poi 20 - 3 = 17.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-bar-6",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale domanda si adatta a 4 x 6?",
+    "options": [
+      "Ci sono 4 gruppi da 6. Quanti sono in tutto?",
+      "Ho 4 e tolgo 6.",
+      "Dopo il 4 viene il 6.",
+      "Ho 6 gruppi da 1."
+    ],
+    "correctAnswer": "Ci sono 4 gruppi da 6. Quanti sono in tutto?",
+    "explanation": "Il bar model aiuta a vedere gruppi uguali e totale.",
+    "difficulty": 2
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "s2-num-1",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "multiple-choice",
+    "prompt": "Quale numero è maggiore?",
+    "options": ["34", "43", "31", "24"],
+    "correctAnswer": "43",
+    "explanation": "43 è il numero più grande tra quelli proposti.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-2",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "numeric-input",
+    "prompt": "Scrivi il numero che viene dopo 59.",
+    "correctAnswer": 60,
+    "explanation": "Dopo 59 viene 60.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-3",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "multiple-choice",
+    "prompt": "Quale numero ha 5 decine e 2 unità?",
+    "options": ["25", "52", "50", "72"],
+    "correctAnswer": "52",
+    "explanation": "5 decine valgono 50 e con 2 unità si ottiene 52.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-4",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia è in ordine crescente?",
+    "options": ["48, 51, 57", "62, 58, 64", "39, 35, 31", "70, 69, 71"],
+    "correctAnswer": "48, 51, 57",
+    "explanation": "In ordine crescente i numeri vanno dal più piccolo al più grande.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-num-5",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "numeric-input",
+    "prompt": "Completa: 70, 72, 74, __, 78",
+    "correctAnswer": 76,
+    "explanation": "La sequenza aumenta di 2 ogni volta.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-num-6",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 40 e una piccola parte da 7. Qual è il totale?",
+    "options": ["47", "33", "74", "57"],
+    "correctAnswer": "47",
+    "explanation": "Sommi la parte da 40 con la parte da 7: 47.",
+    "difficulty": 2,
+    "visualModel": "Parte grande 40 + parte piccola 7 = totale"
+  },
+  {
+    "id": "s2-add-1",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 27 + 15",
+    "correctAnswer": 42,
+    "explanation": "27 + 15 = 42",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-add-2",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 36 - 12",
+    "correctAnswer": 24,
+    "explanation": "36 meno 12 fa 24.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-add-3",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "multiple-choice",
+    "prompt": "Quale strategia aiuta in 29 + 4?",
+    "options": ["29 + 1 = 30, poi +3", "29 - 4", "20 + 4", "29 + 10"],
+    "correctAnswer": "29 + 1 = 30, poi +3",
+    "explanation": "Conviene arrivare prima alla decina successiva.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-add-4",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 48 + 11",
+    "correctAnswer": 59,
+    "explanation": "48 + 10 = 58 e poi +1 = 59.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-add-5",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "multiple-choice",
+    "prompt": "Quale risultato è corretto?",
+    "options": ["64 - 20 = 44", "64 - 20 = 46", "64 - 20 = 54", "64 - 20 = 34"],
+    "correctAnswer": "64 - 20 = 44",
+    "explanation": "Togliere 2 decine da 64 lascia 44.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-add-6",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "bar-model",
+    "prompt": "La barra totale è 53. Una parte è 20. Quanto vale l'altra parte?",
+    "options": ["33", "43", "23", "73"],
+    "correctAnswer": "33",
+    "explanation": "Per trovare la parte mancante fai 53 - 20 = 33.",
+    "difficulty": 2,
+    "visualModel": "Totale 53 | parte 20 | parte mancante ?"
+  },
+  {
+    "id": "s2-prob-1",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "word-problem",
+    "prompt": "Luca ha 18 figurine e ne riceve 7. Quante figurine ha ora?",
+    "correctAnswer": 25,
+    "explanation": "È una somma: 18 + 7 = 25.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-prob-2",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "word-problem",
+    "prompt": "Nel cestino ci sono 32 mele. Ne mangiamo 9. Quante mele restano?",
+    "correctAnswer": 23,
+    "explanation": "È una sottrazione: 32 - 9 = 23.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-prob-3",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione risolve questo problema? 'Ho 24 caramelle e ne regalo 6.'",
+    "options": ["24 - 6", "24 + 6", "6 + 6", "24 + 24"],
+    "correctAnswer": "24 - 6",
+    "explanation": "Se regali una parte, la togli dal totale.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-prob-4",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 16 matite rosse e 8 blu. Quante matite ci sono in tutto?",
+    "options": ["24", "18", "8", "26"],
+    "correctAnswer": "24",
+    "explanation": "Sommi le due parti: 16 + 8 = 24.",
+    "difficulty": 2,
+    "visualModel": "Parte rossa 16 + parte blu 8 = totale"
+  },
+  {
+    "id": "s2-prob-5",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "word-problem",
+    "prompt": "Una corda è lunga 40 cm. Ne taglio 15 cm. Quanto resta?",
+    "correctAnswer": 25,
+    "explanation": "Fai 40 - 15 = 25.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-prob-6",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "multiple-choice",
+    "prompt": "Quale domanda si risolve con 21 + 14?",
+    "options": [
+      "Ci sono 21 libri e ne arrivano altri 14. Quanti sono in tutto?",
+      "Ci sono 21 libri e ne prestiamo 14. Quanti restano?",
+      "Ci sono 21 libri in 14 scatole. Quanti per scatola?",
+      "Quale numero viene dopo 21?"
+    ],
+    "correctAnswer": "Ci sono 21 libri e ne arrivano altri 14. Quanti sono in tutto?",
+    "explanation": "La parola 'in tutto' suggerisce una somma.",
+    "difficulty": 2
+  }
+]
