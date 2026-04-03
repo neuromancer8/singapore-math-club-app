@@ -21,6 +21,32 @@ function createEmptyGradeSummary(): GradeProgressSummary {
   };
 }
 
+function isGrade(value: unknown): value is Grade {
+  return value === "seconda" || value === "terza" || value === "quarta";
+}
+
+function normalizeHistoryItem(value: unknown): SessionHistoryItem | null {
+  if (!value || typeof value !== "object") {
+    return null;
+  }
+
+  const item = value as Partial<SessionHistoryItem>;
+
+  if (!isGrade(item.grade) || typeof item.topic !== "string") {
+    return null;
+  }
+
+  return {
+    id: typeof item.id === "string" ? item.id : `${item.grade}-${item.topic}-${Date.now()}`,
+    grade: item.grade,
+    topic: item.topic,
+    total: typeof item.total === "number" ? item.total : 0,
+    correct: typeof item.correct === "number" ? item.correct : 0,
+    stars: typeof item.stars === "number" ? item.stars : 0,
+    completedAt: typeof item.completedAt === "string" ? item.completedAt : new Date(0).toISOString(),
+  };
+}
+
 function createEmptyByGrade(): Record<Grade, GradeProgressSummary> {
   return {
     seconda: createEmptyGradeSummary(),
@@ -44,6 +70,11 @@ function normalizeGradeSummary(value?: Partial<GradeProgressSummary>): GradeProg
   return {
     ...createEmptyGradeSummary(),
     ...value,
+    totalSessions: typeof value?.totalSessions === "number" ? value.totalSessions : 0,
+    totalCorrect: typeof value?.totalCorrect === "number" ? value.totalCorrect : 0,
+    totalExercises: typeof value?.totalExercises === "number" ? value.totalExercises : 0,
+    bestStars: typeof value?.bestStars === "number" ? value.bestStars : 0,
+    lastPlayedAt: typeof value?.lastPlayedAt === "string" ? value.lastPlayedAt : undefined,
     recentTopics: Array.isArray(value?.recentTopics) ? value.recentTopics : [],
   };
 }
@@ -57,7 +88,13 @@ function normalizeProgress(value?: Partial<SavedProgress>): SavedProgress {
       terza: normalizeGradeSummary(value?.byGrade?.terza),
       quarta: normalizeGradeSummary(value?.byGrade?.quarta),
     },
-    history: Array.isArray(value?.history) ? value.history : [],
+    badges: Array.isArray(value?.badges) ? value.badges.filter((badge): badge is string => typeof badge === "string") : [],
+    currentGrade: isGrade(value?.currentGrade) ? value.currentGrade : "seconda",
+    history: Array.isArray(value?.history)
+      ? value.history
+          .map(normalizeHistoryItem)
+          .filter((item): item is SessionHistoryItem => item !== null)
+      : [],
   };
 }
 
