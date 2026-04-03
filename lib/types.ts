@@ -46,6 +46,31 @@ export interface SessionResult {
   badgeUnlocked?: string;
 }
 
+export interface AuthSession {
+  username: string;
+  role: "admin";
+  loggedInAt: string;
+}
+
+export interface SessionHistoryItem {
+  id: string;
+  grade: Grade;
+  topic: string;
+  total: number;
+  correct: number;
+  stars: number;
+  completedAt: string;
+}
+
+export interface GradeProgressSummary {
+  totalSessions: number;
+  totalCorrect: number;
+  totalExercises: number;
+  bestStars: number;
+  lastPlayedAt?: string;
+  recentTopics: string[];
+}
+
 export interface StoredSessionResult extends SessionResult {
   grade: Grade;
   topic: string;
@@ -69,4 +94,7 @@ export interface SavedProgress {
   totalExercises: number;
   streak: number;
   badges: string[];
+  currentGrade?: Grade;
+  byGrade: Record<Grade, GradeProgressSummary>;
+  history: SessionHistoryItem[];
 }

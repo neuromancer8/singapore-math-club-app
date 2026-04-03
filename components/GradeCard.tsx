@@ -20,7 +20,9 @@ export function GradeCard({ grade, totalExercises }: { grade: GradeOption; total
           <p className="mt-2 text-base font-bold leading-7 text-slate-700">{grade.subtitle}</p>
         </div>
       </div>
-      <div className="mt-6 rounded-[24px] bg-white/85 px-4 py-3 text-sm font-extrabold text-slate-700">{totalExercises} esercizi disponibili</div>
+      <div className="mt-6 rounded-[24px] bg-white/85 px-4 py-3 text-sm font-extrabold text-slate-700">
+        {totalExercises} esercizi disponibili. Entra come {grade.title.toLowerCase()}.
+      </div>
     </Link>
   );
 }

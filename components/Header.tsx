@@ -1,7 +1,21 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { getAuthSession, logout } from "@/lib/auth";
+import { getProgress } from "@/lib/progress";
+import type { AuthSession, SavedProgress } from "@/lib/types";
 
 export function Header() {
+  const [session, setSession] = useState<AuthSession | undefined>();
+  const [progress, setProgress] = useState<SavedProgress | null>(null);
+
+  useEffect(() => {
+    setSession(getAuthSession());
+    setProgress(getProgress());
+  }, []);
+
   return (
     <header className="sticky top-0 z-30 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-4 rounded-[30px] border border-white/55 bg-white/72 px-5 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl md:flex-row md:items-center md:justify-between md:px-6">
@@ -32,6 +46,23 @@ export function Header() {
           <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">
             Genitori
           </Link>
+          {progress?.currentGrade ? (
+            <span className="pill bg-white ring-1 ring-black/5 shadow-sm">
+              Classe attiva: {progress.currentGrade}
+            </span>
+          ) : null}
+          {session ? (
+            <button
+              type="button"
+              className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+              onClick={() => {
+                logout();
+                window.location.reload();
+              }}
+            >
+              Esci ({session.username})
+            </button>
+          ) : null}
         </nav>
       </div>
     </header>

@@ -24,11 +24,7 @@ export default function GenitoriPage() {
     { label: "Corrette", value: String(progress.totalCorrect), accent: "from-amber-400 to-orange-500" },
     { label: "Serie", value: `${progress.streak} giorni`, accent: "from-emerald-400 to-teal-500" },
   ];
-  const progressBars = [
-    { label: "Seconda", value: Math.min(100, progress.totalExercises * 2) },
-    { label: "Terza", value: Math.min(100, progress.totalCorrect * 2) },
-    { label: "Quarta", value: Math.min(100, accuracy) },
-  ];
+  const historyPreview = progress.history.slice(0, 8);
 
   return (
     <div className="space-y-6">
@@ -121,6 +117,15 @@ export default function GenitoriPage() {
             <div className="mt-6 grid gap-4">
               {getGrades().map((grade) => (
                 <div key={grade.value} className="rounded-[26px] border border-slate-100 bg-white p-4 shadow-sm">
+                  {(() => {
+                    const gradeProgress = progress.byGrade[grade.value];
+                    const gradeAccuracy =
+                      gradeProgress.totalExercises === 0
+                        ? 0
+                        : Math.round((gradeProgress.totalCorrect / gradeProgress.totalExercises) * 100);
+
+                    return (
+                      <>
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
                       <h3 className="m-0 text-xl font-black text-slate-900">{grade.title}</h3>
@@ -129,7 +134,11 @@ export default function GenitoriPage() {
                     <span className="pill bg-slate-100 text-slate-800">{grade.value}</span>
                   </div>
                   <div className="mt-4 space-y-3">
-                    {progressBars.map((bar) => (
+                        {[
+                          { label: "Sessioni", value: Math.min(100, gradeProgress.totalSessions * 12) },
+                          { label: "Accuratezza", value: gradeAccuracy },
+                          { label: "Progressione", value: Math.min(100, gradeProgress.bestStars * 33) },
+                        ].map((bar) => (
                       <div key={`${grade.value}-${bar.label}`}>
                         <div className="mb-2 flex items-center justify-between text-sm font-black text-slate-500">
                           <span>{bar.label}</span>
@@ -144,6 +153,18 @@ export default function GenitoriPage() {
                       </div>
                     ))}
                   </div>
+                        <div className="mt-4 rounded-[22px] bg-slate-50 p-4">
+                          <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">Storico classe</p>
+                          <p className="mt-2 mb-0 text-sm font-black text-slate-800">
+                            {gradeProgress.totalSessions} sessioni, {gradeProgress.totalExercises} esercizi, migliori stelle: {gradeProgress.bestStars}
+                          </p>
+                          <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
+                            Argomenti recenti: {gradeProgress.recentTopics.length > 0 ? gradeProgress.recentTopics.join(", ") : "nessuno"}
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })()}
                 </div>
               ))}
             </div>
@@ -185,6 +206,32 @@ export default function GenitoriPage() {
               <SummaryRow label="Esercizi completati" value={String(progress.totalExercises)} tone="from-blue-500 to-cyan-400" />
               <SummaryRow label="Corrette totali" value={String(progress.totalCorrect)} tone="from-violet-500 to-fuchsia-500" />
               <SummaryRow label="Accuratezza media" value={`${accuracy}%`} tone="from-orange-400 to-rose-500" />
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-white/60 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
+            <h2 className="m-0 text-3xl font-black text-slate-900">Storico attività</h2>
+            <div className="mt-5 space-y-3">
+              {historyPreview.length > 0 ? (
+                historyPreview.map((item) => (
+                  <div key={item.id} className="rounded-[24px] border border-slate-100 bg-white p-4 shadow-sm">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{item.grade}</p>
+                        <p className="mt-2 mb-0 text-lg font-black text-slate-900">{item.topic.replaceAll("-", " ")}</p>
+                        <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
+                          {item.correct}/{item.total} corrette, {item.stars} stelle
+                        </p>
+                      </div>
+                      <span className="text-sm font-black text-slate-500">
+                        {new Date(item.completedAt).toLocaleDateString("it-IT")}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <p className="m-0 text-base font-bold text-slate-700">Lo storico comparirà dopo le prime sessioni completate.</p>
+              )}
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
 import { GradeCard } from "@/components/GradeCard";
 import { getExercisesByGrade } from "@/lib/exercises";
@@ -21,14 +22,10 @@ export default function HomePage() {
               Imparare la matematica con immagini, logica e piccoli passi sicuri.
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-slate-600">
-              Un&apos;app in italiano per seconda, terza e quarta elementare. Ogni attività unisce numero,
-              ragionamento visivo, bar model e problem solving con un ritmo adatto ai bambini.
+              Ogni attività unisce numero, ragionamento visivo, bar model e problem solving con un ritmo adatto ai bambini.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <Link href="/classe/seconda" className="cta-primary">
-                Inizia dalla seconda
-              </Link>
               <Link href="/genitori" className="cta-secondary">
                 Vedi la dashboard
               </Link>
@@ -80,6 +77,8 @@ export default function HomePage() {
         ))}
       </section>
 
+      <GradeStartPanel />
+
       <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="card p-6 md:p-8">
           <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Perché funziona</p>
@@ -111,6 +110,7 @@ export default function HomePage() {
             {[
               "Banca esercizi ampliabile senza cambiare le pagine",
               "Persistenza locale semplice e chiara",
+              "Accesso demo già pronto per la fase pilota",
               "Struttura compatibile con futuro backend",
               "Dashboard già pensata per genitori e docenti",
             ].map((item) => (
