@@ -196,5 +196,135 @@
     "correctAnswer": "Ci sono 21 libri e ne arrivano altri 14. Quanti sono in tutto?",
     "explanation": "La parola 'in tutto' suggerisce una somma.",
     "difficulty": 2
+  },
+  {
+    "id": "s2-num-7",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "multiple-choice",
+    "prompt": "Quale numero è il più piccolo?",
+    "options": ["46", "64", "40", "54"],
+    "correctAnswer": "40",
+    "explanation": "40 è il numero più piccolo tra quelli proposti.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-8",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "numeric-input",
+    "prompt": "Scrivi il numero che viene prima di 81.",
+    "correctAnswer": 80,
+    "explanation": "Prima di 81 viene 80.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-9",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "multiple-choice",
+    "prompt": "Quale numero ha 8 decine e 4 unità?",
+    "options": ["48", "84", "80", "44"],
+    "correctAnswer": "84",
+    "explanation": "8 decine valgono 80 e con 4 unità ottieni 84.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-num-10",
+    "grade": "seconda",
+    "topic": "numeri",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 60 e una parte da 9. Qual è il totale?",
+    "options": ["69", "51", "79", "90"],
+    "correctAnswer": "69",
+    "explanation": "Sommi 60 e 9: il totale è 69.",
+    "difficulty": 2,
+    "visualModel": "Parte grande 60 + parte piccola 9 = totale"
+  },
+  {
+    "id": "s2-add-7",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 54 - 18",
+    "correctAnswer": 36,
+    "explanation": "54 meno 18 fa 36.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-add-8",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "multiple-choice",
+    "prompt": "Quale risultato è corretto?",
+    "options": ["45 + 12 = 57", "45 + 12 = 56", "45 + 12 = 67", "45 + 12 = 47"],
+    "correctAnswer": "45 + 12 = 57",
+    "explanation": "45 + 12 si calcola come 45 + 10 + 2 = 57.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-add-9",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 63 - 21",
+    "correctAnswer": 42,
+    "explanation": "63 meno 21 fa 42.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-add-10",
+    "grade": "seconda",
+    "topic": "addizione-sottrazione",
+    "type": "bar-model",
+    "prompt": "La barra totale è 68. Una parte è 35. Quanto vale l'altra parte?",
+    "options": ["33", "43", "23", "31"],
+    "correctAnswer": "33",
+    "explanation": "Per trovare la parte mancante fai 68 - 35 = 33.",
+    "difficulty": 2,
+    "visualModel": "Totale 68 | parte 35 | parte mancante ?"
+  },
+  {
+    "id": "s2-prob-7",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "word-problem",
+    "prompt": "Marta ha 26 perline e ne compra altre 13. Quante perline ha in tutto?",
+    "correctAnswer": 39,
+    "explanation": "È una somma: 26 + 13 = 39.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-prob-8",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "word-problem",
+    "prompt": "Nel parco ci sono 41 bambini. 16 vanno via. Quanti bambini restano?",
+    "correctAnswer": 25,
+    "explanation": "È una sottrazione: 41 - 16 = 25.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-prob-9",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione risolve questo problema? 'Ho 35 euro e ne spendo 12.'",
+    "options": ["35 - 12", "35 + 12", "12 + 12", "35 + 35"],
+    "correctAnswer": "35 - 12",
+    "explanation": "Se spendi una parte, la togli dal totale.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-prob-10",
+    "grade": "seconda",
+    "topic": "problemi",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 22 palline rosse e 15 blu. Quante palline ci sono in tutto?",
+    "options": ["37", "27", "7", "32"],
+    "correctAnswer": "37",
+    "explanation": "Sommi le due parti: 22 + 15 = 37.",
+    "difficulty": 2,
+    "visualModel": "Parte rossa 22 + parte blu 15 = totale"
   }
 ]

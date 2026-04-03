@@ -196,5 +196,140 @@
     "correctAnswer": "Quanti sono in tutto 3 gruppi da 12?",
     "explanation": "Tre parti uguali da 12 indicano un totale costruito con gruppi uguali.",
     "difficulty": 2
+  },
+  {
+    "id": "s4-prob-7",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "word-problem",
+    "prompt": "Una classe compra 7 confezioni da 8 pennarelli. Poi ne perde 6. Quanti pennarelli restano?",
+    "correctAnswer": 50,
+    "explanation": "Prima 7 x 8 = 56, poi 56 - 6 = 50.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-8",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia di operazioni risolve: 5 scatole da 9 gomme e poi ne uso 12?",
+    "options": ["5 x 9, poi -12", "5 + 9, poi -12", "9 - 5, poi x12", "5 x 12, poi +9"],
+    "correctAnswer": "5 x 9, poi -12",
+    "explanation": "Prima trovi il totale, poi togli quelle usate.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-9",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "numeric-input",
+    "prompt": "Una fettuccia è lunga 250 cm. Ne taglio 75 cm. Quanti centimetri restano?",
+    "correctAnswer": 175,
+    "explanation": "250 - 75 = 175.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-10",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "bar-model",
+    "prompt": "Un totale di 48 è formato da 6 parti uguali. Quanto vale ogni parte?",
+    "options": ["8", "6", "7", "42"],
+    "correctAnswer": "8",
+    "explanation": "48 diviso 6 = 8.",
+    "difficulty": 3,
+    "visualModel": "Totale 48 diviso in 6 parti uguali"
+  },
+  {
+    "id": "s4-fra-7",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Se una barretta è divisa in 5 parti uguali e ne mangio 2, quale frazione ho mangiato?",
+    "options": ["2/5", "2/3", "5/2", "1/5"],
+    "correctAnswer": "2/5",
+    "explanation": "Hai mangiato 2 parti su 5 parti uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-fra-8",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione è più grande?",
+    "options": ["3/4", "1/4", "2/8", "1/2"],
+    "correctAnswer": "3/4",
+    "explanation": "Tre quarti sono più grandi di un quarto, due ottavi e una metà.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-fra-9",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "bar-model",
+    "prompt": "Una barra è divisa in 6 parti uguali e ne sono colorate 3. Quale frazione rappresenta la parte colorata?",
+    "options": ["3/6", "6/3", "3/5", "1/6"],
+    "correctAnswer": "3/6",
+    "explanation": "Sono colorate 3 parti su 6 parti uguali.",
+    "difficulty": 2,
+    "visualModel": "Barra divisa in 6 parti uguali, 3 parti colorate"
+  },
+  {
+    "id": "s4-fra-10",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "word-problem",
+    "prompt": "Una torta è divisa in 10 fette uguali. Ne mangio 5. Quale frazione della torta ho mangiato?",
+    "correctAnswer": "5/10",
+    "explanation": "Hai mangiato 5 fette su 10. Si può anche dire una metà.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-bar-7",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 96 è divisa in una parte da 38 e una parte mancante. Quanto vale la parte mancante?",
+    "options": ["58", "48", "68", "134"],
+    "correctAnswer": "58",
+    "explanation": "96 - 38 = 58.",
+    "difficulty": 2,
+    "visualModel": "Totale 96 | parte 38 | parte ?"
+  },
+  {
+    "id": "s4-bar-8",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "numeric-input",
+    "prompt": "Totale 143, una parte 59. Quanto vale la parte mancante?",
+    "correctAnswer": 84,
+    "explanation": "143 - 59 = 84.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-bar-9",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "La scuola compra 8 confezioni da 6 quaderni. Poi ne usa 9. Quanti quaderni restano?",
+    "correctAnswer": 39,
+    "explanation": "8 x 6 = 48, poi 48 - 9 = 39.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-bar-10",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale domanda si adatta a un bar model con totale 72 e una parte 27?",
+    "options": [
+      "Quanto vale la parte mancante?",
+      "Qual è il doppio di 27?",
+      "Quanto fa 72 + 27?",
+      "Qual è il numero dopo 72?"
+    ],
+    "correctAnswer": "Quanto vale la parte mancante?",
+    "explanation": "Se conosci il totale e una parte, il bar model serve a trovare la parte mancante.",
+    "difficulty": 2
   }
 ]

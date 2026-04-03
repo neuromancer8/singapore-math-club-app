@@ -200,5 +200,139 @@
     "correctAnswer": "Ci sono 4 gruppi da 6. Quanti sono in tutto?",
     "explanation": "Il bar model aiuta a vedere gruppi uguali e totale.",
     "difficulty": 2
+  },
+  {
+    "id": "s3-mul-7",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 8 x 4",
+    "correctAnswer": 32,
+    "explanation": "8 gruppi da 4 fanno 32.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-8",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "multiple-choice",
+    "prompt": "Quale addizione ripetuta corrisponde a 6 x 2?",
+    "options": ["2 + 2 + 2 + 2 + 2 + 2", "6 + 6", "2 + 6", "6 + 2 + 2"],
+    "correctAnswer": "2 + 2 + 2 + 2 + 2 + 2",
+    "explanation": "6 x 2 significa 6 gruppi da 2.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-9",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "word-problem",
+    "prompt": "Ci sono 9 file con 3 sedie in ogni fila. Quante sedie ci sono in tutto?",
+    "correctAnswer": 27,
+    "explanation": "9 x 3 = 27.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-10",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 4 gruppi uguali da 9. Qual è il totale?",
+    "options": ["36", "13", "32", "45"],
+    "correctAnswer": "36",
+    "explanation": "4 x 9 = 36.",
+    "difficulty": 2,
+    "visualModel": "4 parti uguali da 9 = totale ?"
+  },
+  {
+    "id": "s3-div-7",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 32 diviso 4",
+    "correctAnswer": 8,
+    "explanation": "32 diviso 4 = 8.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-8",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale frase descrive 27 diviso 9?",
+    "options": [
+      "27 oggetti divisi in 9 gruppi uguali",
+      "9 gruppi da 27",
+      "27 + 9",
+      "27 tolgo 9"
+    ],
+    "correctAnswer": "27 oggetti divisi in 9 gruppi uguali",
+    "explanation": "Dividere significa distribuire in gruppi uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-9",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "word-problem",
+    "prompt": "40 biscotti vengono distribuiti a 5 bambini in parti uguali. Quanti biscotti riceve ogni bambino?",
+    "correctAnswer": 8,
+    "explanation": "40 diviso 5 = 8.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-10",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 36 viene divisa in 6 parti uguali. Quanto vale ogni parte?",
+    "options": ["6", "5", "7", "12"],
+    "correctAnswer": "6",
+    "explanation": "36 diviso 6 = 6.",
+    "difficulty": 2,
+    "visualModel": "Totale 36 diviso in 6 parti uguali"
+  },
+  {
+    "id": "s3-bar-7",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Le barre mostrano 24 quaderni e 16 libri. Quanti oggetti ci sono in tutto?",
+    "options": ["40", "32", "8", "48"],
+    "correctAnswer": "40",
+    "explanation": "Sommi 24 + 16 = 40.",
+    "difficulty": 1,
+    "visualModel": "Parte 24 + parte 16 = totale ?"
+  },
+  {
+    "id": "s3-bar-8",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "numeric-input",
+    "prompt": "Totale 61, una parte 28. Quanto vale la parte mancante?",
+    "correctAnswer": 33,
+    "explanation": "61 - 28 = 33.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-9",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "Ci sono 5 sacchetti con 6 palline ciascuno. Poi si rompono 4 palline. Quante palline restano?",
+    "correctAnswer": 26,
+    "explanation": "Prima 5 x 6 = 30, poi 30 - 4 = 26.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-bar-10",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione risolve un totale di 70 con una parte nota di 26?",
+    "options": ["70 - 26", "70 + 26", "26 + 26", "70 x 26"],
+    "correctAnswer": "70 - 26",
+    "explanation": "Per trovare la parte mancante fai una sottrazione.",
+    "difficulty": 2
   }
 ]
