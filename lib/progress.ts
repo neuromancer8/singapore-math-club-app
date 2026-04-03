@@ -40,15 +40,24 @@ const emptyProgress: SavedProgress = {
   history: [],
 };
 
+function normalizeGradeSummary(value?: Partial<GradeProgressSummary>): GradeProgressSummary {
+  return {
+    ...createEmptyGradeSummary(),
+    ...value,
+    recentTopics: Array.isArray(value?.recentTopics) ? value.recentTopics : [],
+  };
+}
+
 function normalizeProgress(value?: Partial<SavedProgress>): SavedProgress {
   return {
     ...emptyProgress,
     ...value,
     byGrade: {
-      ...createEmptyByGrade(),
-      ...(value?.byGrade ?? {}),
+      seconda: normalizeGradeSummary(value?.byGrade?.seconda),
+      terza: normalizeGradeSummary(value?.byGrade?.terza),
+      quarta: normalizeGradeSummary(value?.byGrade?.quarta),
     },
-    history: value?.history ?? [],
+    history: Array.isArray(value?.history) ? value.history : [],
   };
 }
 
