@@ -3,13 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getAuthSession, logout } from "@/lib/auth";
+import { getAuthSession, getDemoCredentials, login, logout } from "@/lib/auth";
 import { getProgress } from "@/lib/progress";
 import type { AuthSession, SavedProgress } from "@/lib/types";
 
 export function Header() {
   const [session, setSession] = useState<AuthSession | undefined>();
   const [progress, setProgress] = useState<SavedProgress | null>(null);
+  const [loginOpen, setLoginOpen] = useState(false);
+  const [username, setUsername] = useState<string>(getDemoCredentials().username);
+  const [password, setPassword] = useState<string>(getDemoCredentials().password);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setSession(getAuthSession());
@@ -62,9 +66,96 @@ export function Header() {
             >
               Esci ({session.firstName})
             </button>
-          ) : null}
+          ) : (
+            <button
+              type="button"
+              className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+              onClick={() => {
+                setError("");
+                setLoginOpen(true);
+              }}
+            >
+              Accedi
+            </button>
+          )}
         </nav>
       </div>
+
+      {loginOpen ? (
+        <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-950/30 px-4 py-8 backdrop-blur-sm">
+          <div className="w-full max-w-lg rounded-[36px] border border-white/60 bg-white/92 p-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] md:p-8">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
+                  Accesso fase MVP
+                </div>
+                <h2 className="section-title mt-4 text-4xl font-black text-slate-900">Accedi</h2>
+                <p className="mt-3 text-base font-bold leading-7 text-slate-600">
+                  La pagina resta visibile a tutti. L&apos;accesso serve per aprire la dashboard personale e salvare il percorso del bambino.
+                </p>
+              </div>
+              <button
+                type="button"
+                className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+                onClick={() => setLoginOpen(false)}
+              >
+                Chiudi
+              </button>
+            </div>
+
+            <form
+              className="mt-8 space-y-4"
+              onSubmit={(event) => {
+                event.preventDefault();
+
+                const result = login(username, password);
+
+                if (!result.success) {
+                  setError("Credenziali non valide. Per ora usa admin e admin.");
+                  return;
+                }
+
+                setError("");
+                setSession(result.session);
+                setLoginOpen(false);
+                setProgress(getProgress());
+                window.location.reload();
+              }}
+            >
+              <label className="block">
+                <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Username</span>
+                <input
+                  value={username}
+                  onChange={(event) => setUsername(event.target.value)}
+                  className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900"
+                />
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Password</span>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900"
+                />
+              </label>
+
+              {error ? <p className="m-0 rounded-[20px] bg-rose-100 px-4 py-3 text-base font-black text-rose-900">{error}</p> : null}
+
+              <button type="submit" className="cta-primary w-full border-0">
+                Accedi con admin
+              </button>
+            </form>
+
+            <div className="mt-5 rounded-[24px] bg-slate-50 p-4">
+              <p className="m-0 text-sm font-black uppercase tracking-[0.16em] text-slate-400">Credenziali demo</p>
+              <p className="mt-2 mb-0 text-base font-black text-slate-800">Username: admin</p>
+              <p className="mt-1 mb-0 text-base font-black text-slate-800">Password: admin</p>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }
