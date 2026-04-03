@@ -2,6 +2,10 @@ export type Grade = "seconda" | "terza" | "quarta";
 
 export type ExerciseType = "multiple-choice" | "numeric-input" | "word-problem" | "bar-model";
 
+export type DifficultyFilter = "all" | "facile" | "media" | "avanzata";
+
+export type SessionMode = "standard" | "adaptive";
+
 export interface GradeOption {
   value: Grade;
   title: string;

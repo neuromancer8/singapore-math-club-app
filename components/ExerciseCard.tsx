@@ -1,11 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { awardBadges } from "@/lib/badges";
 import { checkExerciseAnswer, createSessionSummary } from "@/lib/scoring";
 import { getProgress, saveSessionResult } from "@/lib/progress";
-import type { Exercise, Grade, SessionAnswer } from "@/lib/types";
+import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
+import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
 
 type AnswerValue = string;
@@ -15,27 +16,61 @@ export function ExerciseCard({
   grade,
   topic,
   topicTitle,
+  difficultyFilter,
+  mode,
 }: {
   exercises: Exercise[];
   grade: Grade;
   topic: string;
   topicTitle: string;
+  difficultyFilter: DifficultyFilter;
+  mode: SessionMode;
 }) {
   const router = useRouter();
+  const [sessionExercises, setSessionExercises] = useState<Exercise[]>([]);
+  const [topicHistory, setTopicHistory] = useState<SessionHistoryItem[]>([]);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
   const [checked, setChecked] = useState(false);
   const [results, setResults] = useState<SessionAnswer[]>([]);
 
-  const exercise = exercises[index];
+  useEffect(() => {
+    const progress = getProgress();
+    const history = progress.history.filter((item) => item.grade === grade && item.topic === topic).slice(0, 6);
+
+    setTopicHistory(history);
+    setSessionExercises(
+      buildSessionExercises({
+        exercises,
+        difficultyFilter,
+        mode,
+        history,
+      }),
+    );
+    setIndex(0);
+    setAnswers({});
+    setChecked(false);
+    setResults([]);
+  }, [difficultyFilter, exercises, grade, mode, topic]);
+
+  const exercise = sessionExercises[index];
+  const adaptiveProfile = useMemo(() => getAdaptiveProfile(topicHistory), [topicHistory]);
+
+  if (!exercise) {
+    return <div className="card p-6 text-lg font-bold text-slate-700">Preparazione della sessione...</div>;
+  }
+
   const answer = answers[exercise.id] ?? "";
   const correctCount = useMemo(() => results.filter((item) => item.correct).length, [results]);
-  const sessionStars = useMemo(() => createSessionSummary(correctCount, exercises.length).stars, [correctCount, exercises.length]);
+  const sessionStars = useMemo(
+    () => createSessionSummary(correctCount, sessionExercises.length).stars,
+    [correctCount, sessionExercises.length],
+  );
 
   const canCheck = String(answer).trim().length > 0;
   const currentResult = results.find((item) => item.exerciseId === exercise.id);
-  const remainingExercises = exercises.length - index - 1;
-  const progressRatio = Math.round(((index + 1) / exercises.length) * 100);
+  const remainingExercises = sessionExercises.length - index - 1;
+  const progressRatio = Math.round(((index + 1) / sessionExercises.length) * 100);
 
   function setAnswer(value: AnswerValue) {
     setAnswers((prev) => ({ ...prev, [exercise.id]: value }));
@@ -53,9 +88,9 @@ export function ExerciseCard({
   }
 
   function goNext() {
-    if (index === exercises.length - 1) {
+    if (index === sessionExercises.length - 1) {
       const progress = getProgress();
-      const summary = createSessionSummary(correctCount, exercises.length);
+      const summary = createSessionSummary(correctCount, sessionExercises.length);
       const streakSeed = progress.streak > 0 ? progress.streak + 1 : 1;
       const newBadges = awardBadges({
         existingBadges: progress.badges,
@@ -68,7 +103,7 @@ export function ExerciseCard({
       saveSessionResult({
         grade,
         topic,
-        total: exercises.length,
+        total: sessionExercises.length,
         correct: correctCount,
         stars: summary.stars,
         badgeUnlocked,
@@ -93,7 +128,7 @@ export function ExerciseCard({
             <div className="pill bg-[var(--surface-soft)] text-slate-900">{grade}</div>
             <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{topicTitle}</h1>
             <p className="mt-3 mb-0 text-base font-bold text-slate-600">
-              Esercizio {index + 1} di {exercises.length}. Sessione breve, guidata e con feedback immediato.
+              Esercizio {index + 1} di {sessionExercises.length}. Sessione breve, guidata e con feedback immediato.
             </p>
           </div>
           <div className="text-2xl" aria-label={`${sessionStars} stelle`}>
@@ -106,7 +141,7 @@ export function ExerciseCard({
         </div>
 
         <div className="mt-5">
-          <ProgressBar current={index + 1} total={exercises.length} />
+          <ProgressBar current={index + 1} total={sessionExercises.length} />
         </div>
 
         <div className="mt-6 rounded-[26px] bg-gradient-to-br from-white to-slate-50 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
@@ -114,6 +149,8 @@ export function ExerciseCard({
             <span className="pill bg-white ring-1 ring-black/5">{labelForType(exercise.type)}</span>
             <span className="pill bg-[var(--sky)] text-slate-900">{labelForDifficulty(exercise.difficulty)}</span>
             <span className="pill bg-white ring-1 ring-black/5">{progressRatio}% completato</span>
+            <span className="pill bg-white ring-1 ring-black/5">{labelForMode(mode)}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter)}</span>
           </div>
 
           <h2 className="mt-4 text-2xl font-black text-slate-900">{exercise.prompt}</h2>
@@ -139,7 +176,7 @@ export function ExerciseCard({
             </button>
           ) : (
             <button type="button" className="cta-primary border-0" onClick={goNext}>
-              {index === exercises.length - 1 ? "Vai ai risultati" : "Prossimo esercizio"}
+              {index === sessionExercises.length - 1 ? "Vai ai risultati" : "Prossimo esercizio"}
             </button>
           )}
         </div>
@@ -163,7 +200,7 @@ export function ExerciseCard({
         <div className="soft-card p-5">
           <h3 className="m-0 text-xl font-black text-slate-900">Progressi</h3>
           <p className="mt-3 mb-0 text-base font-bold text-slate-700">
-            Corrette finora: {correctCount} su {exercises.length}
+            Corrette finora: {correctCount} su {sessionExercises.length}
           </p>
           <p className="mt-2 mb-0 text-base font-bold text-slate-700">Risposte completate: {results.length}</p>
           <p className="mt-2 mb-0 text-base font-bold text-slate-700">
@@ -173,7 +210,9 @@ export function ExerciseCard({
         <div className="rounded-[28px] border border-white/50 bg-white/75 p-5 shadow-[0_16px_50px_rgba(15,23,42,0.07)] backdrop-blur">
           <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">Obiettivo della sessione</p>
           <p className="mt-3 mb-0 text-lg font-black leading-8 text-slate-900">
-            Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento.
+            {mode === "adaptive"
+              ? adaptiveProfile.helper
+              : "Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento."}
           </p>
         </div>
       </aside>
@@ -245,4 +284,13 @@ function labelForDifficulty(value: Exercise["difficulty"]) {
   if (value === 1) return "facile";
   if (value === 2) return "media";
   return "avanzata";
+}
+
+function labelForDifficultyFilter(value: DifficultyFilter) {
+  if (value === "all") return "tutte le difficoltà";
+  return `focus ${value}`;
+}
+
+function labelForMode(mode: SessionMode) {
+  return mode === "adaptive" ? "percorso adattivo" : "percorso bilanciato";
 }

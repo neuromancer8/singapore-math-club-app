@@ -334,5 +334,223 @@
     "correctAnswer": "70 - 26",
     "explanation": "Per trovare la parte mancante fai una sottrazione.",
     "difficulty": 2
+  },
+  {
+    "id": "s3-mul-11",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 9 x 5",
+    "correctAnswer": 45,
+    "explanation": "9 gruppi da 5 fanno 45.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-12",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "multiple-choice",
+    "prompt": "Quale addizione ripetuta corrisponde a 4 x 7?",
+    "options": ["7 + 7 + 7 + 7", "4 + 4 + 4 + 4 + 4 + 4 + 4", "4 + 7", "7 + 4 + 3"],
+    "correctAnswer": "7 + 7 + 7 + 7",
+    "explanation": "4 x 7 significa 4 gruppi da 7.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-mul-13",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "word-problem",
+    "prompt": "Ci sono 7 scatole con 8 pennarelli in ogni scatola. Quanti pennarelli ci sono in tutto?",
+    "correctAnswer": 56,
+    "explanation": "7 x 8 = 56.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-14",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 6 x 9",
+    "correctAnswer": 54,
+    "explanation": "6 gruppi da 9 fanno 54.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-15",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "multiple-choice",
+    "prompt": "Quale risultato è corretto?",
+    "options": ["8 x 7 = 56", "8 x 7 = 48", "8 x 7 = 54", "8 x 7 = 64"],
+    "correctAnswer": "8 x 7 = 56",
+    "explanation": "8 gruppi da 7 fanno 56.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-mul-16",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "bar-model",
+    "prompt": "Una barra mostra 5 gruppi uguali da 8. Qual è il totale?",
+    "options": ["40", "13", "48", "35"],
+    "correctAnswer": "40",
+    "explanation": "5 x 8 = 40.",
+    "difficulty": 2,
+    "visualModel": "5 parti uguali da 8 = totale ?"
+  },
+  {
+    "id": "s3-mul-17",
+    "grade": "terza",
+    "topic": "moltiplicazione",
+    "type": "word-problem",
+    "prompt": "In palestra ci sono 4 file da 12 bambini. Quanti bambini ci sono in tutto?",
+    "correctAnswer": 48,
+    "explanation": "4 x 12 = 48.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-div-11",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 45 diviso 5",
+    "correctAnswer": 9,
+    "explanation": "45 diviso 5 = 9.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-12",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale frase descrive 36 diviso 6?",
+    "options": [
+      "36 oggetti divisi in 6 gruppi uguali",
+      "6 gruppi da 36",
+      "36 + 6",
+      "36 tolgo 6"
+    ],
+    "correctAnswer": "36 oggetti divisi in 6 gruppi uguali",
+    "explanation": "Dividere significa distribuire in gruppi uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-div-13",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "word-problem",
+    "prompt": "54 caramelle vengono distribuite a 6 bambini in parti uguali. Quante caramelle riceve ogni bambino?",
+    "correctAnswer": 9,
+    "explanation": "54 diviso 6 = 9.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-14",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "numeric-input",
+    "prompt": "Calcola: 42 diviso 7",
+    "correctAnswer": 6,
+    "explanation": "42 diviso 7 = 6.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-15",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione completa la frase? '48 biscotti in 8 piatti uguali: ogni piatto ha ___ biscotti.'",
+    "options": ["48 diviso 8", "48 + 8", "48 - 8", "8 x 8"],
+    "correctAnswer": "48 diviso 8",
+    "explanation": "Per trovare quanti biscotti per piatto devi dividere.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-div-16",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 63 viene divisa in 9 parti uguali. Quanto vale ogni parte?",
+    "options": ["7", "8", "9", "6"],
+    "correctAnswer": "7",
+    "explanation": "63 diviso 9 = 7.",
+    "difficulty": 2,
+    "visualModel": "Totale 63 diviso in 9 parti uguali"
+  },
+  {
+    "id": "s3-div-17",
+    "grade": "terza",
+    "topic": "divisione",
+    "type": "word-problem",
+    "prompt": "56 biglie vengono distribuite in 8 sacchetti uguali. Quante biglie in ogni sacchetto?",
+    "correctAnswer": 7,
+    "explanation": "56 diviso 8 = 7.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-bar-11",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Le barre mostrano 27 matite e 19 pennarelli. Quanti oggetti ci sono in tutto?",
+    "options": ["46", "38", "8", "56"],
+    "correctAnswer": "46",
+    "explanation": "Sommi 27 + 19 = 46.",
+    "difficulty": 1,
+    "visualModel": "Parte 27 + parte 19 = totale ?"
+  },
+  {
+    "id": "s3-bar-12",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "numeric-input",
+    "prompt": "Totale 73, una parte 25. Quanto vale la parte mancante?",
+    "correctAnswer": 48,
+    "explanation": "73 - 25 = 48.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-13",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "Ci sono 6 pacchi con 7 biscotti ciascuno. Poi ne mangiamo 5. Quanti biscotti restano?",
+    "correctAnswer": 37,
+    "explanation": "Prima 6 x 7 = 42, poi 42 - 5 = 37.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-bar-14",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione risolve un totale di 81 con una parte nota di 36?",
+    "options": ["81 - 36", "81 + 36", "36 + 36", "81 x 36"],
+    "correctAnswer": "81 - 36",
+    "explanation": "Per trovare la parte mancante fai una sottrazione.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-bar-15",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "In una biblioteca ci sono 8 scaffali con 9 libri ciascuno. Poi 12 libri vengono prestati. Quanti libri restano?",
+    "correctAnswer": 60,
+    "explanation": "8 x 9 = 72, poi 72 - 12 = 60.",
+    "difficulty": 3
+  },
+  {
+    "id": "s3-bar-16",
+    "grade": "terza",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 64 è divisa in 4 parti uguali. Quanto vale ogni parte?",
+    "options": ["16", "14", "18", "12"],
+    "correctAnswer": "16",
+    "explanation": "64 diviso 4 = 16.",
+    "difficulty": 2,
+    "visualModel": "Totale 64 diviso in 4 parti uguali"
   }
 ]

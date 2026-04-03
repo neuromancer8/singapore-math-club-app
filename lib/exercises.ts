@@ -28,11 +28,13 @@ export function getTopic(grade: Grade, topic: string) {
 }
 
 export function getExercisesByGrade(grade: Grade) {
-  return bank[grade];
+  return [...bank[grade]].sort((left, right) => left.difficulty - right.difficulty);
 }
 
 export function getExercisesByTopic(grade: Grade, topic: string) {
-  return bank[grade].filter((exercise) => exercise.topic === topic);
+  return bank[grade]
+    .filter((exercise) => exercise.topic === topic)
+    .sort((left, right) => left.difficulty - right.difficulty || left.id.localeCompare(right.id));
 }
 
 export function isGradeSlug(value: string): value is Grade {

@@ -331,5 +331,225 @@
     "correctAnswer": "Quanto vale la parte mancante?",
     "explanation": "Se conosci il totale e una parte, il bar model serve a trovare la parte mancante.",
     "difficulty": 2
+  },
+  {
+    "id": "s4-prob-11",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "word-problem",
+    "prompt": "Una cartoleria vende 8 confezioni da 7 penne. Poi ne restano invendute 11. Quante penne sono state vendute?",
+    "correctAnswer": 45,
+    "explanation": "8 x 7 = 56, poi 56 - 11 = 45.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-12",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia di operazioni risolve: 6 scatole da 9 pastelli e poi ne regalo 8?",
+    "options": ["6 x 9, poi -8", "6 + 9, poi -8", "9 - 8, poi x6", "6 x 8, poi +9"],
+    "correctAnswer": "6 x 9, poi -8",
+    "explanation": "Prima trovi il totale, poi togli quelli regalati.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-13",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "numeric-input",
+    "prompt": "Un nastro è lungo 320 cm. Ne taglio 85 cm. Quanti centimetri restano?",
+    "correctAnswer": 235,
+    "explanation": "320 - 85 = 235.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-14",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "word-problem",
+    "prompt": "In teatro ci sono 9 file con 8 sedie ciascuna. 14 sedie restano vuote. Quante sedie sono occupate?",
+    "correctAnswer": 58,
+    "explanation": "9 x 8 = 72, poi 72 - 14 = 58.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-prob-15",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "bar-model",
+    "prompt": "Un totale di 72 è formato da 8 parti uguali. Quanto vale ogni parte?",
+    "options": ["9", "8", "10", "64"],
+    "correctAnswer": "9",
+    "explanation": "72 diviso 8 = 9.",
+    "difficulty": 3,
+    "visualModel": "Totale 72 diviso in 8 parti uguali"
+  },
+  {
+    "id": "s4-prob-16",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "word-problem",
+    "prompt": "Una biblioteca compra 7 pacchi da 12 libri. Poi 9 libri vengono prestati. Quanti libri restano sugli scaffali?",
+    "correctAnswer": 75,
+    "explanation": "7 x 12 = 84, poi 84 - 9 = 75.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-prob-17",
+    "grade": "quarta",
+    "topic": "problemi-avanzati",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione usi per trovare il costo totale di 8 quaderni da 4 euro ciascuno?",
+    "options": ["8 x 4", "8 + 4", "8 - 4", "8 diviso 4"],
+    "correctAnswer": "8 x 4",
+    "explanation": "Per trovare il costo totale di gruppi uguali usi una moltiplicazione.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-fra-11",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione rappresenta tre parti su otto?",
+    "options": ["3/8", "8/3", "3/4", "1/8"],
+    "correctAnswer": "3/8",
+    "explanation": "Tre parti su otto si scrive 3/8.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-fra-12",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione è più piccola?",
+    "options": ["1/6", "1/3", "1/2", "3/4"],
+    "correctAnswer": "1/6",
+    "explanation": "A parità di intero, sesti più piccoli di terzi o metà.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-fra-13",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "bar-model",
+    "prompt": "Una barra è divisa in 5 parti uguali e ne sono colorate 4. Quale frazione rappresenta la parte colorata?",
+    "options": ["4/5", "5/4", "4/6", "1/5"],
+    "correctAnswer": "4/5",
+    "explanation": "Sono colorate 4 parti su 5 parti uguali.",
+    "difficulty": 2,
+    "visualModel": "Barra divisa in 5 parti uguali, 4 parti colorate"
+  },
+  {
+    "id": "s4-fra-14",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "word-problem",
+    "prompt": "Una tavoletta è divisa in 12 pezzi uguali. Ne mangio 3. Quale frazione ho mangiato?",
+    "correctAnswer": "3/12",
+    "explanation": "Hai mangiato 3 pezzi su 12.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-fra-15",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione equivale a una metà?",
+    "options": ["3/6", "2/6", "1/6", "5/6"],
+    "correctAnswer": "3/6",
+    "explanation": "Tre sesti equivalgono a una metà.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-fra-16",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "multiple-choice",
+    "prompt": "Se coloro 2 parti su 10, quale frazione ottengo?",
+    "options": ["2/10", "10/2", "2/5", "1/10"],
+    "correctAnswer": "2/10",
+    "explanation": "Due parti su dieci si scrive 2/10.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-fra-17",
+    "grade": "quarta",
+    "topic": "frazioni",
+    "type": "word-problem",
+    "prompt": "Una pizza è divisa in 6 fette uguali. Ne mangio 3. Quale frazione della pizza ho mangiato?",
+    "correctAnswer": "3/6",
+    "explanation": "Hai mangiato 3 fette su 6.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-bar-11",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 132 è divisa in una parte da 47 e una parte mancante. Quanto vale la parte mancante?",
+    "options": ["85", "75", "95", "179"],
+    "correctAnswer": "85",
+    "explanation": "132 - 47 = 85.",
+    "difficulty": 2,
+    "visualModel": "Totale 132 | parte 47 | parte ?"
+  },
+  {
+    "id": "s4-bar-12",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "numeric-input",
+    "prompt": "Totale 168, una parte 79. Quanto vale la parte mancante?",
+    "correctAnswer": 89,
+    "explanation": "168 - 79 = 89.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-bar-13",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "La scuola compra 9 confezioni da 7 righelli. Poi ne usa 15. Quanti righelli restano?",
+    "correctAnswer": 48,
+    "explanation": "9 x 7 = 63, poi 63 - 15 = 48.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-bar-14",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "multiple-choice",
+    "prompt": "Quale domanda si adatta a un bar model con 4 parti uguali da 15?",
+    "options": [
+      "Quanti sono in tutto 4 gruppi da 15?",
+      "Qual è il numero dopo 15?",
+      "Quanto fa 15 - 4?",
+      "Qual è la metà di 15?"
+    ],
+    "correctAnswer": "Quanti sono in tutto 4 gruppi da 15?",
+    "explanation": "Quattro parti uguali da 15 indicano un totale costruito con gruppi uguali.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-bar-15",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "bar-model",
+    "prompt": "Una barra totale di 144 è divisa in 12 parti uguali. Quanto vale ogni parte?",
+    "options": ["12", "14", "10", "16"],
+    "correctAnswer": "12",
+    "explanation": "144 diviso 12 = 12.",
+    "difficulty": 3,
+    "visualModel": "Totale 144 diviso in 12 parti uguali"
+  },
+  {
+    "id": "s4-bar-16",
+    "grade": "quarta",
+    "topic": "bar-model",
+    "type": "word-problem",
+    "prompt": "In un magazzino ci sono 8 scaffali con 11 scatole ciascuno. 20 scatole vengono spedite. Quante scatole restano?",
+    "correctAnswer": 68,
+    "explanation": "8 x 11 = 88, poi 88 - 20 = 68.",
+    "difficulty": 3
   }
 ]
