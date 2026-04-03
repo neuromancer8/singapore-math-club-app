@@ -55,17 +55,17 @@ export function ExerciseCard({
 
   const exercise = sessionExercises[index];
   const adaptiveProfile = useMemo(() => getAdaptiveProfile(topicHistory), [topicHistory]);
+  const correctCount = useMemo(() => results.filter((item) => item.correct).length, [results]);
+  const sessionStars = useMemo(
+    () => createSessionSummary(correctCount, sessionExercises.length || 1).stars,
+    [correctCount, sessionExercises.length],
+  );
 
   if (!exercise) {
     return <div className="card p-6 text-lg font-bold text-slate-700">Preparazione della sessione...</div>;
   }
 
   const answer = answers[exercise.id] ?? "";
-  const correctCount = useMemo(() => results.filter((item) => item.correct).length, [results]);
-  const sessionStars = useMemo(
-    () => createSessionSummary(correctCount, sessionExercises.length).stars,
-    [correctCount, sessionExercises.length],
-  );
 
   const canCheck = String(answer).trim().length > 0;
   const currentResult = results.find((item) => item.exerciseId === exercise.id);
