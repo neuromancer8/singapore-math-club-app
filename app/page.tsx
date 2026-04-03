@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
@@ -40,40 +39,25 @@ export default function HomePage() {
 
           <div className="relative flex items-center">
             <div className="w-full rounded-[34px] bg-gradient-to-br from-violet-600 via-indigo-500 to-cyan-400 p-[1px] shadow-[0_24px_90px_rgba(76,29,149,0.22)]">
-              <div className="overflow-hidden rounded-[33px] bg-white/95 p-4 md:p-5">
-                <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 p-4 text-white shadow-inner">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(250,204,21,0.22),transparent_24%),radial-gradient(circle_at_left_center,rgba(34,211,238,0.18),transparent_25%)]" />
-                  <div className="relative flex items-center justify-between">
-                    <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-white/70">Missione numeri</p>
-                    <span className="rounded-full bg-emerald-200 px-3 py-1 text-xs font-black text-emerald-900">
-                      Decollo
-                    </span>
+              <div className="rounded-[33px] bg-white/95 p-5">
+                <div className="flex items-center justify-between">
+                  <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Percorso attivo</p>
+                  <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-black text-emerald-700">
+                    Bambini
+                  </span>
+                </div>
+                <div className="mt-5 space-y-4">
+                  <div className="rounded-[24px] bg-slate-50 p-4">
+                    <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">Concrete</p>
+                    <p className="mt-2 mb-0 text-xl font-black text-slate-900">Conta, confronta, costruisci</p>
                   </div>
-
-                  <div className="relative mt-4 overflow-hidden rounded-[24px] border border-white/10 bg-white/6 p-3">
-                    <Image
-                      src="/rocket-math.png"
-                      alt="Razzo colorato formato da numeri"
-                      width={680}
-                      height={680}
-                      className="h-auto w-full rounded-[18px] object-cover"
-                      priority
-                    />
+                  <div className="rounded-[24px] bg-slate-50 p-4">
+                    <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">Pittorico</p>
+                    <p className="mt-2 mb-0 text-xl font-black text-slate-900">Disegna barre, gruppi e parti</p>
                   </div>
-
-                  <div className="relative mt-4 grid gap-3">
-                    <div className="rounded-[20px] bg-white/10 p-4 backdrop-blur">
-                      <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-cyan-100/80">Concrete</p>
-                      <p className="mt-2 mb-0 text-lg font-black text-white">Conta, confronta, costruisci</p>
-                    </div>
-                    <div className="rounded-[20px] bg-white/10 p-4 backdrop-blur">
-                      <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-cyan-100/80">Pittorico</p>
-                      <p className="mt-2 mb-0 text-lg font-black text-white">Disegna barre, gruppi e parti</p>
-                    </div>
-                    <div className="rounded-[20px] bg-white/10 p-4 backdrop-blur">
-                      <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-cyan-100/80">Astratto</p>
-                      <p className="mt-2 mb-0 text-lg font-black text-white">Risolvi, spiega e controlla</p>
-                    </div>
+                  <div className="rounded-[24px] bg-slate-50 p-4">
+                    <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">Astratto</p>
+                    <p className="mt-2 mb-0 text-xl font-black text-slate-900">Risolvi, spiega e controlla</p>
                   </div>
                 </div>
               </div>
