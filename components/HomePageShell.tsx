@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
+import { topicsByGrade } from "@/data/topics";
 import { getAuthSession } from "@/lib/auth";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { AuthSession, Grade, SavedProgress } from "@/lib/types";
@@ -157,6 +158,12 @@ function LearnerDashboard({
 
   const nextActionHref = `/classe/${activeGrade}`;
   const latestActivity = progress.history[0];
+  const activeTopics = topicsByGrade[activeGrade];
+  const completedTopicSet = new Set(activeGradeProgress.recentTopics);
+  const recommendedTopics = [
+    ...activeTopics.filter((topic) => !completedTopicSet.has(topic.slug)),
+    ...activeTopics.filter((topic) => completedTopicSet.has(topic.slug)),
+  ].slice(0, 5);
 
   return (
     <div className="space-y-8 px-2 py-4 md:space-y-10">
@@ -256,6 +263,42 @@ function LearnerDashboard({
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-6 rounded-[34px] border border-slate-100 bg-gradient-to-br from-slate-50 via-white to-cyan-50 p-5 shadow-sm md:p-6">
+            <div className="flex flex-wrap items-start justify-between gap-4">
+              <div>
+                <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Mappa del percorso</p>
+                <h3 className="section-title mt-2 text-3xl font-black text-slate-900">
+                  Prossime lezioni di {labelForGrade(activeGrade)}
+                </h3>
+              </div>
+              <Link href={`/classe/${activeGrade}`} className="cta-secondary">
+                Apri percorso
+              </Link>
+            </div>
+            <div className="mt-5 grid gap-3 lg:grid-cols-2">
+              {recommendedTopics.map((topic, index) => (
+                <Link
+                  key={topic.slug}
+                  href={`/classe/${activeGrade}/argomento/${topic.slug}`}
+                  className="group rounded-[24px] border border-white bg-white/85 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+                >
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--surface-soft)] text-sm font-black text-slate-900">
+                      {index + 1}
+                    </span>
+                    <div>
+                      <h4 className="m-0 text-lg font-black leading-6 text-slate-900">{topic.label}</h4>
+                      <p className="mt-2 mb-0 text-sm font-bold leading-6 text-slate-600">{topic.description}</p>
+                      <p className="mt-3 mb-0 text-xs font-black uppercase tracking-[0.16em] text-slate-400">
+                        {completedTopicSet.has(topic.slug) ? "Da ripassare" : "Consigliato"}
+                      </p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
 
