@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getAvatarOption } from "@/lib/avatars";
 import { getAuthSession, getDemoCredentials, login, logout } from "@/lib/auth";
 import { getProgress } from "@/lib/progress";
 import type { AuthSession, SavedProgress } from "@/lib/types";
@@ -19,6 +20,8 @@ export function Header() {
     setSession(getAuthSession());
     setProgress(getProgress());
   }, []);
+
+  const avatar = session ? getAvatarOption(session.avatarId) : undefined;
 
   return (
     <header className="sticky top-0 z-30 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
@@ -56,16 +59,23 @@ export function Header() {
             </span>
           ) : null}
           {session ? (
-            <button
-              type="button"
-              className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
-              onClick={() => {
-                logout();
-                window.location.reload();
-              }}
-            >
-              Esci ({session.firstName})
-            </button>
+            <div className="flex items-center gap-2 rounded-full bg-white px-2 py-1 ring-1 ring-black/5 shadow-sm">
+              {avatar ? (
+                <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${avatar.gradient} text-lg`} aria-label={avatar.label}>
+                  {avatar.symbol}
+                </span>
+              ) : null}
+              <button
+                type="button"
+                className="rounded-full border-0 bg-transparent px-3 py-2 font-extrabold text-slate-800"
+                onClick={() => {
+                  logout();
+                  window.location.reload();
+                }}
+              >
+                Esci ({session.firstName})
+              </button>
+            </div>
           ) : (
             <button
               type="button"

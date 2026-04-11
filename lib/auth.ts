@@ -1,6 +1,7 @@
 "use client";
 
-import type { AuthSession } from "@/lib/types";
+import { isAvatarId } from "@/lib/avatars";
+import type { AuthSession, AvatarId } from "@/lib/types";
 
 const AUTH_STORAGE_KEY = "singapore-math-auth";
 
@@ -13,6 +14,7 @@ const demoProfile = {
   firstName: "Giulia",
   lastName: "Rossi",
   learnerGrade: "seconda",
+  avatarId: "rocket",
 } as const;
 
 export function getDemoCredentials() {
@@ -47,10 +49,31 @@ export function getAuthSession(): AuthSession | undefined {
           ? parsed.fullName
           : `${typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName} ${typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName}`,
       learnerGrade: parsed.learnerGrade ?? demoProfile.learnerGrade,
+      avatarId: isAvatarId(parsed.avatarId) ? parsed.avatarId : demoProfile.avatarId,
     };
   } catch {
     return undefined;
   }
+}
+
+export function saveAvatarSelection(avatarId: AvatarId) {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  const current = getAuthSession();
+  if (!current) {
+    return undefined;
+  }
+
+  const next: AuthSession = {
+    ...current,
+    avatarId,
+  };
+
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(next));
+
+  return next;
 }
 
 export function login(username: string, password: string) {
@@ -69,6 +92,7 @@ export function login(username: string, password: string) {
     lastName: demoProfile.lastName,
     fullName: `${demoProfile.firstName} ${demoProfile.lastName}`,
     learnerGrade: demoProfile.learnerGrade,
+    avatarId: demoProfile.avatarId,
   };
 
   localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));

@@ -6,6 +6,20 @@ export type DifficultyFilter = "all" | "facile" | "media" | "avanzata";
 
 export type SessionMode = "standard" | "adaptive";
 
+export type AvatarId =
+  | "rocket"
+  | "fox"
+  | "owl"
+  | "robot"
+  | "turtle"
+  | "lion"
+  | "star"
+  | "planet"
+  | "pencil"
+  | "whale"
+  | "cat"
+  | "unicorn";
+
 export interface GradeOption {
   value: Grade;
   title: string;
@@ -58,6 +72,7 @@ export interface AuthSession {
   lastName: string;
   fullName: string;
   learnerGrade: Grade;
+  avatarId: AvatarId;
 }
 
 export interface SessionHistoryItem {

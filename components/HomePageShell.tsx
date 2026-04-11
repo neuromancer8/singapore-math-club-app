@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { AvatarPicker } from "@/components/AvatarPicker";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
+import { getAvatarOption } from "@/lib/avatars";
 import { getAuthSession } from "@/lib/auth";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { AuthSession, Grade, SavedProgress } from "@/lib/types";
@@ -28,7 +30,15 @@ export function HomePageShell({
     return <PublicHome totalExercises={totalExercises} totalTopics={totalTopics} />;
   }
 
-  return <LearnerDashboard session={session} progress={progress} totalExercises={totalExercises} totalTopics={totalTopics} />;
+  return (
+    <LearnerDashboard
+      session={session}
+      progress={progress}
+      totalExercises={totalExercises}
+      totalTopics={totalTopics}
+      onSessionChange={setSession}
+    />
+  );
 }
 
 function PublicHome({ totalExercises, totalTopics }: { totalExercises: number; totalTopics: number }) {
@@ -113,11 +123,13 @@ function LearnerDashboard({
   progress,
   totalExercises,
   totalTopics,
+  onSessionChange,
 }: {
   session: AuthSession;
   progress: SavedProgress;
   totalExercises: number;
   totalTopics: number;
+  onSessionChange: (session: AuthSession) => void;
 }) {
   const activeGrade = progress.currentGrade ?? session.learnerGrade;
   const activeGradeMeta = grades.find((grade) => grade.value === activeGrade) ?? grades[0];
@@ -164,6 +176,7 @@ function LearnerDashboard({
     ...activeTopics.filter((topic) => !completedTopicSet.has(topic.slug)),
     ...activeTopics.filter((topic) => completedTopicSet.has(topic.slug)),
   ].slice(0, 5);
+  const avatar = getAvatarOption(session.avatarId);
 
   return (
     <div className="space-y-8 px-2 py-4 md:space-y-10">
@@ -175,11 +188,17 @@ function LearnerDashboard({
             <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
               Dashboard personale
             </div>
-            <h1 className="section-title mt-5 text-5xl font-black leading-none text-slate-900 md:text-6xl">
-              Ciao {session.firstName}, questo e il tuo percorso.
-            </h1>
+            <div className="mt-5 flex flex-wrap items-center gap-5">
+              <div className={`flex h-24 w-24 items-center justify-center rounded-[32px] bg-gradient-to-br ${avatar.gradient} text-5xl shadow-lg ring-4 ring-white`}>
+                <span aria-hidden="true">{avatar.symbol}</span>
+              </div>
+              <h1 className="section-title m-0 max-w-2xl text-5xl font-black leading-none text-slate-900 md:text-6xl">
+                Ciao {session.firstName}, questo e il tuo percorso.
+              </h1>
+            </div>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <ProfileInfo label="Nome e cognome" value={session.fullName} />
+              <ProfileInfo label="Avatar" value={avatar.label} />
               <ProfileInfo label="Classe di partenza" value={labelForGrade(session.learnerGrade)} />
               <ProfileInfo label="Classe attiva" value={labelForGrade(activeGrade)} />
               <ProfileInfo label="Stato del percorso" value={status.title} />
@@ -303,6 +322,8 @@ function LearnerDashboard({
         </div>
 
         <div className="space-y-6">
+          <AvatarPicker session={session} onChange={onSessionChange} />
+
           <div className="card p-6 md:p-8">
             <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Prossima azione</p>
             <h2 className="section-title mt-3 text-4xl font-black text-slate-900">Cosa facciamo adesso</h2>
