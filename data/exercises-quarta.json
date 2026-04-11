@@ -678,5 +678,177 @@
     "correctAnswer": "66",
     "explanation": "La regola è -10, poi -9, poi -8, quindi -7.",
     "difficulty": 3
+  },
+  {
+    "id": "s4-op-1",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "numeric-input",
+    "prompt": "Calcola: 25 x 4",
+    "correctAnswer": 100,
+    "explanation": "25 x 4 fa 100.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-op-2",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "numeric-input",
+    "prompt": "Calcola: 360 : 6",
+    "correctAnswer": 60,
+    "explanation": "36 : 6 = 6, quindi 360 : 6 = 60.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-op-3",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "multiple-choice",
+    "prompt": "Quale strategia aiuta per 48 x 5?",
+    "options": [
+      "48 x 10 e poi metà",
+      "48 + 5",
+      "48 - 5",
+      "48 : 10"
+    ],
+    "correctAnswer": "48 x 10 e poi metà",
+    "explanation": "Moltiplicare per 5 è come moltiplicare per 10 e dimezzare.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-op-4",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "numeric-input",
+    "prompt": "Calcola: 125 + 375",
+    "correctAnswer": 500,
+    "explanation": "125 + 375 = 500.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-op-5",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "numeric-input",
+    "prompt": "Calcola: 900 - 275",
+    "correctAnswer": 625,
+    "explanation": "900 - 275 = 625.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-op-6",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "word-problem",
+    "prompt": "Un laboratorio prepara 12 scatole con 18 pezzi ciascuna. Quanti pezzi prepara?",
+    "correctAnswer": 216,
+    "explanation": "12 x 18 = 216.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-op-7",
+    "grade": "quarta",
+    "topic": "operazioni-strategiche",
+    "type": "bar-model",
+    "options": [
+      "60",
+      "70",
+      "50",
+      "80"
+    ],
+    "correctAnswer": "60",
+    "prompt": "Una barra totale vale 420 ed è divisa in 7 parti uguali. Quanto vale ogni parte?",
+    "explanation": "420 : 7 = 60.",
+    "difficulty": 3,
+    "visualModel": "Totale 420 | 7 parti uguali"
+  },
+  {
+    "id": "s4-pf-1",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "multiple-choice",
+    "prompt": "Di una torta divisa in 8 parti, ne mangio 2. Quale frazione resta?",
+    "options": [
+      "6/8",
+      "2/8",
+      "8/6",
+      "1/8"
+    ],
+    "correctAnswer": "6/8",
+    "explanation": "Restano 8 - 2 = 6 parti su 8.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-pf-2",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "numeric-input",
+    "prompt": "La metà di 30 bambini partecipa al laboratorio. Quanti bambini partecipano?",
+    "correctAnswer": 15,
+    "explanation": "La metà di 30 è 15.",
+    "difficulty": 1
+  },
+  {
+    "id": "s4-pf-3",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "multiple-choice",
+    "prompt": "Quale operazione ti aiuta a trovare 1/4 di 20?",
+    "options": [
+      "20 : 4",
+      "20 x 4",
+      "20 + 4",
+      "20 - 4"
+    ],
+    "correctAnswer": "20 : 4",
+    "explanation": "Per trovare un quarto dividi l'intero in 4 parti uguali.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-pf-4",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "word-problem",
+    "prompt": "Un nastro misura 24 cm. Ne uso 1/3. Quanti cm uso?",
+    "correctAnswer": 8,
+    "explanation": "24 : 3 = 8.",
+    "difficulty": 2
+  },
+  {
+    "id": "s4-pf-5",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "bar-model",
+    "options": [
+      "16",
+      "8",
+      "20",
+      "10"
+    ],
+    "correctAnswer": "16",
+    "prompt": "Una barra da 40 è divisa in 5 parti uguali. Ne coloro 2 parti. Quanto vale la parte colorata?",
+    "explanation": "Ogni parte vale 8. Due parti valgono 16.",
+    "difficulty": 2,
+    "visualModel": "Totale 40 | 5 parti uguali | 2 parti colorate"
+  },
+  {
+    "id": "s4-pf-6",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "word-problem",
+    "prompt": "In una classe ci sono 28 alunni. 1/4 porta il quaderno rosso. Quanti alunni lo portano?",
+    "correctAnswer": 7,
+    "explanation": "28 : 4 = 7.",
+    "difficulty": 3
+  },
+  {
+    "id": "s4-pf-7",
+    "grade": "quarta",
+    "topic": "problemi-con-frazioni",
+    "type": "word-problem",
+    "prompt": "Una raccolta ha 36 figurine. 2/3 sono animali. Quante figurine di animali ci sono?",
+    "correctAnswer": 24,
+    "explanation": "36 : 3 = 12 e 2 parti valgono 24.",
+    "difficulty": 3
   }
 ]

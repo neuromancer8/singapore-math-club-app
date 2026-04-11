@@ -676,5 +676,188 @@
     "explanation": "1 ora sono 60 minuti. 60 - 35 = 25.",
     "difficulty": 3,
     "visualModel": "Totale 60 min | parte 35 min | parte mancante ?"
+  },
+  {
+    "id": "s2-dm-1",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "numeric-input",
+    "prompt": "Qual è il doppio di 6?",
+    "correctAnswer": 12,
+    "explanation": "Il doppio significa due volte lo stesso numero: 6 + 6 = 12.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-dm-2",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "multiple-choice",
+    "prompt": "Qual è la metà di 10?",
+    "options": [
+      "5",
+      "2",
+      "20",
+      "8"
+    ],
+    "correctAnswer": "5",
+    "explanation": "La metà divide 10 in due parti uguali da 5.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-dm-3",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "numeric-input",
+    "prompt": "Completa: il doppio di 9 è __",
+    "correctAnswer": 18,
+    "explanation": "9 + 9 = 18.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-dm-4",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "multiple-choice",
+    "prompt": "Quale coppia mostra un doppio?",
+    "options": [
+      "7 e 14",
+      "6 e 9",
+      "8 e 12",
+      "10 e 15"
+    ],
+    "correctAnswer": "7 e 14",
+    "explanation": "14 è il doppio di 7.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-dm-5",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "word-problem",
+    "prompt": "Sara ha 8 perline. Marco ne ha il doppio. Quante perline ha Marco?",
+    "correctAnswer": 16,
+    "explanation": "Il doppio di 8 è 16.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-dm-6",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "bar-model",
+    "options": [
+      "9",
+      "8",
+      "10",
+      "6"
+    ],
+    "correctAnswer": "9",
+    "prompt": "Una barra vale 18 ed è divisa in due parti uguali. Quanto vale una parte?",
+    "explanation": "18 diviso in due parti uguali dà 9.",
+    "difficulty": 2,
+    "visualModel": "Totale 18 | 2 parti uguali"
+  },
+  {
+    "id": "s2-dm-7",
+    "grade": "seconda",
+    "topic": "doppi-meta",
+    "type": "word-problem",
+    "prompt": "In un piatto ci sono 24 biscotti. Ne mangiamo la metà. Quanti biscotti mangiamo?",
+    "correctAnswer": 12,
+    "explanation": "La metà di 24 è 12.",
+    "difficulty": 3
+  },
+  {
+    "id": "s2-geo-1",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "multiple-choice",
+    "prompt": "Quale figura ha 3 lati?",
+    "options": [
+      "Triangolo",
+      "Quadrato",
+      "Cerchio",
+      "Rettangolo"
+    ],
+    "correctAnswer": "Triangolo",
+    "explanation": "Il triangolo ha 3 lati.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-geo-2",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "numeric-input",
+    "prompt": "Quanti lati ha un quadrato?",
+    "correctAnswer": 4,
+    "explanation": "Il quadrato ha 4 lati.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-geo-3",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "multiple-choice",
+    "prompt": "Quale figura non ha angoli?",
+    "options": [
+      "Cerchio",
+      "Rettangolo",
+      "Triangolo",
+      "Quadrato"
+    ],
+    "correctAnswer": "Cerchio",
+    "explanation": "Il cerchio non ha angoli.",
+    "difficulty": 1
+  },
+  {
+    "id": "s2-geo-4",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "multiple-choice",
+    "prompt": "Quale oggetto assomiglia a un rettangolo?",
+    "options": [
+      "Una porta",
+      "Una ruota",
+      "Una palla",
+      "Una stella"
+    ],
+    "correctAnswer": "Una porta",
+    "explanation": "La porta ha una forma simile a un rettangolo.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-geo-5",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "numeric-input",
+    "prompt": "Quanti vertici ha un triangolo?",
+    "correctAnswer": 3,
+    "explanation": "Il triangolo ha 3 vertici.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-geo-6",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "multiple-choice",
+    "prompt": "Quale figura ha tutti i lati uguali?",
+    "options": [
+      "Quadrato",
+      "Rettangolo",
+      "Cerchio",
+      "Ovale"
+    ],
+    "correctAnswer": "Quadrato",
+    "explanation": "Nel quadrato i lati sono tutti uguali.",
+    "difficulty": 2
+  },
+  {
+    "id": "s2-geo-7",
+    "grade": "seconda",
+    "topic": "geometria-base",
+    "type": "word-problem",
+    "prompt": "Disegno 2 triangoli e 1 quadrato. Quante figure disegno in tutto?",
+    "correctAnswer": 3,
+    "explanation": "2 + 1 = 3 figure.",
+    "difficulty": 3
   }
 ]

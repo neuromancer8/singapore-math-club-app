@@ -10,6 +10,8 @@ export const topicsByGrade: Record<Grade, Topic[]> = {
     { slug: "calcolo-mentale", label: "Calcolo mentale", description: "Strategie veloci e numeri amici" },
     { slug: "problemi", label: "Problemi", description: "Piccoli problemi in parole" },
     { slug: "misure-semplici", label: "Misure semplici", description: "Lunghezze, euro e tempo quotidiano" },
+    { slug: "doppi-meta", label: "Doppi e metà", description: "Raddoppia, dimezza e ragiona con le parti" },
+    { slug: "geometria-base", label: "Geometria base", description: "Figure, lati e forme del quotidiano" },
   ],
   terza: [
     { slug: "moltiplicazione", label: "Moltiplicazione", description: "Gruppi e ripetizioni" },
@@ -20,6 +22,8 @@ export const topicsByGrade: Record<Grade, Topic[]> = {
     { slug: "misure", label: "Misure", description: "Lunghezze, masse e capacità" },
     { slug: "geometria", label: "Geometria", description: "Figure, lati e angoli intuitivi" },
     { slug: "dati-e-logica", label: "Dati e logica", description: "Leggi tabelle e trova regole" },
+    { slug: "calcolo-scritto", label: "Calcolo scritto", description: "Strategie ordinate per operazioni più lunghe" },
+    { slug: "frazioni-base", label: "Frazioni base", description: "Metà, terzi e quarti con immagini" },
   ],
   quarta: [
     { slug: "problemi-avanzati", label: "Problemi avanzati", description: "Più passaggi, più strategie" },
@@ -30,5 +34,7 @@ export const topicsByGrade: Record<Grade, Topic[]> = {
     { slug: "perimetro-area", label: "Perimetro e area", description: "Misura il bordo e lo spazio" },
     { slug: "dati-e-grafici", label: "Dati e grafici", description: "Leggi informazioni da tabelle e grafici" },
     { slug: "logica", label: "Logica", description: "Strategie, regole e ragionamento" },
+    { slug: "operazioni-strategiche", label: "Operazioni strategiche", description: "Moltiplica, dividi e controlla con metodo" },
+    { slug: "problemi-con-frazioni", label: "Problemi con frazioni", description: "Usa parti dell'intero dentro problemi reali" },
   ],
 };

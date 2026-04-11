@@ -672,5 +672,183 @@
     "correctAnswer": 2,
     "explanation": "Due amici hanno 8 figurine.",
     "difficulty": 3
+  },
+  {
+    "id": "s3-cs-1",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "numeric-input",
+    "prompt": "Calcola in colonna: 126 + 213",
+    "correctAnswer": 339,
+    "explanation": "Sommi unità, decine e centinaia: 126 + 213 = 339.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-cs-2",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "numeric-input",
+    "prompt": "Calcola: 245 - 120",
+    "correctAnswer": 125,
+    "explanation": "245 - 120 = 125.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-cs-3",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "multiple-choice",
+    "prompt": "In 38 + 47, perché è utile passare da 38 a 40?",
+    "options": [
+      "Per fare un numero tondo",
+      "Per togliere decine",
+      "Per dividere",
+      "Per cambiare segno"
+    ],
+    "correctAnswer": "Per fare un numero tondo",
+    "explanation": "I numeri tondi rendono il calcolo più semplice.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-cs-4",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "numeric-input",
+    "prompt": "Calcola: 68 + 57",
+    "correctAnswer": 125,
+    "explanation": "68 + 57 = 125.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-cs-5",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "numeric-input",
+    "prompt": "Calcola: 300 - 76",
+    "correctAnswer": 224,
+    "explanation": "300 - 76 = 224.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-cs-6",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "word-problem",
+    "prompt": "La biblioteca ha 128 libri. Ne arrivano altri 45. Quanti libri ci sono?",
+    "correctAnswer": 173,
+    "explanation": "128 + 45 = 173.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-cs-7",
+    "grade": "terza",
+    "topic": "calcolo-scritto",
+    "type": "bar-model",
+    "options": [
+      "155",
+      "165",
+      "145",
+      "325"
+    ],
+    "correctAnswer": "155",
+    "prompt": "Una barra totale vale 240. Una parte vale 85. Quanto vale l'altra parte?",
+    "explanation": "240 - 85 = 155.",
+    "difficulty": 3,
+    "visualModel": "Totale 240 | parte 85 | parte mancante ?"
+  },
+  {
+    "id": "s3-fra-1",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione rappresenta metà?",
+    "options": [
+      "1/2",
+      "1/3",
+      "1/4",
+      "2/3"
+    ],
+    "correctAnswer": "1/2",
+    "explanation": "Metà significa una parte su due uguali.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-fra-2",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "multiple-choice",
+    "prompt": "Una pizza è divisa in 4 parti uguali e ne mangio 1. Che frazione mangio?",
+    "options": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "4/1"
+    ],
+    "correctAnswer": "1/4",
+    "explanation": "Mangio una parte su quattro.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-fra-3",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "numeric-input",
+    "prompt": "Quante metà servono per formare un intero?",
+    "correctAnswer": 2,
+    "explanation": "Due metà formano l'intero.",
+    "difficulty": 1
+  },
+  {
+    "id": "s3-fra-4",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "multiple-choice",
+    "prompt": "Quale frazione è più grande?",
+    "options": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/10"
+    ],
+    "correctAnswer": "1/2",
+    "explanation": "Se l'intero è uguale, una metà è più grande di un quarto, un ottavo e un decimo.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-fra-5",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "bar-model",
+    "options": [
+      "2/3",
+      "1/3",
+      "3/2",
+      "2/5"
+    ],
+    "correctAnswer": "2/3",
+    "prompt": "Una barra è divisa in 3 parti uguali. Ne coloro 2. Quale frazione è colorata?",
+    "explanation": "Sono colorate 2 parti su 3.",
+    "difficulty": 2,
+    "visualModel": "Barra divisa in 3 parti uguali, 2 colorate"
+  },
+  {
+    "id": "s3-fra-6",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "word-problem",
+    "prompt": "Di 12 caramelle, metà sono alla menta. Quante sono alla menta?",
+    "correctAnswer": 6,
+    "explanation": "La metà di 12 è 6.",
+    "difficulty": 2
+  },
+  {
+    "id": "s3-fra-7",
+    "grade": "terza",
+    "topic": "frazioni-base",
+    "type": "word-problem",
+    "prompt": "Un foglio è diviso in 4 parti uguali. Coloro 3 parti. Quante parti restano bianche?",
+    "correctAnswer": 1,
+    "explanation": "4 parti totali meno 3 colorate = 1 parte bianca.",
+    "difficulty": 3
   }
 ]

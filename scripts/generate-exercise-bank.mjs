@@ -243,6 +243,60 @@ const quarta = [
   choice("s4-log-6", "quarta", "logica", "Quale numero manca? 100, 90, 81, 73, __", ["66", "65", "64", "63"], "66", "La regola è -10, poi -9, poi -8, quindi -7.", 3),
 ];
 
+seconda.push(
+  numeric("s2-dm-1", "seconda", "doppi-meta", "Qual è il doppio di 6?", 12, "Il doppio significa due volte lo stesso numero: 6 + 6 = 12.", 1),
+  choice("s2-dm-2", "seconda", "doppi-meta", "Qual è la metà di 10?", ["5", "2", "20", "8"], "5", "La metà divide 10 in due parti uguali da 5.", 1),
+  numeric("s2-dm-3", "seconda", "doppi-meta", "Completa: il doppio di 9 è __", 18, "9 + 9 = 18.", 1),
+  choice("s2-dm-4", "seconda", "doppi-meta", "Quale coppia mostra un doppio?", ["7 e 14", "6 e 9", "8 e 12", "10 e 15"], "7 e 14", "14 è il doppio di 7.", 2),
+  word("s2-dm-5", "seconda", "doppi-meta", "Sara ha 8 perline. Marco ne ha il doppio. Quante perline ha Marco?", 16, "Il doppio di 8 è 16.", 2),
+  bar("s2-dm-6", "seconda", "doppi-meta", "Una barra vale 18 ed è divisa in due parti uguali. Quanto vale una parte?", ["9", "8", "10", "6"], "9", "18 diviso in due parti uguali dà 9.", 2, "Totale 18 | 2 parti uguali"),
+  word("s2-dm-7", "seconda", "doppi-meta", "In un piatto ci sono 24 biscotti. Ne mangiamo la metà. Quanti biscotti mangiamo?", 12, "La metà di 24 è 12.", 3),
+
+  choice("s2-geo-1", "seconda", "geometria-base", "Quale figura ha 3 lati?", ["Triangolo", "Quadrato", "Cerchio", "Rettangolo"], "Triangolo", "Il triangolo ha 3 lati.", 1),
+  numeric("s2-geo-2", "seconda", "geometria-base", "Quanti lati ha un quadrato?", 4, "Il quadrato ha 4 lati.", 1),
+  choice("s2-geo-3", "seconda", "geometria-base", "Quale figura non ha angoli?", ["Cerchio", "Rettangolo", "Triangolo", "Quadrato"], "Cerchio", "Il cerchio non ha angoli.", 1),
+  choice("s2-geo-4", "seconda", "geometria-base", "Quale oggetto assomiglia a un rettangolo?", ["Una porta", "Una ruota", "Una palla", "Una stella"], "Una porta", "La porta ha una forma simile a un rettangolo.", 2),
+  numeric("s2-geo-5", "seconda", "geometria-base", "Quanti vertici ha un triangolo?", 3, "Il triangolo ha 3 vertici.", 2),
+  choice("s2-geo-6", "seconda", "geometria-base", "Quale figura ha tutti i lati uguali?", ["Quadrato", "Rettangolo", "Cerchio", "Ovale"], "Quadrato", "Nel quadrato i lati sono tutti uguali.", 2),
+  word("s2-geo-7", "seconda", "geometria-base", "Disegno 2 triangoli e 1 quadrato. Quante figure disegno in tutto?", 3, "2 + 1 = 3 figure.", 3),
+);
+
+terza.push(
+  numeric("s3-cs-1", "terza", "calcolo-scritto", "Calcola in colonna: 126 + 213", 339, "Sommi unità, decine e centinaia: 126 + 213 = 339.", 1),
+  numeric("s3-cs-2", "terza", "calcolo-scritto", "Calcola: 245 - 120", 125, "245 - 120 = 125.", 1),
+  choice("s3-cs-3", "terza", "calcolo-scritto", "In 38 + 47, perché è utile passare da 38 a 40?", ["Per fare un numero tondo", "Per togliere decine", "Per dividere", "Per cambiare segno"], "Per fare un numero tondo", "I numeri tondi rendono il calcolo più semplice.", 1),
+  numeric("s3-cs-4", "terza", "calcolo-scritto", "Calcola: 68 + 57", 125, "68 + 57 = 125.", 2),
+  numeric("s3-cs-5", "terza", "calcolo-scritto", "Calcola: 300 - 76", 224, "300 - 76 = 224.", 2),
+  word("s3-cs-6", "terza", "calcolo-scritto", "La biblioteca ha 128 libri. Ne arrivano altri 45. Quanti libri ci sono?", 173, "128 + 45 = 173.", 2),
+  bar("s3-cs-7", "terza", "calcolo-scritto", "Una barra totale vale 240. Una parte vale 85. Quanto vale l'altra parte?", ["155", "165", "145", "325"], "155", "240 - 85 = 155.", 3, "Totale 240 | parte 85 | parte mancante ?"),
+
+  choice("s3-fra-1", "terza", "frazioni-base", "Quale frazione rappresenta metà?", ["1/2", "1/3", "1/4", "2/3"], "1/2", "Metà significa una parte su due uguali.", 1),
+  choice("s3-fra-2", "terza", "frazioni-base", "Una pizza è divisa in 4 parti uguali e ne mangio 1. Che frazione mangio?", ["1/4", "1/2", "3/4", "4/1"], "1/4", "Mangio una parte su quattro.", 1),
+  numeric("s3-fra-3", "terza", "frazioni-base", "Quante metà servono per formare un intero?", 2, "Due metà formano l'intero.", 1),
+  choice("s3-fra-4", "terza", "frazioni-base", "Quale frazione è più grande?", ["1/2", "1/4", "1/8", "1/10"], "1/2", "Se l'intero è uguale, una metà è più grande di un quarto, un ottavo e un decimo.", 2),
+  bar("s3-fra-5", "terza", "frazioni-base", "Una barra è divisa in 3 parti uguali. Ne coloro 2. Quale frazione è colorata?", ["2/3", "1/3", "3/2", "2/5"], "2/3", "Sono colorate 2 parti su 3.", 2, "Barra divisa in 3 parti uguali, 2 colorate"),
+  word("s3-fra-6", "terza", "frazioni-base", "Di 12 caramelle, metà sono alla menta. Quante sono alla menta?", 6, "La metà di 12 è 6.", 2),
+  word("s3-fra-7", "terza", "frazioni-base", "Un foglio è diviso in 4 parti uguali. Coloro 3 parti. Quante parti restano bianche?", 1, "4 parti totali meno 3 colorate = 1 parte bianca.", 3),
+);
+
+quarta.push(
+  numeric("s4-op-1", "quarta", "operazioni-strategiche", "Calcola: 25 x 4", 100, "25 x 4 fa 100.", 1),
+  numeric("s4-op-2", "quarta", "operazioni-strategiche", "Calcola: 360 : 6", 60, "36 : 6 = 6, quindi 360 : 6 = 60.", 1),
+  choice("s4-op-3", "quarta", "operazioni-strategiche", "Quale strategia aiuta per 48 x 5?", ["48 x 10 e poi metà", "48 + 5", "48 - 5", "48 : 10"], "48 x 10 e poi metà", "Moltiplicare per 5 è come moltiplicare per 10 e dimezzare.", 2),
+  numeric("s4-op-4", "quarta", "operazioni-strategiche", "Calcola: 125 + 375", 500, "125 + 375 = 500.", 2),
+  numeric("s4-op-5", "quarta", "operazioni-strategiche", "Calcola: 900 - 275", 625, "900 - 275 = 625.", 2),
+  word("s4-op-6", "quarta", "operazioni-strategiche", "Un laboratorio prepara 12 scatole con 18 pezzi ciascuna. Quanti pezzi prepara?", 216, "12 x 18 = 216.", 3),
+  bar("s4-op-7", "quarta", "operazioni-strategiche", "Una barra totale vale 420 ed è divisa in 7 parti uguali. Quanto vale ogni parte?", ["60", "70", "50", "80"], "60", "420 : 7 = 60.", 3, "Totale 420 | 7 parti uguali"),
+
+  choice("s4-pf-1", "quarta", "problemi-con-frazioni", "Di una torta divisa in 8 parti, ne mangio 2. Quale frazione resta?", ["6/8", "2/8", "8/6", "1/8"], "6/8", "Restano 8 - 2 = 6 parti su 8.", 1),
+  numeric("s4-pf-2", "quarta", "problemi-con-frazioni", "La metà di 30 bambini partecipa al laboratorio. Quanti bambini partecipano?", 15, "La metà di 30 è 15.", 1),
+  choice("s4-pf-3", "quarta", "problemi-con-frazioni", "Quale operazione ti aiuta a trovare 1/4 di 20?", ["20 : 4", "20 x 4", "20 + 4", "20 - 4"], "20 : 4", "Per trovare un quarto dividi l'intero in 4 parti uguali.", 2),
+  word("s4-pf-4", "quarta", "problemi-con-frazioni", "Un nastro misura 24 cm. Ne uso 1/3. Quanti cm uso?", 8, "24 : 3 = 8.", 2),
+  bar("s4-pf-5", "quarta", "problemi-con-frazioni", "Una barra da 40 è divisa in 5 parti uguali. Ne coloro 2 parti. Quanto vale la parte colorata?", ["16", "8", "20", "10"], "16", "Ogni parte vale 8. Due parti valgono 16.", 2, "Totale 40 | 5 parti uguali | 2 parti colorate"),
+  word("s4-pf-6", "quarta", "problemi-con-frazioni", "In una classe ci sono 28 alunni. 1/4 porta il quaderno rosso. Quanti alunni lo portano?", 7, "28 : 4 = 7.", 3),
+  word("s4-pf-7", "quarta", "problemi-con-frazioni", "Una raccolta ha 36 figurine. 2/3 sono animali. Quante figurine di animali ci sono?", 24, "36 : 3 = 12 e 2 parti valgono 24.", 3),
+);
+
 const outputs = [
   ["exercises-seconda.json", seconda],
   ["exercises-terza.json", terza],
