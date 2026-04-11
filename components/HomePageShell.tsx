@@ -283,7 +283,7 @@ function LearnerDashboard({
             </div>
           </div>
 
-          <GradeStartPanel />
+          <GradeStartPanel compact />
         </div>
       </section>
     </div>
