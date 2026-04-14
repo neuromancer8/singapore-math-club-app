@@ -46,17 +46,19 @@ export function Header() {
         </Link>
 
         <nav className="flex flex-wrap gap-2 text-sm font-extrabold text-slate-800">
-          <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">
-            Home
-          </Link>
           {session ? (
-            <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">
-              Risultati
-            </Link>
+            <>
+              <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">
+                Home
+              </Link>
+              <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">
+                Risultati
+              </Link>
+              <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">
+                Genitori
+              </Link>
+            </>
           ) : null}
-          <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">
-            Genitori
-          </Link>
           {session && progress?.currentGrade ? (
             <span className="pill bg-white ring-1 ring-black/5 shadow-sm">
               Classe attiva: {progress.currentGrade}
