@@ -17,8 +17,10 @@ export function Header() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    setSession(getAuthSession());
-    setProgress(getProgress());
+    const existingSession = getAuthSession();
+
+    setSession(existingSession);
+    setProgress(existingSession ? getProgress() : null);
   }, []);
 
   const avatar = session ? getAvatarOption(session.avatarId) : undefined;
