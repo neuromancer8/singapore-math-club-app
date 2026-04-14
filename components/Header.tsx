@@ -53,7 +53,7 @@ export function Header() {
           <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">
             Genitori
           </Link>
-          {progress?.currentGrade ? (
+          {session && progress?.currentGrade ? (
             <span className="pill bg-white ring-1 ring-black/5 shadow-sm">
               Classe attiva: {progress.currentGrade}
             </span>

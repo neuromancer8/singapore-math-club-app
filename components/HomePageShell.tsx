@@ -52,7 +52,7 @@ function PublicHome({ totalExercises, totalTopics }: { totalExercises: number; t
             <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
               Metodo Singapore Math per la primaria
             </div>
-            <h1 className="section-title mt-5 max-w-3xl text-5xl font-black leading-none text-slate-900 md:text-6xl">
+            <h1 className="section-title mt-5 max-w-3xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
               Imparare la matematica con immagini, logica e piccoli passi sicuri.
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-slate-600">
@@ -192,7 +192,7 @@ function LearnerDashboard({
               <div className={`flex h-24 w-24 items-center justify-center rounded-[32px] bg-gradient-to-br ${avatar.gradient} text-5xl shadow-lg ring-4 ring-white`}>
                 <span aria-hidden="true">{avatar.symbol}</span>
               </div>
-              <h1 className="section-title m-0 max-w-2xl text-5xl font-black leading-none text-slate-900 md:text-6xl">
+              <h1 className="section-title m-0 max-w-2xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
                 Ciao {session.firstName}, questo e il tuo percorso.
               </h1>
             </div>

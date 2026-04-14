@@ -48,10 +48,7 @@ export default function GenitoriPage() {
         <div className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-cyan-300/20 blur-2xl" />
 
         <div className="relative max-w-3xl">
-          <div className="inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-black tracking-wide backdrop-blur">
-            Dashboard premium
-          </div>
-          <h1 className="section-title mt-5 text-5xl font-black leading-none md:text-6xl">Controllo chiaro, visivo e immediato.</h1>
+          <h1 className="section-title text-4xl font-black leading-tight md:text-5xl">Controllo chiaro, visivo e immediato.</h1>
           <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-white/85">
             Un pannello per genitori e docenti con andamento, accuratezza, badge e fotografia rapida del percorso. Più vicino a un prodotto moderno, meno a un semplice riepilogo.
           </p>
