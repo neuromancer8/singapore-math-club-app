@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { AvatarPicker } from "@/components/AvatarPicker";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
@@ -36,7 +35,6 @@ export function HomePageShell({
       progress={progress}
       totalExercises={totalExercises}
       totalTopics={totalTopics}
-      onSessionChange={setSession}
     />
   );
 }
@@ -123,13 +121,11 @@ function LearnerDashboard({
   progress,
   totalExercises,
   totalTopics,
-  onSessionChange,
 }: {
   session: AuthSession;
   progress: SavedProgress;
   totalExercises: number;
   totalTopics: number;
-  onSessionChange: (session: AuthSession) => void;
 }) {
   const activeGrade = progress.currentGrade ?? session.learnerGrade;
   const activeGradeMeta = grades.find((grade) => grade.value === activeGrade) ?? grades[0];
@@ -322,8 +318,6 @@ function LearnerDashboard({
         </div>
 
         <div className="space-y-6">
-          <AvatarPicker session={session} onChange={onSessionChange} />
-
           <div className="card p-6 md:p-8">
             <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Prossima azione</p>
             <h2 className="section-title mt-3 text-4xl font-black text-slate-900">Cosa facciamo adesso</h2>
