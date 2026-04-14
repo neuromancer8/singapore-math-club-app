@@ -49,9 +49,11 @@ export function Header() {
           <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">
             Home
           </Link>
-          <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">
-            Risultati
-          </Link>
+          {session ? (
+            <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">
+              Risultati
+            </Link>
+          ) : null}
           <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">
             Genitori
           </Link>
