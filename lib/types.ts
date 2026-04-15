@@ -68,6 +68,7 @@ export interface AuthSession {
   username: string;
   role: "admin";
   loggedInAt: string;
+  lastActivityAt: string;
   firstName: string;
   lastName: string;
   fullName: string;

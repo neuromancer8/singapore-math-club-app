@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { getAvatarOption } from "@/lib/avatars";
-import { getAuthSession, getDemoCredentials, login, logout } from "@/lib/auth";
+import { getAuthSession, getDemoCredentials, login, logout, refreshAuthActivity } from "@/lib/auth";
 import { getLocale, gradeLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
 import type { AuthSession, SavedProgress } from "@/lib/types";
@@ -28,6 +28,48 @@ export function Header() {
     setSession(existingSession);
     setProgress(existingSession ? getProgress() : null);
   }, []);
+
+  useEffect(() => {
+    if (!session) {
+      return;
+    }
+
+    let lastRefresh = 0;
+
+    const refreshOnActivity = () => {
+      const now = Date.now();
+
+      if (now - lastRefresh < 60_000) {
+        return;
+      }
+
+      lastRefresh = now;
+      refreshAuthActivity();
+    };
+
+    const checkSession = () => {
+      const activeSession = getAuthSession({ refreshActivity: false });
+
+      if (!activeSession) {
+        logout();
+        window.location.reload();
+      }
+    };
+
+    const events = ["click", "keydown", "pointermove", "scroll", "touchstart"];
+    events.forEach((eventName) => window.addEventListener(eventName, refreshOnActivity, { passive: true }));
+    const intervalId = window.setInterval(checkSession, 60_000);
+
+    return () => {
+      events.forEach((eventName) => window.removeEventListener(eventName, refreshOnActivity));
+      window.clearInterval(intervalId);
+    };
+  }, [session]);
+
+  const handleLogout = () => {
+    logout();
+    window.location.reload();
+  };
 
   const avatar = session ? getAvatarOption(session.avatarId) : undefined;
   const t = uiText[locale];
@@ -72,19 +114,28 @@ export function Header() {
             </span>
           ) : null}
           {session ? (
-            <button
-              type="button"
-              className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-white px-2 py-1 ring-1 ring-black/5 shadow-sm transition hover:-translate-y-0.5"
-              onClick={() => setProfileOpen(true)}
-              aria-label={t.profile}
-            >
-              {avatar ? (
-                <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${avatar.gradient} text-lg`} aria-label={avatar.label}>
-                  {avatar.symbol}
-                </span>
-              ) : null}
-              <span className="rounded-full px-3 py-2 font-extrabold text-slate-800">{t.profile}</span>
-            </button>
+            <>
+              <button
+                type="button"
+                className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-white px-2 py-1 ring-1 ring-black/5 shadow-sm transition hover:-translate-y-0.5"
+                onClick={() => setProfileOpen(true)}
+                aria-label={t.profile}
+              >
+                {avatar ? (
+                  <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${avatar.gradient} text-lg`} aria-label={avatar.label}>
+                    {avatar.symbol}
+                  </span>
+                ) : null}
+                <span className="rounded-full px-3 py-2 font-extrabold text-slate-800">{t.profile}</span>
+              </button>
+              <button
+                type="button"
+                className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+                onClick={handleLogout}
+              >
+                {t.logout}
+              </button>
+            </>
           ) : (
             <button
               type="button"
@@ -207,10 +258,7 @@ export function Header() {
               <button
                 type="button"
                 className="cta-secondary cursor-pointer border-0"
-                onClick={() => {
-                  logout();
-                  window.location.reload();
-                }}
+                onClick={handleLogout}
               >
                 {t.logoutFrom} {session.firstName}
               </button>

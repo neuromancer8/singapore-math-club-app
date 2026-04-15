@@ -4,6 +4,7 @@ import { isAvatarId } from "@/lib/avatars";
 import type { AuthSession, AvatarId } from "@/lib/types";
 
 const AUTH_STORAGE_KEY = "singapore-math-auth";
+const AUTH_TIMEOUT_MS = 24 * 60 * 60 * 1000;
 
 const demoCredentials = {
   username: "admin",
@@ -25,7 +26,7 @@ export function getDemoProfile() {
   return demoProfile;
 }
 
-export function getAuthSession(): AuthSession | undefined {
+export function getAuthSession(options: { refreshActivity?: boolean } = {}): AuthSession | undefined {
   if (typeof window === "undefined") {
     return undefined;
   }
@@ -37,11 +38,21 @@ export function getAuthSession(): AuthSession | undefined {
 
   try {
     const parsed = JSON.parse(raw) as Partial<AuthSession>;
+    const now = Date.now();
+    const loggedInAt = typeof parsed.loggedInAt === "string" ? parsed.loggedInAt : new Date(now).toISOString();
+    const lastActivityAt = typeof parsed.lastActivityAt === "string" ? parsed.lastActivityAt : loggedInAt;
+    const lastActivityTime = Date.parse(lastActivityAt);
 
-    return {
+    if (!Number.isFinite(lastActivityTime) || now - lastActivityTime > AUTH_TIMEOUT_MS) {
+      localStorage.removeItem(AUTH_STORAGE_KEY);
+      return undefined;
+    }
+
+    const session: AuthSession = {
       username: typeof parsed.username === "string" ? parsed.username : demoCredentials.username,
       role: "admin",
-      loggedInAt: typeof parsed.loggedInAt === "string" ? parsed.loggedInAt : new Date().toISOString(),
+      loggedInAt,
+      lastActivityAt: options.refreshActivity === false ? lastActivityAt : new Date(now).toISOString(),
       firstName: typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName,
       lastName: typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName,
       fullName:
@@ -51,9 +62,35 @@ export function getAuthSession(): AuthSession | undefined {
       learnerGrade: parsed.learnerGrade ?? demoProfile.learnerGrade,
       avatarId: isAvatarId(parsed.avatarId) ? parsed.avatarId : demoProfile.avatarId,
     };
+
+    if (options.refreshActivity !== false) {
+      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
+    }
+
+    return session;
   } catch {
     return undefined;
   }
+}
+
+export function refreshAuthActivity() {
+  if (typeof window === "undefined") {
+    return undefined;
+  }
+
+  const current = getAuthSession({ refreshActivity: false });
+  if (!current) {
+    return undefined;
+  }
+
+  const next: AuthSession = {
+    ...current,
+    lastActivityAt: new Date().toISOString(),
+  };
+
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(next));
+
+  return next;
 }
 
 export function saveAvatarSelection(avatarId: AvatarId) {
@@ -88,6 +125,7 @@ export function login(username: string, password: string) {
     username: demoCredentials.username,
     role: "admin",
     loggedInAt: new Date().toISOString(),
+    lastActivityAt: new Date().toISOString(),
     firstName: demoProfile.firstName,
     lastName: demoProfile.lastName,
     fullName: `${demoProfile.firstName} ${demoProfile.lastName}`,
