@@ -114,10 +114,10 @@ export function Header() {
             </span>
           ) : null}
           {session ? (
-            <>
+            <div className="flex items-center gap-1 rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
               <button
                 type="button"
-                className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-white px-2 py-1 ring-1 ring-black/5 shadow-sm transition hover:-translate-y-0.5"
+                className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-transparent px-1 py-0.5 transition hover:-translate-y-0.5"
                 onClick={() => setProfileOpen(true)}
                 aria-label={t.profile}
               >
@@ -130,12 +130,12 @@ export function Header() {
               </button>
               <button
                 type="button"
-                className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+                className="cursor-pointer rounded-full border-0 bg-rose-50 px-4 py-3 font-extrabold text-rose-700 transition hover:-translate-y-0.5 hover:bg-rose-100"
                 onClick={handleLogout}
               >
                 {t.logout}
               </button>
-            </>
+            </div>
           ) : (
             <button
               type="button"
