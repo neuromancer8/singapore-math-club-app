@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { gradeLabel, type Locale } from "@/lib/i18n";
 import type { GradeOption } from "@/lib/types";
 
 function gradientForGrade(value: GradeOption["value"]) {
@@ -7,7 +8,10 @@ function gradientForGrade(value: GradeOption["value"]) {
   return "from-emerald-300 via-lime-200 to-white";
 }
 
-export function GradeCard({ grade, totalExercises }: { grade: GradeOption; totalExercises: number }) {
+export function GradeCard({ grade, totalExercises, locale = "it" }: { grade: GradeOption; totalExercises: number; locale?: Locale }) {
+  const title = gradeLabel(grade.value, locale);
+  const subtitle = locale === "it" ? grade.subtitle : subtitleForGrade(grade.value);
+
   return (
     <Link
       href={`/classe/${grade.value}`}
@@ -16,13 +20,21 @@ export function GradeCard({ grade, totalExercises }: { grade: GradeOption; total
       <div className="space-y-4">
         <span className="pill w-fit bg-white/85 text-slate-900">{grade.value}</span>
         <div>
-          <h2 className="section-title m-0 text-3xl font-black text-slate-900">{grade.title}</h2>
-          <p className="mt-2 text-base font-bold leading-7 text-slate-700">{grade.subtitle}</p>
+          <h2 className="section-title m-0 text-3xl font-black text-slate-900">{title}</h2>
+          <p className="mt-2 text-base font-bold leading-7 text-slate-700">{subtitle}</p>
         </div>
       </div>
       <div className="mt-6 rounded-[24px] bg-white/85 px-4 py-3 text-sm font-extrabold text-slate-700">
-        {totalExercises} esercizi disponibili. Entra come {grade.title.toLowerCase()}.
+        {locale === "it"
+          ? `${totalExercises} esercizi disponibili. Entra come ${grade.title.toLowerCase()}.`
+          : `${totalExercises} exercises available. Enter as ${title.toLowerCase()}.`}
       </div>
     </Link>
   );
+}
+
+function subtitleForGrade(value: GradeOption["value"]) {
+  if (value === "seconda") return "Numbers, additions, subtractions, first problems";
+  if (value === "terza") return "Multiplication, simple division, multi-step problems";
+  return "Complex problems, intuitive fractions, bar models";
 }

@@ -1,11 +1,13 @@
-export function ProgressBar({ current, total }: { current: number; total: number }) {
+import type { Locale } from "@/lib/i18n";
+
+export function ProgressBar({ current, total, locale = "it" }: { current: number; total: number; locale?: Locale }) {
   const percentage = total === 0 ? 0 : Math.round((current / total) * 100);
 
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between text-sm font-extrabold text-slate-700">
         <span>
-          Esercizio {current} di {total}
+          {locale === "it" ? "Esercizio" : "Exercise"} {current} {locale === "it" ? "di" : "of"} {total}
         </span>
         <span>{percentage}%</span>
       </div>

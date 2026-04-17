@@ -1,6 +1,6 @@
 export type Locale = "it" | "en";
 
-const LOCALE_STORAGE_KEY = "singapore-math-locale";
+export const LOCALE_STORAGE_KEY = "singapore-math-locale";
 
 export const defaultLocale: Locale = "it";
 
@@ -33,6 +33,75 @@ export function gradeLabel(grade: string, locale: Locale) {
   };
 
   return labels[locale][grade] ?? grade;
+}
+
+const topicTranslations: Record<
+  string,
+  { en: { label: string; description: string }; it?: { label: string; description: string } }
+> = {
+  numeri: { en: { label: "Numbers", description: "Count, order and compare" } },
+  "decine-unita": { en: { label: "Tens and ones", description: "Build numbers with place value" } },
+  "addizione-sottrazione": { en: { label: "Addition and subtraction", description: "Calculation and strategies" } },
+  problemi: { en: { label: "Word problems", description: "Short problems in words" } },
+  "bar-model-base": { en: { label: "Basic bar model", description: "Represent quantities with visual bars" } },
+  "doppi-meta": { en: { label: "Doubles and halves", description: "Double, halve and reason with parts" } },
+  "geometria-base": { en: { label: "Basic geometry", description: "Shapes, sides and simple positions" } },
+  "misure-tempo": { en: { label: "Measures and time", description: "Read simple measures, clocks and sequences" } },
+  moltiplicazione: { en: { label: "Multiplication", description: "Groups and repeated addition" } },
+  divisione: { en: { label: "Division", description: "Sharing and grouping" } },
+  "problemi-a-passi": { en: { label: "Multi-step problems", description: "Choose the right order of operations" } },
+  "bar-model": { en: { label: "Bar model", description: "Visualise the problem" } },
+  misure: { en: { label: "Measures", description: "Lengths, masses and capacity" } },
+  "geometria-perimetro": { en: { label: "Geometry and perimeter", description: "Measure sides and build shapes" } },
+  "calcolo-scritto": { en: { label: "Written calculation", description: "Organised strategies for longer operations" } },
+  "frazioni-base": { en: { label: "Basic fractions", description: "Halves, thirds and quarters with images" } },
+  "problemi-avanzati": { en: { label: "Advanced problems", description: "More steps, more strategies" } },
+  frazioni: { en: { label: "Intuitive fractions", description: "Parts of the whole" } },
+  "bar-model-avanzato": { en: { label: "Advanced bar model", description: "Represent and solve" } },
+  equivalenze: { en: { label: "Unit conversions", description: "Change units without losing meaning" } },
+  "divisioni-con-resto": { en: { label: "Division with remainders", description: "Interpret what is left over" } },
+  "moltiplicazioni-grandi": { en: { label: "Large multiplications", description: "Break numbers apart and recombine" } },
+  "geometria-area": { en: { label: "Geometry and area", description: "Cover surfaces with square units" } },
+  "problemi-con-frazioni": { en: { label: "Fraction problems", description: "Use parts of a whole in real problems" } },
+};
+
+export function topicLabel(slug: string, fallback: string, locale: Locale) {
+  if (locale === "it") return fallback;
+  return topicTranslations[slug]?.en.label ?? fallback;
+}
+
+export function topicDescription(slug: string, fallback: string, locale: Locale) {
+  if (locale === "it") return fallback;
+  return topicTranslations[slug]?.en.description ?? fallback;
+}
+
+export function difficultyLabel(value: string | number, locale: Locale) {
+  const key = String(value);
+  const labels = {
+    it: { "1": "facile", "2": "media", "3": "avanzata", facile: "facile", media: "media", avanzata: "avanzata", all: "tutte le difficoltà" },
+    en: { "1": "easy", "2": "medium", "3": "advanced", facile: "easy", media: "medium", avanzata: "advanced", all: "all difficulties" },
+  } as const;
+
+  return labels[locale][key as keyof (typeof labels)[Locale]] ?? key;
+}
+
+export function exerciseTypeLabel(type: string, locale: Locale) {
+  const labels = {
+    it: {
+      "multiple-choice": "Scelta multipla",
+      "numeric-input": "Numero",
+      "word-problem": "Problema",
+      "bar-model": "Bar model",
+    },
+    en: {
+      "multiple-choice": "Multiple choice",
+      "numeric-input": "Number",
+      "word-problem": "Word problem",
+      "bar-model": "Bar model",
+    },
+  } as const;
+
+  return labels[locale][type as keyof (typeof labels)[Locale]] ?? type;
 }
 
 export const uiText = {

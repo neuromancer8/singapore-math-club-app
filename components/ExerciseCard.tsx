@@ -6,6 +6,7 @@ import { awardBadges } from "@/lib/badges";
 import { checkExerciseAnswer, createSessionSummary } from "@/lib/scoring";
 import { getProgress, saveSessionResult } from "@/lib/progress";
 import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
+import { difficultyLabel, exerciseTypeLabel, getLocale, topicLabel, type Locale } from "@/lib/i18n";
 import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
 
@@ -33,6 +34,7 @@ export function ExerciseCard({
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
   const [checked, setChecked] = useState(false);
   const [results, setResults] = useState<SessionAnswer[]>([]);
+  const [locale, setLocale] = useState<Locale>("it");
 
   useEffect(() => {
     const progress = getProgress();
@@ -51,6 +53,7 @@ export function ExerciseCard({
     setAnswers({});
     setChecked(false);
     setResults([]);
+    setLocale(getLocale());
   }, [difficultyFilter, exercises, grade, mode, topic]);
 
   const exercise = sessionExercises[index];
@@ -62,7 +65,7 @@ export function ExerciseCard({
   );
 
   if (!exercise) {
-    return <div className="card p-6 text-lg font-bold text-slate-700">Preparazione della sessione...</div>;
+    return <div className="card p-6 text-lg font-bold text-slate-700">{locale === "it" ? "Preparazione della sessione..." : "Preparing the session..."}</div>;
   }
 
   const answer = answers[exercise.id] ?? "";
@@ -126,12 +129,14 @@ export function ExerciseCard({
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="pill bg-[var(--surface-soft)] text-slate-900">{grade}</div>
-            <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{topicTitle}</h1>
+            <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{topicLabel(topic, topicTitle, locale)}</h1>
             <p className="mt-3 mb-0 text-base font-bold text-slate-600">
-              Esercizio {index + 1} di {sessionExercises.length}. Sessione breve, guidata e con feedback immediato.
+              {locale === "it"
+                ? `Esercizio ${index + 1} di ${sessionExercises.length}. Sessione breve, guidata e con feedback immediato.`
+                : `Exercise ${index + 1} of ${sessionExercises.length}. A short, guided session with immediate feedback.`}
             </p>
           </div>
-          <div className="text-2xl" aria-label={`${sessionStars} stelle`}>
+          <div className="text-2xl" aria-label={`${sessionStars} ${locale === "it" ? "stelle" : "stars"}`}>
             {Array.from({ length: 3 }).map((_, starIndex) => (
               <span key={starIndex} className={starIndex < sessionStars ? "opacity-100" : "opacity-25"}>
                 ★
@@ -141,16 +146,16 @@ export function ExerciseCard({
         </div>
 
         <div className="mt-5">
-          <ProgressBar current={index + 1} total={sessionExercises.length} />
+          <ProgressBar current={index + 1} total={sessionExercises.length} locale={locale} />
         </div>
 
         <div className="mt-6 rounded-[26px] bg-gradient-to-br from-white to-slate-50 p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
           <div className="flex flex-wrap gap-2">
-            <span className="pill bg-white ring-1 ring-black/5">{labelForType(exercise.type)}</span>
-            <span className="pill bg-[var(--sky)] text-slate-900">{labelForDifficulty(exercise.difficulty)}</span>
-            <span className="pill bg-white ring-1 ring-black/5">{progressRatio}% completato</span>
-            <span className="pill bg-white ring-1 ring-black/5">{labelForMode(mode)}</span>
-            <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter)}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{exerciseTypeLabel(exercise.type, locale)}</span>
+            <span className="pill bg-[var(--sky)] text-slate-900">{difficultyLabel(exercise.difficulty, locale)}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{progressRatio}% {locale === "it" ? "completato" : "complete"}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{labelForMode(mode, locale)}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter, locale)}</span>
           </div>
 
           <h2 className="mt-4 text-2xl font-black text-slate-900">{exercise.prompt}</h2>
@@ -159,11 +164,15 @@ export function ExerciseCard({
             <div className="soft-card mt-4 p-4 text-base font-bold text-slate-700">{exercise.visualModel}</div>
           ) : null}
 
-          <div className="mt-6">{renderAnswerArea(exercise, answer, setAnswer, checked ? goNext : validateCurrent, !checked && canCheck)}</div>
+          <div className="mt-6">{renderAnswerArea(exercise, answer, setAnswer, checked ? goNext : validateCurrent, !checked && canCheck, locale)}</div>
 
           {checked && currentResult ? (
             <div className={`mt-6 rounded-[24px] px-4 py-4 text-base font-bold ${currentResult.correct ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}`}>
-              <p className="m-0">{currentResult.correct ? "Bravissimo! Risposta corretta." : "Riproviamo leggendo bene la spiegazione."}</p>
+              <p className="m-0">
+                {currentResult.correct
+                  ? locale === "it" ? "Bravissimo! Risposta corretta." : "Great job! Correct answer."
+                  : locale === "it" ? "Riproviamo leggendo bene la spiegazione." : "Let's try again after reading the explanation carefully."}
+              </p>
               <p className="mt-2 mb-0">{exercise.explanation}</p>
             </div>
           ) : null}
@@ -172,11 +181,13 @@ export function ExerciseCard({
         <div className="mt-6 flex flex-wrap gap-3">
           {!checked ? (
             <button type="button" className="cta-primary border-0" onClick={validateCurrent} disabled={!canCheck}>
-              Controlla
+              {locale === "it" ? "Controlla" : "Check"}
             </button>
           ) : (
             <button type="button" className="cta-primary border-0" onClick={goNext}>
-              {index === sessionExercises.length - 1 ? "Vai ai risultati" : "Prossimo esercizio"}
+              {index === sessionExercises.length - 1
+                ? locale === "it" ? "Vai ai risultati" : "Go to results"
+                : locale === "it" ? "Prossimo esercizio" : "Next exercise"}
             </button>
           )}
         </div>
@@ -184,13 +195,12 @@ export function ExerciseCard({
 
       <aside className="space-y-4">
         <div className="card p-5">
-          <h2 className="section-title m-0 text-3xl font-black text-slate-900">Metodo</h2>
+          <h2 className="section-title m-0 text-3xl font-black text-slate-900">{locale === "it" ? "Metodo" : "Method"}</h2>
           <div className="mt-4 space-y-3">
-            {[
-              "1. Capisci la situazione.",
-              "2. Disegna o immagina il modello.",
-              "3. Calcola e controlla.",
-            ].map((step) => (
+            {(locale === "it"
+              ? ["1. Capisci la situazione.", "2. Disegna o immagina il modello.", "3. Calcola e controlla."]
+              : ["1. Understand the situation.", "2. Draw or imagine the model.", "3. Calculate and check."]
+            ).map((step) => (
               <div key={step} className="rounded-[20px] bg-slate-50 px-4 py-3 text-base font-black text-slate-700">
                 {step}
               </div>
@@ -198,21 +208,23 @@ export function ExerciseCard({
           </div>
         </div>
         <div className="soft-card p-5">
-          <h3 className="m-0 text-xl font-black text-slate-900">Progressi</h3>
+          <h3 className="m-0 text-xl font-black text-slate-900">{locale === "it" ? "Progressi" : "Progress"}</h3>
           <p className="mt-3 mb-0 text-base font-bold text-slate-700">
-            Corrette finora: {correctCount} su {sessionExercises.length}
+            {locale === "it" ? "Corrette finora" : "Correct so far"}: {correctCount} {locale === "it" ? "su" : "of"} {sessionExercises.length}
           </p>
-          <p className="mt-2 mb-0 text-base font-bold text-slate-700">Risposte completate: {results.length}</p>
+          <p className="mt-2 mb-0 text-base font-bold text-slate-700">{locale === "it" ? "Risposte completate" : "Completed answers"}: {results.length}</p>
           <p className="mt-2 mb-0 text-base font-bold text-slate-700">
-            Mancano ancora: {remainingExercises < 0 ? 0 : remainingExercises}
+            {locale === "it" ? "Mancano ancora" : "Still remaining"}: {remainingExercises < 0 ? 0 : remainingExercises}
           </p>
         </div>
         <div className="rounded-[28px] border border-white/50 bg-white/75 p-5 shadow-[0_16px_50px_rgba(15,23,42,0.07)] backdrop-blur">
-          <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">Obiettivo della sessione</p>
+          <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Obiettivo della sessione" : "Session goal"}</p>
           <p className="mt-3 mb-0 text-lg font-black leading-8 text-slate-900">
             {mode === "adaptive"
-              ? adaptiveProfile.helper
-              : "Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento."}
+              ? locale === "it" ? adaptiveProfile.helper : adaptiveHelperText(adaptiveProfile.label)
+              : locale === "it"
+                ? "Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento."
+                : "Reach at least 2 stars to strengthen this topic and build confidence in reasoning."}
           </p>
         </div>
       </aside>
@@ -226,6 +238,7 @@ function renderAnswerArea(
   onChange: (value: AnswerValue) => void,
   onSubmit: () => void,
   canSubmit: boolean,
+  locale: Locale,
 ) {
   if (exercise.type === "multiple-choice" || exercise.type === "bar-model") {
     return (
@@ -249,7 +262,7 @@ function renderAnswerArea(
 
   return (
     <label className="block">
-      <span className="mb-3 block text-base font-black text-slate-700">Scrivi la risposta</span>
+      <span className="mb-3 block text-base font-black text-slate-700">{locale === "it" ? "Scrivi la risposta" : "Write the answer"}</span>
       <input
         type="text"
         inputMode="numeric"
@@ -261,36 +274,25 @@ function renderAnswerArea(
           }
         }}
         className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-2xl font-black text-slate-900"
-        placeholder="Es. 12"
+        placeholder={locale === "it" ? "Es. 12" : "E.g. 12"}
       />
     </label>
   );
 }
 
-function labelForType(type: Exercise["type"]) {
-  switch (type) {
-    case "multiple-choice":
-      return "Scelta multipla";
-    case "numeric-input":
-      return "Numero";
-    case "word-problem":
-      return "Problema";
-    case "bar-model":
-      return "Bar model";
-  }
+function labelForDifficultyFilter(value: DifficultyFilter, locale: Locale) {
+  if (value === "all") return difficultyLabel("all", locale);
+  return `${locale === "it" ? "focus" : "focus"} ${difficultyLabel(value, locale)}`;
 }
 
-function labelForDifficulty(value: Exercise["difficulty"]) {
-  if (value === 1) return "facile";
-  if (value === 2) return "media";
-  return "avanzata";
-}
-
-function labelForDifficultyFilter(value: DifficultyFilter) {
-  if (value === "all") return "tutte le difficoltà";
-  return `focus ${value}`;
-}
-
-function labelForMode(mode: SessionMode) {
+function labelForMode(mode: SessionMode, locale: Locale) {
+  if (locale === "en") return mode === "adaptive" ? "adaptive path" : "balanced path";
   return mode === "adaptive" ? "percorso adattivo" : "percorso bilanciato";
+}
+
+function adaptiveHelperText(level: string) {
+  if (level === "rinforzo") return "More easy and medium exercises to strengthen the key steps.";
+  if (level === "sfida") return "More medium and advanced exercises to take the next step.";
+  if (level === "equilibrato") return "We start with a balanced mix to understand the level well.";
+  return "A balanced mix to keep reasoning steady.";
 }

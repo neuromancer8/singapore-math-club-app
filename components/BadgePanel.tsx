@@ -1,18 +1,36 @@
-export function BadgePanel({ badges }: { badges: string[] }) {
+import type { Locale } from "@/lib/i18n";
+
+export function BadgePanel({ badges, locale = "it" }: { badges: string[]; locale?: Locale }) {
   return (
     <div className="rounded-[28px] border border-white/50 bg-white/80 p-5 shadow-[0_18px_60px_rgba(76,29,149,0.12)] backdrop-blur">
-      <h3 className="m-0 text-xl font-black text-slate-900">Badge sbloccati</h3>
+      <h3 className="m-0 text-xl font-black text-slate-900">{locale === "it" ? "Badge sbloccati" : "Unlocked badges"}</h3>
       <div className="mt-4 flex flex-wrap gap-2">
         {badges.length > 0 ? (
           badges.map((badge) => (
             <span key={badge} className="pill bg-gradient-to-r from-fuchsia-500 via-violet-500 to-blue-500 text-white shadow-sm">
-              {badge}
+              {badgeLabel(badge, locale)}
             </span>
           ))
         ) : (
-          <p className="m-0 text-base font-bold text-slate-700">Continua a giocare per sbloccare i primi badge.</p>
+          <p className="m-0 text-base font-bold text-slate-700">
+            {locale === "it" ? "Continua a giocare per sbloccare i primi badge." : "Keep playing to unlock your first badges."}
+          </p>
         )}
       </div>
     </div>
   );
+}
+
+function badgeLabel(badge: string, locale: Locale) {
+  if (locale === "it") return badge;
+
+  const labels: Record<string, string> = {
+    "Primo passo": "First step",
+    "Due stelle": "Two stars",
+    "Tre stelle": "Three stars",
+    "Occhio matematico": "Math eye",
+    "Costanza 3 giorni": "3-day streak",
+  };
+
+  return labels[badge] ?? badge;
 }

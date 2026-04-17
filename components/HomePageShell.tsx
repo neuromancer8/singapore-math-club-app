@@ -7,7 +7,7 @@ import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
 import { getAvatarOption } from "@/lib/avatars";
 import { getAuthSession } from "@/lib/auth";
-import { getLocale, gradeLabel, uiText, type Locale } from "@/lib/i18n";
+import { getLocale, gradeLabel, topicDescription, topicLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { AuthSession, Grade, SavedProgress } from "@/lib/types";
 
@@ -350,8 +350,8 @@ function LearnerDashboard({
                       {index + 1}
                     </span>
                     <div>
-                      <h4 className="m-0 text-lg font-black leading-6 text-slate-900">{topic.label}</h4>
-                      <p className="mt-2 mb-0 text-sm font-bold leading-6 text-slate-600">{topic.description}</p>
+                      <h4 className="m-0 text-lg font-black leading-6 text-slate-900">{topicLabel(topic.slug, topic.label, locale)}</h4>
+                      <p className="mt-2 mb-0 text-sm font-bold leading-6 text-slate-600">{topicDescription(topic.slug, topic.description, locale)}</p>
                       <p className="mt-3 mb-0 text-xs font-black uppercase tracking-[0.16em] text-slate-400">
                         {completedTopicSet.has(topic.slug) ? t.review : t.recommended}
                       </p>
