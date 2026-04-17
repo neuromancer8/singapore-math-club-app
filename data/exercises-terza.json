@@ -260,9 +260,9 @@
     "explanationEn": "Division shares or groups into equal parts.",
     "optionsEn": [
       "24 objects in 6 equal groups",
+      "24 objects shared among 6 children",
       "24 + 6 objects",
-      "6 groups of 24",
-      "24 subtract 6 una volta"
+      "24 minus 6 once"
     ]
   },
   {
@@ -318,7 +318,7 @@
     "correctAnswer": "32 : 4",
     "explanation": "32 diviso 4 fa 8.",
     "difficulty": 3,
-    "promptEn": "Which divisione dà come risultato 8?",
+    "promptEn": "Which division gives 8 as the result?",
     "explanationEn": "32 divided 4 equals 8.",
     "optionsEn": [
       "32 : 4",
@@ -354,7 +354,7 @@
     "correctAnswer": "3 x 5",
     "explanation": "Prima trovi i biscotti nei sacchetti, poi aggiungi 4.",
     "difficulty": 1,
-    "promptEn": "Which operation do you do first? “3 sacchetti da 5 biscotti e poi ne aggiungo 4”.",
+    "promptEn": "Which operation do you do first? “3 bags of 5 biscuits and then I add 4”.",
     "explanationEn": "First trovi i biscuits nei sacchetti, then aggiungi 4.",
     "optionsEn": [
       "3 x 5",
@@ -390,7 +390,7 @@
     "correctAnswer": "Moltiplico, poi sottraggo",
     "explanation": "Prima trovi il totale, poi togli quelli regalati.",
     "difficulty": 2,
-    "promptEn": "Which plan is correct for: 5 pacchi da 8 quaderni, poi regalo 6 quaderni?",
+    "promptEn": "Which plan is correct for: 5 packs of 8 notebooks, then I give away 6 notebooks?",
     "explanationEn": "First find the total, then subtract the ones given away.",
     "optionsEn": [
       "I multiply, then subtract",
@@ -649,7 +649,7 @@
     "explanation": "2 - 1 = 1 litro.",
     "difficulty": 1,
     "promptEn": "A bottle contains 2 litres and I pour out 1 litres. How many litres remain?",
-    "explanationEn": "2 - 1 = 1 litro."
+    "explanationEn": "2 - 1 = 1 litre."
   },
   {
     "id": "s3-mis-4",
@@ -667,7 +667,7 @@
     "explanation": "La lunghezza si misura con righello o metro.",
     "difficulty": 2,
     "promptEn": "Which tool do you use to measure the length of a desk?",
-    "explanationEn": "The lunghezza misura with righello o metre.",
+    "explanationEn": "Length is measured with a ruler or a metre stick.",
     "optionsEn": [
       "Ruler or metre stick",
       "Scale",
@@ -822,7 +822,7 @@
     "correctAnswer": "Rettangolo",
     "explanation": "La descrizione corrisponde a un rettangolo.",
     "difficulty": 3,
-    "promptEn": "A shape ha 4 sides, due lunghi and due corti, and 4 corners retti. What shape è?",
+    "promptEn": "A shape has 4 sides, two long and two short, and 4 right angles. What shape is it?",
     "explanationEn": "The description matches a rectangle.",
     "optionsEn": [
       "Rectangle",
@@ -846,7 +846,7 @@
     "correctAnswer": "Pere",
     "explanation": "6 è il numero più grande.",
     "difficulty": 1,
-    "promptEn": "In the tabella apples=4, pere=6, banane=3. Which frutto is more numberso?",
+    "promptEn": "In the table apples=4, pears=6, bananas=3. Which fruit has the greatest number?",
     "explanationEn": "6 is the greatest number.",
     "optionsEn": [
       "Pears",
@@ -978,7 +978,7 @@
     "correctAnswer": "Per fare un numero tondo",
     "explanation": "I numeri tondi rendono il calcolo più semplice.",
     "difficulty": 1,
-    "promptEn": "In 38 + 47, perché is utile passare of 38 to 40?",
+    "promptEn": "In 38 + 47, why is it useful to move from 38 to 40?",
     "explanationEn": "Round numbers make the calculation easier.",
     "optionsEn": [
       "To make a round number",

@@ -421,7 +421,7 @@
     "explanation": "Cinque decimi più cinque decimi fanno un intero.",
     "difficulty": 1,
     "promptEn": "Complete: 2,5 + 0,5 =?",
-    "explanationEn": "Cinque decimi more cinque decimi make un whole."
+    "explanationEn": "Five tenths plus five tenths make one whole."
   },
   {
     "id": "s4-dec-2",
@@ -457,7 +457,7 @@
     "explanation": "3 euro e 50 centesimi si scrive 3,50.",
     "difficulty": 2,
     "promptEn": "How much is 3 euros and 50 cents written in euros?",
-    "explanationEn": "3 euros and 50 centesimi scrive 3,50."
+    "explanationEn": "3 euros and 50 cents is written as 3.50 euros."
   },
   {
     "id": "s4-dec-4",
@@ -475,7 +475,7 @@
     "explanation": "Otto decimi sono maggiori di cinque decimi.",
     "difficulty": 2,
     "promptEn": "Which comparison is correct?",
-    "explanationEn": "Otto decimi are maggiori of cinque decimi.",
+    "explanationEn": "Eight tenths are greater than five tenths.",
     "optionsEn": [
       "0,8 > 0,5",
       "0,3 > 0,7",
@@ -493,7 +493,7 @@
     "explanation": "1,5 - 0,5 = 1 litro.",
     "difficulty": 2,
     "promptEn": "A bottle contains 1,5 litres and I pour out 0,5 litres. How many litres remain?",
-    "explanationEn": "1,5 - 0,5 = 1 litro."
+    "explanationEn": "1.5 - 0.5 = 1 litre."
   },
   {
     "id": "s4-dec-6",
@@ -505,7 +505,7 @@
     "explanation": "Due decimi più tre decimi fanno cinque decimi.",
     "difficulty": 3,
     "promptEn": "Calculate: 4,2 + 0,3",
-    "explanationEn": "Due decimi more tre decimi make cinque decimi."
+    "explanationEn": "Two tenths plus three tenths make five tenths."
   },
   {
     "id": "s4-eq-1",
@@ -607,7 +607,7 @@
     "explanation": "500 ml sono mezzo litro.",
     "difficulty": 3,
     "promptEn": "What is the same amount as 500 ml?",
-    "explanationEn": "500 ml are mezzo litro.",
+    "explanationEn": "500 ml is half a litre.",
     "optionsEn": [
       "0,5 l",
       "5 l",
@@ -655,12 +655,12 @@
     "explanation": "L'area indica quanto spazio occupa la figura.",
     "difficulty": 1,
     "promptEn": "Area measures:",
-    "explanationEn": "L'area indica how much spazio occupa the shape.",
+    "explanationEn": "Area tells how much space a shape covers.",
     "optionsEn": [
-      "The inside space",
       "The border",
-      "The number of sides",
-      "The height"
+      "The inside space",
+      "The height",
+      "The number of sides"
     ]
   },
   {
@@ -672,8 +672,8 @@
     "correctAnswer": 18,
     "explanation": "Area = base x altezza = 18.",
     "difficulty": 2,
-    "promptEn": "What is the area of a 3 x 6 rectangle?",
-    "explanationEn": "Area = base x altezza = 18."
+    "promptEn": "What is the area of a 3 by 6 rectangle?",
+    "explanationEn": "Area = base x height = 18."
   },
   {
     "id": "s4-per-5",
@@ -702,7 +702,7 @@
     "correctAnswer": "Quadrato",
     "explanation": "4 x 4 = 16.",
     "difficulty": 3,
-    "promptEn": "Which shape has area 16 if the sides measure 4 and 4?",
+    "promptEn": "Which shape has area 16 if its sides measure 4 and 4?",
     "explanationEn": "4 x 4 = 16.",
     "optionsEn": [
       "Square",
@@ -726,7 +726,7 @@
     "correctAnswer": "Martedì",
     "explanation": "15 è il valore più alto.",
     "difficulty": 1,
-    "promptEn": "In un grafico: lun=12, mar=15, mer=9. Which day ha the valore more alto?",
+    "promptEn": "In a chart: Mon=12, Tue=15, Wed=9. Which day has the highest value?",
     "explanationEn": "15 is the highest value.",
     "optionsEn": [
       "Tuesday",
@@ -744,7 +744,7 @@
     "correctAnswer": 21,
     "explanation": "6 + 8 + 7 = 21.",
     "difficulty": 1,
-    "promptEn": "How many voti in tutto se una tabella shows 6, 8 and 7?",
+    "promptEn": "How many votes are there in all if a table shows 6, 8 and 7?",
     "explanationEn": "6 + 8 + 7 = 21."
   },
   {
@@ -780,7 +780,7 @@
     "correctAnswer": 3,
     "explanation": "14 - 11 = 3.",
     "difficulty": 2,
-    "promptEn": "In una tabella, the gruppo A ha 14 points and the gruppo B 11. Di how many points A supera B?",
+    "promptEn": "In a table, group A has 14 points and group B has 11. By how many points does A exceed B?",
     "explanationEn": "14 - 11 = 3."
   },
   {
@@ -798,7 +798,7 @@
     "correctAnswer": "6",
     "explanation": "10 - 4 = 6.",
     "difficulty": 2,
-    "promptEn": "Se una colonna sale of 4 to 10, of how much aumenta?",
+    "promptEn": "If a column rises from 4 to 10, how much does it increase?",
     "explanationEn": "10 - 4 = 6.",
     "optionsEn": [
       "6",
@@ -816,7 +816,7 @@
     "correctAnswer": 4,
     "explanation": "12 - 8 = 4.",
     "difficulty": 3,
-    "promptEn": "A grafico shows 8 books read in April and 12 to May. How many books in more to May?",
+    "promptEn": "A chart shows 8 books read in April and 12 in May. How many more books in May?",
     "explanationEn": "12 - 8 = 4."
   },
   {
@@ -877,7 +877,7 @@
     "explanation": "Conti i 2 piccoli e anche il triangolo grande formato dall'insieme.",
     "difficulty": 2,
     "promptEn": "How many tricorners vedi se una shape is formata of 2 tricorners piccoli and 1 great?",
-    "explanationEn": "Conti i 2 piccoli and anche the triangle great made dall'insieme."
+    "explanationEn": "You count the 2 small triangles and also the large triangle made by the whole figure."
   },
   {
     "id": "s4-log-4",
@@ -918,7 +918,7 @@
     "correctAnswer": "Nessuno",
     "explanation": "Senza altre informazioni nessun colore è sicuro al 100%.",
     "difficulty": 3,
-    "promptEn": "In una scatola ci are palline rosse, blu and verdi. Se ne prendo una senza guardare, which colour is certo?",
+    "promptEn": "In a box there are red, blue and green balls. If I take one without looking, which colour is certain?",
     "explanationEn": "Without more information, no colour is certain at 100%.",
     "optionsEn": [
       "None",
@@ -1077,7 +1077,7 @@
     "explanation": "Restano 8 - 2 = 6 parti su 8.",
     "difficulty": 1,
     "promptEn": "From a cake divided into 8 parts, I eat 2. What fraction remains?",
-    "explanationEn": "Restano 8 - 2 = 6 parts out of 8.",
+    "explanationEn": "There remain 8 - 2 = 6 parts out of 8.",
     "optionsEn": [
       "6/8",
       "2/8",
@@ -1130,7 +1130,7 @@
     "correctAnswer": 8,
     "explanation": "24 : 3 = 8.",
     "difficulty": 2,
-    "promptEn": "A nastro misura 24 cm. Ne uso 1/3. How many cm uso?",
+    "promptEn": "A ribbon measures 24 cm. I use 1/3 of it. How many cm do I use?",
     "explanationEn": "24 : 3 = 8."
   },
   {

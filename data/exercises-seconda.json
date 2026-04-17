@@ -246,7 +246,7 @@
     "correctAnswer": "50 + 7",
     "explanation": "57 si scompone in 50 e 7.",
     "difficulty": 2,
-    "promptEn": "Which scomposizione is corretta for 57?",
+    "promptEn": "Which decomposition is correct for 57?",
     "explanationEn": "57 scompone in 50 and 7.",
     "optionsEn": [
       "50 + 7",
@@ -677,7 +677,7 @@
     "explanation": "49 + 1 è il numero tondo successivo: 50.",
     "difficulty": 2,
     "promptEn": "Which strategia aiuta for 49 + 1?",
-    "explanationEn": "49 + 1 is the number tondo successivo: 50.",
+    "explanationEn": "49 + 1 reaches the next round number: 50.",
     "optionsEn": [
       "I reach 50",
       "I subtract 10",
@@ -736,7 +736,7 @@
     "correctAnswer": "30 - 8",
     "explanation": "Se spendi, devi togliere.",
     "difficulty": 2,
-    "promptEn": "Which operation do you choose to solve: “Avevo 30 euro, ne spendo 8”?",
+    "promptEn": "Which operation do you choose to solve: “I had 30 euros and I spend 8”?",
     "explanationEn": "If you spend, you have to subtract.",
     "optionsEn": [
       "30 - 8",
@@ -984,7 +984,7 @@
     "correctAnswer": 18,
     "explanation": "9 + 9 = 18.",
     "difficulty": 1,
-    "promptEn": "Complete: the doppio di 9 è __",
+    "promptEn": "Complete: double 9 is __",
     "explanationEn": "9 + 9 = 18."
   },
   {
@@ -1040,7 +1040,7 @@
     "difficulty": 2,
     "visualModel": "Totale 18 | 2 parti uguali",
     "promptEn": "A bar is worth 18 ed is divided in due equal parts. How much is worth una part?",
-    "explanationEn": "18 divided in due equal parts dà 9.",
+    "explanationEn": "18 divided into two equal parts gives 9.",
     "optionsEn": [
       "9",
       "8",
@@ -1191,6 +1191,6 @@
     "explanation": "2 + 1 = 3 figure.",
     "difficulty": 3,
     "promptEn": "I draw 2 triangles and 1 square. How many shapes do I draw in all?",
-    "explanationEn": "2 + 1 = 3 figure."
+    "explanationEn": "2 + 1 = 3 shapes."
   }
 ]
