@@ -69,6 +69,10 @@ export function ExerciseCard({
   }
 
   const answer = answers[exercise.id] ?? "";
+  const exercisePrompt = locale === "en" && exercise.promptEn ? exercise.promptEn : exercise.prompt;
+  const exerciseOptions = locale === "en" && exercise.optionsEn ? exercise.optionsEn : exercise.options;
+  const exerciseExplanation = locale === "en" && exercise.explanationEn ? exercise.explanationEn : exercise.explanation;
+  const exerciseVisualModel = locale === "en" && exercise.visualModelEn ? exercise.visualModelEn : exercise.visualModel;
 
   const canCheck = String(answer).trim().length > 0;
   const currentResult = results.find((item) => item.exerciseId === exercise.id);
@@ -158,13 +162,13 @@ export function ExerciseCard({
             <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter, locale)}</span>
           </div>
 
-          <h2 className="mt-4 text-2xl font-black text-slate-900">{exercise.prompt}</h2>
+          <h2 className="mt-4 text-2xl font-black text-slate-900">{exercisePrompt}</h2>
 
-          {exercise.visualModel ? (
-            <div className="soft-card mt-4 p-4 text-base font-bold text-slate-700">{exercise.visualModel}</div>
+          {exerciseVisualModel ? (
+            <div className="soft-card mt-4 p-4 text-base font-bold text-slate-700">{exerciseVisualModel}</div>
           ) : null}
 
-          <div className="mt-6">{renderAnswerArea(exercise, answer, setAnswer, checked ? goNext : validateCurrent, !checked && canCheck, locale)}</div>
+          <div className="mt-6">{renderAnswerArea(exercise, exerciseOptions, answer, setAnswer, checked ? goNext : validateCurrent, !checked && canCheck, locale)}</div>
 
           {checked && currentResult ? (
             <div className={`mt-6 rounded-[24px] px-4 py-4 text-base font-bold ${currentResult.correct ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}`}>
@@ -173,7 +177,7 @@ export function ExerciseCard({
                   ? locale === "it" ? "Bravissimo! Risposta corretta." : "Great job! Correct answer."
                   : locale === "it" ? "Riproviamo leggendo bene la spiegazione." : "Let's try again after reading the explanation carefully."}
               </p>
-              <p className="mt-2 mb-0">{exercise.explanation}</p>
+              <p className="mt-2 mb-0">{exerciseExplanation}</p>
             </div>
           ) : null}
         </div>
@@ -234,6 +238,7 @@ export function ExerciseCard({
 
 function renderAnswerArea(
   exercise: Exercise,
+  options: string[] | undefined,
   answer: AnswerValue,
   onChange: (value: AnswerValue) => void,
   onSubmit: () => void,
@@ -243,14 +248,15 @@ function renderAnswerArea(
   if (exercise.type === "multiple-choice" || exercise.type === "bar-model") {
     return (
       <div className="grid gap-3">
-        {exercise.options?.map((option) => {
-          const active = answer === option;
+        {options?.map((option, optionIndex) => {
+          const answerValue = exercise.options?.[optionIndex] ?? option;
+
           return (
             <button
               key={option}
               type="button"
-              onClick={() => onChange(option)}
-              className={`rounded-[22px] border px-4 py-4 text-left text-lg font-black ${active ? "border-transparent bg-[var(--secondary)] text-white" : "border-slate-200 bg-white text-slate-800"}`}
+              onClick={() => onChange(answerValue)}
+              className={`rounded-[22px] border px-4 py-4 text-left text-lg font-black ${answer === answerValue ? "border-transparent bg-[var(--secondary)] text-white" : "border-slate-200 bg-white text-slate-800"}`}
             >
               {option}
             </button>

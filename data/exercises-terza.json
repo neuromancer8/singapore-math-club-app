@@ -7,7 +7,9 @@
     "prompt": "Calcola: 4 x 6",
     "correctAnswer": 24,
     "explanation": "4 gruppi da 6 fanno 24.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 4 x 6",
+    "explanationEn": "4 groups of 6 make 24."
   },
   {
     "id": "s3-mul-2",
@@ -17,7 +19,9 @@
     "prompt": "Calcola: 3 x 8",
     "correctAnswer": 24,
     "explanation": "3 gruppi da 8 fanno 24.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 3 x 8",
+    "explanationEn": "3 groups of 8 make 24."
   },
   {
     "id": "s3-mul-3",
@@ -33,7 +37,15 @@
     ],
     "correctAnswer": "3 + 3 + 3 + 3 + 3",
     "explanation": "5 x 3 significa 5 gruppi da 3.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which repeated addition matches 5 x 3?",
+    "explanationEn": "5 x 3 means 5 groups of 3.",
+    "optionsEn": [
+      "3 + 3 + 3 + 3 + 3",
+      "5 + 5 + 5",
+      "3 + 5",
+      "5 + 3 + 2"
+    ]
   },
   {
     "id": "s3-mul-4",
@@ -43,7 +55,9 @@
     "prompt": "Ci sono 6 scatole con 4 matite in ogni scatola. Quante matite ci sono in tutto?",
     "correctAnswer": 24,
     "explanation": "6 x 4 = 24.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "There are 6 boxes with 4 pencils in each box. How many pencils are there in all?",
+    "explanationEn": "6 x 4 = 24."
   },
   {
     "id": "s3-mul-5",
@@ -59,7 +73,15 @@
     ],
     "correctAnswer": "7 x 5 = 35",
     "explanation": "7 gruppi da 5 fanno 35.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which result is correct?",
+    "explanationEn": "7 groups of 5 make 35.",
+    "optionsEn": [
+      "7 x 5 = 35",
+      "7 x 5 = 30",
+      "7 x 5 = 40",
+      "7 x 5 = 25"
+    ]
   },
   {
     "id": "s3-mul-6",
@@ -76,7 +98,16 @@
     "prompt": "Una barra mostra 3 gruppi uguali da 7. Qual è il totale?",
     "explanation": "3 x 7 = 21.",
     "difficulty": 2,
-    "visualModel": "3 parti uguali da 7 = totale ?"
+    "visualModel": "3 parti uguali da 7 = totale ?",
+    "promptEn": "A bar shows 3 groups equal of 7. What is the total?",
+    "explanationEn": "3 x 7 = 21.",
+    "optionsEn": [
+      "21",
+      "10",
+      "14",
+      "28"
+    ],
+    "visualModelEn": "3 equal parts of 7 = total?"
   },
   {
     "id": "s3-mul-7",
@@ -86,7 +117,9 @@
     "prompt": "Ogni tavolo ha 8 seggioline. I tavoli sono 5. Quante seggioline ci sono?",
     "correctAnswer": 40,
     "explanation": "5 x 8 = 40.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Each table has 8 small chairs. There are 5 tables. How many small chairs are there?",
+    "explanationEn": "5 x 8 = 40."
   },
   {
     "id": "s3-tab-1",
@@ -96,7 +129,9 @@
     "prompt": "Completa la tabellina del 2: 2 x 9 = ?",
     "correctAnswer": 18,
     "explanation": "2 moltiplicato per 9 fa 18.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete the 2 times table: 2 x 9 =?",
+    "explanationEn": "2 multiplied for 9 equals 18."
   },
   {
     "id": "s3-tab-2",
@@ -106,7 +141,9 @@
     "prompt": "Completa la tabellina del 5: 5 x 7 = ?",
     "correctAnswer": 35,
     "explanation": "5 x 7 = 35.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete the 5 times table: 5 x 7 =?",
+    "explanationEn": "5 x 7 = 35."
   },
   {
     "id": "s3-tab-3",
@@ -122,7 +159,15 @@
     ],
     "correctAnswer": "10 x 6 = 60",
     "explanation": "Moltiplicare per 10 aggiunge uno zero.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which 10 times-table fact is correct?",
+    "explanationEn": "Multiplying by 10 adds a zero.",
+    "optionsEn": [
+      "10 x 6 = 60",
+      "10 x 6 = 16",
+      "10 x 6 = 50",
+      "10 x 6 = 600"
+    ]
   },
   {
     "id": "s3-tab-4",
@@ -132,7 +177,9 @@
     "prompt": "Completa: 4 x 7 = ?",
     "correctAnswer": 28,
     "explanation": "4 gruppi da 7 fanno 28.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Complete: 4 x 7 =?",
+    "explanationEn": "4 groups of 7 make 28."
   },
   {
     "id": "s3-tab-5",
@@ -148,7 +195,15 @@
     ],
     "correctAnswer": "3",
     "explanation": "9 x 3 = 27.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which number completes 9 x __ = 27?",
+    "explanationEn": "9 x 3 = 27.",
+    "optionsEn": [
+      "3",
+      "2",
+      "4",
+      "6"
+    ]
   },
   {
     "id": "s3-tab-6",
@@ -158,7 +213,9 @@
     "prompt": "Un mazzo ha 3 file da 6 carte. Quante carte ci sono?",
     "correctAnswer": 18,
     "explanation": "3 x 6 = 18.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A mazzo ha 3 file of 6 carte. How many carte ci sono?",
+    "explanationEn": "3 x 6 = 18."
   },
   {
     "id": "s3-div-1",
@@ -168,7 +225,9 @@
     "prompt": "Calcola: 18 : 3",
     "correctAnswer": 6,
     "explanation": "18 diviso 3 fa 6.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 18 : 3",
+    "explanationEn": "18 divided 3 equals 6."
   },
   {
     "id": "s3-div-2",
@@ -178,7 +237,9 @@
     "prompt": "Calcola: 20 : 5",
     "correctAnswer": 4,
     "explanation": "20 diviso 5 fa 4.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 20 : 5",
+    "explanationEn": "20 divided 5 equals 4."
   },
   {
     "id": "s3-div-3",
@@ -194,7 +255,15 @@
     ],
     "correctAnswer": "24 oggetti in 6 gruppi uguali",
     "explanation": "La divisione distribuisce o raggruppa in parti uguali.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which frase descrive 24 : 6?",
+    "explanationEn": "Division shares or groups into equal parts.",
+    "optionsEn": [
+      "24 objects in 6 equal groups",
+      "24 + 6 objects",
+      "6 groups of 24",
+      "24 subtract 6 una volta"
+    ]
   },
   {
     "id": "s3-div-4",
@@ -204,7 +273,9 @@
     "prompt": "24 caramelle vengono divise tra 4 bambini. Quante caramelle riceve ogni bambino?",
     "correctAnswer": 6,
     "explanation": "24 : 4 = 6.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "24 candies are shared among 4 children. How many candies does each child receive?",
+    "explanationEn": "24 : 4 = 6."
   },
   {
     "id": "s3-div-5",
@@ -221,7 +292,16 @@
     "prompt": "Una barra totale vale 28 ed è divisa in 7 parti uguali. Quanto vale ogni parte?",
     "explanation": "28 : 7 = 4.",
     "difficulty": 2,
-    "visualModel": "Totale 28 diviso in 7 parti uguali"
+    "visualModel": "Totale 28 diviso in 7 parti uguali",
+    "promptEn": "A bar total is worth 28 ed is divided in 7 equal parts. How much is worth each part?",
+    "explanationEn": "28 : 7 = 4.",
+    "optionsEn": [
+      "4",
+      "5",
+      "6",
+      "7"
+    ],
+    "visualModelEn": "Total 28 divided into 7 equal parts"
   },
   {
     "id": "s3-div-6",
@@ -237,7 +317,15 @@
     ],
     "correctAnswer": "32 : 4",
     "explanation": "32 diviso 4 fa 8.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Which divisione dà come risultato 8?",
+    "explanationEn": "32 divided 4 equals 8.",
+    "optionsEn": [
+      "32 : 4",
+      "24 : 4",
+      "28 : 2",
+      "18 : 3"
+    ]
   },
   {
     "id": "s3-div-7",
@@ -247,7 +335,9 @@
     "prompt": "48 figurine vengono messe in album da 6 figurine per pagina. Quante pagine servono?",
     "correctAnswer": 8,
     "explanation": "48 : 6 = 8.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "48 stickers are placed in an album with 6 stickers per page. How many pages are needed?",
+    "explanationEn": "48 : 6 = 8."
   },
   {
     "id": "s3-passi-1",
@@ -263,7 +353,15 @@
     ],
     "correctAnswer": "3 x 5",
     "explanation": "Prima trovi i biscotti nei sacchetti, poi aggiungi 4.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which operation do you do first? “3 sacchetti da 5 biscotti e poi ne aggiungo 4”.",
+    "explanationEn": "First trovi i biscuits nei sacchetti, then aggiungi 4.",
+    "optionsEn": [
+      "3 x 5",
+      "5 + 4",
+      "3 + 5",
+      "4 - 3"
+    ]
   },
   {
     "id": "s3-passi-2",
@@ -273,7 +371,9 @@
     "prompt": "Ci sono 4 scatole da 6 pennarelli. Se ne rompono 3. Quanti pennarelli restano?",
     "correctAnswer": 21,
     "explanation": "4 x 6 = 24, poi 24 - 3 = 21.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "There are 4 boxes of 6 markers. 3 break. How many markers remain?",
+    "explanationEn": "4 x 6 = 24, then 24 - 3 = 21."
   },
   {
     "id": "s3-passi-3",
@@ -289,7 +389,15 @@
     ],
     "correctAnswer": "Moltiplico, poi sottraggo",
     "explanation": "Prima trovi il totale, poi togli quelli regalati.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which plan is correct for: 5 pacchi da 8 quaderni, poi regalo 6 quaderni?",
+    "explanationEn": "First find the total, then subtract the ones given away.",
+    "optionsEn": [
+      "I multiply, then subtract",
+      "I add, then multiply",
+      "I subtract, then divide",
+      "I divide, then add"
+    ]
   },
   {
     "id": "s3-passi-4",
@@ -299,7 +407,9 @@
     "prompt": "Nel teatro ci sono 6 file da 7 posti. 5 posti restano vuoti. Quanti posti sono occupati?",
     "correctAnswer": 37,
     "explanation": "6 x 7 = 42, poi 42 - 5 = 37.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "In the theatre there are 6 rows of 7 seats. 5 seats remain empty. How many seats are occupied?",
+    "explanationEn": "6 x 7 = 42, then 42 - 5 = 37."
   },
   {
     "id": "s3-passi-5",
@@ -316,7 +426,16 @@
     "prompt": "Una barra totale vale 30, costruita con 5 gruppi uguali. Poi tolgo 2. Quanto resta?",
     "explanation": "Dal totale 30, togli 2 e restano 28.",
     "difficulty": 3,
-    "visualModel": "Totale 30 | tolgo 2 | resto ?"
+    "visualModel": "Totale 30 | tolgo 2 | resto ?",
+    "promptEn": "A total bar is worth 30, built with 5 equal groups. Then I subtract 2. How much remains?",
+    "explanationEn": "Dal total 30, you subtract 2 and remain 28.",
+    "optionsEn": [
+      "28",
+      "25",
+      "8",
+      "6"
+    ],
+    "visualModelEn": "Total 30 | I subtract 2 | remainder?"
   },
   {
     "id": "s3-passi-6",
@@ -326,7 +445,9 @@
     "prompt": "7 amici raccolgono 4 conchiglie ciascuno. Ne regalano 8 al museo. Quante ne restano?",
     "correctAnswer": 20,
     "explanation": "7 x 4 = 28, poi 28 - 8 = 20.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "7 friends collect 4 shells each. They give 8 to the museum. How many remain?",
+    "explanationEn": "7 x 4 = 28, then 28 - 8 = 20."
   },
   {
     "id": "s3-bar-1",
@@ -343,7 +464,16 @@
     "prompt": "Una barra totale vale 18. Una parte vale 7. Quanto vale l'altra parte?",
     "explanation": "18 - 7 = 11.",
     "difficulty": 1,
-    "visualModel": "Totale 18 | parte 7 | parte mancante ?"
+    "visualModel": "Totale 18 | parte 7 | parte mancante ?",
+    "promptEn": "A total bar is worth 18. One part is worth 7. What is the other part worth?",
+    "explanationEn": "18 - 7 = 11.",
+    "optionsEn": [
+      "11",
+      "10",
+      "9",
+      "25"
+    ],
+    "visualModelEn": "Total 18 | part 7 | part missintog?"
   },
   {
     "id": "s3-bar-2",
@@ -360,7 +490,16 @@
     "prompt": "Tre barre uguali valgono 5 ciascuna. Quanto vale il totale?",
     "explanation": "3 x 5 = 15.",
     "difficulty": 1,
-    "visualModel": "3 parti uguali da 5 = totale"
+    "visualModel": "3 parti uguali da 5 = totale",
+    "promptEn": "Three equal bars are worth 5 each. What is the total?",
+    "explanationEn": "3 x 5 = 15.",
+    "optionsEn": [
+      "15",
+      "10",
+      "8",
+      "20"
+    ],
+    "visualModelEn": "3 equal parts of 5 = total"
   },
   {
     "id": "s3-bar-3",
@@ -376,7 +515,15 @@
     ],
     "correctAnswer": "3 barre uguali da 4",
     "explanation": "12 : 3 = 4 per ogni parte.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which disegno rappresenta 12 divided in 3 equal parts?",
+    "explanationEn": "12 : 3 = 4 for each part.",
+    "optionsEn": [
+      "3 bars equal of 4",
+      "2 bars of 6",
+      "Una bar of 12 and una of 3",
+      "4 bars of 3 and una of 1"
+    ]
   },
   {
     "id": "s3-bar-4",
@@ -393,7 +540,16 @@
     "prompt": "Una barra lunga 24 è divisa in 4 parti uguali. Quanto vale ogni parte?",
     "explanation": "24 : 4 = 6.",
     "difficulty": 2,
-    "visualModel": "Totale 24 | 4 parti uguali"
+    "visualModel": "Totale 24 | 4 parti uguali",
+    "promptEn": "A long bar of 24 is divided into 4 equal parts. What is each part worth?",
+    "explanationEn": "24 : 4 = 6.",
+    "optionsEn": [
+      "6",
+      "8",
+      "4",
+      "12"
+    ],
+    "visualModelEn": "Total 24 | 4 equal parts"
   },
   {
     "id": "s3-bar-5",
@@ -404,7 +560,10 @@
     "correctAnswer": 18,
     "explanation": "Il doppio di 9 è 18.",
     "difficulty": 2,
-    "visualModel": "Barra di Giulia lunga il doppio della barra di Marco"
+    "visualModel": "Barra di Giulia lunga il doppio della barra di Marco",
+    "promptEn": "Marco has 9 stickers. Giulia has double. How many stickers does Giulia have?",
+    "explanationEn": "The doppio of 9 is 18.",
+    "visualModelEn": "Bar of Giulia long the doppio of the bar of Marco"
   },
   {
     "id": "s3-bar-6",
@@ -421,7 +580,16 @@
     "prompt": "Due parti uguali valgono 16 in tutto. Quanto vale una parte?",
     "explanation": "16 : 2 = 8.",
     "difficulty": 3,
-    "visualModel": "Totale 16 | 2 parti uguali"
+    "visualModel": "Totale 16 | 2 parti uguali",
+    "promptEn": "Two equal parts are worth 16 in all. What is one part worth?",
+    "explanationEn": "16 : 2 = 8.",
+    "optionsEn": [
+      "8",
+      "6",
+      "4",
+      "12"
+    ],
+    "visualModelEn": "Total 16 | 2 equal parts"
   },
   {
     "id": "s3-bar-7",
@@ -432,7 +600,10 @@
     "correctAnswer": 18,
     "explanation": "Se una parte è 18 e l'altra è 9, il totale è 27.",
     "difficulty": 3,
-    "visualModel": "Barra A = ? | Barra B = 9 | Totale 27"
+    "visualModel": "Barra A = ? | Barra B = 9 | Totale 27",
+    "promptEn": "A class collects 27 euros. The second bar shows 9 euros less than the first. How many euros could the first bar be if the total is 27?",
+    "explanationEn": "Se una part is 18 and l'altra is 9, the total is 27.",
+    "visualModelEn": "Bar A =? | Bar B = 9 | Total 27"
   },
   {
     "id": "s3-mis-1",
@@ -447,7 +618,14 @@
     ],
     "correctAnswer": "2 m",
     "explanation": "2 m corrispondono a 200 cm, quindi sono maggiori di 90 cm.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which measure is greater?",
+    "explanationEn": "2 m corrispondono to 200 cm, quindi are maggiori of 90 cm.",
+    "optionsEn": [
+      "2 m",
+      "90 cm",
+      "They are equal"
+    ]
   },
   {
     "id": "s3-mis-2",
@@ -457,7 +635,9 @@
     "prompt": "Quanti centimetri sono 1 metro?",
     "correctAnswer": 100,
     "explanation": "1 metro = 100 centimetri.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many centimetres are in 1 metre?",
+    "explanationEn": "1 metre = 100 centimetres."
   },
   {
     "id": "s3-mis-3",
@@ -467,7 +647,9 @@
     "prompt": "Una bottiglia contiene 2 litri d'acqua e ne verso 1 litro. Quanti litri restano?",
     "correctAnswer": 1,
     "explanation": "2 - 1 = 1 litro.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "A bottle contains 2 litres and I pour out 1 litres. How many litres remain?",
+    "explanationEn": "2 - 1 = 1 litro."
   },
   {
     "id": "s3-mis-4",
@@ -483,7 +665,15 @@
     ],
     "correctAnswer": "Righello o metro",
     "explanation": "La lunghezza si misura con righello o metro.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which tool do you use to measure the length of a desk?",
+    "explanationEn": "The lunghezza misura with righello o metre.",
+    "optionsEn": [
+      "Ruler or metre stick",
+      "Scale",
+      "Clock",
+      "Thermometer"
+    ]
   },
   {
     "id": "s3-mis-5",
@@ -493,7 +683,9 @@
     "prompt": "Quanti grammi sono mezzo chilo?",
     "correctAnswer": 500,
     "explanation": "Mezzo chilogrammo corrisponde a 500 grammi.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many grams are in half a kilogram?",
+    "explanationEn": "Half a kilogram is 500 grams."
   },
   {
     "id": "s3-mis-6",
@@ -503,7 +695,9 @@
     "prompt": "Due corde misurano 35 cm e 25 cm. Quanto misurano insieme?",
     "correctAnswer": 60,
     "explanation": "35 + 25 = 60 cm.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Two ropes measure 35 cm and 25 cm. How much do they measure together?",
+    "explanationEn": "35 + 25 = 60 cm."
   },
   {
     "id": "s3-geo-1",
@@ -519,7 +713,15 @@
     ],
     "correctAnswer": "Quadrato",
     "explanation": "Il quadrato ha 4 lati uguali.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which shape has 4 equal sides?",
+    "explanationEn": "A square has 4 equal sides.",
+    "optionsEn": [
+      "Square",
+      "Triangle",
+      "Circle",
+      "Rectangle"
+    ]
   },
   {
     "id": "s3-geo-2",
@@ -535,7 +737,15 @@
     ],
     "correctAnswer": "3",
     "explanation": "Il triangolo ha 3 lati.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many sides does a triangle have?",
+    "explanationEn": "A triangle has 3 sides.",
+    "optionsEn": [
+      "3",
+      "4",
+      "5",
+      "0"
+    ]
   },
   {
     "id": "s3-geo-3",
@@ -551,7 +761,15 @@
     ],
     "correctAnswer": "Cerchio",
     "explanation": "Il cerchio è una linea curva chiusa.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which shape has no sides?",
+    "explanationEn": "A circle is a closed curved line.",
+    "optionsEn": [
+      "Circle",
+      "Square",
+      "Rectangle",
+      "Pentagon"
+    ]
   },
   {
     "id": "s3-geo-4",
@@ -561,7 +779,9 @@
     "prompt": "Quanti vertici ha un rettangolo?",
     "correctAnswer": 4,
     "explanation": "Il rettangolo ha 4 vertici.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many vertices does a rectangle have?",
+    "explanationEn": "A rectangle has 4 vertices."
   },
   {
     "id": "s3-geo-5",
@@ -577,7 +797,15 @@
     ],
     "correctAnswer": "Pentagono",
     "explanation": "Il pentagono ha 5 lati.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which shape has 5 sides?",
+    "explanationEn": "A pentagon has 5 sides.",
+    "optionsEn": [
+      "Pentagon",
+      "Hexagon",
+      "Triangle",
+      "Square"
+    ]
   },
   {
     "id": "s3-geo-6",
@@ -593,7 +821,15 @@
     ],
     "correctAnswer": "Rettangolo",
     "explanation": "La descrizione corrisponde a un rettangolo.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A shape ha 4 sides, due lunghi and due corti, and 4 corners retti. What shape è?",
+    "explanationEn": "The description matches a rectangle.",
+    "optionsEn": [
+      "Rectangle",
+      "Triangle",
+      "Circle",
+      "Hexagon"
+    ]
   },
   {
     "id": "s3-log-1",
@@ -609,7 +845,15 @@
     ],
     "correctAnswer": "Pere",
     "explanation": "6 è il numero più grande.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "In the tabella apples=4, pere=6, banane=3. Which frutto is more numberso?",
+    "explanationEn": "6 is the greatest number.",
+    "optionsEn": [
+      "Pears",
+      "Apples",
+      "Bananas",
+      "They are equal"
+    ]
   },
   {
     "id": "s3-log-2",
@@ -619,7 +863,9 @@
     "prompt": "Completa la regola: 2, 4, 6, 8, __",
     "correctAnswer": 10,
     "explanation": "La regola è +2.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete the rule: 2, 4, 6, 8, __",
+    "explanationEn": "The rule is +2."
   },
   {
     "id": "s3-log-3",
@@ -635,7 +881,15 @@
     ],
     "correctAnswer": "19",
     "explanation": "La serie cresce di 5, quindi 19 rompe la regola.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which number non appartsene alla series 5, 10, 15, 19, 20?",
+    "explanationEn": "The series grows by 5, so 19 breaks the rule.",
+    "optionsEn": [
+      "19",
+      "10",
+      "15",
+      "20"
+    ]
   },
   {
     "id": "s3-log-4",
@@ -645,7 +899,9 @@
     "prompt": "In un grafico, il lunedì ci sono 7 libri letti e il martedì 9. Quanti libri in più martedì?",
     "correctAnswer": 2,
     "explanation": "9 - 7 = 2.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "In a chart, on Monday there are 7 books read and on Tuesday 9. How many more books on Tuesday?",
+    "explanationEn": "9 - 7 = 2."
   },
   {
     "id": "s3-log-5",
@@ -661,7 +917,15 @@
     ],
     "correctAnswer": "8",
     "explanation": "4 x 2 = 8.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "If each blue shape is worth 2 points and I see 4, how many points do I get?",
+    "explanationEn": "4 x 2 = 8.",
+    "optionsEn": [
+      "8",
+      "6",
+      "4",
+      "2"
+    ]
   },
   {
     "id": "s3-log-6",
@@ -671,7 +935,9 @@
     "prompt": "Tre amici hanno 5, 8 e 8 figurine. Quanti amici hanno lo stesso numero di figurine?",
     "correctAnswer": 2,
     "explanation": "Due amici hanno 8 figurine.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Three friends have 5, 8 and 8 stickers. How many friends have the same number of stickers?",
+    "explanationEn": "Two friends have 8 stickers."
   },
   {
     "id": "s3-cs-1",
@@ -681,7 +947,9 @@
     "prompt": "Calcola in colonna: 126 + 213",
     "correctAnswer": 339,
     "explanation": "Sommi unità, decine e centinaia: 126 + 213 = 339.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate in columns: 126 + 213",
+    "explanationEn": "You add ones, tens and centinaia: 126 + 213 = 339."
   },
   {
     "id": "s3-cs-2",
@@ -691,7 +959,9 @@
     "prompt": "Calcola: 245 - 120",
     "correctAnswer": 125,
     "explanation": "245 - 120 = 125.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 245 - 120",
+    "explanationEn": "245 - 120 = 125."
   },
   {
     "id": "s3-cs-3",
@@ -707,7 +977,15 @@
     ],
     "correctAnswer": "Per fare un numero tondo",
     "explanation": "I numeri tondi rendono il calcolo più semplice.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "In 38 + 47, perché is utile passare of 38 to 40?",
+    "explanationEn": "Round numbers make the calculation easier.",
+    "optionsEn": [
+      "To make a round number",
+      "To subtract tens",
+      "To divide",
+      "To change sign"
+    ]
   },
   {
     "id": "s3-cs-4",
@@ -717,7 +995,9 @@
     "prompt": "Calcola: 68 + 57",
     "correctAnswer": 125,
     "explanation": "68 + 57 = 125.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate: 68 + 57",
+    "explanationEn": "68 + 57 = 125."
   },
   {
     "id": "s3-cs-5",
@@ -727,7 +1007,9 @@
     "prompt": "Calcola: 300 - 76",
     "correctAnswer": 224,
     "explanation": "300 - 76 = 224.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate: 300 - 76",
+    "explanationEn": "300 - 76 = 224."
   },
   {
     "id": "s3-cs-6",
@@ -737,7 +1019,9 @@
     "prompt": "La biblioteca ha 128 libri. Ne arrivano altri 45. Quanti libri ci sono?",
     "correctAnswer": 173,
     "explanation": "128 + 45 = 173.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "The library has 128 books. 45 more arrive. How many books are there?",
+    "explanationEn": "128 + 45 = 173."
   },
   {
     "id": "s3-cs-7",
@@ -754,7 +1038,16 @@
     "prompt": "Una barra totale vale 240. Una parte vale 85. Quanto vale l'altra parte?",
     "explanation": "240 - 85 = 155.",
     "difficulty": 3,
-    "visualModel": "Totale 240 | parte 85 | parte mancante ?"
+    "visualModel": "Totale 240 | parte 85 | parte mancante ?",
+    "promptEn": "A total bar is worth 240. One part is worth 85. What is the other part worth?",
+    "explanationEn": "240 - 85 = 155.",
+    "optionsEn": [
+      "155",
+      "165",
+      "145",
+      "325"
+    ],
+    "visualModelEn": "Total 240 | part 85 | part missintog?"
   },
   {
     "id": "s3-fra-1",
@@ -770,7 +1063,15 @@
     ],
     "correctAnswer": "1/2",
     "explanation": "Metà significa una parte su due uguali.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which fraction represents one half?",
+    "explanationEn": "Half means one part out of two equal parts.",
+    "optionsEn": [
+      "1/2",
+      "1/3",
+      "1/4",
+      "2/3"
+    ]
   },
   {
     "id": "s3-fra-2",
@@ -786,7 +1087,15 @@
     ],
     "correctAnswer": "1/4",
     "explanation": "Mangio una parte su quattro.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "A pizza is divided into 4 equal parts and I eat 1. What fraction do I eat?",
+    "explanationEn": "I eat one part out of four.",
+    "optionsEn": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "4/1"
+    ]
   },
   {
     "id": "s3-fra-3",
@@ -796,7 +1105,9 @@
     "prompt": "Quante metà servono per formare un intero?",
     "correctAnswer": 2,
     "explanation": "Due metà formano l'intero.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many halves make one whole?",
+    "explanationEn": "Two halves make the whole."
   },
   {
     "id": "s3-fra-4",
@@ -812,7 +1123,15 @@
     ],
     "correctAnswer": "1/2",
     "explanation": "Se l'intero è uguale, una metà è più grande di un quarto, un ottavo e un decimo.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which fraction is greater?",
+    "explanationEn": "Se l'whole is uguale, una half is greater of un quarto, un ottavo and un decimo.",
+    "optionsEn": [
+      "1/2",
+      "1/4",
+      "1/8",
+      "1/10"
+    ]
   },
   {
     "id": "s3-fra-5",
@@ -829,7 +1148,16 @@
     "prompt": "Una barra è divisa in 3 parti uguali. Ne coloro 2. Quale frazione è colorata?",
     "explanation": "Sono colorate 2 parti su 3.",
     "difficulty": 2,
-    "visualModel": "Barra divisa in 3 parti uguali, 2 colorate"
+    "visualModel": "Barra divisa in 3 parti uguali, 2 colorate",
+    "promptEn": "A bar is divided into 3 equal parts. I colour 2 of them. What fraction is coloured?",
+    "explanationEn": "2 parts out of 3 are coloured.",
+    "optionsEn": [
+      "2/3",
+      "1/3",
+      "3/2",
+      "2/5"
+    ],
+    "visualModelEn": "Bar divided into 3 equal parts, 2 coloured"
   },
   {
     "id": "s3-fra-6",
@@ -839,7 +1167,9 @@
     "prompt": "Di 12 caramelle, metà sono alla menta. Quante sono alla menta?",
     "correctAnswer": 6,
     "explanation": "La metà di 12 è 6.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Out of 12 candies, half are mint. How many are mint?",
+    "explanationEn": "Half of 12 is 6."
   },
   {
     "id": "s3-fra-7",
@@ -849,6 +1179,8 @@
     "prompt": "Un foglio è diviso in 4 parti uguali. Coloro 3 parti. Quante parti restano bianche?",
     "correctAnswer": 1,
     "explanation": "4 parti totali meno 3 colorate = 1 parte bianca.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A sheet is divided into 4 equal parts. I colour 3 parts. How many parts remain white?",
+    "explanationEn": "4 parts total less 3 coloured = 1 part bianca."
   }
 ]

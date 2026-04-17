@@ -13,7 +13,15 @@
     ],
     "correctAnswer": "43",
     "explanation": "43 è il numero più grande tra quelli proposti.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number is greater?",
+    "explanationEn": "43 is the greatest number among the choices.",
+    "optionsEn": [
+      "34",
+      "43",
+      "31",
+      "24"
+    ]
   },
   {
     "id": "s2-num-2",
@@ -23,7 +31,9 @@
     "prompt": "Scrivi il numero che viene dopo 59.",
     "correctAnswer": 60,
     "explanation": "Dopo 59 viene 60.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Write the number that comes after 59.",
+    "explanationEn": "After 59 comes 60."
   },
   {
     "id": "s2-num-3",
@@ -39,7 +49,15 @@
     ],
     "correctAnswer": "52",
     "explanation": "5 decine valgono 50 e con 2 unità si ottiene 52.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number has 5 tens and 2 ones?",
+    "explanationEn": "5 tens are worth 50, and with 2 ones you get 52.",
+    "optionsEn": [
+      "25",
+      "52",
+      "50",
+      "72"
+    ]
   },
   {
     "id": "s2-num-4",
@@ -55,7 +73,15 @@
     ],
     "correctAnswer": "48, 51, 57",
     "explanation": "In ordine crescente i numeri vanno dal più piccolo al più grande.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which set is in increasing order?",
+    "explanationEn": "In increasing order, numbers go from the smallest to the greatest.",
+    "optionsEn": [
+      "48, 51, 57",
+      "62, 58, 64",
+      "39, 35, 31",
+      "70, 69, 71"
+    ]
   },
   {
     "id": "s2-num-5",
@@ -65,7 +91,9 @@
     "prompt": "Completa: 70, 72, 74, __, 78",
     "correctAnswer": 76,
     "explanation": "La sequenza aumenta di 2 ogni volta.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Complete: 70, 72, 74, __, 78",
+    "explanationEn": "The sequence increases by 2 each time."
   },
   {
     "id": "s2-num-6",
@@ -82,7 +110,16 @@
     "prompt": "Una barra mostra 40 e una piccola parte da 7. Qual è il totale?",
     "explanation": "Sommi la parte da 40 con la parte da 7: 47.",
     "difficulty": 2,
-    "visualModel": "Parte grande 40 + parte piccola 7 = totale"
+    "visualModel": "Parte grande 40 + parte piccola 7 = totale",
+    "promptEn": "A bar shows 40 and a small part of 7. What is the total?",
+    "explanationEn": "You add the part of 40 and the part of 7: 47.",
+    "optionsEn": [
+      "47",
+      "33",
+      "74",
+      "57"
+    ],
+    "visualModelEn": "Large part 40 + small part 7 = total"
   },
   {
     "id": "s2-num-7",
@@ -92,7 +129,9 @@
     "prompt": "Nel cartellone ci sono 6 palloncini blu e 8 rossi. Quanti palloncini ci sono in tutto?",
     "correctAnswer": 14,
     "explanation": "6 + 8 = 14 palloncini.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "On the poster there are 6 blue balloons and 8 red ones. How many balloons are there in all?",
+    "explanationEn": "6 + 8 = 14 balloons."
   },
   {
     "id": "s2-du-1",
@@ -108,7 +147,15 @@
     ],
     "correctAnswer": "64",
     "explanation": "6 decine valgono 60 e con 4 unità si arriva a 64.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number is made of 6 tens and 4 ones?",
+    "explanationEn": "6 tens are worth 60, and with 4 ones you reach 64.",
+    "optionsEn": [
+      "46",
+      "64",
+      "60",
+      "24"
+    ]
   },
   {
     "id": "s2-du-2",
@@ -118,7 +165,9 @@
     "prompt": "Quante unità ci sono in 3 decine?",
     "correctAnswer": 30,
     "explanation": "3 decine valgono 30 unità.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many ones are there in 3 tens?",
+    "explanationEn": "3 tens are worth 30 ones."
   },
   {
     "id": "s2-du-3",
@@ -134,7 +183,15 @@
     ],
     "correctAnswer": "80",
     "explanation": "8 decine e 0 unità fanno 80.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number has 8 tens and 0 ones?",
+    "explanationEn": "8 tens and 0 ones make 80.",
+    "optionsEn": [
+      "80",
+      "8",
+      "18",
+      "108"
+    ]
   },
   {
     "id": "s2-du-4",
@@ -144,7 +201,9 @@
     "prompt": "Scrivi il numero formato da 9 decine e 5 unità.",
     "correctAnswer": 95,
     "explanation": "9 decine sono 90 e con 5 unità ottieni 95.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Write the number made of 9 tens and 5 ones.",
+    "explanationEn": "9 tens are 90 and with 5 ones you get 95."
   },
   {
     "id": "s2-du-5",
@@ -161,7 +220,16 @@
     "prompt": "Una barra lunga vale 30 e una piccola barra vale 4. Che numero rappresentano insieme?",
     "explanation": "30 + 4 = 34.",
     "difficulty": 2,
-    "visualModel": "3 decine + 4 unità = numero"
+    "visualModel": "3 decine + 4 unità = numero",
+    "promptEn": "A long bar is worth 30 and a small bar is worth 4. What number do they show together?",
+    "explanationEn": "30 + 4 = 34.",
+    "optionsEn": [
+      "34",
+      "43",
+      "26",
+      "7"
+    ],
+    "visualModelEn": "3 tens + 4 ones = number"
   },
   {
     "id": "s2-du-6",
@@ -177,7 +245,15 @@
     ],
     "correctAnswer": "50 + 7",
     "explanation": "57 si scompone in 50 e 7.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which scomposizione is corretta for 57?",
+    "explanationEn": "57 scompone in 50 and 7.",
+    "optionsEn": [
+      "50 + 7",
+      "5 + 7",
+      "40 + 17",
+      "30 + 27"
+    ]
   },
   {
     "id": "s2-du-7",
@@ -187,7 +263,9 @@
     "prompt": "Luca costruisce il numero 83 con cannucce e tappi. Quante decine usa?",
     "correctAnswer": 8,
     "explanation": "83 è composto da 8 decine e 3 unità.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Luca costruisce the number 83 with cannucce and tappi. How many tens usa?",
+    "explanationEn": "83 is composto of 8 tens and 3 ones."
   },
   {
     "id": "s2-con-1",
@@ -202,7 +280,14 @@
     ],
     "correctAnswer": "<",
     "explanation": "48 è minore di 52.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which symbol completes: 48 __ 52?",
+    "explanationEn": "48 is smaller of 52.",
+    "optionsEn": [
+      "<",
+      ">",
+      "="
+    ]
   },
   {
     "id": "s2-con-2",
@@ -218,7 +303,15 @@
     ],
     "correctAnswer": "67",
     "explanation": "67 è il più piccolo.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number is smaller?",
+    "explanationEn": "67 is the more piccolo.",
+    "optionsEn": [
+      "67",
+      "76",
+      "70",
+      "71"
+    ]
   },
   {
     "id": "s2-con-3",
@@ -228,7 +321,9 @@
     "prompt": "Scrivi il numero maggiore tra 39 e 93.",
     "correctAnswer": 93,
     "explanation": "93 ha più decine di 39.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Write the greater number between 39 and 93.",
+    "explanationEn": "93 ha more tens of 39."
   },
   {
     "id": "s2-con-4",
@@ -244,7 +339,15 @@
     ],
     "correctAnswer": "45 e 45",
     "explanation": "I due numeri sono uguali.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which pair has equal numbers?",
+    "explanationEn": "I due numbers are equal.",
+    "optionsEn": [
+      "45 and 45",
+      "56 and 65",
+      "31 and 13",
+      "70 and 71"
+    ]
   },
   {
     "id": "s2-con-5",
@@ -260,7 +363,15 @@
     "prompt": "La barra A vale 62 e la barra B vale 58. Quale barra è più lunga?",
     "explanation": "62 è maggiore di 58.",
     "difficulty": 2,
-    "visualModel": "Barra A 62 | Barra B 58"
+    "visualModel": "Barra A 62 | Barra B 58",
+    "promptEn": "The bar A is worth 62 and the bar B is worth 58. Which bar is more long?",
+    "explanationEn": "62 is greater of 58.",
+    "optionsEn": [
+      "A",
+      "B",
+      "They are equal"
+    ],
+    "visualModelEn": "Bar A 62 | Bar B 58"
   },
   {
     "id": "s2-con-6",
@@ -275,7 +386,14 @@
     ],
     "correctAnswer": ">",
     "explanation": "80 è maggiore di 79 di una unità.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Complete correctly: 80 __ 79",
+    "explanationEn": "80 is greater of 79 of una ones.",
+    "optionsEn": [
+      ">",
+      "<",
+      "="
+    ]
   },
   {
     "id": "s2-seq-1",
@@ -285,7 +403,9 @@
     "prompt": "Completa: 12, 14, 16, __",
     "correctAnswer": 18,
     "explanation": "La sequenza aumenta di 2.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete: 12, 14, 16, __",
+    "explanationEn": "The sequence increases by 2."
   },
   {
     "id": "s2-seq-2",
@@ -295,7 +415,9 @@
     "prompt": "Completa: 30, 40, 50, __",
     "correctAnswer": 60,
     "explanation": "La sequenza aumenta di 10.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete: 30, 40, 50, __",
+    "explanationEn": "The sequence increases by 10."
   },
   {
     "id": "s2-seq-3",
@@ -311,7 +433,15 @@
     ],
     "correctAnswer": "20",
     "explanation": "Si conta a salti di 5.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number is missing? 5, 10, 15, __, 25",
+    "explanationEn": "You count by jumps of 5.",
+    "optionsEn": [
+      "18",
+      "20",
+      "30",
+      "35"
+    ]
   },
   {
     "id": "s2-seq-4",
@@ -321,7 +451,9 @@
     "prompt": "Completa al contrario: 21, 19, 17, __",
     "correctAnswer": 15,
     "explanation": "La sequenza scende di 2.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Complete backwards: 21, 19, 17, __",
+    "explanationEn": "The sequence goes down by 2."
   },
   {
     "id": "s2-seq-5",
@@ -337,7 +469,15 @@
     ],
     "correctAnswer": "41, 43, 45, 47",
     "explanation": "Ogni volta si aggiungono 2.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which sequence is correct?",
+    "explanationEn": "Each time you add 2.",
+    "optionsEn": [
+      "41, 43, 45, 47",
+      "20, 23, 26, 28",
+      "90, 80, 75, 70",
+      "14, 18, 21, 24"
+    ]
   },
   {
     "id": "s2-seq-6",
@@ -347,7 +487,9 @@
     "prompt": "Marta salta sui numeri 3, 6, 9, 12. Su quale numero atterra dopo?",
     "correctAnswer": 15,
     "explanation": "Continua a salti di 3.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Marta salta sui numbers 3, 6, 9, 12. Su which number atterra after?",
+    "explanationEn": "Continue by jumps of 3."
   },
   {
     "id": "s2-add-1",
@@ -357,7 +499,9 @@
     "prompt": "Calcola: 27 + 15",
     "correctAnswer": 42,
     "explanation": "27 + 15 = 42.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 27 + 15",
+    "explanationEn": "27 + 15 = 42."
   },
   {
     "id": "s2-add-2",
@@ -367,7 +511,9 @@
     "prompt": "Calcola: 54 - 21",
     "correctAnswer": 33,
     "explanation": "54 - 21 = 33.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 54 - 21",
+    "explanationEn": "54 - 21 = 33."
   },
   {
     "id": "s2-add-3",
@@ -383,7 +529,15 @@
     ],
     "correctAnswer": "36 + 4 = 40",
     "explanation": "36 più 4 fa 40.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which result is correct?",
+    "explanationEn": "36 more 4 equals 40.",
+    "optionsEn": [
+      "36 + 4 = 40",
+      "36 + 4 = 30",
+      "36 + 4 = 44",
+      "36 + 4 = 32"
+    ]
   },
   {
     "id": "s2-add-4",
@@ -393,7 +547,9 @@
     "prompt": "Calcola: 61 - 9",
     "correctAnswer": 52,
     "explanation": "61 - 9 = 52.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate: 61 - 9",
+    "explanationEn": "61 - 9 = 52."
   },
   {
     "id": "s2-add-5",
@@ -410,7 +566,16 @@
     "prompt": "Una barra totale vale 50. Una parte è 18. Quanto vale l'altra parte?",
     "explanation": "50 - 18 = 32.",
     "difficulty": 2,
-    "visualModel": "Totale 50 | parte 18 | parte mancante ?"
+    "visualModel": "Totale 50 | parte 18 | parte mancante ?",
+    "promptEn": "A total bar is worth 50. One part is worth 18. What is the other part worth?",
+    "explanationEn": "50 - 18 = 32.",
+    "optionsEn": [
+      "32",
+      "68",
+      "22",
+      "28"
+    ],
+    "visualModelEn": "Total 50 | part 18 | part missintog?"
   },
   {
     "id": "s2-add-6",
@@ -420,7 +585,9 @@
     "prompt": "Nel cesto ci sono 18 mele. Ne aggiungo 7. Quante mele ci sono ora?",
     "correctAnswer": 25,
     "explanation": "18 + 7 = 25.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "There are 18 apples in the basket. I add 7. How many apples are there now?",
+    "explanationEn": "18 + 7 = 25."
   },
   {
     "id": "s2-add-7",
@@ -430,7 +597,9 @@
     "prompt": "In biblioteca ci sono 45 libri sul tavolo. 12 vengono rimessi a posto. Quanti restano?",
     "correctAnswer": 33,
     "explanation": "45 - 12 = 33.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "There are 45 books on the table in the library. 12 are put back. How many remain?",
+    "explanationEn": "45 - 12 = 33."
   },
   {
     "id": "s2-cm-1",
@@ -440,7 +609,9 @@
     "prompt": "Calcola a mente: 20 + 30",
     "correctAnswer": 50,
     "explanation": "Sommi le decine: 2 decine + 3 decine = 5 decine.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate mentally: 20 + 30",
+    "explanationEn": "You add the tens: 2 tens + 3 tens = 5 tens."
   },
   {
     "id": "s2-cm-2",
@@ -450,7 +621,9 @@
     "prompt": "Calcola a mente: 90 - 40",
     "correctAnswer": 50,
     "explanation": "9 decine meno 4 decine fanno 5 decine.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate mentally: 90 - 40",
+    "explanationEn": "9 tens less 4 tens make 5 tens."
   },
   {
     "id": "s2-cm-3",
@@ -466,7 +639,15 @@
     ],
     "correctAnswer": "6 e 4",
     "explanation": "6 + 4 = 10.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which coppia equals 10?",
+    "explanationEn": "6 + 4 = 10.",
+    "optionsEn": [
+      "6 and 4",
+      "7 and 2",
+      "8 and 1",
+      "5 and 2"
+    ]
   },
   {
     "id": "s2-cm-4",
@@ -476,7 +657,9 @@
     "prompt": "Calcola a mente: 38 + 2",
     "correctAnswer": 40,
     "explanation": "Aggiungere 2 a 38 porta a 40.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate mentally: 38 + 2",
+    "explanationEn": "Aggiungere 2 to 38 brings to 40."
   },
   {
     "id": "s2-cm-5",
@@ -492,7 +675,15 @@
     ],
     "correctAnswer": "Arrivo a 50",
     "explanation": "49 + 1 è il numero tondo successivo: 50.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which strategia aiuta for 49 + 1?",
+    "explanationEn": "49 + 1 is the number tondo successivo: 50.",
+    "optionsEn": [
+      "I reach 50",
+      "I subtract 10",
+      "I double",
+      "I count backwards"
+    ]
   },
   {
     "id": "s2-cm-6",
@@ -502,7 +693,9 @@
     "prompt": "Sara ha 28 figurine e ne riceve 2. Quante figurine ha adesso?",
     "correctAnswer": 30,
     "explanation": "28 + 2 = 30.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Sara has 28 stickers and receives 2. How many stickers does she have now?",
+    "explanationEn": "28 + 2 = 30."
   },
   {
     "id": "s2-prob-1",
@@ -512,7 +705,9 @@
     "prompt": "Ci sono 14 bambini in palestra. Ne arrivano altri 5. Quanti bambini ci sono adesso?",
     "correctAnswer": 19,
     "explanation": "14 + 5 = 19.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "There are 14 children in the gym. 5 more arrive. How many children are there now?",
+    "explanationEn": "14 + 5 = 19."
   },
   {
     "id": "s2-prob-2",
@@ -522,7 +717,9 @@
     "prompt": "Luca ha 23 biglie e ne perde 6. Quante gliene restano?",
     "correctAnswer": 17,
     "explanation": "23 - 6 = 17.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Luca has 23 marbles and loses 6. How many does he have left?",
+    "explanationEn": "23 - 6 = 17."
   },
   {
     "id": "s2-prob-3",
@@ -538,7 +735,15 @@
     ],
     "correctAnswer": "30 - 8",
     "explanation": "Se spendi, devi togliere.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which operation do you choose to solve: “Avevo 30 euro, ne spendo 8”?",
+    "explanationEn": "If you spend, you have to subtract.",
+    "optionsEn": [
+      "30 - 8",
+      "30 + 8",
+      "8 + 8",
+      "30 x 8"
+    ]
   },
   {
     "id": "s2-prob-4",
@@ -555,7 +760,16 @@
     "prompt": "Una barra totale vale 26. Una parte vale 9. Quanti oggetti ci sono nell'altra parte?",
     "explanation": "26 - 9 = 17.",
     "difficulty": 2,
-    "visualModel": "Totale 26 | parte 9 | parte ?"
+    "visualModel": "Totale 26 | parte 9 | parte ?",
+    "promptEn": "A bar total is worth 26. A part is worth 9. How many oggetti ci are nell'altra part?",
+    "explanationEn": "26 - 9 = 17.",
+    "optionsEn": [
+      "17",
+      "35",
+      "15",
+      "19"
+    ],
+    "visualModelEn": "Total 26 | part 9 | part?"
   },
   {
     "id": "s2-prob-5",
@@ -565,7 +779,9 @@
     "prompt": "In giardino ci sono 8 fiori gialli e 12 rossi. Quanti fiori ci sono in tutto?",
     "correctAnswer": 20,
     "explanation": "8 + 12 = 20.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "In the garden there are 8 yellow flowers and 12 red flowers. How many flowers are there in all?",
+    "explanationEn": "8 + 12 = 20."
   },
   {
     "id": "s2-prob-6",
@@ -575,7 +791,9 @@
     "prompt": "Un autobus porta 32 bambini. 10 scendono. Quanti restano sull'autobus?",
     "correctAnswer": 22,
     "explanation": "32 - 10 = 22.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A bus carries 32 children. 10 get off. How many remain on the bus?",
+    "explanationEn": "32 - 10 = 22."
   },
   {
     "id": "s2-prob-7",
@@ -591,7 +809,15 @@
     ],
     "correctAnswer": "17",
     "explanation": "9 + 8 fa 17.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Which answer is reasonable for 9 + 8?",
+    "explanationEn": "9 + 8 equals 17.",
+    "optionsEn": [
+      "17",
+      "2",
+      "98",
+      "40"
+    ]
   },
   {
     "id": "s2-mis-1",
@@ -606,7 +832,14 @@
     ],
     "correctAnswer": "Una corda di 80 cm",
     "explanation": "80 cm è maggiore di 12 cm.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which object is longer?",
+    "explanationEn": "80 cm is greater of 12 cm.",
+    "optionsEn": [
+      "An 80 cm rope",
+      "A 12 cm pencil",
+      "They are equal"
+    ]
   },
   {
     "id": "s2-mis-2",
@@ -616,7 +849,9 @@
     "prompt": "Quanti euro servono per comprare un gioco da 7 euro e una penna da 2 euro?",
     "correctAnswer": 9,
     "explanation": "7 + 2 = 9 euro.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many euros are needed to buy a game for 7 euros and a pen for 2 euros?",
+    "explanationEn": "7 + 2 = 9 euros."
   },
   {
     "id": "s2-mis-3",
@@ -632,7 +867,15 @@
     ],
     "correctAnswer": "30",
     "explanation": "Mezz'ora corrisponde a 30 minuti.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many minutes are in half an hour?",
+    "explanationEn": "Half an hour is 30 minutes.",
+    "optionsEn": [
+      "30",
+      "20",
+      "60",
+      "15"
+    ]
   },
   {
     "id": "s2-mis-4",
@@ -642,7 +885,9 @@
     "prompt": "Un nastro è lungo 25 cm e un altro è lungo 15 cm. Quanti cm misurano insieme?",
     "correctAnswer": 40,
     "explanation": "25 + 15 = 40 cm.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "One ribbon is 25 cm long and another is 15 cm long. How many cm do they measure together?",
+    "explanationEn": "25 + 15 = 40 cm."
   },
   {
     "id": "s2-mis-5",
@@ -658,7 +903,15 @@
     ],
     "correctAnswer": "4 euro",
     "explanation": "10 - 6 = 4.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which coin is missing to get from 6 euros to 10 euros?",
+    "explanationEn": "10 - 6 = 4.",
+    "optionsEn": [
+      "4 euros",
+      "2 euros",
+      "3 euros",
+      "5 euros"
+    ]
   },
   {
     "id": "s2-mis-6",
@@ -675,7 +928,16 @@
     "prompt": "Il percorso totale è di 1 ora. Hai camminato per 35 minuti. Quanto manca?",
     "explanation": "1 ora sono 60 minuti. 60 - 35 = 25.",
     "difficulty": 3,
-    "visualModel": "Totale 60 min | parte 35 min | parte mancante ?"
+    "visualModel": "Totale 60 min | parte 35 min | parte mancante ?",
+    "promptEn": "The total route is 1 hour. You walked for 35 minutes. How much is left?",
+    "explanationEn": "1 ora are 60 minutes. 60 - 35 = 25.",
+    "optionsEn": [
+      "25 minutes",
+      "35 minutes",
+      "15 minutes",
+      "45 minutes"
+    ],
+    "visualModelEn": "Total 60 minto | part 35 minto | part missintog?"
   },
   {
     "id": "s2-dm-1",
@@ -685,7 +947,9 @@
     "prompt": "Qual è il doppio di 6?",
     "correctAnswer": 12,
     "explanation": "Il doppio significa due volte lo stesso numero: 6 + 6 = 12.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "What is double 6?",
+    "explanationEn": "The doppio means due volte the stesso number: 6 + 6 = 12."
   },
   {
     "id": "s2-dm-2",
@@ -701,7 +965,15 @@
     ],
     "correctAnswer": "5",
     "explanation": "La metà divide 10 in due parti uguali da 5.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "What is half of 10?",
+    "explanationEn": "The half divide 10 in due equal parts of 5.",
+    "optionsEn": [
+      "5",
+      "2",
+      "20",
+      "8"
+    ]
   },
   {
     "id": "s2-dm-3",
@@ -711,7 +983,9 @@
     "prompt": "Completa: il doppio di 9 è __",
     "correctAnswer": 18,
     "explanation": "9 + 9 = 18.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete: the doppio di 9 è __",
+    "explanationEn": "9 + 9 = 18."
   },
   {
     "id": "s2-dm-4",
@@ -727,7 +1001,15 @@
     ],
     "correctAnswer": "7 e 14",
     "explanation": "14 è il doppio di 7.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which pair shows a double?",
+    "explanationEn": "14 is the doppio of 7.",
+    "optionsEn": [
+      "7 and 14",
+      "6 and 9",
+      "8 and 12",
+      "10 and 15"
+    ]
   },
   {
     "id": "s2-dm-5",
@@ -737,7 +1019,9 @@
     "prompt": "Sara ha 8 perline. Marco ne ha il doppio. Quante perline ha Marco?",
     "correctAnswer": 16,
     "explanation": "Il doppio di 8 è 16.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Sara has 8 beads. Marco has double. How many beads does Marco have?",
+    "explanationEn": "The doppio of 8 is 16."
   },
   {
     "id": "s2-dm-6",
@@ -754,7 +1038,16 @@
     "prompt": "Una barra vale 18 ed è divisa in due parti uguali. Quanto vale una parte?",
     "explanation": "18 diviso in due parti uguali dà 9.",
     "difficulty": 2,
-    "visualModel": "Totale 18 | 2 parti uguali"
+    "visualModel": "Totale 18 | 2 parti uguali",
+    "promptEn": "A bar is worth 18 ed is divided in due equal parts. How much is worth una part?",
+    "explanationEn": "18 divided in due equal parts dà 9.",
+    "optionsEn": [
+      "9",
+      "8",
+      "10",
+      "6"
+    ],
+    "visualModelEn": "Total 18 | 2 equal parts"
   },
   {
     "id": "s2-dm-7",
@@ -764,7 +1057,9 @@
     "prompt": "In un piatto ci sono 24 biscotti. Ne mangiamo la metà. Quanti biscotti mangiamo?",
     "correctAnswer": 12,
     "explanation": "La metà di 24 è 12.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "There are 24 biscuits on a plate. We eat half. How many biscuits do we eat?",
+    "explanationEn": "The half of 24 is 12."
   },
   {
     "id": "s2-geo-1",
@@ -780,7 +1075,15 @@
     ],
     "correctAnswer": "Triangolo",
     "explanation": "Il triangolo ha 3 lati.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which shape has 3 sides?",
+    "explanationEn": "A triangle has 3 sides.",
+    "optionsEn": [
+      "Triangle",
+      "Square",
+      "Circle",
+      "Rectangle"
+    ]
   },
   {
     "id": "s2-geo-2",
@@ -790,7 +1093,9 @@
     "prompt": "Quanti lati ha un quadrato?",
     "correctAnswer": 4,
     "explanation": "Il quadrato ha 4 lati.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many sides does a square have?",
+    "explanationEn": "The square ha 4 sides."
   },
   {
     "id": "s2-geo-3",
@@ -806,7 +1111,15 @@
     ],
     "correctAnswer": "Cerchio",
     "explanation": "Il cerchio non ha angoli.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which shape has no corners?",
+    "explanationEn": "The circle non ha corners.",
+    "optionsEn": [
+      "Circle",
+      "Rectangle",
+      "Triangle",
+      "Square"
+    ]
   },
   {
     "id": "s2-geo-4",
@@ -822,7 +1135,15 @@
     ],
     "correctAnswer": "Una porta",
     "explanation": "La porta ha una forma simile a un rettangolo.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which object looks like a rectangle?",
+    "explanationEn": "The brings ha una forma simile to un rectangle.",
+    "optionsEn": [
+      "A door",
+      "A wheel",
+      "A ball",
+      "A star"
+    ]
   },
   {
     "id": "s2-geo-5",
@@ -832,7 +1153,9 @@
     "prompt": "Quanti vertici ha un triangolo?",
     "correctAnswer": 3,
     "explanation": "Il triangolo ha 3 vertici.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many vertices does a triangle have?",
+    "explanationEn": "The triangle ha 3 vertices."
   },
   {
     "id": "s2-geo-6",
@@ -848,7 +1171,15 @@
     ],
     "correctAnswer": "Quadrato",
     "explanation": "Nel quadrato i lati sono tutti uguali.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which shape has all sides equal?",
+    "explanationEn": "In the square i sides are tutti equal.",
+    "optionsEn": [
+      "Square",
+      "Rectangle",
+      "Circle",
+      "Oval"
+    ]
   },
   {
     "id": "s2-geo-7",
@@ -858,6 +1189,8 @@
     "prompt": "Disegno 2 triangoli e 1 quadrato. Quante figure disegno in tutto?",
     "correctAnswer": 3,
     "explanation": "2 + 1 = 3 figure.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "I draw 2 triangles and 1 square. How many shapes do I draw in all?",
+    "explanationEn": "2 + 1 = 3 figure."
   }
 ]

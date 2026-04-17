@@ -44,11 +44,15 @@ export interface Exercise {
   topic: string;
   type: ExerciseType;
   prompt: string;
+  promptEn?: string;
   options?: string[];
+  optionsEn?: string[];
   correctAnswer: string | number;
   explanation: string;
+  explanationEn?: string;
   difficulty: 1 | 2 | 3;
   visualModel?: string;
+  visualModelEn?: string;
 }
 
 export interface SessionAnswer {

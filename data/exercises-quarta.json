@@ -7,7 +7,9 @@
     "prompt": "Una scuola compra 4 scatole di pennarelli da 6 euro ciascuna. Quanto spende in tutto?",
     "correctAnswer": 24,
     "explanation": "4 x 6 = 24 euro.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "A school buys 4 boxes of markers for 6 euros each. How much does it spend in all?",
+    "explanationEn": "4 x 6 = 24 euros."
   },
   {
     "id": "s4-prob-2",
@@ -17,7 +19,9 @@
     "prompt": "Ci sono 5 tavoli con 4 bambini ciascuno. Poi 3 bambini escono. Quanti bambini restano?",
     "correctAnswer": 17,
     "explanation": "Prima 5 x 4 = 20, poi 20 - 3 = 17.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "There are 5 tables with 4 children each. Then 3 children leave. How many children remain?",
+    "explanationEn": "First 5 x 4 = 20, then 20 - 3 = 17."
   },
   {
     "id": "s4-prob-3",
@@ -33,7 +37,15 @@
     ],
     "correctAnswer": "3 x 8, poi -5",
     "explanation": "Prima trovi il totale, poi togli quelli regalati.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which pair of operations solves: 3 boxes of 8 notebooks and then I give away 5?",
+    "explanationEn": "First find the total, then subtract the ones given away.",
+    "optionsEn": [
+      "3 x 8, then -5",
+      "3 + 8, then -5",
+      "8 - 5, then x3",
+      "3 x 5, then +8"
+    ]
   },
   {
     "id": "s4-prob-4",
@@ -43,7 +55,9 @@
     "prompt": "Una corda è lunga 180 cm. Ne taglio 45 cm. Quanti centimetri restano?",
     "correctAnswer": 135,
     "explanation": "180 - 45 = 135.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A rope is 180 cm long. I cut off 45 cm. How many centimetres remain?",
+    "explanationEn": "180 - 45 = 135."
   },
   {
     "id": "s4-prob-5",
@@ -53,7 +67,9 @@
     "prompt": "Anna compra 3 quaderni da 2 euro e una penna da 4 euro. Quanto spende in tutto?",
     "correctAnswer": 10,
     "explanation": "3 x 2 = 6, poi 6 + 4 = 10.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Anna buys 3 notebooks for 2 euros each and a pen for 4 euros. How much does she spend in all?",
+    "explanationEn": "3 x 2 = 6, then 6 + 4 = 10."
   },
   {
     "id": "s4-prob-6",
@@ -70,7 +86,16 @@
     "prompt": "Un totale di 36 è formato da 4 parti uguali e poi tolgo 3. Quanto resta?",
     "explanation": "Il totale è 36. Se togli 3, restano 33.",
     "difficulty": 3,
-    "visualModel": "Totale 36 | parte tolta 3 | resto ?"
+    "visualModel": "Totale 36 | parte tolta 3 | resto ?",
+    "promptEn": "A total of 36 is made of 4 equal parts and then I subtract 3. How much remains?",
+    "explanationEn": "The total is 36. If you subtract 3, 33 remain.",
+    "optionsEn": [
+      "33",
+      "9",
+      "6",
+      "12"
+    ],
+    "visualModelEn": "Total 36 | removed part 3 | remainder?"
   },
   {
     "id": "s4-prob-7",
@@ -80,7 +105,9 @@
     "prompt": "Un autobus fa 3 viaggi con 24 bambini per viaggio. Nell'ultimo viaggio 5 bambini scendono prima. Quanti bambini arrivano in tutto?",
     "correctAnswer": 67,
     "explanation": "3 x 24 = 72, poi 72 - 5 = 67.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A bus makes 3 trips with 24 children per trip. On the last trip, 5 children get off early. How many children arrive in all?",
+    "explanationEn": "3 x 24 = 72, then 72 - 5 = 67."
   },
   {
     "id": "s4-fra-1",
@@ -96,7 +123,15 @@
     ],
     "correctAnswer": "1/4",
     "explanation": "Una parte su quattro è un quarto.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which fraction represents a cake divided into 4 equal parts with 1 part coloured?",
+    "explanationEn": "One part out of four is one quarter.",
+    "optionsEn": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "4/1"
+    ]
   },
   {
     "id": "s4-fra-2",
@@ -112,7 +147,15 @@
     ],
     "correctAnswer": "3/4",
     "explanation": "Tre quarti sono maggiori delle altre frazioni proposte.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which fraction is greater?",
+    "explanationEn": "Three quarters is greater than the other proposed fractions.",
+    "optionsEn": [
+      "3/4",
+      "1/4",
+      "2/8",
+      "1/8"
+    ]
   },
   {
     "id": "s4-fra-3",
@@ -122,7 +165,9 @@
     "prompt": "Quante parti su 8 rappresentano 1/2?",
     "correctAnswer": 4,
     "explanation": "Metà di 8 parti è 4 parti, quindi 4/8.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many parts out of 8 represent 1/2?",
+    "explanationEn": "Half of 8 parts is 4 parts, so 4/8."
   },
   {
     "id": "s4-fra-4",
@@ -138,7 +183,15 @@
     ],
     "correctAnswer": "2/4",
     "explanation": "2/4 rappresenta la stessa quantità di 1/2.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which fraction is equivalent to 1/2?",
+    "explanationEn": "2/4 represents the same amount as 1/2.",
+    "optionsEn": [
+      "2/4",
+      "1/4",
+      "3/4",
+      "4/4"
+    ]
   },
   {
     "id": "s4-fra-5",
@@ -155,7 +208,16 @@
     "prompt": "Una barra è divisa in 6 parti uguali. Ne coloro 3. Che frazione ho colorato?",
     "explanation": "3 parti colorate su 6 totali.",
     "difficulty": 2,
-    "visualModel": "Barra divisa in 6 parti uguali, 3 colorate"
+    "visualModel": "Barra divisa in 6 parti uguali, 3 colorate",
+    "promptEn": "A bar is divided into 6 equal parts. I colour 3 of them. What fraction is coloured?",
+    "explanationEn": "3 parts coloured out of 6 total.",
+    "optionsEn": [
+      "3/6",
+      "6/3",
+      "1/6",
+      "5/6"
+    ],
+    "visualModelEn": "Bar divided into 6 equal parts, 3 coloured"
   },
   {
     "id": "s4-fra-6",
@@ -165,7 +227,9 @@
     "prompt": "Di 12 biscotti, 1/3 è al cioccolato. Quanti biscotti sono al cioccolato?",
     "correctAnswer": 4,
     "explanation": "12 diviso 3 fa 4.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Out of 12 biscuits, 1/3 are chocolate. How many biscuits are chocolate?",
+    "explanationEn": "12 divided 3 equals 4."
   },
   {
     "id": "s4-fra-7",
@@ -181,7 +245,15 @@
     ],
     "correctAnswer": "4/4",
     "explanation": "Quattro quarti formano l'intero.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Which fraction means a whole?",
+    "explanationEn": "Four quarters make the whole.",
+    "optionsEn": [
+      "4/4",
+      "1/4",
+      "2/4",
+      "3/4"
+    ]
   },
   {
     "id": "s4-bar-1",
@@ -198,7 +270,16 @@
     "prompt": "Una barra totale vale 45. Una parte vale 18. Quanto vale l'altra parte?",
     "explanation": "45 - 18 = 27.",
     "difficulty": 1,
-    "visualModel": "Totale 45 | parte 18 | parte ?"
+    "visualModel": "Totale 45 | parte 18 | parte ?",
+    "promptEn": "A total bar is worth 45. One part is worth 18. What is the other part worth?",
+    "explanationEn": "45 - 18 = 27.",
+    "optionsEn": [
+      "27",
+      "23",
+      "63",
+      "17"
+    ],
+    "visualModelEn": "Total 45 | part 18 | part?"
   },
   {
     "id": "s4-bar-2",
@@ -215,7 +296,16 @@
     "prompt": "Tre parti uguali valgono in tutto 36. Quanto vale una parte?",
     "explanation": "36 : 3 = 12.",
     "difficulty": 1,
-    "visualModel": "Totale 36 | 3 parti uguali"
+    "visualModel": "Totale 36 | 3 parti uguali",
+    "promptEn": "Three equal parts are worth 36 in all. What is one part worth?",
+    "explanationEn": "36 : 3 = 12.",
+    "optionsEn": [
+      "12",
+      "9",
+      "18",
+      "6"
+    ],
+    "visualModelEn": "Total 36 | 3 equal parts"
   },
   {
     "id": "s4-bar-3",
@@ -231,7 +321,15 @@
     ],
     "correctAnswer": "Due barre uguali da 7",
     "explanation": "Il doppio significa due parti uguali della stessa grandezza.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which schema shows 'the doppio of 7'?",
+    "explanationEn": "Double means two equal parts of the same size.",
+    "optionsEn": [
+      "Due bars equal of 7",
+      "Una bar of 7 and una of 3",
+      "Tre bars of 7",
+      "Una bar of 14 and una of 1"
+    ]
   },
   {
     "id": "s4-bar-4",
@@ -248,7 +346,16 @@
     "prompt": "Una barra vale 28. È composta da 4 parti uguali. Quanto vale ogni parte?",
     "explanation": "28 : 4 = 7.",
     "difficulty": 2,
-    "visualModel": "Totale 28 | 4 parti uguali"
+    "visualModel": "Totale 28 | 4 parti uguali",
+    "promptEn": "A bar is worth 28. It is made of 4 equal parts. What is each part worth?",
+    "explanationEn": "28 : 4 = 7.",
+    "optionsEn": [
+      "7",
+      "6",
+      "8",
+      "4"
+    ],
+    "visualModelEn": "Total 28 | 4 equal parts"
   },
   {
     "id": "s4-bar-5",
@@ -259,7 +366,10 @@
     "correctAnswer": 24,
     "explanation": "15 + 9 = 24.",
     "difficulty": 2,
-    "visualModel": "Barra di Paolo più lunga di 9 rispetto a Giulia"
+    "visualModel": "Barra di Paolo più lunga di 9 rispetto a Giulia",
+    "promptEn": "Giulia has 15 stickers. Paolo has 9 more. How many stickers does Paolo have?",
+    "explanationEn": "15 + 9 = 24.",
+    "visualModelEn": "Bar of Paolo more long of 9 rispetto to Giulia"
   },
   {
     "id": "s4-bar-6",
@@ -276,7 +386,16 @@
     "prompt": "Due barre insieme fanno 50. La prima vale 30. Quanto vale la seconda?",
     "explanation": "50 - 30 = 20.",
     "difficulty": 3,
-    "visualModel": "Totale 50 | prima barra 30 | seconda barra ?"
+    "visualModel": "Totale 50 | prima barra 30 | seconda barra ?",
+    "promptEn": "Two bars together make 50. The first is worth 30. What is the second worth?",
+    "explanationEn": "50 - 30 = 20.",
+    "optionsEn": [
+      "20",
+      "10",
+      "80",
+      "15"
+    ],
+    "visualModelEn": "Total 50 | first bar 30 | seconda bar?"
   },
   {
     "id": "s4-bar-7",
@@ -287,7 +406,10 @@
     "correctAnswer": 12,
     "explanation": "72 : 6 = 12.",
     "difficulty": 3,
-    "visualModel": "Totale 72 | 6 parti uguali"
+    "visualModel": "Totale 72 | 6 parti uguali",
+    "promptEn": "A ribbon 72 cm long is divided into 6 equal parts. How long is each part?",
+    "explanationEn": "72 : 6 = 12.",
+    "visualModelEn": "Total 72 | 6 equal parts"
   },
   {
     "id": "s4-dec-1",
@@ -297,7 +419,9 @@
     "prompt": "Completa: 2,5 + 0,5 = ?",
     "correctAnswer": 3,
     "explanation": "Cinque decimi più cinque decimi fanno un intero.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Complete: 2,5 + 0,5 =?",
+    "explanationEn": "Cinque decimi more cinque decimi make un whole."
   },
   {
     "id": "s4-dec-2",
@@ -313,7 +437,15 @@
     ],
     "correctAnswer": "1,7",
     "explanation": "1,7 corrisponde a 1 intero e 7 decimi.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number is greater?",
+    "explanationEn": "1.7 is 1 whole and 7 tenths.",
+    "optionsEn": [
+      "1,7",
+      "1,07",
+      "1,5",
+      "1,09"
+    ]
   },
   {
     "id": "s4-dec-3",
@@ -323,7 +455,9 @@
     "prompt": "Quanto vale 3 euro e 50 centesimi scritto in euro?",
     "correctAnswer": 3.5,
     "explanation": "3 euro e 50 centesimi si scrive 3,50.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How much is 3 euros and 50 cents written in euros?",
+    "explanationEn": "3 euros and 50 centesimi scrive 3,50."
   },
   {
     "id": "s4-dec-4",
@@ -339,7 +473,15 @@
     ],
     "correctAnswer": "0,8 > 0,5",
     "explanation": "Otto decimi sono maggiori di cinque decimi.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which comparison is correct?",
+    "explanationEn": "Otto decimi are maggiori of cinque decimi.",
+    "optionsEn": [
+      "0,8 > 0,5",
+      "0,3 > 0,7",
+      "1,2 < 1,1",
+      "0,9 = 0,09"
+    ]
   },
   {
     "id": "s4-dec-5",
@@ -349,7 +491,9 @@
     "prompt": "Una bottiglia contiene 1,5 litri e ne verso 0,5 litri. Quanti litri restano?",
     "correctAnswer": 1,
     "explanation": "1,5 - 0,5 = 1 litro.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A bottle contains 1,5 litres and I pour out 0,5 litres. How many litres remain?",
+    "explanationEn": "1,5 - 0,5 = 1 litro."
   },
   {
     "id": "s4-dec-6",
@@ -359,7 +503,9 @@
     "prompt": "Calcola: 4,2 + 0,3",
     "correctAnswer": 4.5,
     "explanation": "Due decimi più tre decimi fanno cinque decimi.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Calculate: 4,2 + 0,3",
+    "explanationEn": "Due decimi more tre decimi make cinque decimi."
   },
   {
     "id": "s4-eq-1",
@@ -375,7 +521,15 @@
     ],
     "correctAnswer": "200",
     "explanation": "1 metro = 100 cm, quindi 2 metri = 200 cm.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many centimetres are 2 metres?",
+    "explanationEn": "1 metre = 100 cm, quindi 2 metres = 200 cm.",
+    "optionsEn": [
+      "200",
+      "20",
+      "2000",
+      "120"
+    ]
   },
   {
     "id": "s4-eq-2",
@@ -385,7 +539,9 @@
     "prompt": "Quanti grammi sono 3 kg?",
     "correctAnswer": 3000,
     "explanation": "1 kg = 1000 g, quindi 3 kg = 3000 g.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many grams are 3 kg?",
+    "explanationEn": "1 kg = 1000 g, quindi 3 kg = 3000 g."
   },
   {
     "id": "s4-eq-3",
@@ -401,7 +557,15 @@
     ],
     "correctAnswer": "1 l = 1000 ml",
     "explanation": "Un litro corrisponde a mille millilitri.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which equivalence is correct?",
+    "explanationEn": "One litre is 1000 millilitres.",
+    "optionsEn": [
+      "1 l = 1000 ml",
+      "1 l = 100 ml",
+      "1 km = 100 m",
+      "1 h = 10 min"
+    ]
   },
   {
     "id": "s4-eq-4",
@@ -411,7 +575,9 @@
     "prompt": "Quanti minuti sono 2 ore?",
     "correctAnswer": 120,
     "explanation": "Ogni ora ha 60 minuti, quindi 2 ore hanno 120 minuti.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many minutes are 2 hours?",
+    "explanationEn": "Each ora ha 60 minutes, quindi 2 ore hanno 120 minutes."
   },
   {
     "id": "s4-eq-5",
@@ -421,7 +587,9 @@
     "prompt": "Una gara misura 2 km. Quanti metri sono?",
     "correctAnswer": 2000,
     "explanation": "1 km = 1000 m, quindi 2 km = 2000 m.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A race is 2 km long. How many metres is that?",
+    "explanationEn": "1 km = 1000 m, quindi 2 km = 2000 m."
   },
   {
     "id": "s4-eq-6",
@@ -437,7 +605,15 @@
     ],
     "correctAnswer": "0,5 l",
     "explanation": "500 ml sono mezzo litro.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "What is the same amount as 500 ml?",
+    "explanationEn": "500 ml are mezzo litro.",
+    "optionsEn": [
+      "0,5 l",
+      "5 l",
+      "50 l",
+      "0,05 l"
+    ]
   },
   {
     "id": "s4-per-1",
@@ -447,7 +623,9 @@
     "prompt": "Qual è il perimetro di un quadrato con lato 5 cm?",
     "correctAnswer": 20,
     "explanation": "Il perimetro del quadrato è 4 x lato.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "What is the perimeter of a square with side 5 cm?",
+    "explanationEn": "The perimetre of the square is 4 x lato."
   },
   {
     "id": "s4-per-2",
@@ -457,7 +635,9 @@
     "prompt": "Qual è il perimetro di un rettangolo con lati 4 cm e 7 cm?",
     "correctAnswer": 22,
     "explanation": "4 + 7 + 4 + 7 = 22.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "What is the perimeter of a rectangle with sides 4 cm and 7 cm?",
+    "explanationEn": "4 + 7 + 4 + 7 = 22."
   },
   {
     "id": "s4-per-3",
@@ -473,7 +653,15 @@
     ],
     "correctAnswer": "Lo spazio interno",
     "explanation": "L'area indica quanto spazio occupa la figura.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Area measures:",
+    "explanationEn": "L'area indica how much spazio occupa the shape.",
+    "optionsEn": [
+      "The inside space",
+      "The border",
+      "The number of sides",
+      "The height"
+    ]
   },
   {
     "id": "s4-per-4",
@@ -483,7 +671,9 @@
     "prompt": "Qual è l'area di un rettangolo 3 x 6?",
     "correctAnswer": 18,
     "explanation": "Area = base x altezza = 18.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "What is the area of a 3 x 6 rectangle?",
+    "explanationEn": "Area = base x altezza = 18."
   },
   {
     "id": "s4-per-5",
@@ -493,7 +683,9 @@
     "prompt": "Un giardino rettangolare misura 8 m per 5 m. Qual è il perimetro?",
     "correctAnswer": 26,
     "explanation": "8 + 5 + 8 + 5 = 26 m.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A rectangular garden measures 8 m by 5 m. What is the perimeter?",
+    "explanationEn": "8 + 5 + 8 + 5 = 26 m."
   },
   {
     "id": "s4-per-6",
@@ -509,7 +701,15 @@
     ],
     "correctAnswer": "Quadrato",
     "explanation": "4 x 4 = 16.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Which shape has area 16 if the sides measure 4 and 4?",
+    "explanationEn": "4 x 4 = 16.",
+    "optionsEn": [
+      "Square",
+      "Triangle",
+      "Circle",
+      "Pentagon"
+    ]
   },
   {
     "id": "s4-dati-1",
@@ -525,7 +725,15 @@
     ],
     "correctAnswer": "Martedì",
     "explanation": "15 è il valore più alto.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "In un grafico: lun=12, mar=15, mer=9. Which day ha the valore more alto?",
+    "explanationEn": "15 is the highest value.",
+    "optionsEn": [
+      "Tuesday",
+      "Monday",
+      "Wednesday",
+      "They are equal"
+    ]
   },
   {
     "id": "s4-dati-2",
@@ -535,7 +743,9 @@
     "prompt": "Quanti voti in tutto se una tabella mostra 6, 8 e 7?",
     "correctAnswer": 21,
     "explanation": "6 + 8 + 7 = 21.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "How many voti in tutto se una tabella shows 6, 8 and 7?",
+    "explanationEn": "6 + 8 + 7 = 21."
   },
   {
     "id": "s4-dati-3",
@@ -551,7 +761,15 @@
     ],
     "correctAnswer": "Quale categoria è più grande",
     "explanation": "Il grafico a barre confronta quantità.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which question is answered well by a bar chart?",
+    "explanationEn": "A bar chart compares quantities.",
+    "optionsEn": [
+      "Which category is larger",
+      "What shape is a triangle",
+      "How much does one metre weigh",
+      "Which fraction is equivalent"
+    ]
   },
   {
     "id": "s4-dati-4",
@@ -561,7 +779,9 @@
     "prompt": "In una tabella, il gruppo A ha 14 punti e il gruppo B 11. Di quanti punti A supera B?",
     "correctAnswer": 3,
     "explanation": "14 - 11 = 3.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "In una tabella, the gruppo A ha 14 points and the gruppo B 11. Di how many points A supera B?",
+    "explanationEn": "14 - 11 = 3."
   },
   {
     "id": "s4-dati-5",
@@ -577,7 +797,15 @@
     ],
     "correctAnswer": "6",
     "explanation": "10 - 4 = 6.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Se una colonna sale of 4 to 10, of how much aumenta?",
+    "explanationEn": "10 - 4 = 6.",
+    "optionsEn": [
+      "6",
+      "14",
+      "4",
+      "5"
+    ]
   },
   {
     "id": "s4-dati-6",
@@ -587,7 +815,9 @@
     "prompt": "Un grafico mostra 8 libri letti in aprile e 12 a maggio. Quanti libri in più a maggio?",
     "correctAnswer": 4,
     "explanation": "12 - 8 = 4.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A grafico shows 8 books read in April and 12 to May. How many books in more to May?",
+    "explanationEn": "12 - 8 = 4."
   },
   {
     "id": "s4-log-1",
@@ -603,7 +833,15 @@
     ],
     "correctAnswer": "48",
     "explanation": "Ogni volta il numero raddoppia.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Which number completes the serie 3, 6, 12, 24, __?",
+    "explanationEn": "Each time the number doubles.",
+    "optionsEn": [
+      "48",
+      "36",
+      "30",
+      "27"
+    ]
   },
   {
     "id": "s4-log-2",
@@ -619,7 +857,15 @@
     ],
     "correctAnswer": "Martedì",
     "explanation": "Dopo 7 giorni si torna allo stesso giorno.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "If today is Tuesday, in 7 days it will be:",
+    "explanationEn": "After 7 days you return to the same day.",
+    "optionsEn": [
+      "Tuesday",
+      "Wednesday",
+      "Monday",
+      "Sunday"
+    ]
   },
   {
     "id": "s4-log-3",
@@ -629,7 +875,9 @@
     "prompt": "Quanti triangoli vedi se una figura è formata da 2 triangoli piccoli e 1 grande?",
     "correctAnswer": 3,
     "explanation": "Conti i 2 piccoli e anche il triangolo grande formato dall'insieme.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "How many tricorners vedi se una shape is formata of 2 tricorners piccoli and 1 great?",
+    "explanationEn": "Conti i 2 piccoli and anche the triangle great made dall'insieme."
   },
   {
     "id": "s4-log-4",
@@ -645,7 +893,15 @@
     ],
     "correctAnswer": "Tutti i quadrati sono rettangoli",
     "explanation": "Il quadrato è un rettangolo con lati uguali.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which statement is true?",
+    "explanationEn": "A square is a rectangle with equal sides.",
+    "optionsEn": [
+      "All squares are rectangles",
+      "All rectangles are squares",
+      "No triangle has 3 sides",
+      "A circle has 4 vertices"
+    ]
   },
   {
     "id": "s4-log-5",
@@ -661,7 +917,15 @@
     ],
     "correctAnswer": "Nessuno",
     "explanation": "Senza altre informazioni nessun colore è sicuro al 100%.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "In una scatola ci are palline rosse, blu and verdi. Se ne prendo una senza guardare, which colour is certo?",
+    "explanationEn": "Without more information, no colour is certain at 100%.",
+    "optionsEn": [
+      "None",
+      "Red",
+      "Blue",
+      "Green"
+    ]
   },
   {
     "id": "s4-log-6",
@@ -677,7 +941,15 @@
     ],
     "correctAnswer": "66",
     "explanation": "La regola è -10, poi -9, poi -8, quindi -7.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "Which number is missing? 100, 90, 81, 73, __",
+    "explanationEn": "The rule is -10, then -9, then -8, quindi -7.",
+    "optionsEn": [
+      "66",
+      "65",
+      "64",
+      "63"
+    ]
   },
   {
     "id": "s4-op-1",
@@ -687,7 +959,9 @@
     "prompt": "Calcola: 25 x 4",
     "correctAnswer": 100,
     "explanation": "25 x 4 fa 100.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 25 x 4",
+    "explanationEn": "25 x 4 equals 100."
   },
   {
     "id": "s4-op-2",
@@ -697,7 +971,9 @@
     "prompt": "Calcola: 360 : 6",
     "correctAnswer": 60,
     "explanation": "36 : 6 = 6, quindi 360 : 6 = 60.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Calculate: 360 : 6",
+    "explanationEn": "36 : 6 = 6, quindi 360 : 6 = 60."
   },
   {
     "id": "s4-op-3",
@@ -713,7 +989,15 @@
     ],
     "correctAnswer": "48 x 10 e poi metà",
     "explanation": "Moltiplicare per 5 è come moltiplicare per 10 e dimezzare.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which strategy helps with 48 x 5?",
+    "explanationEn": "Multiplying by 5 is like multiplying by 10 and halving.",
+    "optionsEn": [
+      "48 x 10 and then half",
+      "48 + 5",
+      "48 - 5",
+      "48 : 10"
+    ]
   },
   {
     "id": "s4-op-4",
@@ -723,7 +1007,9 @@
     "prompt": "Calcola: 125 + 375",
     "correctAnswer": 500,
     "explanation": "125 + 375 = 500.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate: 125 + 375",
+    "explanationEn": "125 + 375 = 500."
   },
   {
     "id": "s4-op-5",
@@ -733,7 +1019,9 @@
     "prompt": "Calcola: 900 - 275",
     "correctAnswer": 625,
     "explanation": "900 - 275 = 625.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Calculate: 900 - 275",
+    "explanationEn": "900 - 275 = 625."
   },
   {
     "id": "s4-op-6",
@@ -743,7 +1031,9 @@
     "prompt": "Un laboratorio prepara 12 scatole con 18 pezzi ciascuna. Quanti pezzi prepara?",
     "correctAnswer": 216,
     "explanation": "12 x 18 = 216.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A laboratorio prepara 12 boxes with 18 pezzi each. How many pezzi prepara?",
+    "explanationEn": "12 x 18 = 216."
   },
   {
     "id": "s4-op-7",
@@ -760,7 +1050,16 @@
     "prompt": "Una barra totale vale 420 ed è divisa in 7 parti uguali. Quanto vale ogni parte?",
     "explanation": "420 : 7 = 60.",
     "difficulty": 3,
-    "visualModel": "Totale 420 | 7 parti uguali"
+    "visualModel": "Totale 420 | 7 parti uguali",
+    "promptEn": "A bar total is worth 420 ed is divided in 7 equal parts. How much is worth each part?",
+    "explanationEn": "420 : 7 = 60.",
+    "optionsEn": [
+      "60",
+      "70",
+      "50",
+      "80"
+    ],
+    "visualModelEn": "Total 420 | 7 equal parts"
   },
   {
     "id": "s4-pf-1",
@@ -776,7 +1075,15 @@
     ],
     "correctAnswer": "6/8",
     "explanation": "Restano 8 - 2 = 6 parti su 8.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "From a cake divided into 8 parts, I eat 2. What fraction remains?",
+    "explanationEn": "Restano 8 - 2 = 6 parts out of 8.",
+    "optionsEn": [
+      "6/8",
+      "2/8",
+      "8/6",
+      "1/8"
+    ]
   },
   {
     "id": "s4-pf-2",
@@ -786,7 +1093,9 @@
     "prompt": "La metà di 30 bambini partecipa al laboratorio. Quanti bambini partecipano?",
     "correctAnswer": 15,
     "explanation": "La metà di 30 è 15.",
-    "difficulty": 1
+    "difficulty": 1,
+    "promptEn": "Half of 30 children take part in the workshop. How many children take part?",
+    "explanationEn": "The half of 30 is 15."
   },
   {
     "id": "s4-pf-3",
@@ -802,7 +1111,15 @@
     ],
     "correctAnswer": "20 : 4",
     "explanation": "Per trovare un quarto dividi l'intero in 4 parti uguali.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "Which operation helps you find 1/4 of 20?",
+    "explanationEn": "To find one quarter, divide the whole into 4 equal parts.",
+    "optionsEn": [
+      "20 : 4",
+      "20 x 4",
+      "20 + 4",
+      "20 - 4"
+    ]
   },
   {
     "id": "s4-pf-4",
@@ -812,7 +1129,9 @@
     "prompt": "Un nastro misura 24 cm. Ne uso 1/3. Quanti cm uso?",
     "correctAnswer": 8,
     "explanation": "24 : 3 = 8.",
-    "difficulty": 2
+    "difficulty": 2,
+    "promptEn": "A nastro misura 24 cm. Ne uso 1/3. How many cm uso?",
+    "explanationEn": "24 : 3 = 8."
   },
   {
     "id": "s4-pf-5",
@@ -829,7 +1148,16 @@
     "prompt": "Una barra da 40 è divisa in 5 parti uguali. Ne coloro 2 parti. Quanto vale la parte colorata?",
     "explanation": "Ogni parte vale 8. Due parti valgono 16.",
     "difficulty": 2,
-    "visualModel": "Totale 40 | 5 parti uguali | 2 parti colorate"
+    "visualModel": "Totale 40 | 5 parti uguali | 2 parti colorate",
+    "promptEn": "A bar of 40 is divided in 5 equal parts. Ne coloro 2 parts. How much is worth the part coloured?",
+    "explanationEn": "Each part is worth 8. Due parts are worth 16.",
+    "optionsEn": [
+      "16",
+      "8",
+      "20",
+      "10"
+    ],
+    "visualModelEn": "Total 40 | 5 equal parts | 2 parts coloured"
   },
   {
     "id": "s4-pf-6",
@@ -839,7 +1167,9 @@
     "prompt": "In una classe ci sono 28 alunni. 1/4 porta il quaderno rosso. Quanti alunni lo portano?",
     "correctAnswer": 7,
     "explanation": "28 : 4 = 7.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "There are 28 pupils in a class. 1/4 bring the red notebook. How many pupils bring it?",
+    "explanationEn": "28 : 4 = 7."
   },
   {
     "id": "s4-pf-7",
@@ -849,6 +1179,8 @@
     "prompt": "Una raccolta ha 36 figurine. 2/3 sono animali. Quante figurine di animali ci sono?",
     "correctAnswer": 24,
     "explanation": "36 : 3 = 12 e 2 parti valgono 24.",
-    "difficulty": 3
+    "difficulty": 3,
+    "promptEn": "A collection has 36 stickers. 2/3 are animals. How many animal stickers are there?",
+    "explanationEn": "36 : 3 = 12 and 2 parts are worth 24."
   }
 ]

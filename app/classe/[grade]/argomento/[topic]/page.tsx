@@ -107,7 +107,9 @@ export default async function TopicPage({
           {exercises.slice(0, 5).map((exercise) => (
             <div key={exercise.id} className="rounded-[24px] bg-slate-50 p-4">
               <p className="m-0 text-sm font-extrabold uppercase tracking-wide text-slate-500">{difficultyLabel(exercise.difficulty, locale)}</p>
-              <p className="mt-2 mb-0 text-base font-black text-slate-900">{exercise.prompt}</p>
+              <p className="mt-2 mb-0 text-base font-black text-slate-900">
+                {locale === "en" && exercise.promptEn ? exercise.promptEn : exercise.prompt}
+              </p>
             </div>
           ))}
         </div>
