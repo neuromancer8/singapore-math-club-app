@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
-import { getAvatarOption } from "@/lib/avatars";
+import { avatarLabel, getAvatarOption } from "@/lib/avatars";
 import { getAuthSession } from "@/lib/auth";
 import { getLocale, gradeLabel, topicDescription, topicLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
@@ -237,7 +237,7 @@ function LearnerDashboard({
             </div>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               <ProfileInfo label={t.fullName} value={session.fullName} />
-              <ProfileInfo label={t.avatar} value={avatar.label} />
+              <ProfileInfo label={t.avatar} value={avatarLabel(avatar, locale)} />
               <ProfileInfo label={t.startingClass} value={gradeLabel(session.learnerGrade, locale)} />
               <ProfileInfo label={t.currentClass} value={gradeLabel(activeGrade, locale)} />
               <ProfileInfo label={t.pathStatus} value={status.title} />
@@ -277,7 +277,7 @@ function LearnerDashboard({
                     title={t.nextStep}
                     text={
                       activeGradeProgress.recentTopics[0]
-                        ? `${locale === "it" ? "Riparti da" : "Restart from"} ${activeGradeProgress.recentTopics[0].replaceAll("-", " ")}`
+                        ? `${locale === "it" ? "Riparti da" : "Restart from"} ${topicName(activeGradeProgress.recentTopics[0], activeGrade, locale)}`
                         : `${t.chooseTopic} ${labelForGradeShort(activeGrade, locale)}`
                     }
                   />
@@ -311,7 +311,7 @@ function LearnerDashboard({
                       <h3 className="m-0 text-2xl font-black text-slate-900">{gradeLabel(grade.value, locale)}</h3>
                       <p className="mt-2 mb-0 text-base font-bold text-slate-600">{gradeSubtitle(grade.value, locale)}</p>
                     </div>
-                    <span className="pill bg-white ring-1 ring-black/5">{grade.value}</span>
+                    <span className="pill bg-white ring-1 ring-black/5">{gradeLabel(grade.value, locale)}</span>
                   </div>
                   <div className="mt-4 grid gap-3 md:grid-cols-3">
                     <MiniMetric label={locale === "it" ? "Sessioni" : "Sessions"} value={String(item.totalSessions)} />
@@ -319,7 +319,7 @@ function LearnerDashboard({
                     <MiniMetric label={locale === "it" ? "Migliori stelle" : "Best stars"} value={String(item.bestStars)} />
                   </div>
                   <p className="mt-4 mb-0 text-sm font-bold text-slate-600">
-                    {locale === "it" ? "Argomenti recenti" : "Recent topics"}: {item.recentTopics.length > 0 ? item.recentTopics.join(", ") : locale === "it" ? "nessuna attività registrata" : "no activity recorded"}
+                    {locale === "it" ? "Argomenti recenti" : "Recent topics"}: {recentTopicList(item.recentTopics, grade.value, locale, locale === "it" ? "nessuna attività registrata" : "no activity recorded")}
                   </p>
                 </div>
               );
@@ -388,7 +388,7 @@ function LearnerDashboard({
                 title={locale === "it" ? "Leggi gli ultimi progressi" : "Read the latest progress"}
                 description={
                   latestActivity
-                    ? `${locale === "it" ? "Ultima attività" : "Latest activity"}: ${latestActivity.topic.replaceAll("-", " ")} ${locale === "it" ? "con" : "with"} ${latestActivity.correct}/${latestActivity.total} ${locale === "it" ? "corrette" : "correct"}.`
+                    ? `${locale === "it" ? "Ultima attività" : "Latest activity"}: ${topicName(latestActivity.topic, latestActivity.grade, locale)} ${locale === "it" ? "con" : "with"} ${latestActivity.correct}/${latestActivity.total} ${locale === "it" ? "corrette" : "correct"}.`
                     : locale === "it"
                       ? "Lo storico comparirà dopo la prima sessione completata."
                       : "The history will appear after the first completed session."
@@ -460,6 +460,18 @@ function labelForGradeShort(grade: Grade, locale: Locale) {
   if (grade === "seconda") return "seconda";
   if (grade === "terza") return "terza";
   return "quarta";
+}
+
+function topicName(slug: string, grade: Grade, locale: Locale) {
+  const topic = topicsByGrade[grade].find((item) => item.slug === slug);
+
+  return topic ? topicLabel(topic.slug, topic.label, locale) : slug.replaceAll("-", " ");
+}
+
+function recentTopicList(topics: string[], grade: Grade, locale: Locale, emptyLabel: string) {
+  if (topics.length === 0) return emptyLabel;
+
+  return topics.map((topic) => topicName(topic, grade, locale)).join(", ");
 }
 
 function gradeSubtitle(grade: Grade, locale: Locale) {

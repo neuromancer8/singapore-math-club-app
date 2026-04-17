@@ -80,7 +80,7 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
               }`}
             >
               <div className="flex flex-wrap items-center gap-3">
-                <span className="pill bg-[var(--surface-soft)] text-slate-900">{grade.value}</span>
+                <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade.value, locale)}</span>
                 <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-400">{gradeProgress?.totalSessions ?? 0} {t.sessions}</span>
               </div>
               <h3 className={`${compact ? "mt-3 text-2xl leading-tight" : "mt-4 text-2xl"} font-black text-slate-900`}>

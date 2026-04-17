@@ -2,19 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AuthGate } from "@/components/AuthGate";
 import { Header } from "@/components/Header";
+import { getServerLocale } from "@/lib/server-locale";
 
 export const metadata: Metadata = {
   title: "Singapore Math Club",
-  description: "MVP per la primaria italiana con percorsi di Singapore Math.",
+  description: "Primary school Singapore Math practice app with visual reasoning and bar models.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getServerLocale();
+
   return (
-    <html lang="it">
+    <html lang={locale}>
       <body>
         <AuthGate>
           <Header />

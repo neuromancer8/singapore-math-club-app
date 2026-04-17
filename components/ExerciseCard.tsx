@@ -6,7 +6,7 @@ import { awardBadges } from "@/lib/badges";
 import { checkExerciseAnswer, createSessionSummary } from "@/lib/scoring";
 import { getProgress, saveSessionResult } from "@/lib/progress";
 import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
-import { difficultyLabel, exerciseTypeLabel, getLocale, topicLabel, type Locale } from "@/lib/i18n";
+import { difficultyLabel, exerciseTypeLabel, getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
 
@@ -132,7 +132,7 @@ export function ExerciseCard({
       <section className="card overflow-hidden p-5 md:p-7">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <div className="pill bg-[var(--surface-soft)] text-slate-900">{grade}</div>
+            <div className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade, locale)}</div>
             <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{topicLabel(topic, topicTitle, locale)}</h1>
             <p className="mt-3 mb-0 text-base font-bold text-slate-600">
               {locale === "it"

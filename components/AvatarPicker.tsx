@@ -1,6 +1,6 @@
 "use client";
 
-import { avatarOptions, getAvatarOption } from "@/lib/avatars";
+import { avatarLabel, avatarOptions, getAvatarOption } from "@/lib/avatars";
 import { saveAvatarSelection } from "@/lib/auth";
 import type { Locale } from "@/lib/i18n";
 import type { AuthSession } from "@/lib/types";
@@ -74,7 +74,7 @@ export function AvatarPicker({
                   <span aria-hidden="true">{avatar.symbol}</span>
                 </div>
                 <div>
-                  <p className="m-0 text-base font-black text-slate-900">{avatar.label}</p>
+                  <p className="m-0 text-base font-black text-slate-900">{avatarLabel(avatar, locale)}</p>
                   <p className="mt-1 mb-0 text-xs font-black uppercase tracking-[0.16em] text-slate-400">
                     {selected ? t.selected : t.choose}
                   </p>

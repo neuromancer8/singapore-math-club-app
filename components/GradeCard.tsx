@@ -18,7 +18,7 @@ export function GradeCard({ grade, totalExercises, locale = "it" }: { grade: Gra
       className={`card flex h-full flex-col justify-between overflow-hidden bg-gradient-to-br ${gradientForGrade(grade.value)} p-6 transition-transform hover:-translate-y-1`}
     >
       <div className="space-y-4">
-        <span className="pill w-fit bg-white/85 text-slate-900">{grade.value}</span>
+        <span className="pill w-fit bg-white/85 text-slate-900">{gradeLabel(grade.value, locale)}</span>
         <div>
           <h2 className="section-title m-0 text-3xl font-black text-slate-900">{title}</h2>
           <p className="mt-2 text-base font-bold leading-7 text-slate-700">{subtitle}</p>

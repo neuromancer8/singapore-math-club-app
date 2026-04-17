@@ -214,7 +214,7 @@
     "correctAnswer": 18,
     "explanation": "3 x 6 = 18.",
     "difficulty": 2,
-    "promptEn": "A mazzo ha 3 file of 6 carte. How many carte ci sono?",
+    "promptEn": "A deck has 3 rows of 6 cards. How many cards are there?",
     "explanationEn": "3 x 6 = 18."
   },
   {
@@ -239,7 +239,7 @@
     "explanation": "20 diviso 5 fa 4.",
     "difficulty": 1,
     "promptEn": "Calculate: 20 : 5",
-    "explanationEn": "20 divided 5 equals 4."
+    "explanationEn": "20 divided by 5 equals 4."
   },
   {
     "id": "s3-div-3",
@@ -256,7 +256,7 @@
     "correctAnswer": "24 oggetti in 6 gruppi uguali",
     "explanation": "La divisione distribuisce o raggruppa in parti uguali.",
     "difficulty": 1,
-    "promptEn": "Which frase descrive 24 : 6?",
+    "promptEn": "Which sentence describes 24 : 6?",
     "explanationEn": "Division shares or groups into equal parts.",
     "optionsEn": [
       "24 objects in 6 equal groups",
@@ -293,7 +293,7 @@
     "explanation": "28 : 7 = 4.",
     "difficulty": 2,
     "visualModel": "Totale 28 diviso in 7 parti uguali",
-    "promptEn": "A bar total is worth 28 ed is divided in 7 equal parts. How much is worth each part?",
+    "promptEn": "A total bar is worth 28 and is divided into 7 equal parts. How much is each part worth?",
     "explanationEn": "28 : 7 = 4.",
     "optionsEn": [
       "4",
@@ -336,7 +336,7 @@
     "correctAnswer": 8,
     "explanation": "48 : 6 = 8.",
     "difficulty": 3,
-    "promptEn": "48 stickers are placed in an album with 6 stickers per page. How many pages are needed?",
+    "promptEn": "48 stickers are placed in an album with 6 stickers on each page. How many pages are needed?",
     "explanationEn": "48 : 6 = 8."
   },
   {
@@ -355,7 +355,7 @@
     "explanation": "Prima trovi i biscotti nei sacchetti, poi aggiungi 4.",
     "difficulty": 1,
     "promptEn": "Which operation do you do first? “3 bags of 5 biscuits and then I add 4”.",
-    "explanationEn": "First trovi i biscuits nei sacchetti, then aggiungi 4.",
+    "explanationEn": "First find the biscuits in the bags, then add 4.",
     "optionsEn": [
       "3 x 5",
       "5 + 4",
@@ -428,7 +428,7 @@
     "difficulty": 3,
     "visualModel": "Totale 30 | tolgo 2 | resto ?",
     "promptEn": "A total bar is worth 30, built with 5 equal groups. Then I subtract 2. How much remains?",
-    "explanationEn": "Dal total 30, you subtract 2 and remain 28.",
+    "explanationEn": "From the total 30, you subtract 2 and 28 remain.",
     "optionsEn": [
       "28",
       "25",
@@ -473,7 +473,7 @@
       "9",
       "25"
     ],
-    "visualModelEn": "Total 18 | part 7 | part missintog?"
+    "visualModelEn": "Total 18 | part 7 | missing part?"
   },
   {
     "id": "s3-bar-2",
@@ -516,13 +516,13 @@
     "correctAnswer": "3 barre uguali da 4",
     "explanation": "12 : 3 = 4 per ogni parte.",
     "difficulty": 2,
-    "promptEn": "Which disegno rappresenta 12 divided in 3 equal parts?",
+    "promptEn": "Which drawing represents 12 divided into 3 equal parts?",
     "explanationEn": "12 : 3 = 4 for each part.",
     "optionsEn": [
-      "3 bars equal of 4",
+      "3 bars of 4",
       "2 bars of 6",
-      "Una bar of 12 and una of 3",
-      "4 bars of 3 and una of 1"
+      "One bar of 12 and one of 3",
+      "4 bars of 3 and one of 1"
     ]
   },
   {
@@ -562,8 +562,8 @@
     "difficulty": 2,
     "visualModel": "Barra di Giulia lunga il doppio della barra di Marco",
     "promptEn": "Marco has 9 stickers. Giulia has double. How many stickers does Giulia have?",
-    "explanationEn": "The doppio of 9 is 18.",
-    "visualModelEn": "Bar of Giulia long the doppio of the bar of Marco"
+    "explanationEn": "Double 9 is 18.",
+    "visualModelEn": "Giulia's bar is twice as long as Marco's bar"
   },
   {
     "id": "s3-bar-6",
@@ -602,7 +602,7 @@
     "difficulty": 3,
     "visualModel": "Barra A = ? | Barra B = 9 | Totale 27",
     "promptEn": "A class collects 27 euros. The second bar shows 9 euros less than the first. How many euros could the first bar be if the total is 27?",
-    "explanationEn": "Se una part is 18 and l'altra is 9, the total is 27.",
+    "explanationEn": "If one part is 18 and the other is 9, the total is 27.",
     "visualModelEn": "Bar A =? | Bar B = 9 | Total 27"
   },
   {
@@ -620,7 +620,7 @@
     "explanation": "2 m corrispondono a 200 cm, quindi sono maggiori di 90 cm.",
     "difficulty": 1,
     "promptEn": "Which measure is greater?",
-    "explanationEn": "2 m corrispondono to 200 cm, quindi are maggiori of 90 cm.",
+    "explanationEn": "2 m corresponds to 200 cm, so it is greater than 90 cm.",
     "optionsEn": [
       "2 m",
       "90 cm",
@@ -949,7 +949,7 @@
     "explanation": "Sommi unità, decine e centinaia: 126 + 213 = 339.",
     "difficulty": 1,
     "promptEn": "Calculate in columns: 126 + 213",
-    "explanationEn": "You add ones, tens and centinaia: 126 + 213 = 339."
+    "explanationEn": "You add ones, tens and hundreds: 126 + 213 = 339."
   },
   {
     "id": "s3-cs-2",
@@ -1047,7 +1047,7 @@
       "145",
       "325"
     ],
-    "visualModelEn": "Total 240 | part 85 | part missintog?"
+    "visualModelEn": "Total 240 | part 85 | missing part?"
   },
   {
     "id": "s3-fra-1",
@@ -1125,7 +1125,7 @@
     "explanation": "Se l'intero è uguale, una metà è più grande di un quarto, un ottavo e un decimo.",
     "difficulty": 2,
     "promptEn": "Which fraction is greater?",
-    "explanationEn": "Se l'whole is uguale, una half is greater of un quarto, un ottavo and un decimo.",
+    "explanationEn": "If the whole is the same, one half is greater than one quarter, one eighth and one tenth.",
     "optionsEn": [
       "1/2",
       "1/4",
@@ -1181,6 +1181,6 @@
     "explanation": "4 parti totali meno 3 colorate = 1 parte bianca.",
     "difficulty": 3,
     "promptEn": "A sheet is divided into 4 equal parts. I colour 3 parts. How many parts remain white?",
-    "explanationEn": "4 parts total less 3 coloured = 1 part bianca."
+    "explanationEn": "4 total parts minus 3 coloured parts leaves 1 white part."
   }
 ]

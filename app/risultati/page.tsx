@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
-import { getLocale, topicLabel, type Locale } from "@/lib/i18n";
+import { getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import { getLastSession } from "@/lib/progress";
 import type { StoredSessionResult } from "@/lib/types";
 
@@ -35,7 +35,7 @@ export default function RisultatiPage() {
       <section className="card overflow-hidden p-6 md:p-7">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="pill bg-[var(--surface-soft)] text-slate-900">{session.grade}</span>
+            <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(session.grade, locale)}</span>
             <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{locale === "it" ? "Sessione completata" : "Session completed"}</h1>
             <p className="mt-3 mb-0 text-base font-bold text-slate-600">{messageForStars(session.stars, locale)}</p>
           </div>

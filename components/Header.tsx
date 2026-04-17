@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageToggle } from "@/components/LanguageToggle";
-import { getAvatarOption } from "@/lib/avatars";
+import { avatarLabel, getAvatarOption } from "@/lib/avatars";
 import { getAuthSession, getDemoCredentials, login, logout, refreshAuthActivity } from "@/lib/auth";
 import { getLocale, gradeLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
@@ -81,7 +81,7 @@ export function Header() {
           <div className="overflow-hidden rounded-2xl bg-white px-3 py-2 shadow-sm ring-1 ring-black/5">
             <Image
               src="/logo-rotary.jpg"
-              alt="Rotary Distretto 2041"
+              alt={locale === "it" ? "Rotary Distretto 2041" : "Rotary District 2041"}
               width={170}
               height={66}
               className="h-auto w-[140px] md:w-[170px]"
@@ -122,7 +122,7 @@ export function Header() {
                 aria-label={t.profile}
               >
                 {avatar ? (
-                  <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${avatar.gradient} text-lg`} aria-label={avatar.label}>
+                  <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${avatar.gradient} text-lg`} aria-label={avatarLabel(avatar, locale)}>
                     {avatar.symbol}
                   </span>
                 ) : null}

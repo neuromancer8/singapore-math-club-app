@@ -322,13 +322,13 @@
     "correctAnswer": "Due barre uguali da 7",
     "explanation": "Il doppio significa due parti uguali della stessa grandezza.",
     "difficulty": 2,
-    "promptEn": "Which schema shows 'the doppio of 7'?",
+    "promptEn": "Which diagram shows 'double 7'?",
     "explanationEn": "Double means two equal parts of the same size.",
     "optionsEn": [
-      "Due bars equal of 7",
-      "Una bar of 7 and una of 3",
-      "Tre bars of 7",
-      "Una bar of 14 and una of 1"
+      "Two equal bars of 7",
+      "One bar of 7 and one of 3",
+      "One bar of 14",
+      "One bar of 14 and one of 1"
     ]
   },
   {
@@ -369,7 +369,7 @@
     "visualModel": "Barra di Paolo più lunga di 9 rispetto a Giulia",
     "promptEn": "Giulia has 15 stickers. Paolo has 9 more. How many stickers does Paolo have?",
     "explanationEn": "15 + 9 = 24.",
-    "visualModelEn": "Bar of Paolo more long of 9 rispetto to Giulia"
+    "visualModelEn": "Paolo's bar is 9 longer than Giulia's bar"
   },
   {
     "id": "s4-bar-6",
@@ -395,7 +395,7 @@
       "80",
       "15"
     ],
-    "visualModelEn": "Total 50 | first bar 30 | seconda bar?"
+    "visualModelEn": "Total 50 | first bar 30 | second bar?"
   },
   {
     "id": "s4-bar-7",
@@ -523,7 +523,7 @@
     "explanation": "1 metro = 100 cm, quindi 2 metri = 200 cm.",
     "difficulty": 1,
     "promptEn": "How many centimetres are 2 metres?",
-    "explanationEn": "1 metre = 100 cm, quindi 2 metres = 200 cm.",
+    "explanationEn": "1 metre = 100 cm, so 2 metres = 200 cm.",
     "optionsEn": [
       "200",
       "20",
@@ -541,7 +541,7 @@
     "explanation": "1 kg = 1000 g, quindi 3 kg = 3000 g.",
     "difficulty": 1,
     "promptEn": "How many grams are 3 kg?",
-    "explanationEn": "1 kg = 1000 g, quindi 3 kg = 3000 g."
+    "explanationEn": "1 kg = 1000 g, so 3 kg = 3000 g."
   },
   {
     "id": "s4-eq-3",
@@ -577,7 +577,7 @@
     "explanation": "Ogni ora ha 60 minuti, quindi 2 ore hanno 120 minuti.",
     "difficulty": 2,
     "promptEn": "How many minutes are 2 hours?",
-    "explanationEn": "Each ora ha 60 minutes, quindi 2 ore hanno 120 minutes."
+    "explanationEn": "Each hour has 60 minutes, so 2 hours have 120 minutes."
   },
   {
     "id": "s4-eq-5",
@@ -589,7 +589,7 @@
     "explanation": "1 km = 1000 m, quindi 2 km = 2000 m.",
     "difficulty": 2,
     "promptEn": "A race is 2 km long. How many metres is that?",
-    "explanationEn": "1 km = 1000 m, quindi 2 km = 2000 m."
+    "explanationEn": "1 km = 1000 m, so 2 km = 2000 m."
   },
   {
     "id": "s4-eq-6",
@@ -625,7 +625,7 @@
     "explanation": "Il perimetro del quadrato è 4 x lato.",
     "difficulty": 1,
     "promptEn": "What is the perimeter of a square with side 5 cm?",
-    "explanationEn": "The perimetre of the square is 4 x lato."
+    "explanationEn": "The perimeter of a square is 4 times the side length."
   },
   {
     "id": "s4-per-2",
@@ -834,7 +834,7 @@
     "correctAnswer": "48",
     "explanation": "Ogni volta il numero raddoppia.",
     "difficulty": 1,
-    "promptEn": "Which number completes the serie 3, 6, 12, 24, __?",
+    "promptEn": "Which number completes the series 3, 6, 12, 24, __?",
     "explanationEn": "Each time the number doubles.",
     "optionsEn": [
       "48",
@@ -876,7 +876,7 @@
     "correctAnswer": 3,
     "explanation": "Conti i 2 piccoli e anche il triangolo grande formato dall'insieme.",
     "difficulty": 2,
-    "promptEn": "How many tricorners vedi se una shape is formata of 2 tricorners piccoli and 1 great?",
+    "promptEn": "How many triangles do you see if a shape is made of 2 small triangles and 1 large triangle?",
     "explanationEn": "You count the 2 small triangles and also the large triangle made by the whole figure."
   },
   {
@@ -943,7 +943,7 @@
     "explanation": "La regola è -10, poi -9, poi -8, quindi -7.",
     "difficulty": 3,
     "promptEn": "Which number is missing? 100, 90, 81, 73, __",
-    "explanationEn": "The rule is -10, then -9, then -8, quindi -7.",
+    "explanationEn": "The rule is -10, then -9, then -8, so next is -7.",
     "optionsEn": [
       "66",
       "65",
@@ -973,7 +973,7 @@
     "explanation": "36 : 6 = 6, quindi 360 : 6 = 60.",
     "difficulty": 1,
     "promptEn": "Calculate: 360 : 6",
-    "explanationEn": "36 : 6 = 6, quindi 360 : 6 = 60."
+    "explanationEn": "36 : 6 = 6, so 360 : 6 = 60."
   },
   {
     "id": "s4-op-3",
@@ -1032,7 +1032,7 @@
     "correctAnswer": 216,
     "explanation": "12 x 18 = 216.",
     "difficulty": 3,
-    "promptEn": "A laboratorio prepara 12 boxes with 18 pezzi each. How many pezzi prepara?",
+    "promptEn": "A workshop prepares 12 boxes with 18 pieces each. How many pieces does it prepare?",
     "explanationEn": "12 x 18 = 216."
   },
   {
@@ -1051,7 +1051,7 @@
     "explanation": "420 : 7 = 60.",
     "difficulty": 3,
     "visualModel": "Totale 420 | 7 parti uguali",
-    "promptEn": "A bar total is worth 420 ed is divided in 7 equal parts. How much is worth each part?",
+    "promptEn": "A total bar is worth 420 and is divided into 7 equal parts. How much is each part worth?",
     "explanationEn": "420 : 7 = 60.",
     "optionsEn": [
       "60",
@@ -1149,8 +1149,8 @@
     "explanation": "Ogni parte vale 8. Due parti valgono 16.",
     "difficulty": 2,
     "visualModel": "Totale 40 | 5 parti uguali | 2 parti colorate",
-    "promptEn": "A bar of 40 is divided in 5 equal parts. Ne coloro 2 parts. How much is worth the part coloured?",
-    "explanationEn": "Each part is worth 8. Due parts are worth 16.",
+    "promptEn": "A bar of 40 is divided into 5 equal parts. I colour 2 parts. How much are the coloured parts worth?",
+    "explanationEn": "Each part is worth 8. Two parts are worth 16.",
     "optionsEn": [
       "16",
       "8",

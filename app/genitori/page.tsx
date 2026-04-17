@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
+import { topicsByGrade } from "@/data/topics";
 import { getGrades } from "@/lib/exercises";
-import { getLocale, gradeLabel, type Locale } from "@/lib/i18n";
+import { getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
-import type { SavedProgress } from "@/lib/types";
+import type { Grade, SavedProgress } from "@/lib/types";
 
 export default function GenitoriPage() {
   const [progress, setProgress] = useState<SavedProgress | null>(null);
@@ -135,7 +136,7 @@ export default function GenitoriPage() {
                       <h3 className="m-0 text-xl font-black text-slate-900">{gradeLabel(grade.value, locale)}</h3>
                       <p className="mt-1 mb-0 text-sm font-bold text-slate-600">{locale === "it" ? grade.subtitle : gradeSubtitle(grade.value)}</p>
                     </div>
-                    <span className="pill bg-slate-100 text-slate-800">{grade.value}</span>
+                    <span className="pill bg-slate-100 text-slate-800">{gradeLabel(grade.value, locale)}</span>
                   </div>
                   <div className="mt-4 space-y-3">
                         {[
@@ -163,7 +164,7 @@ export default function GenitoriPage() {
                             {gradeProgress.totalSessions} {locale === "it" ? "sessioni" : "sessions"}, {gradeProgress.totalExercises} {locale === "it" ? "esercizi" : "exercises"}, {locale === "it" ? "migliori stelle" : "best stars"}: {gradeProgress.bestStars}
                           </p>
                           <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
-                            {locale === "it" ? "Argomenti recenti" : "Recent topics"}: {gradeProgress.recentTopics.length > 0 ? gradeProgress.recentTopics.join(", ") : locale === "it" ? "nessuno" : "none"}
+                            {locale === "it" ? "Argomenti recenti" : "Recent topics"}: {recentTopicList(gradeProgress.recentTopics, grade.value, locale, locale === "it" ? "nessuno" : "none")}
                           </p>
                         </div>
                       </>
@@ -221,8 +222,8 @@ export default function GenitoriPage() {
                   <div key={item.id} className="rounded-[24px] border border-slate-100 bg-white p-4 shadow-sm">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{item.grade}</p>
-                        <p className="mt-2 mb-0 text-lg font-black text-slate-900">{item.topic.replaceAll("-", " ")}</p>
+                        <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{gradeLabel(item.grade, locale)}</p>
+                        <p className="mt-2 mb-0 text-lg font-black text-slate-900">{topicName(item.topic, item.grade, locale)}</p>
                         <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
                           {item.correct}/{item.total} {locale === "it" ? "corrette" : "correct"}, {item.stars} {locale === "it" ? "stelle" : "stars"}
                         </p>
@@ -274,4 +275,16 @@ function gradeSubtitle(value: string) {
   if (value === "seconda") return "Numbers, additions, subtractions, first problems";
   if (value === "terza") return "Multiplication, simple division, multi-step problems";
   return "Complex problems, intuitive fractions, bar models";
+}
+
+function topicName(slug: string, grade: Grade, locale: Locale) {
+  const topic = topicsByGrade[grade].find((item) => item.slug === slug);
+
+  return topic ? topicLabel(topic.slug, topic.label, locale) : slug.replaceAll("-", " ");
+}
+
+function recentTopicList(topics: string[], grade: Grade, locale: Locale, emptyLabel: string) {
+  if (topics.length === 0) return emptyLabel;
+
+  return topics.map((topic) => topicName(topic, grade, locale)).join(", ");
 }

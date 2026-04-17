@@ -23,7 +23,7 @@ export function LanguageToggle({
         onChange?.(next);
         window.location.reload();
       }}
-      aria-label={locale === "it" ? "Switch to English" : "Passa all'italiano"}
+      aria-label={locale === "it" ? "Switch to English" : "Switch to Italian"}
     >
       {nextLocale.toUpperCase()}
     </button>

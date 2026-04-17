@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getExercisesByTopic, getTopic, isGradeSlug } from "@/lib/exercises";
 import { getSessionSize } from "@/lib/session";
-import { difficultyLabel, topicDescription, topicLabel } from "@/lib/i18n";
+import { difficultyLabel, gradeLabel, topicDescription, topicLabel } from "@/lib/i18n";
 import { getServerLocale } from "@/lib/server-locale";
 import type { DifficultyFilter } from "@/lib/types";
 
@@ -33,7 +33,7 @@ export default async function TopicPage({
     <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
       <section className="card p-6 md:p-8">
         <div className="flex flex-wrap gap-2">
-          <span className="pill bg-[var(--surface-soft)] text-slate-900">{grade}</span>
+          <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade, locale)}</span>
           <span className="pill bg-[var(--sky)] text-slate-900">{localizedTopicLabel}</span>
         </div>
         <h1 className="section-title mt-5 text-5xl font-black text-slate-900">{localizedTopicLabel}</h1>

@@ -282,7 +282,7 @@
     "explanation": "48 è minore di 52.",
     "difficulty": 1,
     "promptEn": "Which symbol completes: 48 __ 52?",
-    "explanationEn": "48 is smaller of 52.",
+    "explanationEn": "48 is smaller than 52.",
     "optionsEn": [
       "<",
       ">",
@@ -305,7 +305,7 @@
     "explanation": "67 è il più piccolo.",
     "difficulty": 1,
     "promptEn": "Which number is smaller?",
-    "explanationEn": "67 is the more piccolo.",
+    "explanationEn": "67 is the smallest number.",
     "optionsEn": [
       "67",
       "76",
@@ -323,7 +323,7 @@
     "explanation": "93 ha più decine di 39.",
     "difficulty": 1,
     "promptEn": "Write the greater number between 39 and 93.",
-    "explanationEn": "93 ha more tens of 39."
+    "explanationEn": "93 has more tens than 39."
   },
   {
     "id": "s2-con-4",
@@ -341,7 +341,7 @@
     "explanation": "I due numeri sono uguali.",
     "difficulty": 2,
     "promptEn": "Which pair has equal numbers?",
-    "explanationEn": "I due numbers are equal.",
+    "explanationEn": "The two numbers are equal.",
     "optionsEn": [
       "45 and 45",
       "56 and 65",
@@ -364,8 +364,8 @@
     "explanation": "62 è maggiore di 58.",
     "difficulty": 2,
     "visualModel": "Barra A 62 | Barra B 58",
-    "promptEn": "The bar A is worth 62 and the bar B is worth 58. Which bar is more long?",
-    "explanationEn": "62 is greater of 58.",
+    "promptEn": "Bar A is worth 62 and bar B is worth 58. Which bar is longer?",
+    "explanationEn": "62 is greater than 58.",
     "optionsEn": [
       "A",
       "B",
@@ -388,7 +388,7 @@
     "explanation": "80 è maggiore di 79 di una unità.",
     "difficulty": 2,
     "promptEn": "Complete correctly: 80 __ 79",
-    "explanationEn": "80 is greater of 79 of una ones.",
+    "explanationEn": "80 is greater than 79 by one unit.",
     "optionsEn": [
       ">",
       "<",
@@ -488,7 +488,7 @@
     "correctAnswer": 15,
     "explanation": "Continua a salti di 3.",
     "difficulty": 3,
-    "promptEn": "Marta salta sui numbers 3, 6, 9, 12. Su which number atterra after?",
+    "promptEn": "Marta jumps on the numbers 3, 6, 9, 12. Which number does she land on next?",
     "explanationEn": "Continue by jumps of 3."
   },
   {
@@ -575,7 +575,7 @@
       "22",
       "28"
     ],
-    "visualModelEn": "Total 50 | part 18 | part missintog?"
+    "visualModelEn": "Total 50 | part 18 | missing part?"
   },
   {
     "id": "s2-add-6",
@@ -640,7 +640,7 @@
     "correctAnswer": "6 e 4",
     "explanation": "6 + 4 = 10.",
     "difficulty": 1,
-    "promptEn": "Which coppia equals 10?",
+    "promptEn": "Which pair equals 10?",
     "explanationEn": "6 + 4 = 10.",
     "optionsEn": [
       "6 and 4",
@@ -659,7 +659,7 @@
     "explanation": "Aggiungere 2 a 38 porta a 40.",
     "difficulty": 2,
     "promptEn": "Calculate mentally: 38 + 2",
-    "explanationEn": "Aggiungere 2 to 38 brings to 40."
+    "explanationEn": "Adding 2 to 38 brings you to 40."
   },
   {
     "id": "s2-cm-5",
@@ -676,7 +676,7 @@
     "correctAnswer": "Arrivo a 50",
     "explanation": "49 + 1 è il numero tondo successivo: 50.",
     "difficulty": 2,
-    "promptEn": "Which strategia aiuta for 49 + 1?",
+    "promptEn": "Which strategy helps with 49 + 1?",
     "explanationEn": "49 + 1 reaches the next round number: 50.",
     "optionsEn": [
       "I reach 50",
@@ -761,7 +761,7 @@
     "explanation": "26 - 9 = 17.",
     "difficulty": 2,
     "visualModel": "Totale 26 | parte 9 | parte ?",
-    "promptEn": "A bar total is worth 26. A part is worth 9. How many oggetti ci are nell'altra part?",
+    "promptEn": "A total bar is worth 26. One part is worth 9. How many objects are in the other part?",
     "explanationEn": "26 - 9 = 17.",
     "optionsEn": [
       "17",
@@ -834,7 +834,7 @@
     "explanation": "80 cm è maggiore di 12 cm.",
     "difficulty": 1,
     "promptEn": "Which object is longer?",
-    "explanationEn": "80 cm is greater of 12 cm.",
+    "explanationEn": "80 cm is greater than 12 cm.",
     "optionsEn": [
       "An 80 cm rope",
       "A 12 cm pencil",
@@ -930,14 +930,14 @@
     "difficulty": 3,
     "visualModel": "Totale 60 min | parte 35 min | parte mancante ?",
     "promptEn": "The total route is 1 hour. You walked for 35 minutes. How much is left?",
-    "explanationEn": "1 ora are 60 minutes. 60 - 35 = 25.",
+    "explanationEn": "1 hour is 60 minutes. 60 - 35 = 25.",
     "optionsEn": [
       "25 minutes",
       "35 minutes",
       "15 minutes",
       "45 minutes"
     ],
-    "visualModelEn": "Total 60 minto | part 35 minto | part missintog?"
+    "visualModelEn": "Total 60 min | part 35 min | missing part?"
   },
   {
     "id": "s2-dm-1",
@@ -949,7 +949,7 @@
     "explanation": "Il doppio significa due volte lo stesso numero: 6 + 6 = 12.",
     "difficulty": 1,
     "promptEn": "What is double 6?",
-    "explanationEn": "The doppio means due volte the stesso number: 6 + 6 = 12."
+    "explanationEn": "Double means two times the same number: 6 + 6 = 12."
   },
   {
     "id": "s2-dm-2",
@@ -967,7 +967,7 @@
     "explanation": "La metà divide 10 in due parti uguali da 5.",
     "difficulty": 1,
     "promptEn": "What is half of 10?",
-    "explanationEn": "The half divide 10 in due equal parts of 5.",
+    "explanationEn": "Half divides 10 into two equal parts of 5.",
     "optionsEn": [
       "5",
       "2",
@@ -1003,7 +1003,7 @@
     "explanation": "14 è il doppio di 7.",
     "difficulty": 2,
     "promptEn": "Which pair shows a double?",
-    "explanationEn": "14 is the doppio of 7.",
+    "explanationEn": "14 is double 7.",
     "optionsEn": [
       "7 and 14",
       "6 and 9",
@@ -1021,7 +1021,7 @@
     "explanation": "Il doppio di 8 è 16.",
     "difficulty": 2,
     "promptEn": "Sara has 8 beads. Marco has double. How many beads does Marco have?",
-    "explanationEn": "The doppio of 8 is 16."
+    "explanationEn": "Double 8 is 16."
   },
   {
     "id": "s2-dm-6",
@@ -1039,7 +1039,7 @@
     "explanation": "18 diviso in due parti uguali dà 9.",
     "difficulty": 2,
     "visualModel": "Totale 18 | 2 parti uguali",
-    "promptEn": "A bar is worth 18 ed is divided in due equal parts. How much is worth una part?",
+    "promptEn": "A bar is worth 18 and is divided into two equal parts. How much is one part worth?",
     "explanationEn": "18 divided into two equal parts gives 9.",
     "optionsEn": [
       "9",
@@ -1095,7 +1095,7 @@
     "explanation": "Il quadrato ha 4 lati.",
     "difficulty": 1,
     "promptEn": "How many sides does a square have?",
-    "explanationEn": "The square ha 4 sides."
+    "explanationEn": "A square has 4 sides."
   },
   {
     "id": "s2-geo-3",
@@ -1113,7 +1113,7 @@
     "explanation": "Il cerchio non ha angoli.",
     "difficulty": 1,
     "promptEn": "Which shape has no corners?",
-    "explanationEn": "The circle non ha corners.",
+    "explanationEn": "A circle has no corners.",
     "optionsEn": [
       "Circle",
       "Rectangle",
@@ -1137,7 +1137,7 @@
     "explanation": "La porta ha una forma simile a un rettangolo.",
     "difficulty": 2,
     "promptEn": "Which object looks like a rectangle?",
-    "explanationEn": "The brings ha una forma simile to un rectangle.",
+    "explanationEn": "A door has a shape similar to a rectangle.",
     "optionsEn": [
       "A door",
       "A wheel",
@@ -1155,7 +1155,7 @@
     "explanation": "Il triangolo ha 3 vertici.",
     "difficulty": 2,
     "promptEn": "How many vertices does a triangle have?",
-    "explanationEn": "The triangle ha 3 vertices."
+    "explanationEn": "A triangle has 3 vertices."
   },
   {
     "id": "s2-geo-6",
@@ -1173,7 +1173,7 @@
     "explanation": "Nel quadrato i lati sono tutti uguali.",
     "difficulty": 2,
     "promptEn": "Which shape has all sides equal?",
-    "explanationEn": "In the square i sides are tutti equal.",
+    "explanationEn": "In a square, all sides are equal.",
     "optionsEn": [
       "Square",
       "Rectangle",
