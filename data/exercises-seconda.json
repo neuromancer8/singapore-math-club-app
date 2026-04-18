@@ -6,10 +6,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero è maggiore?",
     "options": [
-      "34",
-      "43",
       "31",
-      "24"
+      "43",
+      "24",
+      "34"
     ],
     "correctAnswer": "43",
     "explanation": "43 è il numero più grande tra quelli proposti.",
@@ -17,10 +17,10 @@
     "promptEn": "Which number is greater?",
     "explanationEn": "43 is the greatest number among the choices.",
     "optionsEn": [
-      "34",
-      "43",
       "31",
-      "24"
+      "43",
+      "24",
+      "34"
     ]
   },
   {
@@ -43,8 +43,8 @@
     "prompt": "Quale numero ha 5 decine e 2 unità?",
     "options": [
       "25",
-      "52",
       "50",
+      "52",
       "72"
     ],
     "correctAnswer": "52",
@@ -54,8 +54,8 @@
     "explanationEn": "5 tens are worth 50, and with 2 ones you get 52.",
     "optionsEn": [
       "25",
-      "52",
       "50",
+      "52",
       "72"
     ]
   },
@@ -66,10 +66,10 @@
     "type": "multiple-choice",
     "prompt": "Quale coppia è in ordine crescente?",
     "options": [
-      "48, 51, 57",
-      "62, 58, 64",
       "39, 35, 31",
-      "70, 69, 71"
+      "70, 69, 71",
+      "62, 58, 64",
+      "48, 51, 57"
     ],
     "correctAnswer": "48, 51, 57",
     "explanation": "In ordine crescente i numeri vanno dal più piccolo al più grande.",
@@ -77,10 +77,10 @@
     "promptEn": "Which set is in increasing order?",
     "explanationEn": "In increasing order, numbers go from the smallest to the greatest.",
     "optionsEn": [
-      "48, 51, 57",
-      "62, 58, 64",
       "39, 35, 31",
-      "70, 69, 71"
+      "70, 69, 71",
+      "62, 58, 64",
+      "48, 51, 57"
     ]
   },
   {
@@ -140,10 +140,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero è formato da 6 decine e 4 unità?",
     "options": [
+      "24",
       "46",
       "64",
-      "60",
-      "24"
+      "60"
     ],
     "correctAnswer": "64",
     "explanation": "6 decine valgono 60 e con 4 unità si arriva a 64.",
@@ -151,10 +151,10 @@
     "promptEn": "Which number is made of 6 tens and 4 ones?",
     "explanationEn": "6 tens are worth 60, and with 4 ones you reach 64.",
     "optionsEn": [
+      "24",
       "46",
       "64",
-      "60",
-      "24"
+      "60"
     ]
   },
   {
@@ -176,10 +176,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero ha 8 decine e 0 unità?",
     "options": [
-      "80",
-      "8",
       "18",
-      "108"
+      "80",
+      "108",
+      "8"
     ],
     "correctAnswer": "80",
     "explanation": "8 decine e 0 unità fanno 80.",
@@ -187,10 +187,10 @@
     "promptEn": "Which number has 8 tens and 0 ones?",
     "explanationEn": "8 tens and 0 ones make 80.",
     "optionsEn": [
-      "80",
-      "8",
       "18",
-      "108"
+      "80",
+      "108",
+      "8"
     ]
   },
   {
@@ -211,10 +211,10 @@
     "topic": "decine-unita",
     "type": "bar-model",
     "options": [
-      "34",
       "43",
       "26",
-      "7"
+      "7",
+      "34"
     ],
     "correctAnswer": "34",
     "prompt": "Una barra lunga vale 30 e una piccola barra vale 4. Che numero rappresentano insieme?",
@@ -224,10 +224,10 @@
     "promptEn": "A long bar is worth 30 and a small bar is worth 4. What number do they show together?",
     "explanationEn": "30 + 4 = 34.",
     "optionsEn": [
-      "34",
       "43",
       "26",
-      "7"
+      "7",
+      "34"
     ],
     "visualModelEn": "3 tens + 4 ones = number"
   },
@@ -239,9 +239,9 @@
     "prompt": "Quale scomposizione è corretta per 57?",
     "options": [
       "50 + 7",
-      "5 + 7",
       "40 + 17",
-      "30 + 27"
+      "30 + 27",
+      "5 + 7"
     ],
     "correctAnswer": "50 + 7",
     "explanation": "57 si scompone in 50 e 7.",
@@ -250,9 +250,9 @@
     "explanationEn": "57 scompone in 50 and 7.",
     "optionsEn": [
       "50 + 7",
-      "5 + 7",
       "40 + 17",
-      "30 + 27"
+      "30 + 27",
+      "5 + 7"
     ]
   },
   {
@@ -274,8 +274,8 @@
     "type": "multiple-choice",
     "prompt": "Quale simbolo completa: 48 __ 52?",
     "options": [
-      "<",
       ">",
+      "<",
       "="
     ],
     "correctAnswer": "<",
@@ -284,8 +284,8 @@
     "promptEn": "Which symbol completes: 48 __ 52?",
     "explanationEn": "48 is smaller than 52.",
     "optionsEn": [
-      "<",
       ">",
+      "<",
       "="
     ]
   },
@@ -296,10 +296,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero è minore?",
     "options": [
-      "67",
-      "76",
       "70",
-      "71"
+      "71",
+      "67",
+      "76"
     ],
     "correctAnswer": "67",
     "explanation": "67 è il più piccolo.",
@@ -307,10 +307,10 @@
     "promptEn": "Which number is smaller?",
     "explanationEn": "67 is the smallest number.",
     "optionsEn": [
-      "67",
-      "76",
       "70",
-      "71"
+      "71",
+      "67",
+      "76"
     ]
   },
   {
@@ -332,10 +332,10 @@
     "type": "multiple-choice",
     "prompt": "Quale coppia ha numeri uguali?",
     "options": [
-      "45 e 45",
       "56 e 65",
       "31 e 13",
-      "70 e 71"
+      "70 e 71",
+      "45 e 45"
     ],
     "correctAnswer": "45 e 45",
     "explanation": "I due numeri sono uguali.",
@@ -343,10 +343,10 @@
     "promptEn": "Which pair has equal numbers?",
     "explanationEn": "The two numbers are equal.",
     "optionsEn": [
-      "45 and 45",
       "56 and 65",
       "31 and 13",
-      "70 and 71"
+      "70 and 71",
+      "45 and 45"
     ]
   },
   {
@@ -380,9 +380,9 @@
     "type": "multiple-choice",
     "prompt": "Completa correttamente: 80 __ 79",
     "options": [
-      ">",
+      "=",
       "<",
-      "="
+      ">"
     ],
     "correctAnswer": ">",
     "explanation": "80 è maggiore di 79 di una unità.",
@@ -390,9 +390,9 @@
     "promptEn": "Complete correctly: 80 __ 79",
     "explanationEn": "80 is greater than 79 by one unit.",
     "optionsEn": [
-      ">",
+      "=",
       "<",
-      "="
+      ">"
     ]
   },
   {
@@ -426,10 +426,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero manca? 5, 10, 15, __, 25",
     "options": [
-      "18",
+      "35",
       "20",
-      "30",
-      "35"
+      "18",
+      "30"
     ],
     "correctAnswer": "20",
     "explanation": "Si conta a salti di 5.",
@@ -437,10 +437,10 @@
     "promptEn": "Which number is missing? 5, 10, 15, __, 25",
     "explanationEn": "You count by jumps of 5.",
     "optionsEn": [
-      "18",
+      "35",
       "20",
-      "30",
-      "35"
+      "18",
+      "30"
     ]
   },
   {
@@ -462,10 +462,10 @@
     "type": "multiple-choice",
     "prompt": "Quale sequenza è corretta?",
     "options": [
-      "41, 43, 45, 47",
-      "20, 23, 26, 28",
       "90, 80, 75, 70",
-      "14, 18, 21, 24"
+      "14, 18, 21, 24",
+      "20, 23, 26, 28",
+      "41, 43, 45, 47"
     ],
     "correctAnswer": "41, 43, 45, 47",
     "explanation": "Ogni volta si aggiungono 2.",
@@ -473,10 +473,10 @@
     "promptEn": "Which sequence is correct?",
     "explanationEn": "Each time you add 2.",
     "optionsEn": [
-      "41, 43, 45, 47",
-      "20, 23, 26, 28",
       "90, 80, 75, 70",
-      "14, 18, 21, 24"
+      "14, 18, 21, 24",
+      "20, 23, 26, 28",
+      "41, 43, 45, 47"
     ]
   },
   {
@@ -557,10 +557,10 @@
     "topic": "addizione-sottrazione",
     "type": "bar-model",
     "options": [
+      "28",
       "32",
       "68",
-      "22",
-      "28"
+      "22"
     ],
     "correctAnswer": "32",
     "prompt": "Una barra totale vale 50. Una parte è 18. Quanto vale l'altra parte?",
@@ -570,10 +570,10 @@
     "promptEn": "A total bar is worth 50. One part is worth 18. What is the other part worth?",
     "explanationEn": "50 - 18 = 32.",
     "optionsEn": [
+      "28",
       "32",
       "68",
-      "22",
-      "28"
+      "22"
     ],
     "visualModelEn": "Total 50 | part 18 | missing part?"
   },
@@ -632,10 +632,10 @@
     "type": "multiple-choice",
     "prompt": "Quale coppia fa 10?",
     "options": [
-      "6 e 4",
-      "7 e 2",
       "8 e 1",
-      "5 e 2"
+      "5 e 2",
+      "6 e 4",
+      "7 e 2"
     ],
     "correctAnswer": "6 e 4",
     "explanation": "6 + 4 = 10.",
@@ -643,10 +643,10 @@
     "promptEn": "Which pair equals 10?",
     "explanationEn": "6 + 4 = 10.",
     "optionsEn": [
-      "6 and 4",
-      "7 and 2",
       "8 and 1",
-      "5 and 2"
+      "5 and 2",
+      "6 and 4",
+      "7 and 2"
     ]
   },
   {
@@ -668,10 +668,10 @@
     "type": "multiple-choice",
     "prompt": "Quale strategia aiuta per 49 + 1?",
     "options": [
-      "Arrivo a 50",
       "Tolgo 10",
       "Raddoppio",
-      "Conto all'indietro"
+      "Conto all'indietro",
+      "Arrivo a 50"
     ],
     "correctAnswer": "Arrivo a 50",
     "explanation": "49 + 1 è il numero tondo successivo: 50.",
@@ -679,10 +679,10 @@
     "promptEn": "Which strategy helps with 49 + 1?",
     "explanationEn": "49 + 1 reaches the next round number: 50.",
     "optionsEn": [
-      "I reach 50",
       "I subtract 10",
       "I double",
-      "I count backwards"
+      "I count backwards",
+      "I reach 50"
     ]
   },
   {
@@ -751,10 +751,10 @@
     "topic": "problemi",
     "type": "bar-model",
     "options": [
-      "17",
-      "35",
       "15",
-      "19"
+      "19",
+      "17",
+      "35"
     ],
     "correctAnswer": "17",
     "prompt": "Una barra totale vale 26. Una parte vale 9. Quanti oggetti ci sono nell'altra parte?",
@@ -764,10 +764,10 @@
     "promptEn": "A total bar is worth 26. One part is worth 9. How many objects are in the other part?",
     "explanationEn": "26 - 9 = 17.",
     "optionsEn": [
-      "17",
-      "35",
       "15",
-      "19"
+      "19",
+      "17",
+      "35"
     ],
     "visualModelEn": "Total 26 | part 9 | part?"
   },
@@ -802,10 +802,10 @@
     "type": "multiple-choice",
     "prompt": "Quale risposta è ragionevole per 9 + 8?",
     "options": [
-      "17",
-      "2",
       "98",
-      "40"
+      "17",
+      "40",
+      "2"
     ],
     "correctAnswer": "17",
     "explanation": "9 + 8 fa 17.",
@@ -813,10 +813,10 @@
     "promptEn": "Which answer is reasonable for 9 + 8?",
     "explanationEn": "9 + 8 equals 17.",
     "optionsEn": [
-      "17",
-      "2",
       "98",
-      "40"
+      "17",
+      "40",
+      "2"
     ]
   },
   {
@@ -826,9 +826,9 @@
     "type": "multiple-choice",
     "prompt": "Quale oggetto è più lungo?",
     "options": [
-      "Una corda di 80 cm",
+      "Sono uguali",
       "Una matita di 12 cm",
-      "Sono uguali"
+      "Una corda di 80 cm"
     ],
     "correctAnswer": "Una corda di 80 cm",
     "explanation": "80 cm è maggiore di 12 cm.",
@@ -836,9 +836,9 @@
     "promptEn": "Which object is longer?",
     "explanationEn": "80 cm is greater than 12 cm.",
     "optionsEn": [
-      "An 80 cm rope",
+      "They are equal",
       "A 12 cm pencil",
-      "They are equal"
+      "An 80 cm rope"
     ]
   },
   {
@@ -861,9 +861,9 @@
     "prompt": "Quanti minuti ci sono in mezz'ora?",
     "options": [
       "30",
+      "15",
       "20",
-      "60",
-      "15"
+      "60"
     ],
     "correctAnswer": "30",
     "explanation": "Mezz'ora corrisponde a 30 minuti.",
@@ -872,9 +872,9 @@
     "explanationEn": "Half an hour is 30 minutes.",
     "optionsEn": [
       "30",
+      "15",
       "20",
-      "60",
-      "15"
+      "60"
     ]
   },
   {
@@ -896,10 +896,10 @@
     "type": "multiple-choice",
     "prompt": "Quale moneta manca per arrivare da 6 euro a 10 euro?",
     "options": [
-      "4 euro",
-      "2 euro",
       "3 euro",
-      "5 euro"
+      "4 euro",
+      "5 euro",
+      "2 euro"
     ],
     "correctAnswer": "4 euro",
     "explanation": "10 - 6 = 4.",
@@ -907,10 +907,10 @@
     "promptEn": "Which coin is missing to get from 6 euros to 10 euros?",
     "explanationEn": "10 - 6 = 4.",
     "optionsEn": [
-      "4 euros",
-      "2 euros",
       "3 euros",
-      "5 euros"
+      "4 euros",
+      "5 euros",
+      "2 euros"
     ]
   },
   {
@@ -919,10 +919,10 @@
     "topic": "misure-semplici",
     "type": "bar-model",
     "options": [
-      "25 minuti",
+      "45 minuti",
       "35 minuti",
-      "15 minuti",
-      "45 minuti"
+      "25 minuti",
+      "15 minuti"
     ],
     "correctAnswer": "25 minuti",
     "prompt": "Il percorso totale è di 1 ora. Hai camminato per 35 minuti. Quanto manca?",
@@ -932,10 +932,10 @@
     "promptEn": "The total route is 1 hour. You walked for 35 minutes. How much is left?",
     "explanationEn": "1 hour is 60 minutes. 60 - 35 = 25.",
     "optionsEn": [
-      "25 minutes",
+      "45 minutes",
       "35 minutes",
-      "15 minutes",
-      "45 minutes"
+      "25 minutes",
+      "15 minutes"
     ],
     "visualModelEn": "Total 60 min | part 35 min | missing part?"
   },
@@ -958,10 +958,10 @@
     "type": "multiple-choice",
     "prompt": "Qual è la metà di 10?",
     "options": [
-      "5",
-      "2",
       "20",
-      "8"
+      "8",
+      "2",
+      "5"
     ],
     "correctAnswer": "5",
     "explanation": "La metà divide 10 in due parti uguali da 5.",
@@ -969,10 +969,10 @@
     "promptEn": "What is half of 10?",
     "explanationEn": "Half divides 10 into two equal parts of 5.",
     "optionsEn": [
-      "5",
-      "2",
       "20",
-      "8"
+      "8",
+      "2",
+      "5"
     ]
   },
   {
@@ -1029,10 +1029,10 @@
     "topic": "doppi-meta",
     "type": "bar-model",
     "options": [
-      "9",
+      "6",
       "8",
-      "10",
-      "6"
+      "9",
+      "10"
     ],
     "correctAnswer": "9",
     "prompt": "Una barra vale 18 ed è divisa in due parti uguali. Quanto vale una parte?",
@@ -1042,10 +1042,10 @@
     "promptEn": "A bar is worth 18 and is divided into two equal parts. How much is one part worth?",
     "explanationEn": "18 divided into two equal parts gives 9.",
     "optionsEn": [
-      "9",
+      "6",
       "8",
-      "10",
-      "6"
+      "9",
+      "10"
     ],
     "visualModelEn": "Total 18 | 2 equal parts"
   },
@@ -1068,10 +1068,10 @@
     "type": "multiple-choice",
     "prompt": "Quale figura ha 3 lati?",
     "options": [
-      "Triangolo",
-      "Quadrato",
       "Cerchio",
-      "Rettangolo"
+      "Triangolo",
+      "Rettangolo",
+      "Quadrato"
     ],
     "correctAnswer": "Triangolo",
     "explanation": "Il triangolo ha 3 lati.",
@@ -1079,10 +1079,10 @@
     "promptEn": "Which shape has 3 sides?",
     "explanationEn": "A triangle has 3 sides.",
     "optionsEn": [
-      "Triangle",
-      "Square",
       "Circle",
-      "Rectangle"
+      "Triangle",
+      "Rectangle",
+      "Square"
     ]
   },
   {
@@ -1104,10 +1104,10 @@
     "type": "multiple-choice",
     "prompt": "Quale figura non ha angoli?",
     "options": [
-      "Cerchio",
       "Rettangolo",
       "Triangolo",
-      "Quadrato"
+      "Quadrato",
+      "Cerchio"
     ],
     "correctAnswer": "Cerchio",
     "explanation": "Il cerchio non ha angoli.",
@@ -1115,10 +1115,10 @@
     "promptEn": "Which shape has no corners?",
     "explanationEn": "A circle has no corners.",
     "optionsEn": [
-      "Circle",
       "Rectangle",
       "Triangle",
-      "Square"
+      "Square",
+      "Circle"
     ]
   },
   {
@@ -1129,9 +1129,9 @@
     "prompt": "Quale oggetto assomiglia a un rettangolo?",
     "options": [
       "Una porta",
-      "Una ruota",
       "Una palla",
-      "Una stella"
+      "Una stella",
+      "Una ruota"
     ],
     "correctAnswer": "Una porta",
     "explanation": "La porta ha una forma simile a un rettangolo.",
@@ -1140,9 +1140,9 @@
     "explanationEn": "A door has a shape similar to a rectangle.",
     "optionsEn": [
       "A door",
-      "A wheel",
       "A ball",
-      "A star"
+      "A star",
+      "A wheel"
     ]
   },
   {
@@ -1164,8 +1164,8 @@
     "type": "multiple-choice",
     "prompt": "Quale figura ha tutti i lati uguali?",
     "options": [
-      "Quadrato",
       "Rettangolo",
+      "Quadrato",
       "Cerchio",
       "Ovale"
     ],
@@ -1175,8 +1175,8 @@
     "promptEn": "Which shape has all sides equal?",
     "explanationEn": "In a square, all sides are equal.",
     "optionsEn": [
-      "Square",
       "Rectangle",
+      "Square",
       "Circle",
       "Oval"
     ]

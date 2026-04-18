@@ -30,10 +30,10 @@
     "type": "multiple-choice",
     "prompt": "Quale coppia di operazioni risolve: 3 scatole da 8 quaderni e poi ne regalo 5?",
     "options": [
-      "3 x 8, poi -5",
-      "3 + 8, poi -5",
       "8 - 5, poi x3",
-      "3 x 5, poi +8"
+      "3 x 5, poi +8",
+      "3 x 8, poi -5",
+      "3 + 8, poi -5"
     ],
     "correctAnswer": "3 x 8, poi -5",
     "explanation": "Prima trovi il totale, poi togli quelli regalati.",
@@ -41,10 +41,10 @@
     "promptEn": "Which pair of operations solves: 3 boxes of 8 notebooks and then I give away 5?",
     "explanationEn": "First find the total, then subtract the ones given away.",
     "optionsEn": [
-      "3 x 8, then -5",
-      "3 + 8, then -5",
       "8 - 5, then x3",
-      "3 x 5, then +8"
+      "3 x 5, then +8",
+      "3 x 8, then -5",
+      "3 + 8, then -5"
     ]
   },
   {
@@ -77,10 +77,10 @@
     "topic": "problemi-avanzati",
     "type": "bar-model",
     "options": [
-      "33",
-      "9",
       "6",
-      "12"
+      "12",
+      "9",
+      "33"
     ],
     "correctAnswer": "33",
     "prompt": "Un totale di 36 è formato da 4 parti uguali e poi tolgo 3. Quanto resta?",
@@ -90,10 +90,10 @@
     "promptEn": "A total of 36 is made of 4 equal parts and then I subtract 3. How much remains?",
     "explanationEn": "The total is 36. If you subtract 3, 33 remain.",
     "optionsEn": [
-      "33",
-      "9",
       "6",
-      "12"
+      "12",
+      "9",
+      "33"
     ],
     "visualModelEn": "Total 36 | removed part 3 | remainder?"
   },
@@ -117,9 +117,9 @@
     "prompt": "Quale frazione rappresenta una torta divisa in 4 parti uguali con 1 parte colorata?",
     "options": [
       "1/4",
-      "1/2",
       "3/4",
-      "4/1"
+      "4/1",
+      "1/2"
     ],
     "correctAnswer": "1/4",
     "explanation": "Una parte su quattro è un quarto.",
@@ -128,9 +128,9 @@
     "explanationEn": "One part out of four is one quarter.",
     "optionsEn": [
       "1/4",
-      "1/2",
       "3/4",
-      "4/1"
+      "4/1",
+      "1/2"
     ]
   },
   {
@@ -140,10 +140,10 @@
     "type": "multiple-choice",
     "prompt": "Quale frazione è più grande?",
     "options": [
-      "3/4",
+      "1/8",
       "1/4",
-      "2/8",
-      "1/8"
+      "3/4",
+      "2/8"
     ],
     "correctAnswer": "3/4",
     "explanation": "Tre quarti sono maggiori delle altre frazioni proposte.",
@@ -151,10 +151,10 @@
     "promptEn": "Which fraction is greater?",
     "explanationEn": "Three quarters is greater than the other proposed fractions.",
     "optionsEn": [
-      "3/4",
+      "1/8",
       "1/4",
-      "2/8",
-      "1/8"
+      "3/4",
+      "2/8"
     ]
   },
   {
@@ -176,10 +176,10 @@
     "type": "multiple-choice",
     "prompt": "Quale frazione è equivalente a 1/2?",
     "options": [
-      "2/4",
-      "1/4",
       "3/4",
-      "4/4"
+      "2/4",
+      "4/4",
+      "1/4"
     ],
     "correctAnswer": "2/4",
     "explanation": "2/4 rappresenta la stessa quantità di 1/2.",
@@ -187,10 +187,10 @@
     "promptEn": "Which fraction is equivalent to 1/2?",
     "explanationEn": "2/4 represents the same amount as 1/2.",
     "optionsEn": [
-      "2/4",
-      "1/4",
       "3/4",
-      "4/4"
+      "2/4",
+      "4/4",
+      "1/4"
     ]
   },
   {
@@ -199,10 +199,10 @@
     "topic": "frazioni",
     "type": "bar-model",
     "options": [
-      "3/6",
+      "5/6",
       "6/3",
       "1/6",
-      "5/6"
+      "3/6"
     ],
     "correctAnswer": "3/6",
     "prompt": "Una barra è divisa in 6 parti uguali. Ne coloro 3. Che frazione ho colorato?",
@@ -212,10 +212,10 @@
     "promptEn": "A bar is divided into 6 equal parts. I colour 3 of them. What fraction is coloured?",
     "explanationEn": "3 parts coloured out of 6 total.",
     "optionsEn": [
-      "3/6",
+      "5/6",
       "6/3",
       "1/6",
-      "5/6"
+      "3/6"
     ],
     "visualModelEn": "Bar divided into 6 equal parts, 3 coloured"
   },
@@ -239,9 +239,9 @@
     "prompt": "Quale frazione indica 'tutto intero'?",
     "options": [
       "4/4",
-      "1/4",
       "2/4",
-      "3/4"
+      "3/4",
+      "1/4"
     ],
     "correctAnswer": "4/4",
     "explanation": "Quattro quarti formano l'intero.",
@@ -250,9 +250,9 @@
     "explanationEn": "Four quarters make the whole.",
     "optionsEn": [
       "4/4",
-      "1/4",
       "2/4",
-      "3/4"
+      "3/4",
+      "1/4"
     ]
   },
   {
@@ -261,8 +261,8 @@
     "topic": "bar-model",
     "type": "bar-model",
     "options": [
-      "27",
       "23",
+      "27",
       "63",
       "17"
     ],
@@ -274,8 +274,8 @@
     "promptEn": "A total bar is worth 45. One part is worth 18. What is the other part worth?",
     "explanationEn": "45 - 18 = 27.",
     "optionsEn": [
-      "27",
       "23",
+      "27",
       "63",
       "17"
     ],
@@ -287,10 +287,10 @@
     "topic": "bar-model",
     "type": "bar-model",
     "options": [
-      "12",
-      "9",
       "18",
-      "6"
+      "6",
+      "12",
+      "9"
     ],
     "correctAnswer": "12",
     "prompt": "Tre parti uguali valgono in tutto 36. Quanto vale una parte?",
@@ -300,10 +300,10 @@
     "promptEn": "Three equal parts are worth 36 in all. What is one part worth?",
     "explanationEn": "36 : 3 = 12.",
     "optionsEn": [
-      "12",
-      "9",
       "18",
-      "6"
+      "6",
+      "12",
+      "9"
     ],
     "visualModelEn": "Total 36 | 3 equal parts"
   },
@@ -314,10 +314,10 @@
     "type": "multiple-choice",
     "prompt": "Quale schema mostra 'il doppio di 7'?",
     "options": [
-      "Due barre uguali da 7",
+      "Una barra da 14 e una da 1",
       "Una barra da 7 e una da 3",
       "Tre barre da 7",
-      "Una barra da 14 e una da 1"
+      "Due barre uguali da 7"
     ],
     "correctAnswer": "Due barre uguali da 7",
     "explanation": "Il doppio significa due parti uguali della stessa grandezza.",
@@ -325,10 +325,10 @@
     "promptEn": "Which diagram shows 'double 7'?",
     "explanationEn": "Double means two equal parts of the same size.",
     "optionsEn": [
-      "Two equal bars of 7",
+      "One bar of 14 and one of 1",
       "One bar of 7 and one of 3",
       "One bar of 14",
-      "One bar of 14 and one of 1"
+      "Two equal bars of 7"
     ]
   },
   {
@@ -377,10 +377,10 @@
     "topic": "bar-model",
     "type": "bar-model",
     "options": [
-      "20",
+      "15",
       "10",
-      "80",
-      "15"
+      "20",
+      "80"
     ],
     "correctAnswer": "20",
     "prompt": "Due barre insieme fanno 50. La prima vale 30. Quanto vale la seconda?",
@@ -390,10 +390,10 @@
     "promptEn": "Two bars together make 50. The first is worth 30. What is the second worth?",
     "explanationEn": "50 - 30 = 20.",
     "optionsEn": [
-      "20",
+      "15",
       "10",
-      "80",
-      "15"
+      "20",
+      "80"
     ],
     "visualModelEn": "Total 50 | first bar 30 | second bar?"
   },
@@ -430,10 +430,10 @@
     "type": "multiple-choice",
     "prompt": "Quale numero è maggiore?",
     "options": [
-      "1,7",
-      "1,07",
       "1,5",
-      "1,09"
+      "1,7",
+      "1,09",
+      "1,07"
     ],
     "correctAnswer": "1,7",
     "explanation": "1,7 corrisponde a 1 intero e 7 decimi.",
@@ -441,10 +441,10 @@
     "promptEn": "Which number is greater?",
     "explanationEn": "1.7 is 1 whole and 7 tenths.",
     "optionsEn": [
-      "1,7",
-      "1,07",
       "1,5",
-      "1,09"
+      "1,7",
+      "1,09",
+      "1,07"
     ]
   },
   {
@@ -466,10 +466,10 @@
     "type": "multiple-choice",
     "prompt": "Quale confronto è corretto?",
     "options": [
-      "0,8 > 0,5",
       "0,3 > 0,7",
       "1,2 < 1,1",
-      "0,9 = 0,09"
+      "0,9 = 0,09",
+      "0,8 > 0,5"
     ],
     "correctAnswer": "0,8 > 0,5",
     "explanation": "Otto decimi sono maggiori di cinque decimi.",
@@ -477,10 +477,10 @@
     "promptEn": "Which comparison is correct?",
     "explanationEn": "Eight tenths are greater than five tenths.",
     "optionsEn": [
-      "0,8 > 0,5",
       "0,3 > 0,7",
       "1,2 < 1,1",
-      "0,9 = 0,09"
+      "0,9 = 0,09",
+      "0,8 > 0,5"
     ]
   },
   {
@@ -515,9 +515,9 @@
     "prompt": "Quanti centimetri sono 2 metri?",
     "options": [
       "200",
-      "20",
       "2000",
-      "120"
+      "120",
+      "20"
     ],
     "correctAnswer": "200",
     "explanation": "1 metro = 100 cm, quindi 2 metri = 200 cm.",
@@ -526,9 +526,9 @@
     "explanationEn": "1 metre = 100 cm, so 2 metres = 200 cm.",
     "optionsEn": [
       "200",
-      "20",
       "2000",
-      "120"
+      "120",
+      "20"
     ]
   },
   {
@@ -550,8 +550,8 @@
     "type": "multiple-choice",
     "prompt": "Quale equivalenza è corretta?",
     "options": [
-      "1 l = 1000 ml",
       "1 l = 100 ml",
+      "1 l = 1000 ml",
       "1 km = 100 m",
       "1 h = 10 min"
     ],
@@ -561,8 +561,8 @@
     "promptEn": "Which equivalence is correct?",
     "explanationEn": "One litre is 1000 millilitres.",
     "optionsEn": [
-      "1 l = 1000 ml",
       "1 l = 100 ml",
+      "1 l = 1000 ml",
       "1 km = 100 m",
       "1 h = 10 min"
     ]
@@ -598,9 +598,9 @@
     "type": "multiple-choice",
     "prompt": "Qual è la stessa quantità di 500 ml?",
     "options": [
-      "0,5 l",
       "5 l",
       "50 l",
+      "0,5 l",
       "0,05 l"
     ],
     "correctAnswer": "0,5 l",
@@ -609,9 +609,9 @@
     "promptEn": "What is the same amount as 500 ml?",
     "explanationEn": "500 ml is half a litre.",
     "optionsEn": [
-      "0,5 l",
       "5 l",
       "50 l",
+      "0,5 l",
       "0,05 l"
     ]
   },
@@ -646,10 +646,10 @@
     "type": "multiple-choice",
     "prompt": "L'area misura:",
     "options": [
-      "Lo spazio interno",
+      "L'altezza",
       "Il bordo",
       "Il numero di lati",
-      "L'altezza"
+      "Lo spazio interno"
     ],
     "correctAnswer": "Lo spazio interno",
     "explanation": "L'area indica quanto spazio occupa la figura.",
@@ -657,10 +657,10 @@
     "promptEn": "Area measures:",
     "explanationEn": "Area tells how much space a shape covers.",
     "optionsEn": [
-      "The border",
+      "The number of sides",
       "The inside space",
       "The height",
-      "The number of sides"
+      "The border"
     ]
   },
   {
@@ -695,9 +695,9 @@
     "prompt": "Quale figura ha area 16 se i lati misurano 4 e 4?",
     "options": [
       "Quadrato",
+      "Pentagono",
       "Triangolo",
-      "Cerchio",
-      "Pentagono"
+      "Cerchio"
     ],
     "correctAnswer": "Quadrato",
     "explanation": "4 x 4 = 16.",
@@ -706,9 +706,9 @@
     "explanationEn": "4 x 4 = 16.",
     "optionsEn": [
       "Square",
+      "Pentagon",
       "Triangle",
-      "Circle",
-      "Pentagon"
+      "Circle"
     ]
   },
   {
@@ -718,9 +718,9 @@
     "type": "multiple-choice",
     "prompt": "In un grafico: lun=12, mar=15, mer=9. Quale giorno ha il valore più alto?",
     "options": [
-      "Martedì",
       "Lunedì",
       "Mercoledì",
+      "Martedì",
       "Sono uguali"
     ],
     "correctAnswer": "Martedì",
@@ -729,9 +729,9 @@
     "promptEn": "In a chart: Mon=12, Tue=15, Wed=9. Which day has the highest value?",
     "explanationEn": "15 is the highest value.",
     "optionsEn": [
-      "Tuesday",
       "Monday",
       "Wednesday",
+      "Tuesday",
       "They are equal"
     ]
   },
@@ -754,10 +754,10 @@
     "type": "multiple-choice",
     "prompt": "Quale domanda risponde bene a un grafico a barre?",
     "options": [
+      "Quale frazione è equivalente",
       "Quale categoria è più grande",
       "Che forma ha un triangolo",
-      "Quanto pesa un metro",
-      "Quale frazione è equivalente"
+      "Quanto pesa un metro"
     ],
     "correctAnswer": "Quale categoria è più grande",
     "explanation": "Il grafico a barre confronta quantità.",
@@ -765,10 +765,10 @@
     "promptEn": "Which question is answered well by a bar chart?",
     "explanationEn": "A bar chart compares quantities.",
     "optionsEn": [
+      "Which fraction is equivalent",
       "Which category is larger",
       "What shape is a triangle",
-      "How much does one metre weigh",
-      "Which fraction is equivalent"
+      "How much does one metre weigh"
     ]
   },
   {
@@ -790,10 +790,10 @@
     "type": "multiple-choice",
     "prompt": "Se una colonna sale da 4 a 10, di quanto aumenta?",
     "options": [
-      "6",
-      "14",
       "4",
-      "5"
+      "5",
+      "14",
+      "6"
     ],
     "correctAnswer": "6",
     "explanation": "10 - 4 = 6.",
@@ -801,10 +801,10 @@
     "promptEn": "If a column rises from 4 to 10, how much does it increase?",
     "explanationEn": "10 - 4 = 6.",
     "optionsEn": [
-      "6",
-      "14",
       "4",
-      "5"
+      "5",
+      "14",
+      "6"
     ]
   },
   {
@@ -827,9 +827,9 @@
     "prompt": "Quale numero completa la serie 3, 6, 12, 24, __?",
     "options": [
       "48",
-      "36",
       "30",
-      "27"
+      "27",
+      "36"
     ],
     "correctAnswer": "48",
     "explanation": "Ogni volta il numero raddoppia.",
@@ -838,9 +838,9 @@
     "explanationEn": "Each time the number doubles.",
     "optionsEn": [
       "48",
-      "36",
       "30",
-      "27"
+      "27",
+      "36"
     ]
   },
   {
@@ -850,10 +850,10 @@
     "type": "multiple-choice",
     "prompt": "Se oggi è martedì, tra 7 giorni sarà:",
     "options": [
+      "Domenica",
       "Martedì",
       "Mercoledì",
-      "Lunedì",
-      "Domenica"
+      "Lunedì"
     ],
     "correctAnswer": "Martedì",
     "explanation": "Dopo 7 giorni si torna allo stesso giorno.",
@@ -861,10 +861,10 @@
     "promptEn": "If today is Tuesday, in 7 days it will be:",
     "explanationEn": "After 7 days you return to the same day.",
     "optionsEn": [
+      "Sunday",
       "Tuesday",
       "Wednesday",
-      "Monday",
-      "Sunday"
+      "Monday"
     ]
   },
   {
@@ -886,10 +886,10 @@
     "type": "multiple-choice",
     "prompt": "Quale affermazione è vera?",
     "options": [
-      "Tutti i quadrati sono rettangoli",
-      "Tutti i rettangoli sono quadrati",
       "Nessun triangolo ha 3 lati",
-      "Un cerchio ha 4 vertici"
+      "Un cerchio ha 4 vertici",
+      "Tutti i quadrati sono rettangoli",
+      "Tutti i rettangoli sono quadrati"
     ],
     "correctAnswer": "Tutti i quadrati sono rettangoli",
     "explanation": "Il quadrato è un rettangolo con lati uguali.",
@@ -897,10 +897,10 @@
     "promptEn": "Which statement is true?",
     "explanationEn": "A square is a rectangle with equal sides.",
     "optionsEn": [
-      "All squares are rectangles",
-      "All rectangles are squares",
       "No triangle has 3 sides",
-      "A circle has 4 vertices"
+      "A circle has 4 vertices",
+      "All squares are rectangles",
+      "All rectangles are squares"
     ]
   },
   {
@@ -910,10 +910,10 @@
     "type": "multiple-choice",
     "prompt": "In una scatola ci sono palline rosse, blu e verdi. Se ne prendo una senza guardare, quale colore è certo?",
     "options": [
-      "Nessuno",
+      "Verde",
       "Rosso",
       "Blu",
-      "Verde"
+      "Nessuno"
     ],
     "correctAnswer": "Nessuno",
     "explanation": "Senza altre informazioni nessun colore è sicuro al 100%.",
@@ -921,10 +921,10 @@
     "promptEn": "In a box there are red, blue and green balls. If I take one without looking, which colour is certain?",
     "explanationEn": "Without more information, no colour is certain at 100%.",
     "optionsEn": [
-      "None",
+      "Green",
       "Red",
       "Blue",
-      "Green"
+      "None"
     ]
   },
   {
@@ -982,9 +982,9 @@
     "type": "multiple-choice",
     "prompt": "Quale strategia aiuta per 48 x 5?",
     "options": [
-      "48 x 10 e poi metà",
       "48 + 5",
       "48 - 5",
+      "48 x 10 e poi metà",
       "48 : 10"
     ],
     "correctAnswer": "48 x 10 e poi metà",
@@ -993,9 +993,9 @@
     "promptEn": "Which strategy helps with 48 x 5?",
     "explanationEn": "Multiplying by 5 is like multiplying by 10 and halving.",
     "optionsEn": [
-      "48 x 10 and then half",
       "48 + 5",
       "48 - 5",
+      "48 x 10 and then half",
       "48 : 10"
     ]
   },
@@ -1041,10 +1041,10 @@
     "topic": "operazioni-strategiche",
     "type": "bar-model",
     "options": [
-      "60",
-      "70",
       "50",
-      "80"
+      "60",
+      "80",
+      "70"
     ],
     "correctAnswer": "60",
     "prompt": "Una barra totale vale 420 ed è divisa in 7 parti uguali. Quanto vale ogni parte?",
@@ -1054,10 +1054,10 @@
     "promptEn": "A total bar is worth 420 and is divided into 7 equal parts. How much is each part worth?",
     "explanationEn": "420 : 7 = 60.",
     "optionsEn": [
-      "60",
-      "70",
       "50",
-      "80"
+      "60",
+      "80",
+      "70"
     ],
     "visualModelEn": "Total 420 | 7 equal parts"
   },
@@ -1068,10 +1068,10 @@
     "type": "multiple-choice",
     "prompt": "Di una torta divisa in 8 parti, ne mangio 2. Quale frazione resta?",
     "options": [
-      "6/8",
-      "2/8",
       "8/6",
-      "1/8"
+      "1/8",
+      "2/8",
+      "6/8"
     ],
     "correctAnswer": "6/8",
     "explanation": "Restano 8 - 2 = 6 parti su 8.",
@@ -1079,10 +1079,10 @@
     "promptEn": "From a cake divided into 8 parts, I eat 2. What fraction remains?",
     "explanationEn": "There remain 8 - 2 = 6 parts out of 8.",
     "optionsEn": [
-      "6/8",
-      "2/8",
       "8/6",
-      "1/8"
+      "1/8",
+      "2/8",
+      "6/8"
     ]
   },
   {
@@ -1139,10 +1139,10 @@
     "topic": "problemi-con-frazioni",
     "type": "bar-model",
     "options": [
+      "10",
       "16",
       "8",
-      "20",
-      "10"
+      "20"
     ],
     "correctAnswer": "16",
     "prompt": "Una barra da 40 è divisa in 5 parti uguali. Ne coloro 2 parti. Quanto vale la parte colorata?",
@@ -1152,10 +1152,10 @@
     "promptEn": "A bar of 40 is divided into 5 equal parts. I colour 2 parts. How much are the coloured parts worth?",
     "explanationEn": "Each part is worth 8. Two parts are worth 16.",
     "optionsEn": [
+      "10",
       "16",
       "8",
-      "20",
-      "10"
+      "20"
     ],
     "visualModelEn": "Total 40 | 5 equal parts | 2 parts coloured"
   },
