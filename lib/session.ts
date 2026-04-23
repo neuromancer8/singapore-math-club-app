@@ -1,3 +1,4 @@
+import { sortExercisesPedagogically } from "@/lib/pedagogy";
 import type { DifficultyFilter, Exercise, SessionHistoryItem, SessionMode } from "@/lib/types";
 
 const SESSION_SIZE = 8;
@@ -46,14 +47,14 @@ function buildFromTargets(exercises: Exercise[], targets: { easy: number; medium
     unique.push(...filler);
   }
 
-  return shuffle(unique).slice(0, desiredSize);
+  return sortExercisesPedagogically(unique).slice(0, desiredSize);
 }
 
 export function getAdaptiveProfile(history: SessionHistoryItem[]) {
   if (history.length === 0) {
     return {
       label: "equilibrato",
-      helper: "Partiamo con un mix bilanciato per capire bene il livello.",
+      helper: "Partiamo con una progressione ordinata: basi sicure, modello visivo e chiusura con calcolo.",
       targets: { easy: 3, medium: 3, hard: 2 },
     };
   }
@@ -65,7 +66,7 @@ export function getAdaptiveProfile(history: SessionHistoryItem[]) {
   if (accuracy < 0.55 || averageStars < 1.5) {
     return {
       label: "rinforzo",
-      helper: "Più esercizi facili e medi per consolidare i passaggi chiave.",
+      helper: "Più agganci concreti e meno carico astratto: consolidiamo i passaggi chiave prima della sfida.",
       targets: { easy: 4, medium: 3, hard: 1 },
     };
   }
@@ -73,14 +74,14 @@ export function getAdaptiveProfile(history: SessionHistoryItem[]) {
   if (accuracy > 0.84 || averageStars >= 2.7) {
     return {
       label: "sfida",
-      helper: "Più esercizi medi e avanzati per fare un passo in avanti.",
+      helper: "Le basi sono stabili: lasciamo poco ripasso e più spazio a problemi, bar model e strategie avanzate.",
       targets: { easy: 1, medium: 3, hard: 4 },
     };
   }
 
   return {
     label: "progressione",
-    helper: "Una progressione ordinata: un po' di ripasso e un po' di sfida.",
+    helper: "Una progressione ordinata: breve ripasso iniziale, rappresentazione chiara e una sfida finale sostenibile.",
     targets: { easy: 2, medium: 4, hard: 2 },
   };
 }
@@ -89,12 +90,12 @@ export function filterExercisesByDifficulty(exercises: Exercise[], difficultyFil
   const difficulty = difficultyLabelToValue(difficultyFilter);
 
   if (!difficulty) {
-    return [...exercises].sort((left, right) => left.difficulty - right.difficulty);
+    return sortExercisesPedagogically(exercises);
   }
 
   const filtered = exercises.filter((exercise) => exercise.difficulty === difficulty);
 
-  return filtered.length > 0 ? filtered : [...exercises].sort((left, right) => left.difficulty - right.difficulty);
+  return filtered.length > 0 ? sortExercisesPedagogically(filtered) : sortExercisesPedagogically(exercises);
 }
 
 export function buildSessionExercises({
@@ -113,11 +114,11 @@ export function buildSessionExercises({
   const filtered = filterExercisesByDifficulty(exercises, difficultyFilter);
 
   if (filtered.length <= desiredSize) {
-    return filtered;
+    return sortExercisesPedagogically(filtered);
   }
 
   if (difficultyFilter !== "all") {
-    return shuffle(filtered).slice(0, desiredSize);
+    return sortExercisesPedagogically(shuffle(filtered).slice(0, desiredSize));
   }
 
   const profile =
@@ -125,7 +126,7 @@ export function buildSessionExercises({
       ? getAdaptiveProfile(history)
       : {
           label: "equilibrato",
-          helper: "Mix standard bilanciato.",
+          helper: "Mix standard bilanciato con una progressione dal più accessibile al più sfidante.",
           targets: { easy: 3, medium: 3, hard: 2 },
         };
 

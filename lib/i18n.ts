@@ -116,6 +116,23 @@ export function exerciseTypeLabel(type: string, locale: Locale) {
   return labels[locale][type as keyof (typeof labels)[Locale]] ?? type;
 }
 
+export function cpaStageLabel(stage: "Concrete" | "Pittorico" | "Astratto", locale: Locale) {
+  const labels = {
+    it: {
+      Concrete: "Concrete",
+      Pittorico: "Pittorico",
+      Astratto: "Astratto",
+    },
+    en: {
+      Concrete: "Concrete",
+      Pittorico: "Pictorial",
+      Astratto: "Abstract",
+    },
+  } as const;
+
+  return labels[locale][stage];
+}
+
 export const uiText = {
   it: {
     appSubtitle: "Numeri, barre e strategie per la primaria",

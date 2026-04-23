@@ -30,12 +30,15 @@ export interface Topic {
   slug: string;
   label: string;
   description: string;
+  focus: string;
+  focusEn: string;
+  cpaStage: "Concrete" | "Pittorico" | "Astratto";
+  goals: string[];
+  goalsEn: string[];
 }
 
 export interface TopicCatalogEntry extends Topic {
   grade: Grade;
-  focus: string;
-  cpaStage: "Concrete" | "Pittorico" | "Astratto";
 }
 
 export interface Exercise {

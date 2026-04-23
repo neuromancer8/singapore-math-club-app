@@ -3,10 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { awardBadges } from "@/lib/badges";
+import { describeSessionArc, getAdaptiveNarrative, getExerciseStage, getPedagogicalSteps, getPedagogicalTip, getTopicEntry } from "@/lib/pedagogy";
 import { checkExerciseAnswer, createSessionSummary } from "@/lib/scoring";
 import { getProgress, saveSessionResult } from "@/lib/progress";
 import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
-import { difficultyLabel, exerciseTypeLabel, getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
+import { cpaStageLabel, difficultyLabel, exerciseTypeLabel, getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
 
@@ -58,6 +59,8 @@ export function ExerciseCard({
 
   const exercise = sessionExercises[index];
   const adaptiveProfile = useMemo(() => getAdaptiveProfile(topicHistory), [topicHistory]);
+  const topicEntry = useMemo(() => getTopicEntry(grade, topic), [grade, topic]);
+  const sessionArc = useMemo(() => describeSessionArc(sessionExercises), [sessionExercises]);
   const correctCount = useMemo(() => results.filter((item) => item.correct).length, [results]);
   const sessionStars = useMemo(
     () => createSessionSummary(correctCount, sessionExercises.length || 1).stars,
@@ -73,6 +76,9 @@ export function ExerciseCard({
   const exerciseOptions = locale === "en" && exercise.optionsEn ? exercise.optionsEn : exercise.options;
   const exerciseExplanation = locale === "en" && exercise.explanationEn ? exercise.explanationEn : exercise.explanation;
   const exerciseVisualModel = locale === "en" && exercise.visualModelEn ? exercise.visualModelEn : exercise.visualModel;
+  const pedagogicalTip = getPedagogicalTip(exercise, locale);
+  const methodSteps = getPedagogicalSteps(locale, topicEntry?.cpaStage ?? "Concrete");
+  const stageLabel = cpaStageLabel(getExerciseStage(exercise), locale);
 
   const canCheck = String(answer).trim().length > 0;
   const currentResult = results.find((item) => item.exerciseId === exercise.id);
@@ -157,6 +163,7 @@ export function ExerciseCard({
           <div className="flex flex-wrap gap-2">
             <span className="pill bg-white ring-1 ring-black/5">{exerciseTypeLabel(exercise.type, locale)}</span>
             <span className="pill bg-[var(--sky)] text-slate-900">{difficultyLabel(exercise.difficulty, locale)}</span>
+            <span className="pill bg-white ring-1 ring-black/5">{stageLabel}</span>
             <span className="pill bg-white ring-1 ring-black/5">{progressRatio}% {locale === "it" ? "completato" : "complete"}</span>
             <span className="pill bg-white ring-1 ring-black/5">{labelForMode(mode, locale)}</span>
             <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter, locale)}</span>
@@ -201,14 +208,15 @@ export function ExerciseCard({
         <div className="card p-5">
           <h2 className="section-title m-0 text-3xl font-black text-slate-900">{locale === "it" ? "Metodo" : "Method"}</h2>
           <div className="mt-4 space-y-3">
-            {(locale === "it"
-              ? ["1. Capisci la situazione.", "2. Disegna o immagina il modello.", "3. Calcola e controlla."]
-              : ["1. Understand the situation.", "2. Draw or imagine the model.", "3. Calculate and check."]
-            ).map((step) => (
+            {methodSteps.map((step) => (
               <div key={step} className="rounded-[20px] bg-slate-50 px-4 py-3 text-base font-black text-slate-700">
                 {step}
               </div>
             ))}
+          </div>
+          <div className="mt-4 rounded-[20px] border border-slate-100 bg-white px-4 py-4 shadow-sm">
+            <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Suggerimento del momento" : "Current tip"}</p>
+            <p className="mt-2 mb-0 text-base font-bold leading-7 text-slate-700">{pedagogicalTip}</p>
           </div>
         </div>
         <div className="soft-card p-5">
@@ -229,6 +237,14 @@ export function ExerciseCard({
               : locale === "it"
                 ? "Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento."
                 : "Reach at least 2 stars to strengthen this topic and build confidence in reasoning."}
+          </p>
+          <p className="mt-3 mb-0 text-sm font-bold leading-7 text-slate-600">
+            {getAdaptiveNarrative(topicHistory, locale)}
+          </p>
+          <p className="mt-3 mb-0 text-sm font-bold leading-7 text-slate-600">
+            {locale === "it"
+              ? `Arco della sessione: ${sessionArc.byStage.Concrete} concreti, ${sessionArc.byStage.Pittorico} pittorici, ${sessionArc.byStage.Astratto} astratti.`
+              : `Session arc: ${sessionArc.byStage.Concrete} concrete, ${sessionArc.byStage.Pittorico} pictorial, ${sessionArc.byStage.Astratto} abstract.`}
           </p>
         </div>
       </aside>
@@ -297,8 +313,8 @@ function labelForMode(mode: SessionMode, locale: Locale) {
 }
 
 function adaptiveHelperText(level: string) {
-  if (level === "rinforzo") return "More easy and medium exercises to strengthen the key steps.";
-  if (level === "sfida") return "More medium and advanced exercises to take the next step.";
-  if (level === "equilibrato") return "We start with a balanced mix to understand the level well.";
-  return "A balanced mix to keep reasoning steady.";
+  if (level === "rinforzo") return "More concrete support and fewer abstract steps so the key ideas become solid first.";
+  if (level === "sfida") return "Less review and more room for problems, bar models and advanced strategies.";
+  if (level === "equilibrato") return "We begin with an orderly progression: secure basics, visual models and final calculation.";
+  return "A steady progression with short review, clear representation and one sustainable challenge.";
 }
