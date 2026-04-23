@@ -1,150 +1,194 @@
 "use client";
 
 import { isAvatarId } from "@/lib/avatars";
-import type { AuthSession, AvatarId } from "@/lib/types";
+import { hydrateProgress } from "@/lib/progress";
+import type { AuthSession, AvatarId, SavedProgress, SeedCredential } from "@/lib/types";
 
 const AUTH_STORAGE_KEY = "singapore-math-auth";
 const AUTH_TIMEOUT_MS = 24 * 60 * 60 * 1000;
 
-const demoCredentials = {
-  username: "admin",
-  password: "admin",
-} as const;
+const seedCredentials: SeedCredential[] = [
+  { username: "admin", password: "admin", label: "Admin demo" },
+  { username: "marco", password: "marco123", label: "Learner demo" },
+];
 
-const demoProfile = {
-  firstName: "Giulia",
-  lastName: "Rossi",
-  learnerGrade: "seconda",
-  avatarId: "rocket",
-} as const;
+type AuthPayload = {
+  session: AuthSession | null;
+  progress: SavedProgress | null;
+};
 
-export function getDemoCredentials() {
-  return demoCredentials;
+function cacheSession(session: AuthSession | null) {
+  if (typeof window === "undefined") return;
+
+  if (!session) {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    return;
+  }
+
+  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
 }
 
-export function getDemoProfile() {
-  return demoProfile;
+function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null {
+  const now = Date.now();
+  const loggedInAt = typeof value.loggedInAt === "string" ? value.loggedInAt : new Date(now).toISOString();
+  const lastActivityAt = typeof value.lastActivityAt === "string" ? value.lastActivityAt : loggedInAt;
+  const lastActivityTime = Date.parse(lastActivityAt);
+
+  if (!Number.isFinite(lastActivityTime) || now - lastActivityTime > AUTH_TIMEOUT_MS) {
+    return null;
+  }
+
+  if (
+    typeof value.userId !== "string" ||
+    typeof value.username !== "string" ||
+    typeof value.firstName !== "string" ||
+    typeof value.lastName !== "string"
+  ) {
+    return null;
+  }
+
+  return {
+    userId: value.userId,
+    username: value.username,
+    role: value.role ?? "learner",
+    loggedInAt,
+    lastActivityAt,
+    firstName: value.firstName,
+    lastName: value.lastName,
+    fullName: typeof value.fullName === "string" ? value.fullName : `${value.firstName} ${value.lastName}`,
+    learnerGrade: value.learnerGrade ?? "seconda",
+    avatarId: isAvatarId(value.avatarId) ? value.avatarId : "rocket",
+  };
+}
+
+export function getSeedCredentials() {
+  return seedCredentials;
 }
 
 export function getAuthSession(options: { refreshActivity?: boolean } = {}): AuthSession | undefined {
-  if (typeof window === "undefined") {
-    return undefined;
-  }
+  if (typeof window === "undefined") return undefined;
 
   const raw = localStorage.getItem(AUTH_STORAGE_KEY);
-  if (!raw) {
-    return undefined;
-  }
+  if (!raw) return undefined;
 
   try {
-    const parsed = JSON.parse(raw) as Partial<AuthSession>;
-    const now = Date.now();
-    const loggedInAt = typeof parsed.loggedInAt === "string" ? parsed.loggedInAt : new Date(now).toISOString();
-    const lastActivityAt = typeof parsed.lastActivityAt === "string" ? parsed.lastActivityAt : loggedInAt;
-    const lastActivityTime = Date.parse(lastActivityAt);
-
-    if (!Number.isFinite(lastActivityTime) || now - lastActivityTime > AUTH_TIMEOUT_MS) {
+    const parsed = normalizeCachedSession(JSON.parse(raw) as Partial<AuthSession>);
+    if (!parsed) {
       localStorage.removeItem(AUTH_STORAGE_KEY);
       return undefined;
     }
 
-    const session: AuthSession = {
-      username: typeof parsed.username === "string" ? parsed.username : demoCredentials.username,
-      role: "admin",
-      loggedInAt,
-      lastActivityAt: options.refreshActivity === false ? lastActivityAt : new Date(now).toISOString(),
-      firstName: typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName,
-      lastName: typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName,
-      fullName:
-        typeof parsed.fullName === "string"
-          ? parsed.fullName
-          : `${typeof parsed.firstName === "string" ? parsed.firstName : demoProfile.firstName} ${typeof parsed.lastName === "string" ? parsed.lastName : demoProfile.lastName}`,
-      learnerGrade: parsed.learnerGrade ?? demoProfile.learnerGrade,
-      avatarId: isAvatarId(parsed.avatarId) ? parsed.avatarId : demoProfile.avatarId,
-    };
-
+    const session = options.refreshActivity === false ? parsed : { ...parsed, lastActivityAt: new Date().toISOString() };
     if (options.refreshActivity !== false) {
-      localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
+      cacheSession(session);
+    }
+    return session;
+  } catch {
+    localStorage.removeItem(AUTH_STORAGE_KEY);
+    return undefined;
+  }
+}
+
+export async function loadAuthState(options: { refresh?: boolean } = {}) {
+  if (typeof window === "undefined") return { session: null, progress: null } satisfies AuthPayload;
+
+  try {
+    const search = options.refresh === false ? "?refresh=false" : "";
+    const response = await fetch(`/api/auth/session${search}`, { credentials: "same-origin" });
+    if (!response.ok) {
+      cacheSession(null);
+      return { session: null, progress: null } satisfies AuthPayload;
     }
 
-    return session;
+    const data = (await response.json()) as AuthPayload;
+    cacheSession(data.session);
+    if (data.progress) {
+      await hydrateProgress(data.progress);
+    }
+
+    return data;
+  } catch {
+    return { session: getAuthSession({ refreshActivity: false }) ?? null, progress: null } satisfies AuthPayload;
+  }
+}
+
+export async function refreshAuthActivity() {
+  if (typeof window === "undefined") return undefined;
+
+  try {
+    const response = await fetch("/api/auth/activity", { method: "POST", credentials: "same-origin" });
+    if (!response.ok) {
+      cacheSession(null);
+      return undefined;
+    }
+
+    const data = (await response.json()) as { session?: AuthSession };
+    if (data.session) {
+      cacheSession(data.session);
+      return data.session;
+    }
+  } catch {
+    return getAuthSession();
+  }
+
+  return undefined;
+}
+
+export async function saveAvatarSelection(avatarId: AvatarId) {
+  if (typeof window === "undefined") return undefined;
+
+  try {
+    const response = await fetch("/api/auth/avatar", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin",
+      body: JSON.stringify({ avatarId }),
+    });
+
+    if (!response.ok) return undefined;
+
+    const data = (await response.json()) as { session?: AuthSession };
+    if (data.session) {
+      cacheSession(data.session);
+      return data.session;
+    }
   } catch {
     return undefined;
   }
+
+  return undefined;
 }
 
-export function refreshAuthActivity() {
-  if (typeof window === "undefined") {
-    return undefined;
-  }
+export async function login(username: string, password: string) {
+  const response = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ username, password }),
+  });
 
-  const current = getAuthSession({ refreshActivity: false });
-  if (!current) {
-    return undefined;
-  }
-
-  const next: AuthSession = {
-    ...current,
-    lastActivityAt: new Date().toISOString(),
-  };
-
-  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(next));
-
-  return next;
-}
-
-export function saveAvatarSelection(avatarId: AvatarId) {
-  if (typeof window === "undefined") {
-    return undefined;
-  }
-
-  const current = getAuthSession();
-  if (!current) {
-    return undefined;
-  }
-
-  const next: AuthSession = {
-    ...current,
-    avatarId,
-  };
-
-  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(next));
-
-  return next;
-}
-
-export function login(username: string, password: string) {
-  const normalizedUsername = username.trim().toLowerCase();
-  const normalizedPassword = password.trim();
-
-  if (normalizedUsername !== demoCredentials.username || normalizedPassword !== demoCredentials.password) {
+  if (!response.ok) {
     return { success: false as const };
   }
 
-  const session: AuthSession = {
-    username: demoCredentials.username,
-    role: "admin",
-    loggedInAt: new Date().toISOString(),
-    lastActivityAt: new Date().toISOString(),
-    firstName: demoProfile.firstName,
-    lastName: demoProfile.lastName,
-    fullName: `${demoProfile.firstName} ${demoProfile.lastName}`,
-    learnerGrade: demoProfile.learnerGrade,
-    avatarId: demoProfile.avatarId,
-  };
-
-  localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
+  const data = (await response.json()) as { success: true; session: AuthSession; progress: SavedProgress };
+  cacheSession(data.session);
+  await hydrateProgress(data.progress);
 
   return {
     success: true as const,
-    session,
+    session: data.session,
+    progress: data.progress,
   };
 }
 
-export function logout() {
-  if (typeof window === "undefined") {
-    return;
+export async function logout() {
+  try {
+    await fetch("/api/auth/logout", {
+      method: "POST",
+      credentials: "same-origin",
+    });
+  } finally {
+    cacheSession(null);
   }
-
-  localStorage.removeItem(AUTH_STORAGE_KEY);
 }

@@ -6,7 +6,7 @@ import { GradeStartPanel } from "@/components/GradeStartPanel";
 import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
 import { avatarLabel, getAvatarOption } from "@/lib/avatars";
-import { getAuthSession } from "@/lib/auth";
+import { getAuthSession, loadAuthState } from "@/lib/auth";
 import { getLocale, gradeLabel, topicDescription, topicLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { AuthSession, Grade, SavedProgress } from "@/lib/types";
@@ -26,6 +26,13 @@ export function HomePageShell({
     setLocaleState(getLocale());
     setSession(getAuthSession() ?? null);
     setProgress(getProgress());
+
+     void loadAuthState({ refresh: false }).then(({ session: serverSession, progress: serverProgress }) => {
+      setSession(serverSession ?? null);
+      if (serverProgress) {
+        setProgress(serverProgress);
+      }
+    });
   }, []);
 
   if (!session || !progress) {

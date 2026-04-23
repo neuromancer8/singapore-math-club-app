@@ -59,8 +59,8 @@ export function AvatarPicker({
             <button
               key={avatar.id}
               type="button"
-              onClick={() => {
-                const updatedSession = saveAvatarSelection(avatar.id);
+              onClick={async () => {
+                const updatedSession = await saveAvatarSelection(avatar.id);
                 if (updatedSession) {
                   onChange(updatedSession);
                 }

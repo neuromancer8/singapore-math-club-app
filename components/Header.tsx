@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { avatarLabel, getAvatarOption } from "@/lib/avatars";
-import { getAuthSession, getDemoCredentials, login, logout, refreshAuthActivity } from "@/lib/auth";
+import { getAuthSession, getSeedCredentials, loadAuthState, login, logout, refreshAuthActivity } from "@/lib/auth";
 import { getLocale, gradeLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
 import type { AuthSession, SavedProgress } from "@/lib/types";
@@ -16,17 +16,22 @@ export function Header() {
   const [progress, setProgress] = useState<SavedProgress | null>(null);
   const [loginOpen, setLoginOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [username, setUsername] = useState<string>(getDemoCredentials().username);
-  const [password, setPassword] = useState<string>(getDemoCredentials().password);
+  const [username, setUsername] = useState<string>(getSeedCredentials()[0]?.username ?? "admin");
+  const [password, setPassword] = useState<string>(getSeedCredentials()[0]?.password ?? "admin");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const [locale, setLocaleState] = useState<Locale>("it");
+  const seedCredentials = getSeedCredentials();
 
   useEffect(() => {
-    const existingSession = getAuthSession();
-
     setLocaleState(getLocale());
-    setSession(existingSession);
-    setProgress(existingSession ? getProgress() : null);
+    setSession(getAuthSession({ refreshActivity: false }));
+    setProgress(getProgress());
+
+    void loadAuthState({ refresh: false }).then(({ session: serverSession, progress: serverProgress }) => {
+      setSession(serverSession ?? undefined);
+      setProgress(serverSession ? (serverProgress ?? getProgress()) : null);
+    });
   }, []);
 
   useEffect(() => {
@@ -44,16 +49,25 @@ export function Header() {
       }
 
       lastRefresh = now;
-      refreshAuthActivity();
+      void refreshAuthActivity().then((nextSession) => {
+        if (nextSession) {
+          setSession(nextSession);
+        }
+      });
     };
 
     const checkSession = () => {
-      const activeSession = getAuthSession({ refreshActivity: false });
+      void loadAuthState({ refresh: false }).then(({ session: activeSession, progress: nextProgress }) => {
+        if (!activeSession) {
+          void logout().then(() => window.location.reload());
+          return;
+        }
 
-      if (!activeSession) {
-        logout();
-        window.location.reload();
-      }
+        setSession(activeSession);
+        if (nextProgress) {
+          setProgress(nextProgress);
+        }
+      });
     };
 
     const events = ["click", "keydown", "pointermove", "scroll", "touchstart"];
@@ -66,8 +80,8 @@ export function Header() {
     };
   }, [session]);
 
-  const handleLogout = () => {
-    logout();
+  const handleLogout = async () => {
+    await logout();
     window.location.reload();
   };
 
@@ -176,20 +190,23 @@ export function Header() {
 
             <form
               className="mt-8 space-y-4"
-              onSubmit={(event) => {
+              onSubmit={async (event) => {
                 event.preventDefault();
+                setLoading(true);
 
-                const result = login(username, password);
+                const result = await login(username, password);
 
                 if (!result.success) {
                   setError(t.invalidCredentials);
+                  setLoading(false);
                   return;
                 }
 
                 setError("");
                 setSession(result.session);
                 setLoginOpen(false);
-                setProgress(getProgress());
+                setProgress(result.progress);
+                setLoading(false);
                 window.location.reload();
               }}
             >
@@ -215,14 +232,17 @@ export function Header() {
               {error ? <p className="m-0 rounded-[20px] bg-rose-100 px-4 py-3 text-base font-black text-rose-900">{error}</p> : null}
 
               <button type="submit" className="cta-primary w-full border-0">
-                {t.loginWithAdmin}
+                {loading ? (locale === "it" ? "Accesso in corso..." : "Logging in...") : t.loginWithAdmin}
               </button>
             </form>
 
             <div className="mt-5 rounded-[24px] bg-slate-50 p-4">
               <p className="m-0 text-sm font-black uppercase tracking-[0.16em] text-slate-400">{t.demoCredentials}</p>
-              <p className="mt-2 mb-0 text-base font-black text-slate-800">{t.username}: admin</p>
-              <p className="mt-1 mb-0 text-base font-black text-slate-800">{t.password}: admin</p>
+              {seedCredentials.map((credential) => (
+                <p key={credential.username} className="mt-2 mb-0 text-base font-black text-slate-800">
+                  {credential.label}: {credential.username} / {credential.password}
+                </p>
+              ))}
             </div>
           </div>
         </div>

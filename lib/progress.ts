@@ -1,5 +1,3 @@
-"use client";
-
 import type {
   Grade,
   GradeProgressSummary,
@@ -10,8 +8,9 @@ import type {
 
 const STORAGE_KEY = "singapore-math-progress";
 const LAST_SESSION_KEY = "singapore-math-last-session";
+const AUTH_STORAGE_KEY = "singapore-math-auth";
 
-function createEmptyGradeSummary(): GradeProgressSummary {
+export function createEmptyGradeSummary(): GradeProgressSummary {
   return {
     totalSessions: 0,
     totalCorrect: 0,
@@ -55,16 +54,18 @@ function createEmptyByGrade(): Record<Grade, GradeProgressSummary> {
   };
 }
 
-const emptyProgress: SavedProgress = {
-  totalSessions: 0,
-  totalCorrect: 0,
-  totalExercises: 0,
-  streak: 0,
-  badges: [],
-  currentGrade: "seconda",
-  byGrade: createEmptyByGrade(),
-  history: [],
-};
+export function createEmptyProgress(currentGrade: Grade = "seconda"): SavedProgress {
+  return {
+    totalSessions: 0,
+    totalCorrect: 0,
+    totalExercises: 0,
+    streak: 0,
+    badges: [],
+    currentGrade,
+    byGrade: createEmptyByGrade(),
+    history: [],
+  };
+}
 
 function normalizeGradeSummary(value?: Partial<GradeProgressSummary>): GradeProgressSummary {
   return {
@@ -79,9 +80,9 @@ function normalizeGradeSummary(value?: Partial<GradeProgressSummary>): GradeProg
   };
 }
 
-function normalizeProgress(value?: Partial<SavedProgress>): SavedProgress {
+export function normalizeProgress(value?: Partial<SavedProgress>): SavedProgress {
   return {
-    ...emptyProgress,
+    ...createEmptyProgress(),
     ...value,
     byGrade: {
       seconda: normalizeGradeSummary(value?.byGrade?.seconda),
@@ -100,23 +101,29 @@ function normalizeProgress(value?: Partial<SavedProgress>): SavedProgress {
 
 export function getProgress(): SavedProgress {
   if (typeof window === "undefined") {
-    return emptyProgress;
+    return createEmptyProgress();
   }
 
   const raw = localStorage.getItem(STORAGE_KEY);
   if (!raw) {
-    return emptyProgress;
+    return createEmptyProgress();
   }
 
   try {
     return normalizeProgress(JSON.parse(raw) as SavedProgress);
   } catch {
-    return emptyProgress;
+    return createEmptyProgress();
   }
 }
 
 export function saveProgress(progress: SavedProgress) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+}
+
+export async function hydrateProgress(progress: SavedProgress) {
+  const normalized = normalizeProgress(progress);
+  saveProgress(normalized);
+  return normalized;
 }
 
 export function setCurrentGrade(grade: Grade) {
@@ -166,6 +173,7 @@ export function saveSessionResult(result: StoredSessionResult) {
   };
 
   saveProgress(next);
+  void syncProgressToServer(next);
 
   if (typeof window !== "undefined") {
     sessionStorage.setItem(LAST_SESSION_KEY, JSON.stringify(result));
@@ -184,5 +192,34 @@ export function getLastSession(): StoredSessionResult | undefined {
     return JSON.parse(raw) as StoredSessionResult;
   } catch {
     return undefined;
+  }
+}
+
+export async function syncProgressToServer(progress: SavedProgress) {
+  if (typeof window === "undefined") return;
+  if (!localStorage.getItem(AUTH_STORAGE_KEY)) return;
+
+  try {
+    await fetch("/api/progress", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ progress: normalizeProgress(progress) }),
+    });
+  } catch {
+    // Keep local progress if the network is temporarily unavailable.
+  }
+}
+
+export async function loadProgressFromServer() {
+  if (typeof window === "undefined") return null;
+
+  try {
+    const response = await fetch("/api/progress", { credentials: "same-origin" });
+    if (!response.ok) return null;
+    const data = (await response.json()) as { progress?: SavedProgress };
+    if (!data.progress) return null;
+    return hydrateProgress(data.progress);
+  } catch {
+    return null;
   }
 }

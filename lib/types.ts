@@ -72,8 +72,9 @@ export interface SessionResult {
 }
 
 export interface AuthSession {
+  userId: string;
   username: string;
-  role: "admin";
+  role: "admin" | "learner" | "teacher";
   loggedInAt: string;
   lastActivityAt: string;
   firstName: string;
@@ -81,6 +82,12 @@ export interface AuthSession {
   fullName: string;
   learnerGrade: Grade;
   avatarId: AvatarId;
+}
+
+export interface SeedCredential {
+  username: string;
+  password: string;
+  label: string;
 }
 
 export interface SessionHistoryItem {
