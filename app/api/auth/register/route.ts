@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { authCookie } from "@/lib/server/auth-cookie";
 import { ensureAuthStore, registerParent } from "@/lib/server/auth-store";
+import { buildVerificationUrl, sendTransactionalEmail } from "@/lib/server/mailer";
 import type { ParentRegistrationInput } from "@/lib/types";
 
 export const runtime = "nodejs";
@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     body ?? {
       parentFirstName: "",
       parentLastName: "",
-      username: "",
+      email: "",
       password: "",
       childFirstName: "",
       childLastName: "",
@@ -26,13 +26,23 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false, reason: result.reason }, { status: result.reason === "exists" ? 409 : 400 });
   }
 
-  const response = NextResponse.json({
-    success: true,
-    session: result.session,
-    profiles: result.profiles,
-    progress: result.progress,
-  });
-  response.cookies.set(authCookie(result.sessionId));
+  const origin = new URL(request.url).origin;
+  const verificationUrl = buildVerificationUrl(origin, result.verificationToken);
+  const emailResult = await sendTransactionalEmail(
+    {
+      to: result.email,
+      subject: "Verifica il tuo account genitore",
+      text: `Apri questo link per verificare il tuo account: ${verificationUrl}`,
+      html: `<p>Benvenuto in Singapore Math Club.</p><p>Verifica l'email del genitore aprendo questo link:</p><p><a href="${verificationUrl}">${verificationUrl}</a></p>`,
+    },
+    verificationUrl,
+  );
 
-  return response;
+  return NextResponse.json({
+    success: true,
+    verificationRequired: true,
+    email: result.email,
+    previewUrl: emailResult.previewUrl,
+    delivered: emailResult.delivered,
+  });
 }

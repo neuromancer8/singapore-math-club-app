@@ -6,11 +6,11 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   await ensureAuthStore();
-  const body = (await request.json().catch(() => null)) as { username?: string; password?: string } | null;
+  const body = (await request.json().catch(() => null)) as { email?: string; password?: string } | null;
 
-  const result = await loginWithCredentials(body?.username ?? "", body?.password ?? "");
+  const result = await loginWithCredentials(body?.email ?? "", body?.password ?? "");
   if (!result.success) {
-    return NextResponse.json({ success: false }, { status: 401 });
+    return NextResponse.json({ success: false, reason: result.reason, email: result.email }, { status: 401 });
   }
 
   const response = NextResponse.json({

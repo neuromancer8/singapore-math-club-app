@@ -9,7 +9,6 @@ import type {
   Grade,
   LearnerProfile,
   ParentRegistrationInput,
-  SavedProgress,
   SeedCredential,
 } from "@/lib/types";
 
@@ -17,8 +16,8 @@ const AUTH_STORAGE_KEY = "singapore-math-auth";
 const AUTH_TIMEOUT_MS = 24 * 60 * 60 * 1000;
 
 const seedCredentials: SeedCredential[] = [
-  { username: "admin", password: "admin", label: "Famiglia demo 1" },
-  { username: "marco", password: "marco123", label: "Famiglia demo 2" },
+  { email: "laura.rossi@demo-rotary.it", password: "admin", label: "Famiglia demo 1" },
+  { email: "paolo.bianchi@demo-rotary.it", password: "marco123", label: "Famiglia demo 2" },
 ];
 
 function emptyAuthPayload(): AuthPayload {
@@ -36,11 +35,12 @@ function cacheSession(session: AuthSession | null) {
   localStorage.setItem(AUTH_STORAGE_KEY, JSON.stringify(session));
 }
 
-function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null {
+function normalizeCachedSession(value: Partial<AuthSession> & { username?: string }): AuthSession | null {
   const now = Date.now();
   const loggedInAt = typeof value.loggedInAt === "string" ? value.loggedInAt : new Date(now).toISOString();
   const lastActivityAt = typeof value.lastActivityAt === "string" ? value.lastActivityAt : loggedInAt;
   const lastActivityTime = Date.parse(lastActivityAt);
+  const email = typeof value.email === "string" ? value.email : value.username;
 
   if (!Number.isFinite(lastActivityTime) || now - lastActivityTime > AUTH_TIMEOUT_MS) {
     return null;
@@ -48,7 +48,7 @@ function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null
 
   if (
     typeof value.userId !== "string" ||
-    typeof value.username !== "string" ||
+    typeof email !== "string" ||
     typeof value.parentFirstName !== "string" ||
     typeof value.parentLastName !== "string" ||
     typeof value.activeLearnerId !== "string" ||
@@ -60,7 +60,7 @@ function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null
 
   return {
     userId: value.userId,
-    username: value.username,
+    email,
     role: value.role === "admin" || value.role === "teacher" ? value.role : "parent",
     loggedInAt,
     lastActivityAt,
@@ -106,7 +106,7 @@ export function getAuthSession(options: { refreshActivity?: boolean } = {}): Aut
   if (!raw) return undefined;
 
   try {
-    const parsed = normalizeCachedSession(JSON.parse(raw) as Partial<AuthSession>);
+    const parsed = normalizeCachedSession(JSON.parse(raw) as Partial<AuthSession> & { username?: string });
     if (!parsed) {
       localStorage.removeItem(AUTH_STORAGE_KEY);
       return undefined;
@@ -191,16 +191,17 @@ export async function saveAvatarSelection(avatarId: AvatarId) {
   return undefined;
 }
 
-export async function login(username: string, password: string) {
+export async function login(email: string, password: string) {
   const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     credentials: "same-origin",
-    body: JSON.stringify({ username, password }),
+    body: JSON.stringify({ email, password }),
   });
 
   if (!response.ok) {
-    return { success: false as const };
+    const body = (await response.json().catch(() => null)) as { reason?: "invalid" | "verification_required"; email?: string } | null;
+    return { success: false as const, reason: body?.reason ?? "invalid", email: body?.email };
   }
 
   const data = await parseAuthResponse(response);
@@ -224,11 +225,42 @@ export async function registerParent(input: ParentRegistrationInput) {
     return { success: false as const, reason: body?.reason ?? "invalid" };
   }
 
-  const data = await parseAuthResponse(response);
   return {
     success: true as const,
-    ...data,
+    ...(await response.json()),
   };
+}
+
+export async function requestEmailVerification(email: string) {
+  const response = await fetch("/api/auth/request-verification", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ email }),
+  });
+
+  const body = (await response.json().catch(() => null)) as { success?: boolean; previewUrl?: string; delivered?: boolean; reason?: string } | null;
+  if (!response.ok || !body?.success) {
+    return { success: false as const, reason: body?.reason ?? "invalid" };
+  }
+
+  return { success: true as const, previewUrl: body.previewUrl, delivered: body.delivered };
+}
+
+export async function requestPasswordReset(email: string) {
+  const response = await fetch("/api/auth/request-password-reset", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ email }),
+  });
+
+  const body = (await response.json().catch(() => null)) as { success?: boolean; previewUrl?: string; delivered?: boolean; reason?: string } | null;
+  if (!response.ok || !body?.success) {
+    return { success: false as const, reason: body?.reason ?? "invalid" };
+  }
+
+  return { success: true as const, previewUrl: body.previewUrl, delivered: body.delivered };
 }
 
 export async function createLearnerProfile(input: {

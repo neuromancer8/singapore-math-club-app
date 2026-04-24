@@ -6,6 +6,7 @@ Applicazione MVP in italiano per bambini della primaria che lavorano con il Sing
 
 - accesso con sessione server-side e cookie httpOnly
 - registrazione genitore da interfaccia
+- verifica email del genitore e recupero password con token
 - profili multipli bambino collegati allo stesso account genitore
 - selezione del profilo bambino attivo dopo il login del genitore
 - persistenza profilo famiglia e progresso per singolo bambino
@@ -59,8 +60,8 @@ Ogni nuovo push su `main` aggiorna automaticamente il sito.
 
 ## Account seed
 
-- `admin / admin` - famiglia demo 1
-- `marco / marco123` - famiglia demo 2
+- `laura.rossi@demo-rotary.it / admin` - famiglia demo 1
+- `paolo.bianchi@demo-rotary.it / marco123` - famiglia demo 2
 
 ## Fase 2 suggerita
 

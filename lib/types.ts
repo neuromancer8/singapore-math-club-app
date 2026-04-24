@@ -73,7 +73,7 @@ export interface SessionResult {
 
 export interface AuthSession {
   userId: string;
-  username: string;
+  email: string;
   role: "admin" | "parent" | "teacher";
   loggedInAt: string;
   lastActivityAt: string;
@@ -89,7 +89,7 @@ export interface AuthSession {
 }
 
 export interface SeedCredential {
-  username: string;
+  email: string;
   password: string;
   label: string;
 }
@@ -115,7 +115,7 @@ export interface AuthPayload {
 export interface ParentRegistrationInput {
   parentFirstName: string;
   parentLastName: string;
-  username: string;
+  email: string;
   password: string;
   childFirstName: string;
   childLastName: string;

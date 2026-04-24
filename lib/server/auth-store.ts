@@ -1,4 +1,4 @@
-import { randomUUID } from "node:crypto";
+import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { Pool } from "pg";
@@ -21,11 +21,16 @@ const FILE_STORE_PATH = join(process.cwd(), ".data", "auth-store.json");
 
 type StoredParentUser = {
   id: string;
-  username: string;
+  email: string;
   passwordHash: string;
   role: AuthSession["role"];
   parentFirstName: string;
   parentLastName: string;
+  emailVerifiedAt: string | null;
+  verificationTokenHash: string | null;
+  verificationTokenExpiresAt: string | null;
+  passwordResetTokenHash: string | null;
+  passwordResetTokenExpiresAt: string | null;
   createdAt: string;
   updatedAt: string;
 };
@@ -64,13 +69,23 @@ type FileStore = {
 
 const seedUsers: Array<
   SeedCredential &
-    Omit<StoredParentUser, "passwordHash" | "createdAt" | "updatedAt"> & {
+    Omit<
+      StoredParentUser,
+      | "passwordHash"
+      | "createdAt"
+      | "updatedAt"
+      | "emailVerifiedAt"
+      | "verificationTokenHash"
+      | "verificationTokenExpiresAt"
+      | "passwordResetTokenHash"
+      | "passwordResetTokenExpiresAt"
+    > & {
       learners: Array<Omit<StoredLearnerProfile, "parentUserId" | "createdAt" | "updatedAt">>;
     }
 > = [
   {
     id: "parent-admin",
-    username: "admin",
+    email: "laura.rossi@demo-rotary.it",
     password: "admin",
     label: "Famiglia demo 1",
     role: "parent",
@@ -83,7 +98,7 @@ const seedUsers: Array<
   },
   {
     id: "parent-marco",
-    username: "marco",
+    email: "paolo.bianchi@demo-rotary.it",
     password: "marco123",
     label: "Famiglia demo 2",
     role: "parent",
@@ -95,8 +110,37 @@ const seedUsers: Array<
 
 let pool: Pool | null = null;
 
+const legacySeedEmailById: Record<string, string> = {
+  "parent-admin": "laura.rossi@demo-rotary.it",
+  "parent-marco": "paolo.bianchi@demo-rotary.it",
+};
+
 function nowIso() {
   return new Date().toISOString();
+}
+
+function normalizeEmail(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizeEmail(value));
+}
+
+function hashToken(token: string) {
+  return createHash("sha256").update(token).digest("hex");
+}
+
+function createTokenPair() {
+  const token = randomBytes(24).toString("hex");
+  return {
+    token,
+    tokenHash: hashToken(token),
+  };
+}
+
+function hoursFromNow(hours: number) {
+  return new Date(Date.now() + hours * 60 * 60 * 1000).toISOString();
 }
 
 function databaseUrl() {
@@ -132,7 +176,7 @@ function learnerProfileFromStored(learner: StoredLearnerProfile): LearnerProfile
 function buildSession(user: StoredParentUser, learner: StoredLearnerProfile, session: StoredSession): AuthSession {
   return {
     userId: user.id,
-    username: user.username,
+    email: user.email,
     role: user.role,
     loggedInAt: session.createdAt,
     lastActivityAt: session.lastActivityAt,
@@ -158,7 +202,16 @@ async function readFileStore() {
     const parsed = JSON.parse(raw) as Partial<FileStore>;
 
     return {
-      users: Array.isArray(parsed.users) ? parsed.users : [],
+      users: Array.isArray(parsed.users)
+        ? parsed.users.map((user) => ({
+            ...user,
+            emailVerifiedAt: null,
+            verificationTokenHash: null,
+            verificationTokenExpiresAt: null,
+            passwordResetTokenHash: null,
+            passwordResetTokenExpiresAt: null,
+          }))
+        : [],
       learners: Array.isArray(parsed.learners) ? parsed.learners : [],
       sessions: Array.isArray(parsed.sessions) ? parsed.sessions : [],
       progresses: Array.isArray(parsed.progresses) ? parsed.progresses : [],
@@ -168,6 +221,40 @@ async function readFileStore() {
   }
 }
 
+async function migrateFileStore(store: FileStore) {
+  let changed = false;
+
+  store.users = store.users.map((user) => {
+    const nextEmail = legacySeedEmailById[user.id];
+    if (nextEmail && user.email !== nextEmail) {
+      changed = true;
+      return {
+        ...user,
+        email: nextEmail,
+        emailVerifiedAt: user.emailVerifiedAt ?? nowIso(),
+        updatedAt: nowIso(),
+      };
+    }
+
+    if (legacySeedEmailById[user.id] && !user.emailVerifiedAt) {
+      changed = true;
+      return {
+        ...user,
+        emailVerifiedAt: nowIso(),
+        updatedAt: nowIso(),
+      };
+    }
+
+    return user;
+  });
+
+  if (changed) {
+    await writeFileStore(store);
+  }
+
+  return store;
+}
+
 async function writeFileStore(store: FileStore) {
   await mkdir(dirname(FILE_STORE_PATH), { recursive: true });
   await writeFile(FILE_STORE_PATH, JSON.stringify(store, null, 2) + "\n", "utf8");
@@ -175,7 +262,9 @@ async function writeFileStore(store: FileStore) {
 
 async function ensureFileSeeded() {
   const store = await readFileStore();
-  if (store.users.length > 0) return store;
+  if (store.users.length > 0) {
+    return migrateFileStore(store);
+  }
 
   const seededAt = nowIso();
   const users: StoredParentUser[] = [];
@@ -185,11 +274,16 @@ async function ensureFileSeeded() {
   for (const user of seedUsers) {
     users.push({
       id: user.id,
-      username: user.username,
+      email: user.email,
       passwordHash: hashPassword(user.password),
       role: user.role,
       parentFirstName: user.parentFirstName,
       parentLastName: user.parentLastName,
+      emailVerifiedAt: seededAt,
+      verificationTokenHash: null,
+      verificationTokenExpiresAt: null,
+      passwordResetTokenHash: null,
+      passwordResetTokenExpiresAt: null,
       createdAt: seededAt,
       updatedAt: seededAt,
     });
@@ -216,7 +310,7 @@ async function ensureFileSeeded() {
 
   const nextStore = { users, learners, sessions: [], progresses };
   await writeFileStore(nextStore);
-  return nextStore;
+  return migrateFileStore(nextStore);
 }
 
 async function ensureDatabaseSchema() {
@@ -231,10 +325,21 @@ async function ensureDatabaseSchema() {
         role TEXT NOT NULL,
         parent_first_name TEXT NOT NULL,
         parent_last_name TEXT NOT NULL,
+        email_verified_at TIMESTAMPTZ,
+        verification_token_hash TEXT,
+        verification_token_expires_at TIMESTAMPTZ,
+        password_reset_token_hash TEXT,
+        password_reset_token_expires_at TIMESTAMPTZ,
         created_at TIMESTAMPTZ NOT NULL,
         updated_at TIMESTAMPTZ NOT NULL
       );
     `);
+
+    await client.query(`ALTER TABLE app_users ADD COLUMN IF NOT EXISTS email_verified_at TIMESTAMPTZ`);
+    await client.query(`ALTER TABLE app_users ADD COLUMN IF NOT EXISTS verification_token_hash TEXT`);
+    await client.query(`ALTER TABLE app_users ADD COLUMN IF NOT EXISTS verification_token_expires_at TIMESTAMPTZ`);
+    await client.query(`ALTER TABLE app_users ADD COLUMN IF NOT EXISTS password_reset_token_hash TEXT`);
+    await client.query(`ALTER TABLE app_users ADD COLUMN IF NOT EXISTS password_reset_token_expires_at TIMESTAMPTZ`);
 
     await client.query(`
       CREATE TABLE IF NOT EXISTS learner_profiles (
@@ -271,6 +376,27 @@ async function ensureDatabaseSchema() {
   }
 }
 
+async function migrateDatabaseUsers() {
+  await ensureDatabaseSchema();
+  const client = await getPool().connect();
+
+  try {
+    for (const [id, email] of Object.entries(legacySeedEmailById)) {
+      const updatedAt = nowIso();
+      await client.query(
+        `UPDATE app_users SET username = $2, email_verified_at = COALESCE(email_verified_at, $3), updated_at = $3 WHERE id = $1 AND username <> $2`,
+        [id, email, updatedAt],
+      );
+      await client.query(
+        `UPDATE app_users SET email_verified_at = COALESCE(email_verified_at, $2), updated_at = $2 WHERE id = $1`,
+        [id, updatedAt],
+      );
+    }
+  } finally {
+    client.release();
+  }
+}
+
 async function ensureDatabaseSeeded() {
   await ensureDatabaseSchema();
   const client = await getPool().connect();
@@ -284,10 +410,26 @@ async function ensureDatabaseSeeded() {
       await client.query(
         `
           INSERT INTO app_users (
-            id, username, password_hash, role, parent_first_name, parent_last_name, created_at, updated_at
-          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+            id, username, password_hash, role, parent_first_name, parent_last_name,
+            email_verified_at, verification_token_hash, verification_token_expires_at,
+            password_reset_token_hash, password_reset_token_expires_at, created_at, updated_at
+          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
         `,
-        [user.id, user.username, hashPassword(user.password), user.role, user.parentFirstName, user.parentLastName, seededAt, seededAt],
+        [
+          user.id,
+          user.email,
+          hashPassword(user.password),
+          user.role,
+          user.parentFirstName,
+          user.parentLastName,
+          seededAt,
+          null,
+          null,
+          null,
+          null,
+          seededAt,
+          seededAt,
+        ],
       );
 
       for (const learner of user.learners) {
@@ -308,6 +450,8 @@ async function ensureDatabaseSeeded() {
   } finally {
     client.release();
   }
+
+  await migrateDatabaseUsers();
 }
 
 export async function ensureAuthStore() {
@@ -319,35 +463,40 @@ export async function ensureAuthStore() {
 }
 
 export function getSeedCredentials() {
-  return seedUsers.map(({ username, password, label }) => ({ username, password, label }));
+  return seedUsers.map(({ email, password, label }) => ({ email, password, label }));
 }
 
-async function findFileUserByUsername(username: string) {
+async function findFileUserByEmail(email: string) {
   const store = await ensureFileSeeded();
   return {
     store,
-    user: store.users.find((item) => item.username === username.toLowerCase()) ?? null,
+    user: store.users.find((item) => item.email === normalizeEmail(email)) ?? null,
   };
 }
 
-async function findDatabaseUserByUsername(username: string) {
+async function findDatabaseUserByEmail(email: string) {
   await ensureDatabaseSeeded();
   const result = await getPool().query(
     `
       SELECT
         id,
-        username,
+        username AS email,
         password_hash AS "passwordHash",
         role,
         parent_first_name AS "parentFirstName",
         parent_last_name AS "parentLastName",
+        email_verified_at AS "emailVerifiedAt",
+        verification_token_hash AS "verificationTokenHash",
+        verification_token_expires_at AS "verificationTokenExpiresAt",
+        password_reset_token_hash AS "passwordResetTokenHash",
+        password_reset_token_expires_at AS "passwordResetTokenExpiresAt",
         created_at AS "createdAt",
         updated_at AS "updatedAt"
       FROM app_users
       WHERE username = $1
       LIMIT 1
     `,
-    [username.toLowerCase()],
+    [normalizeEmail(email)],
   );
 
   return (result.rows[0] as StoredParentUser | undefined) ?? null;
@@ -446,21 +595,27 @@ async function buildPayload(user: StoredParentUser, session: StoredSession, lear
   };
 }
 
-export async function loginWithCredentials(username: string, password: string) {
-  const normalizedUsername = username.trim().toLowerCase();
+export async function loginWithCredentials(email: string, password: string) {
+  const normalizedEmail = normalizeEmail(email);
   const normalizedPassword = password.trim();
-  if (!normalizedUsername || !normalizedPassword) return { success: false as const };
+  if (!normalizedEmail || !normalizedPassword || !isValidEmail(normalizedEmail)) {
+    return { success: false as const, reason: "invalid" as const };
+  }
 
-  const lookup = isDatabaseEnabled() ? { user: await findDatabaseUserByUsername(normalizedUsername) } : await findFileUserByUsername(normalizedUsername);
+  const lookup = isDatabaseEnabled() ? { user: await findDatabaseUserByEmail(normalizedEmail) } : await findFileUserByEmail(normalizedEmail);
   const user = lookup.user;
 
   if (!user || !verifyPassword(normalizedPassword, user.passwordHash)) {
-    return { success: false as const };
+    return { success: false as const, reason: "invalid" as const };
+  }
+
+  if (!user.emailVerifiedAt) {
+    return { success: false as const, reason: "verification_required" as const, email: user.email };
   }
 
   const learners = isDatabaseEnabled() ? await getDatabaseLearners(user.id) : await getFileLearners(user.id);
   const activeLearner = learners[0];
-  if (!activeLearner) return { success: false as const };
+  if (!activeLearner) return { success: false as const, reason: "invalid" as const };
 
   const session = isDatabaseEnabled()
     ? await createDatabaseSession(user, activeLearner.id)
@@ -494,11 +649,16 @@ async function getDatabaseSession(sessionId: string) {
         s.active_learner_id AS "activeLearnerId",
         s.created_at AS "createdAt",
         s.last_activity_at AS "lastActivityAt",
-        u.username,
+        u.username AS email,
         u.password_hash AS "passwordHash",
         u.role,
         u.parent_first_name AS "parentFirstName",
         u.parent_last_name AS "parentLastName",
+        u.email_verified_at AS "emailVerifiedAt",
+        u.verification_token_hash AS "verificationTokenHash",
+        u.verification_token_expires_at AS "verificationTokenExpiresAt",
+        u.password_reset_token_hash AS "passwordResetTokenHash",
+        u.password_reset_token_expires_at AS "passwordResetTokenExpiresAt",
         u.created_at AS "userCreatedAt",
         u.updated_at AS "updatedAt"
       FROM app_sessions s
@@ -521,11 +681,16 @@ async function getDatabaseSession(sessionId: string) {
 
   const user: StoredParentUser = {
     id: row.userId as string,
-    username: row.username as string,
+    email: row.email as string,
     passwordHash: row.passwordHash as string,
     role: row.role as AuthSession["role"],
     parentFirstName: row.parentFirstName as string,
     parentLastName: row.parentLastName as string,
+    emailVerifiedAt: (row.emailVerifiedAt as string | null | undefined) ?? null,
+    verificationTokenHash: (row.verificationTokenHash as string | null | undefined) ?? null,
+    verificationTokenExpiresAt: (row.verificationTokenExpiresAt as string | null | undefined) ?? null,
+    passwordResetTokenHash: (row.passwordResetTokenHash as string | null | undefined) ?? null,
+    passwordResetTokenExpiresAt: (row.passwordResetTokenExpiresAt as string | null | undefined) ?? null,
     createdAt: row.userCreatedAt as string,
     updatedAt: row.updatedAt as string,
   };
@@ -716,28 +881,34 @@ export async function saveProgressForLearner(learnerId: string, progress: SavedP
 }
 
 export async function registerParent(input: ParentRegistrationInput) {
-  const username = input.username.trim().toLowerCase();
+  const email = normalizeEmail(input.email);
   const password = input.password.trim();
-  if (!username || !password || !input.parentFirstName.trim() || !input.childFirstName.trim()) {
+  if (!email || !password || !input.parentFirstName.trim() || !input.childFirstName.trim() || !isValidEmail(email)) {
     return { success: false as const, reason: "invalid" as const };
   }
 
   const existingUser = isDatabaseEnabled()
-    ? await findDatabaseUserByUsername(username)
-    : (await findFileUserByUsername(username)).user;
+    ? await findDatabaseUserByEmail(email)
+    : (await findFileUserByEmail(email)).user;
 
   if (existingUser) {
     return { success: false as const, reason: "exists" as const };
   }
 
   const createdAt = nowIso();
+  const verification = createTokenPair();
   const user: StoredParentUser = {
     id: randomUUID(),
-    username,
+    email,
     passwordHash: hashPassword(password),
     role: "parent",
     parentFirstName: input.parentFirstName.trim(),
     parentLastName: input.parentLastName.trim() || input.parentFirstName.trim(),
+    emailVerifiedAt: null,
+    verificationTokenHash: verification.tokenHash,
+    verificationTokenExpiresAt: hoursFromNow(24),
+    passwordResetTokenHash: null,
+    passwordResetTokenExpiresAt: null,
     createdAt,
     updatedAt: createdAt,
   };
@@ -758,10 +929,26 @@ export async function registerParent(input: ParentRegistrationInput) {
     await getPool().query(
       `
         INSERT INTO app_users (
-          id, username, password_hash, role, parent_first_name, parent_last_name, created_at, updated_at
-        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+          id, username, password_hash, role, parent_first_name, parent_last_name,
+          email_verified_at, verification_token_hash, verification_token_expires_at,
+          password_reset_token_hash, password_reset_token_expires_at, created_at, updated_at
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
       `,
-      [user.id, user.username, user.passwordHash, user.role, user.parentFirstName, user.parentLastName, createdAt, createdAt],
+      [
+        user.id,
+        user.email,
+        user.passwordHash,
+        user.role,
+        user.parentFirstName,
+        user.parentLastName,
+        user.emailVerifiedAt,
+        user.verificationTokenHash,
+        user.verificationTokenExpiresAt,
+        user.passwordResetTokenHash,
+        user.passwordResetTokenExpiresAt,
+        createdAt,
+        createdAt,
+      ],
     );
     await getPool().query(
       `
@@ -787,14 +974,173 @@ export async function registerParent(input: ParentRegistrationInput) {
     await writeFileStore(store);
   }
 
-  const session = isDatabaseEnabled()
-    ? await createDatabaseSession(user, learner.id)
-    : await createFileSession(user, learner.id);
-
-  const payload = await buildPayload(user, session, [learner]);
-
   return {
     success: true as const,
-    ...payload,
+    verificationRequired: true as const,
+    email: user.email,
+    verificationToken: verification.token,
   };
+}
+
+export async function requestEmailVerification(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+  if (!isValidEmail(normalizedEmail)) {
+    return { success: false as const, reason: "invalid" as const };
+  }
+
+  const verification = createTokenPair();
+  const expiresAt = hoursFromNow(24);
+
+  if (isDatabaseEnabled()) {
+    const user = await findDatabaseUserByEmail(normalizedEmail);
+    if (!user) return { success: false as const, reason: "not_found" as const };
+    if (user.emailVerifiedAt) return { success: false as const, reason: "already_verified" as const };
+
+    await getPool().query(
+      `UPDATE app_users SET verification_token_hash = $2, verification_token_expires_at = $3, updated_at = $4 WHERE id = $1`,
+      [user.id, verification.tokenHash, expiresAt, nowIso()],
+    );
+
+    return { success: true as const, email: normalizedEmail, verificationToken: verification.token };
+  }
+
+  const store = await ensureFileSeeded();
+  const user = store.users.find((item) => item.email === normalizedEmail);
+  if (!user) return { success: false as const, reason: "not_found" as const };
+  if (user.emailVerifiedAt) return { success: false as const, reason: "already_verified" as const };
+
+  user.verificationTokenHash = verification.tokenHash;
+  user.verificationTokenExpiresAt = expiresAt;
+  user.updatedAt = nowIso();
+  await writeFileStore(store);
+
+  return { success: true as const, email: normalizedEmail, verificationToken: verification.token };
+}
+
+export async function verifyEmailToken(token: string) {
+  const tokenHash = hashToken(token.trim());
+  const now = Date.now();
+
+  if (isDatabaseEnabled()) {
+    await ensureDatabaseSeeded();
+    const result = await getPool().query<{ id: string; verificationTokenExpiresAt: string | null }>(
+      `SELECT id, verification_token_expires_at AS "verificationTokenExpiresAt" FROM app_users WHERE verification_token_hash = $1 LIMIT 1`,
+      [tokenHash],
+    );
+    const user = result.rows[0];
+    if (!user) return { success: false as const, reason: "invalid" as const };
+
+    const expiresAt = user.verificationTokenExpiresAt ? Date.parse(user.verificationTokenExpiresAt) : NaN;
+    if (!Number.isFinite(expiresAt) || expiresAt < now) {
+      return { success: false as const, reason: "expired" as const };
+    }
+
+    const verifiedAt = nowIso();
+    await getPool().query(
+      `UPDATE app_users SET email_verified_at = $2, verification_token_hash = NULL, verification_token_expires_at = NULL, updated_at = $2 WHERE id = $1`,
+      [user.id, verifiedAt],
+    );
+
+    return { success: true as const };
+  }
+
+  const store = await ensureFileSeeded();
+  const user = store.users.find((item) => item.verificationTokenHash === tokenHash);
+  if (!user) return { success: false as const, reason: "invalid" as const };
+
+  const expiresAt = user.verificationTokenExpiresAt ? Date.parse(user.verificationTokenExpiresAt) : NaN;
+  if (!Number.isFinite(expiresAt) || expiresAt < now) {
+    return { success: false as const, reason: "expired" as const };
+  }
+
+  const verifiedAt = nowIso();
+  user.emailVerifiedAt = verifiedAt;
+  user.verificationTokenHash = null;
+  user.verificationTokenExpiresAt = null;
+  user.updatedAt = verifiedAt;
+  await writeFileStore(store);
+
+  return { success: true as const };
+}
+
+export async function requestPasswordReset(email: string) {
+  const normalizedEmail = normalizeEmail(email);
+  if (!isValidEmail(normalizedEmail)) {
+    return { success: false as const, reason: "invalid" as const };
+  }
+
+  const reset = createTokenPair();
+  const expiresAt = hoursFromNow(2);
+
+  if (isDatabaseEnabled()) {
+    const user = await findDatabaseUserByEmail(normalizedEmail);
+    if (!user) return { success: false as const, reason: "not_found" as const };
+
+    await getPool().query(
+      `UPDATE app_users SET password_reset_token_hash = $2, password_reset_token_expires_at = $3, updated_at = $4 WHERE id = $1`,
+      [user.id, reset.tokenHash, expiresAt, nowIso()],
+    );
+
+    return { success: true as const, email: normalizedEmail, resetToken: reset.token };
+  }
+
+  const store = await ensureFileSeeded();
+  const user = store.users.find((item) => item.email === normalizedEmail);
+  if (!user) return { success: false as const, reason: "not_found" as const };
+
+  user.passwordResetTokenHash = reset.tokenHash;
+  user.passwordResetTokenExpiresAt = expiresAt;
+  user.updatedAt = nowIso();
+  await writeFileStore(store);
+
+  return { success: true as const, email: normalizedEmail, resetToken: reset.token };
+}
+
+export async function resetPassword(token: string, password: string) {
+  const nextPassword = password.trim();
+  if (nextPassword.length < 8) {
+    return { success: false as const, reason: "invalid_password" as const };
+  }
+
+  const tokenHash = hashToken(token.trim());
+  const now = Date.now();
+
+  if (isDatabaseEnabled()) {
+    const result = await getPool().query<{ id: string; passwordResetTokenExpiresAt: string | null }>(
+      `SELECT id, password_reset_token_expires_at AS "passwordResetTokenExpiresAt" FROM app_users WHERE password_reset_token_hash = $1 LIMIT 1`,
+      [tokenHash],
+    );
+    const user = result.rows[0];
+    if (!user) return { success: false as const, reason: "invalid" as const };
+
+    const expiresAt = user.passwordResetTokenExpiresAt ? Date.parse(user.passwordResetTokenExpiresAt) : NaN;
+    if (!Number.isFinite(expiresAt) || expiresAt < now) {
+      return { success: false as const, reason: "expired" as const };
+    }
+
+    const updatedAt = nowIso();
+    await getPool().query(
+      `UPDATE app_users SET password_hash = $2, password_reset_token_hash = NULL, password_reset_token_expires_at = NULL, updated_at = $3 WHERE id = $1`,
+      [user.id, hashPassword(nextPassword), updatedAt],
+    );
+
+    return { success: true as const };
+  }
+
+  const store = await ensureFileSeeded();
+  const user = store.users.find((item) => item.passwordResetTokenHash === tokenHash);
+  if (!user) return { success: false as const, reason: "invalid" as const };
+
+  const expiresAt = user.passwordResetTokenExpiresAt ? Date.parse(user.passwordResetTokenExpiresAt) : NaN;
+  if (!Number.isFinite(expiresAt) || expiresAt < now) {
+    return { success: false as const, reason: "expired" as const };
+  }
+
+  user.passwordHash = hashPassword(nextPassword);
+  user.passwordResetTokenHash = null;
+  user.passwordResetTokenExpiresAt = null;
+  user.updatedAt = nowIso();
+  await writeFileStore(store);
+
+  return { success: true as const };
 }
