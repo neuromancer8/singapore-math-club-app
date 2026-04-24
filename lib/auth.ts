@@ -2,20 +2,28 @@
 
 import { isAvatarId } from "@/lib/avatars";
 import { hydrateProgress } from "@/lib/progress";
-import type { AuthSession, AvatarId, SavedProgress, SeedCredential } from "@/lib/types";
+import type {
+  AuthPayload,
+  AuthSession,
+  AvatarId,
+  Grade,
+  LearnerProfile,
+  ParentRegistrationInput,
+  SavedProgress,
+  SeedCredential,
+} from "@/lib/types";
 
 const AUTH_STORAGE_KEY = "singapore-math-auth";
 const AUTH_TIMEOUT_MS = 24 * 60 * 60 * 1000;
 
 const seedCredentials: SeedCredential[] = [
-  { username: "admin", password: "admin", label: "Admin demo" },
-  { username: "marco", password: "marco123", label: "Learner demo" },
+  { username: "admin", password: "admin", label: "Famiglia demo 1" },
+  { username: "marco", password: "marco123", label: "Famiglia demo 2" },
 ];
 
-type AuthPayload = {
-  session: AuthSession | null;
-  progress: SavedProgress | null;
-};
+function emptyAuthPayload(): AuthPayload {
+  return { session: null, profiles: [], progress: null };
+}
 
 function cacheSession(session: AuthSession | null) {
   if (typeof window === "undefined") return;
@@ -41,6 +49,9 @@ function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null
   if (
     typeof value.userId !== "string" ||
     typeof value.username !== "string" ||
+    typeof value.parentFirstName !== "string" ||
+    typeof value.parentLastName !== "string" ||
+    typeof value.activeLearnerId !== "string" ||
     typeof value.firstName !== "string" ||
     typeof value.lastName !== "string"
   ) {
@@ -50,15 +61,38 @@ function normalizeCachedSession(value: Partial<AuthSession>): AuthSession | null
   return {
     userId: value.userId,
     username: value.username,
-    role: value.role ?? "learner",
+    role: value.role === "admin" || value.role === "teacher" ? value.role : "parent",
     loggedInAt,
     lastActivityAt,
+    parentFirstName: value.parentFirstName,
+    parentLastName: value.parentLastName,
+    parentFullName:
+      typeof value.parentFullName === "string"
+        ? value.parentFullName
+        : `${value.parentFirstName} ${value.parentLastName}`.trim(),
+    activeLearnerId: value.activeLearnerId,
     firstName: value.firstName,
     lastName: value.lastName,
-    fullName: typeof value.fullName === "string" ? value.fullName : `${value.firstName} ${value.lastName}`,
+    fullName: typeof value.fullName === "string" ? value.fullName : `${value.firstName} ${value.lastName}`.trim(),
     learnerGrade: value.learnerGrade ?? "seconda",
     avatarId: isAvatarId(value.avatarId) ? value.avatarId : "rocket",
   };
+}
+
+async function parseAuthResponse(response: Response) {
+  const data = (await response.json().catch(() => null)) as Partial<AuthPayload> | null;
+  const payload: AuthPayload = {
+    session: data?.session ?? null,
+    profiles: Array.isArray(data?.profiles) ? (data.profiles as LearnerProfile[]) : [],
+    progress: data?.progress ?? null,
+  };
+
+  cacheSession(payload.session);
+  if (payload.progress) {
+    await hydrateProgress(payload.progress);
+  }
+
+  return payload;
 }
 
 export function getSeedCredentials() {
@@ -90,25 +124,23 @@ export function getAuthSession(options: { refreshActivity?: boolean } = {}): Aut
 }
 
 export async function loadAuthState(options: { refresh?: boolean } = {}) {
-  if (typeof window === "undefined") return { session: null, progress: null } satisfies AuthPayload;
+  if (typeof window === "undefined") return emptyAuthPayload();
 
   try {
     const search = options.refresh === false ? "?refresh=false" : "";
     const response = await fetch(`/api/auth/session${search}`, { credentials: "same-origin" });
     if (!response.ok) {
       cacheSession(null);
-      return { session: null, progress: null } satisfies AuthPayload;
+      return emptyAuthPayload();
     }
 
-    const data = (await response.json()) as AuthPayload;
-    cacheSession(data.session);
-    if (data.progress) {
-      await hydrateProgress(data.progress);
-    }
-
-    return data;
+    return parseAuthResponse(response);
   } catch {
-    return { session: getAuthSession({ refreshActivity: false }) ?? null, progress: null } satisfies AuthPayload;
+    return {
+      session: getAuthSession({ refreshActivity: false }) ?? null,
+      profiles: [],
+      progress: null,
+    } satisfies AuthPayload;
   }
 }
 
@@ -171,14 +203,74 @@ export async function login(username: string, password: string) {
     return { success: false as const };
   }
 
-  const data = (await response.json()) as { success: true; session: AuthSession; progress: SavedProgress };
-  cacheSession(data.session);
-  await hydrateProgress(data.progress);
+  const data = await parseAuthResponse(response);
 
   return {
     success: true as const,
-    session: data.session,
-    progress: data.progress,
+    ...data,
+  };
+}
+
+export async function registerParent(input: ParentRegistrationInput) {
+  const response = await fetch("/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify(input),
+  });
+
+  if (!response.ok) {
+    const body = (await response.json().catch(() => null)) as { reason?: "invalid" | "exists" } | null;
+    return { success: false as const, reason: body?.reason ?? "invalid" };
+  }
+
+  const data = await parseAuthResponse(response);
+  return {
+    success: true as const,
+    ...data,
+  };
+}
+
+export async function createLearnerProfile(input: {
+  firstName: string;
+  lastName: string;
+  learnerGrade: Grade;
+  avatarId: AvatarId;
+}) {
+  const response = await fetch("/api/learners", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify(input),
+  });
+
+  if (!response.ok) {
+    return { success: false as const };
+  }
+
+  const data = await parseAuthResponse(response);
+  return {
+    success: true as const,
+    ...data,
+  };
+}
+
+export async function switchLearner(learnerId: string) {
+  const response = await fetch("/api/learners/select", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "same-origin",
+    body: JSON.stringify({ learnerId }),
+  });
+
+  if (!response.ok) {
+    return { success: false as const };
+  }
+
+  const data = await parseAuthResponse(response);
+  return {
+    success: true as const,
+    ...data,
   };
 }
 

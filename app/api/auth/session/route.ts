@@ -9,7 +9,7 @@ export async function GET(request: Request) {
   const current = await getCurrentSession({ refresh });
 
   if (!current) {
-    const response = NextResponse.json({ session: null, progress: null }, { status: 401 });
+    const response = NextResponse.json({ session: null, profiles: [], progress: null }, { status: 401 });
     response.cookies.set(clearAuthCookie());
     return response;
   }

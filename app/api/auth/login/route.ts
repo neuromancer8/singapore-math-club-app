@@ -13,7 +13,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
-  const response = NextResponse.json({ success: true, session: result.session, progress: result.progress });
+  const response = NextResponse.json({
+    success: true,
+    session: result.session,
+    profiles: result.profiles,
+    progress: result.progress,
+  });
   response.cookies.set(authCookie(result.sessionId));
 
   return response;

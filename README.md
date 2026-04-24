@@ -5,8 +5,10 @@ Applicazione MVP in italiano per bambini della primaria che lavorano con il Sing
 ## Funzionalità attuali
 
 - accesso con sessione server-side e cookie httpOnly
-- account seed pronti per test locale e demo
-- persistenza profilo utente e progresso
+- registrazione genitore da interfaccia
+- profili multipli bambino collegati allo stesso account genitore
+- selezione del profilo bambino attivo dopo il login del genitore
+- persistenza profilo famiglia e progresso per singolo bambino
 - supporto doppio storage:
   - fallback locale su file in sviluppo
   - Postgres tramite `DATABASE_URL` in ambiente cloud
@@ -57,13 +59,13 @@ Ogni nuovo push su `main` aggiorna automaticamente il sito.
 
 ## Account seed
 
-- `admin / admin` - account amministratore demo
-- `marco / marco123` - account bambino demo
+- `admin / admin` - famiglia demo 1
+- `marco / marco123` - famiglia demo 2
 
 ## Fase 2 suggerita
 
-- registrazione utenti da interfaccia
-- ruoli separati bambino / genitore / docente
+- email reale per il genitore con recupero password
+- ruoli separati genitore / docente
 - sincronizzazione cloud completa dei progressi multi-dispositivo
 - profili multipli per famiglia o classe
 - analytics più dettagliate per docente

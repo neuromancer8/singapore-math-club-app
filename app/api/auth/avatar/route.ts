@@ -8,7 +8,7 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const current = await getCurrentSession({ refresh: true });
-  if (!current) {
+  if (!current?.session) {
     return NextResponse.json({ success: false }, { status: 401 });
   }
 
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false }, { status: 400 });
   }
 
-  await updateAvatar(current.session.userId, body.avatarId);
+  await updateAvatar(current.session.activeLearnerId, body.avatarId);
 
   const response = NextResponse.json({
     success: true,

@@ -74,9 +74,13 @@ export interface SessionResult {
 export interface AuthSession {
   userId: string;
   username: string;
-  role: "admin" | "learner" | "teacher";
+  role: "admin" | "parent" | "teacher";
   loggedInAt: string;
   lastActivityAt: string;
+  parentFirstName: string;
+  parentLastName: string;
+  parentFullName: string;
+  activeLearnerId: string;
   firstName: string;
   lastName: string;
   fullName: string;
@@ -88,6 +92,35 @@ export interface SeedCredential {
   username: string;
   password: string;
   label: string;
+}
+
+export interface LearnerProfile {
+  id: string;
+  parentUserId: string;
+  firstName: string;
+  lastName: string;
+  fullName: string;
+  learnerGrade: Grade;
+  avatarId: AvatarId;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface AuthPayload {
+  session: AuthSession | null;
+  profiles: LearnerProfile[];
+  progress: SavedProgress | null;
+}
+
+export interface ParentRegistrationInput {
+  parentFirstName: string;
+  parentLastName: string;
+  username: string;
+  password: string;
+  childFirstName: string;
+  childLastName: string;
+  childGrade: Grade;
+  childAvatarId: AvatarId;
 }
 
 export interface SessionHistoryItem {
