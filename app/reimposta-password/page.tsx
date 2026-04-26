@@ -8,6 +8,7 @@ export default function ResetPasswordPage() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
@@ -47,12 +48,23 @@ export default function ResetPasswordPage() {
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
         <label className="block">
           <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Nuova password</span>
-          <input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900"
-          />
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 pr-16 text-lg font-black text-slate-900"
+            />
+            <button
+              type="button"
+              className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-0 bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+              onClick={() => setShowPassword((current) => !current)}
+              aria-label={showPassword ? "Nascondi password" : "Mostra password"}
+              title={showPassword ? "Nascondi password" : "Mostra password"}
+            >
+              {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+            </button>
+          </div>
         </label>
         {message ? (
           <p className={`m-0 rounded-[20px] px-4 py-3 text-base font-black ${status === "success" ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}`}>
@@ -70,5 +82,25 @@ export default function ResetPasswordPage() {
         </Link>
       </div>
     </section>
+  );
+}
+
+function EyeIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
+      <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function EyeOffIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
+      <path d="M3 3l18 18" />
+      <path d="M10.6 6.3A11.5 11.5 0 0 1 12 6c6.5 0 10 6 10 6a18.6 18.6 0 0 1-4.1 4.5" />
+      <path d="M6.7 6.7C4.1 8.4 2 12 2 12s3.5 6 10 6c1.8 0 3.4-.4 4.8-1" />
+      <path d="M9.9 9.9A3 3 0 0 0 12 15a3 3 0 0 0 2.1-.9" />
+    </svg>
   );
 }

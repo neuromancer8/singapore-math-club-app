@@ -499,7 +499,39 @@ async function findDatabaseUserByEmail(email: string) {
     [normalizeEmail(email)],
   );
 
-  return (result.rows[0] as StoredParentUser | undefined) ?? null;
+  const row = result.rows[0] as Record<string, unknown> | undefined;
+  if (!row) return null;
+
+  return {
+    id: row.id as string,
+    email: row.email as string,
+    passwordHash: row.passwordHash as string,
+    role: row.role as AuthSession["role"],
+    parentFirstName: row.parentFirstName as string,
+    parentLastName: row.parentLastName as string,
+    emailVerifiedAt:
+      (row.emailVerifiedAt as string | null | undefined) ??
+      (row.email_verified_at as string | null | undefined) ??
+      null,
+    verificationTokenHash:
+      (row.verificationTokenHash as string | null | undefined) ??
+      (row.verification_token_hash as string | null | undefined) ??
+      null,
+    verificationTokenExpiresAt:
+      (row.verificationTokenExpiresAt as string | null | undefined) ??
+      (row.verification_token_expires_at as string | null | undefined) ??
+      null,
+    passwordResetTokenHash:
+      (row.passwordResetTokenHash as string | null | undefined) ??
+      (row.password_reset_token_hash as string | null | undefined) ??
+      null,
+    passwordResetTokenExpiresAt:
+      (row.passwordResetTokenExpiresAt as string | null | undefined) ??
+      (row.password_reset_token_expires_at as string | null | undefined) ??
+      null,
+    createdAt: row.createdAt as string,
+    updatedAt: row.updatedAt as string,
+  } satisfies StoredParentUser;
 }
 
 async function getFileLearners(parentUserId: string) {

@@ -62,6 +62,8 @@ export function Header() {
   const [loading, setLoading] = useState(false);
   const [savingChild, setSavingChild] = useState(false);
   const [locale, setLocaleState] = useState<Locale>("it");
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
+  const [showRegistrationPassword, setShowRegistrationPassword] = useState(false);
   const seedCredentials = getSeedCredentials();
   const t = uiText[locale];
 
@@ -352,7 +354,14 @@ export function Header() {
                   <input value={email} onChange={(event) => setEmail(event.target.value)} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900" />
                 </Field>
                 <Field label={t.password}>
-                  <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900" />
+                  <PasswordInput
+                    value={password}
+                    onChange={setPassword}
+                    visible={showLoginPassword}
+                    onToggleVisibility={() => setShowLoginPassword((current) => !current)}
+                    size="xl"
+                    locale={locale}
+                  />
                 </Field>
                 <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
                 <button type="submit" className="cta-primary w-full border-0">
@@ -381,7 +390,14 @@ export function Header() {
                   <input type="email" value={registration.email} onChange={(event) => setRegistration((current) => ({ ...current, email: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.password}>
-                  <input type="password" value={registration.password} onChange={(event) => setRegistration((current) => ({ ...current, password: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <PasswordInput
+                    value={registration.password}
+                    onChange={(value) => setRegistration((current) => ({ ...current, password: value }))}
+                    visible={showRegistrationPassword}
+                    onToggleVisibility={() => setShowRegistrationPassword((current) => !current)}
+                    size="lg"
+                    locale={locale}
+                  />
                 </Field>
                 <Field label={t.childFirstName}>
                   <input value={registration.childFirstName} onChange={(event) => setRegistration((current) => ({ ...current, childFirstName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
@@ -549,6 +565,71 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
       <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
       {children}
     </label>
+  );
+}
+
+function PasswordInput({
+  value,
+  onChange,
+  visible,
+  onToggleVisibility,
+  size,
+  locale,
+}: {
+  value: string;
+  onChange: (value: string) => void;
+  visible: boolean;
+  onToggleVisibility: () => void;
+  size: "lg" | "xl";
+  locale: Locale;
+}) {
+  const textSize = size === "xl" ? "text-xl" : "text-lg";
+  const buttonLabel = visible
+    ? locale === "it"
+      ? "Nascondi password"
+      : "Hide password"
+    : locale === "it"
+      ? "Mostra password"
+      : "Show password";
+
+  return (
+    <div className="relative">
+      <input
+        type={visible ? "text" : "password"}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className={`w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 pr-16 font-black text-slate-900 ${textSize}`}
+      />
+      <button
+        type="button"
+        className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-0 bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+        onClick={onToggleVisibility}
+        aria-label={buttonLabel}
+        title={buttonLabel}
+      >
+        {visible ? <EyeOffIcon /> : <EyeIcon />}
+      </button>
+    </div>
+  );
+}
+
+function EyeIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
+      <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function EyeOffIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-2">
+      <path d="M3 3l18 18" />
+      <path d="M10.6 6.3A11.5 11.5 0 0 1 12 6c6.5 0 10 6 10 6a18.6 18.6 0 0 1-4.1 4.5" />
+      <path d="M6.7 6.7C4.1 8.4 2 12 2 12s3.5 6 10 6c1.8 0 3.4-.4 4.8-1" />
+      <path d="M9.9 9.9A3 3 0 0 0 12 15a3 3 0 0 0 2.1-.9" />
+    </svg>
   );
 }
 
