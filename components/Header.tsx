@@ -64,8 +64,15 @@ export function Header() {
   const [locale, setLocaleState] = useState<Locale>("it");
   const [showLoginPassword, setShowLoginPassword] = useState(false);
   const [showRegistrationPassword, setShowRegistrationPassword] = useState(false);
+  const [registrationConfirmPassword, setRegistrationConfirmPassword] = useState("");
+  const [showRegistrationConfirmPassword, setShowRegistrationConfirmPassword] = useState(false);
   const seedCredentials = getSeedCredentials();
   const t = uiText[locale];
+  const hasParentIdentity = Boolean(registration.parentFirstName.trim() && registration.parentLastName.trim());
+  const hasChildIdentity = Boolean(registration.childFirstName.trim() && registration.childLastName.trim());
+  const hasValidRegistrationEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(registration.email.trim());
+  const hasStrongRegistrationPassword = registration.password.trim().length >= 8;
+  const passwordsMatch = Boolean(registrationConfirmPassword) && registration.password === registrationConfirmPassword;
 
   useEffect(() => {
     setLocaleState(getLocale());
@@ -163,8 +170,29 @@ export function Header() {
 
   async function handleRegistrationSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setLoading(true);
     resetAuthMessages();
+
+    if (!hasParentIdentity || !hasChildIdentity) {
+      setError(t.registerInvalid);
+      return;
+    }
+
+    if (!hasValidRegistrationEmail) {
+      setError(t.registerInvalidEmail);
+      return;
+    }
+
+    if (!hasStrongRegistrationPassword) {
+      setError(t.registerPasswordShort);
+      return;
+    }
+
+    if (!passwordsMatch) {
+      setError(t.registerPasswordMismatch);
+      return;
+    }
+
+    setLoading(true);
 
     const result = await registerParent(registration);
     if (!result.success) {
@@ -177,6 +205,9 @@ export function Header() {
     setPreviewUrl(result.previewUrl ?? null);
     setPendingVerificationEmail(registration.email);
     setRegistration(defaultRegistration);
+    setRegistrationConfirmPassword("");
+    setShowRegistrationPassword(false);
+    setShowRegistrationConfirmPassword(false);
     setAuthMode("login");
     setLoading(false);
   }
@@ -381,13 +412,13 @@ export function Header() {
             {authMode === "register" ? (
               <form className="mt-8 grid gap-4 md:grid-cols-2" onSubmit={handleRegistrationSubmit}>
                 <Field label={t.parentFirstName}>
-                  <input value={registration.parentFirstName} onChange={(event) => setRegistration((current) => ({ ...current, parentFirstName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <input required value={registration.parentFirstName} onChange={(event) => setRegistration((current) => ({ ...current, parentFirstName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.parentLastName}>
-                  <input value={registration.parentLastName} onChange={(event) => setRegistration((current) => ({ ...current, parentLastName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <input required value={registration.parentLastName} onChange={(event) => setRegistration((current) => ({ ...current, parentLastName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.email}>
-                  <input type="email" value={registration.email} onChange={(event) => setRegistration((current) => ({ ...current, email: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <input required type="email" value={registration.email} onChange={(event) => setRegistration((current) => ({ ...current, email: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.password}>
                   <PasswordInput
@@ -399,11 +430,21 @@ export function Header() {
                     locale={locale}
                   />
                 </Field>
+                <Field label={t.confirmPassword}>
+                  <PasswordInput
+                    value={registrationConfirmPassword}
+                    onChange={setRegistrationConfirmPassword}
+                    visible={showRegistrationConfirmPassword}
+                    onToggleVisibility={() => setShowRegistrationConfirmPassword((current) => !current)}
+                    size="lg"
+                    locale={locale}
+                  />
+                </Field>
                 <Field label={t.childFirstName}>
-                  <input value={registration.childFirstName} onChange={(event) => setRegistration((current) => ({ ...current, childFirstName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <input required value={registration.childFirstName} onChange={(event) => setRegistration((current) => ({ ...current, childFirstName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.childLastName}>
-                  <input value={registration.childLastName} onChange={(event) => setRegistration((current) => ({ ...current, childLastName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
+                  <input required value={registration.childLastName} onChange={(event) => setRegistration((current) => ({ ...current, childLastName: event.target.value }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900" />
                 </Field>
                 <Field label={t.childGrade}>
                   <select value={registration.childGrade} onChange={(event) => setRegistration((current) => ({ ...current, childGrade: event.target.value as Grade }))} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900">
@@ -419,6 +460,16 @@ export function Header() {
                     ))}
                   </select>
                 </Field>
+                <div className="rounded-[24px] bg-slate-50 p-4 md:col-span-2">
+                  <p className="m-0 text-sm font-black uppercase tracking-[0.16em] text-slate-400">{t.registerChecklistTitle}</p>
+                  <div className="mt-3 grid gap-2 md:grid-cols-2">
+                    <ValidationRow ok={hasParentIdentity} label={t.registerCheckParent} />
+                    <ValidationRow ok={hasChildIdentity} label={t.registerCheckChild} />
+                    <ValidationRow ok={hasValidRegistrationEmail} label={t.registerCheckEmail} />
+                    <ValidationRow ok={hasStrongRegistrationPassword} label={t.registerCheckPassword} />
+                    <ValidationRow ok={passwordsMatch} label={t.registerCheckConfirm} />
+                  </div>
+                </div>
                 <div className="md:col-span-2">
                   <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
                 </div>
@@ -565,6 +616,17 @@ function Field({ label, children }: { label: string; children: ReactNode }) {
       <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
       {children}
     </label>
+  );
+}
+
+function ValidationRow({ ok, label }: { ok: boolean; label: string }) {
+  return (
+    <div className={`flex items-center gap-3 rounded-[18px] px-3 py-3 text-sm font-black ${ok ? "bg-emerald-100 text-emerald-800" : "bg-amber-50 text-amber-800"}`}>
+      <span className={`flex h-7 w-7 items-center justify-center rounded-full text-sm ${ok ? "bg-emerald-600 text-white" : "bg-amber-400 text-slate-900"}`}>
+        {ok ? "✓" : "!"}
+      </span>
+      <span>{label}</span>
+    </div>
   );
 }
 

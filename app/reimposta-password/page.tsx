@@ -8,12 +8,27 @@ export default function ResetPasswordPage() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token") ?? "";
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (password.trim().length < 8) {
+      setStatus("error");
+      setMessage("La nuova password deve avere almeno 8 caratteri.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setStatus("error");
+      setMessage("Le due password non coincidono ancora.");
+      return;
+    }
+
     setStatus("loading");
 
     const response = await fetch("/api/auth/reset-password", {
@@ -38,6 +53,7 @@ export default function ResetPasswordPage() {
     setStatus("success");
     setMessage("Password aggiornata. Ora puoi accedere con la nuova password.");
     setPassword("");
+    setConfirmPassword("");
   }
 
   return (
@@ -63,6 +79,26 @@ export default function ResetPasswordPage() {
               title={showPassword ? "Nascondi password" : "Mostra password"}
             >
               {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+            </button>
+          </div>
+        </label>
+        <label className="block">
+          <span className="mb-2 block text-sm font-black uppercase tracking-[0.16em] text-slate-500">Conferma password</span>
+          <div className="relative">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(event) => setConfirmPassword(event.target.value)}
+              className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 pr-16 text-lg font-black text-slate-900"
+            />
+            <button
+              type="button"
+              className="absolute top-1/2 right-3 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border-0 bg-slate-100 text-slate-700 transition hover:bg-slate-200"
+              onClick={() => setShowConfirmPassword((current) => !current)}
+              aria-label={showConfirmPassword ? "Nascondi password" : "Mostra password"}
+              title={showConfirmPassword ? "Nascondi password" : "Mostra password"}
+            >
+              {showConfirmPassword ? <EyeOffIcon /> : <EyeIcon />}
             </button>
           </div>
         </label>

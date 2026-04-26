@@ -915,7 +915,16 @@ export async function saveProgressForLearner(learnerId: string, progress: SavedP
 export async function registerParent(input: ParentRegistrationInput) {
   const email = normalizeEmail(input.email);
   const password = input.password.trim();
-  if (!email || !password || !input.parentFirstName.trim() || !input.childFirstName.trim() || !isValidEmail(email)) {
+  if (
+    !email ||
+    !password ||
+    password.length < 8 ||
+    !input.parentFirstName.trim() ||
+    !input.parentLastName.trim() ||
+    !input.childFirstName.trim() ||
+    !input.childLastName.trim() ||
+    !isValidEmail(email)
+  ) {
     return { success: false as const, reason: "invalid" as const };
   }
 
