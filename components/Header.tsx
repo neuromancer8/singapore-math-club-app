@@ -58,6 +58,7 @@ export function Header() {
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [previewNotice, setPreviewNotice] = useState("");
   const [pendingVerificationEmail, setPendingVerificationEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [savingChild, setSavingChild] = useState(false);
@@ -140,6 +141,7 @@ export function Header() {
     setError("");
     setInfo("");
     setPreviewUrl(null);
+    setPreviewNotice("");
   }
 
   async function handleLogout() {
@@ -213,6 +215,7 @@ export function Header() {
 
     setInfo(t.verificationRequired);
     setPreviewUrl(result.previewUrl ?? null);
+    setPreviewNotice(result.delivered === false && result.previewUrl ? t.previewFallbackNotice : "");
     setPendingVerificationEmail(registration.email);
     setRegistration(defaultRegistration);
     setRegistrationConfirmPassword("");
@@ -232,8 +235,9 @@ export function Header() {
       setLoading(false);
       return;
     }
-    setInfo(t.emailSent);
+    setInfo(result.delivered === false && result.previewUrl ? t.previewReady : t.emailSent);
     setPreviewUrl(result.previewUrl ?? null);
+    setPreviewNotice(result.delivered === false && result.previewUrl ? t.previewFallbackNotice : "");
     setLoading(false);
   }
 
@@ -249,8 +253,9 @@ export function Header() {
       return;
     }
 
-    setInfo(t.emailSent);
+    setInfo(result.delivered === false && result.previewUrl ? t.previewReady : t.emailSent);
     setPreviewUrl(result.previewUrl ?? null);
+    setPreviewNotice(result.delivered === false && result.previewUrl ? t.previewFallbackNotice : "");
     setLoading(false);
   }
 
@@ -405,7 +410,7 @@ export function Header() {
                   />
                 </Field>
                 <div ref={authStatusRef}>
-                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} previewNotice={previewNotice} />
                 </div>
                 <button type="submit" className="cta-primary w-full border-0">
                   {loading ? (locale === "it" ? "Accesso in corso..." : "Logging in...") : t.loginWithAdmin}
@@ -483,7 +488,7 @@ export function Header() {
                   </div>
                 </div>
                 <div ref={authStatusRef} className="md:col-span-2">
-                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} previewNotice={previewNotice} />
                 </div>
                 <button type="submit" className="cta-primary w-full border-0 md:col-span-2">
                   {loading ? (locale === "it" ? "Creazione in corso..." : "Creating account...") : t.registerNow}
@@ -497,7 +502,7 @@ export function Header() {
                   <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900" />
                 </Field>
                 <div ref={authStatusRef}>
-                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} previewNotice={previewNotice} />
                 </div>
                 <button type="submit" className="cta-primary w-full border-0">
                   {loading ? (locale === "it" ? "Invio in corso..." : "Sending...") : t.sendRecoveryLink}
@@ -714,18 +719,21 @@ function StatusMessage({
   info,
   previewUrl,
   previewLabel,
+  previewNotice,
 }: {
   error: string;
   info: string;
   previewUrl: string | null;
   previewLabel: string;
+  previewNotice: string;
 }) {
-  if (!error && !info && !previewUrl) return null;
+  if (!error && !info && !previewUrl && !previewNotice) return null;
 
   return (
     <div className="space-y-3">
       {error ? <p className="m-0 rounded-[20px] bg-rose-100 px-4 py-3 text-base font-black text-rose-900">{error}</p> : null}
       {info ? <p className="m-0 rounded-[20px] bg-emerald-100 px-4 py-3 text-base font-black text-emerald-900">{info}</p> : null}
+      {previewNotice ? <p className="m-0 rounded-[20px] bg-amber-100 px-4 py-3 text-base font-black text-amber-900">{previewNotice}</p> : null}
       {previewUrl ? (
         <a href={previewUrl} className="inline-flex rounded-full bg-slate-900 px-4 py-3 text-sm font-black text-white" target="_blank" rel="noreferrer">
           {previewLabel}

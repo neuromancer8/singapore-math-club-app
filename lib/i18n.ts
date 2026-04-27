@@ -195,6 +195,9 @@ export const uiText = {
     sendRecoveryLink: "Invia link di recupero",
     previewLink: "Apri link di anteprima",
     emailSent: "Email inviata correttamente.",
+    previewReady: "Apri il link qui sotto per continuare subito.",
+    previewFallbackNotice:
+      "Su questa versione l'invio email automatico non e ancora attivo. Usa il pulsante qui sotto per aprire subito il link di verifica o recupero.",
     backToLogin: "Torna al login",
     addChild: "Aggiungi un bambino",
     addChildDescription: "Crea un nuovo profilo bambino collegato allo stesso account genitore.",
@@ -316,6 +319,9 @@ export const uiText = {
     sendRecoveryLink: "Send recovery link",
     previewLink: "Open preview link",
     emailSent: "Email sent successfully.",
+    previewReady: "Open the link below to continue right away.",
+    previewFallbackNotice:
+      "Automatic email delivery is not active on this version yet. Use the button below to open the verification or recovery link right away.",
     backToLogin: "Back to login",
     addChild: "Add a child",
     addChildDescription: "Create another child profile linked to the same parent account.",
