@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FormEvent, ReactNode } from "react";
 import { AvatarPicker } from "@/components/AvatarPicker";
 import { LanguageToggle } from "@/components/LanguageToggle";
@@ -66,6 +66,7 @@ export function Header() {
   const [showRegistrationPassword, setShowRegistrationPassword] = useState(false);
   const [registrationConfirmPassword, setRegistrationConfirmPassword] = useState("");
   const [showRegistrationConfirmPassword, setShowRegistrationConfirmPassword] = useState(false);
+  const authStatusRef = useRef<HTMLDivElement | null>(null);
   const seedCredentials = getSeedCredentials();
   const t = uiText[locale];
   const hasParentIdentity = Boolean(registration.parentFirstName.trim() && registration.parentLastName.trim());
@@ -123,6 +124,15 @@ export function Header() {
       window.clearInterval(intervalId);
     };
   }, [session]);
+
+  useEffect(() => {
+    if (!authOpen) return;
+    if (!error && !info && !previewUrl) return;
+
+    window.requestAnimationFrame(() => {
+      authStatusRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+  }, [authOpen, error, info, previewUrl]);
 
   const activeAvatar = session ? getAvatarOption(session.avatarId) : undefined;
 
@@ -349,7 +359,7 @@ export function Header() {
 
       {authOpen ? (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-slate-950/30 px-4 py-8 backdrop-blur-sm">
-          <div className="w-full max-w-2xl rounded-[36px] border border-white/60 bg-white/92 p-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] md:p-8">
+          <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-[36px] border border-white/60 bg-white/92 p-6 shadow-[0_30px_90px_rgba(15,23,42,0.18)] md:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
@@ -394,7 +404,9 @@ export function Header() {
                     locale={locale}
                   />
                 </Field>
-                <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                <div ref={authStatusRef}>
+                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                </div>
                 <button type="submit" className="cta-primary w-full border-0">
                   {loading ? (locale === "it" ? "Accesso in corso..." : "Logging in...") : t.loginWithAdmin}
                 </button>
@@ -470,7 +482,7 @@ export function Header() {
                     <ValidationRow ok={passwordsMatch} label={t.registerCheckConfirm} />
                   </div>
                 </div>
-                <div className="md:col-span-2">
+                <div ref={authStatusRef} className="md:col-span-2">
                   <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
                 </div>
                 <button type="submit" className="cta-primary w-full border-0 md:col-span-2">
@@ -484,7 +496,9 @@ export function Header() {
                 <Field label={t.email}>
                   <input type="email" value={email} onChange={(event) => setEmail(event.target.value)} className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900" />
                 </Field>
-                <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                <div ref={authStatusRef}>
+                  <StatusMessage error={error} info={info} previewUrl={previewUrl} previewLabel={t.previewLink} />
+                </div>
                 <button type="submit" className="cta-primary w-full border-0">
                   {loading ? (locale === "it" ? "Invio in corso..." : "Sending...") : t.sendRecoveryLink}
                 </button>
