@@ -410,7 +410,9 @@ async function ensureDatabaseSeeded() {
 
   try {
     const result = await client.query<{ count: string }>("SELECT COUNT(*)::text AS count FROM app_users");
-    if (Number(result.rows[0]?.count ?? "0") > 0) return;
+    if (Number(result.rows[0]?.count ?? "0") > 0) {
+      return;
+    }
 
     const seededAt = nowIso();
     for (const user of seedUsers) {
@@ -464,6 +466,7 @@ async function ensureDatabaseSeeded() {
 export async function ensureAuthStore() {
   if (isDatabaseEnabled()) {
     await ensureDatabaseSeeded();
+    await migrateDatabaseUsers();
     return;
   }
   await ensureFileSeeded();
