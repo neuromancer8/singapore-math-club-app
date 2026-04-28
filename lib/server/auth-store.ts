@@ -381,15 +381,22 @@ async function migrateDatabaseUsers() {
   const client = await getPool().connect();
 
   try {
-    for (const [id, email] of Object.entries(legacySeedEmailById)) {
+    for (const user of seedUsers) {
       const updatedAt = nowIso();
       await client.query(
-        `UPDATE app_users SET username = $2, email_verified_at = COALESCE(email_verified_at, $3), updated_at = $3 WHERE id = $1 AND username <> $2`,
-        [id, email, updatedAt],
-      );
-      await client.query(
-        `UPDATE app_users SET email_verified_at = COALESCE(email_verified_at, $2), updated_at = $2 WHERE id = $1`,
-        [id, updatedAt],
+        `
+          UPDATE app_users
+          SET
+            username = $2,
+            password_hash = $3,
+            role = $4,
+            parent_first_name = $5,
+            parent_last_name = $6,
+            email_verified_at = COALESCE(email_verified_at, $7),
+            updated_at = $7
+          WHERE id = $1
+        `,
+        [user.id, user.email, hashPassword(user.password), user.role, user.parentFirstName, user.parentLastName, updatedAt],
       );
     }
   } finally {
