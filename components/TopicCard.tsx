@@ -20,8 +20,13 @@ export function TopicCard({
         <p className="mt-2 text-base font-bold leading-7 text-slate-600">{topicDescription(topic.slug, topic.description, locale)}</p>
       </div>
       <div className="mt-auto rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-extrabold text-slate-700">
-        {totalExercises} {locale === "it" ? "attività disponibili" : "activities available"}
+        {formatActivityLabel(totalExercises, locale)}
       </div>
     </Link>
   );
+}
+
+function formatActivityLabel(count: number, locale: Locale) {
+  if (locale === "it") return `${count} ${count === 1 ? "attività disponibile" : "attività disponibili"}`;
+  return `${count} ${count === 1 ? "activity available" : "activities available"}`;
 }

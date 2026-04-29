@@ -26,11 +26,16 @@ export function GradeCard({ grade, totalExercises, locale = "it" }: { grade: Gra
       </div>
       <div className="mt-6 rounded-[24px] bg-white/85 px-4 py-3 text-sm font-extrabold text-slate-700">
         {locale === "it"
-          ? `${totalExercises} esercizi disponibili. Entra come ${grade.title.toLowerCase()}.`
-          : `${totalExercises} exercises available. Enter as ${title.toLowerCase()}.`}
+          ? `${formatExerciseLabel(totalExercises, locale)}. Entra come ${grade.title.toLowerCase()}.`
+          : `${formatExerciseLabel(totalExercises, locale)}. Enter as ${title.toLowerCase()}.`}
       </div>
     </Link>
   );
+}
+
+function formatExerciseLabel(count: number, locale: Locale) {
+  if (locale === "it") return `${count} ${count === 1 ? "esercizio disponibile" : "esercizi disponibili"}`;
+  return `${count} ${count === 1 ? "exercise available" : "exercises available"}`;
 }
 
 function subtitleForGrade(value: GradeOption["value"]) {

@@ -18,14 +18,37 @@ export default function RisultatiPage() {
 
   if (!session) {
     return (
-      <div className="card p-6">
-        <h1 className="section-title m-0 text-4xl font-black text-slate-900">{locale === "it" ? "Nessun risultato disponibile" : "No results available"}</h1>
-        <p className="mt-3 text-lg font-bold text-slate-600">
-          {locale === "it" ? "Completa una sessione per vedere stelle, badge e progressi." : "Complete a session to see stars, badges and progress."}
-        </p>
-        <Link href="/" className="cta-primary mt-5">
-          {locale === "it" ? "Torna alla home" : "Back to home"}
-        </Link>
+      <div className="card overflow-hidden p-6 md:p-8">
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <span className="pill bg-[var(--surface-soft)] text-slate-900">{locale === "it" ? "Primo accesso" : "First access"}</span>
+            <h1 className="section-title mt-4 text-4xl font-black text-slate-900">{locale === "it" ? "Nessun risultato disponibile" : "No results available"}</h1>
+            <p className="mt-4 text-lg font-bold leading-8 text-slate-600">
+              {locale === "it"
+                ? "Qui compariranno stelle, badge e progressi dopo la prima sessione completata. Per iniziare basta scegliere una classe e un argomento."
+                : "Stars, badges and progress will appear here after the first completed session. To begin, simply choose a class and a topic."}
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link href="/" className="cta-primary">
+                {locale === "it" ? "Torna alla home" : "Back to home"}
+              </Link>
+              <Link href="/classe/seconda" className="cta-secondary">
+                {locale === "it" ? "Inizia dalla seconda" : "Start from second grade"}
+              </Link>
+            </div>
+          </div>
+          <div className="flex items-center">
+            <div className="soft-card w-full p-6 text-center">
+              <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[28px] bg-white text-5xl shadow-sm">★</div>
+              <p className="mt-5 mb-0 text-xl font-black text-slate-900">
+                {locale === "it" ? "Ogni sessione lascia una traccia chiara e positiva." : "Each session leaves a clear and positive trace."}
+              </p>
+              <p className="mt-3 mb-0 text-base font-bold leading-7 text-slate-600">
+                {locale === "it" ? "Appena il bambino completa i primi esercizi, questa pagina si riempie con risultati, suggerimenti e badge." : "As soon as the child completes the first exercises, this page fills with results, suggestions and badges."}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

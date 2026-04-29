@@ -35,7 +35,7 @@ export default async function GradePage({
                 <h2 className="text-xl font-semibold">{topicLabel(topic.slug, topic.label, locale)}</h2>
                 <p className="mt-2 text-gray-600">{topicDescription(topic.slug, topic.description, locale)}</p>
                 <p className="mt-4 text-sm font-semibold text-slate-500">
-                  {count} {locale === "it" ? "esercizi disponibili" : "exercises available"}
+                  {formatExerciseCount(count, locale)}
                 </p>
               </Link>
             );
@@ -44,4 +44,9 @@ export default async function GradePage({
       </div>
     </main>
   );
+}
+
+function formatExerciseCount(count: number, locale: "it" | "en") {
+  if (locale === "it") return `${count} ${count === 1 ? "esercizio disponibile" : "esercizi disponibili"}`;
+  return `${count} ${count === 1 ? "exercise available" : "exercises available"}`;
 }

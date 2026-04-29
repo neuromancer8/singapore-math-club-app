@@ -228,7 +228,7 @@ export const uiText = {
     phaseTwoBase: "Base solida per la fase 2",
     personalDashboard: "Dashboard personale",
     helloPrefix: "Ciao",
-    helloSuffix: "questo e il tuo percorso.",
+    helloSuffix: "questo è il tuo percorso.",
     fullName: "Nome e cognome",
     avatar: "Avatar",
     startingClass: "Classe di partenza",

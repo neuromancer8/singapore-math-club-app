@@ -288,7 +288,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-4 rounded-[30px] border border-white/55 bg-white/72 px-5 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl md:flex-row md:items-center md:justify-between md:px-6">
+      <div className="flex flex-col gap-4 rounded-[30px] border border-white/55 bg-white/72 px-5 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl md:px-6 lg:flex-row lg:items-center lg:justify-between">
         <Link href="/" className="flex items-center gap-4">
           <div className="overflow-hidden rounded-2xl bg-white px-3 py-2 shadow-sm ring-1 ring-black/5">
             <Image
@@ -306,60 +306,66 @@ export function Header() {
           </div>
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800">
-          {session ? (
-            <>
-              <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">{t.navHome}</Link>
-              <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">{t.navResults}</Link>
-              <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">{t.navParents}</Link>
-            </>
-          ) : null}
+        <div className="flex flex-col gap-2 lg:items-end">
+          <nav className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+            {session ? (
+              <>
+                <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">{t.navHome}</Link>
+                <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">{t.navResults}</Link>
+                <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">{t.navParents}</Link>
+              </>
+            ) : null}
+          </nav>
 
-          {session && progress?.currentGrade ? (
-            <span className="pill bg-white ring-1 ring-black/5 shadow-sm">
-              {t.activeClass}: {gradeLabel(progress.currentGrade, locale)}
-            </span>
-          ) : null}
+          <div className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+            {session && progress?.currentGrade ? (
+              <span className="rounded-full bg-slate-100 px-4 py-3 text-slate-600">
+                {t.activeClass}: {gradeLabel(progress.currentGrade, locale)}
+              </span>
+            ) : <span />}
+          </div>
 
-          {session ? (
-            <div className="flex items-center gap-2 rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
+          <div className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+            {session ? (
+              <div className="flex items-center gap-2 rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
+                <button
+                  type="button"
+                  className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-transparent px-1 py-0.5 transition hover:-translate-y-0.5"
+                  onClick={() => setProfileOpen(true)}
+                  aria-label={t.profile}
+                >
+                  {activeAvatar ? (
+                    <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${activeAvatar.gradient} text-lg`} aria-label={avatarLabel(activeAvatar, locale)}>
+                      {activeAvatar.symbol}
+                    </span>
+                  ) : null}
+                  <span className="rounded-full px-3 py-2 font-extrabold text-slate-800">{t.profile}</span>
+                </button>
+                <button
+                  type="button"
+                  className="cursor-pointer rounded-full border-0 bg-rose-50 px-4 py-3 font-extrabold text-rose-700 transition hover:-translate-y-0.5 hover:bg-rose-100"
+                  onClick={handleLogout}
+                >
+                  {t.logout}
+                </button>
+              </div>
+            ) : (
               <button
                 type="button"
-                className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-transparent px-1 py-0.5 transition hover:-translate-y-0.5"
-                onClick={() => setProfileOpen(true)}
-                aria-label={t.profile}
+                className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
+                onClick={() => {
+                  resetAuthMessages();
+                  setAuthMode("login");
+                  setAuthOpen(true);
+                }}
               >
-                {activeAvatar ? (
-                  <span className={`flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br ${activeAvatar.gradient} text-lg`} aria-label={avatarLabel(activeAvatar, locale)}>
-                    {activeAvatar.symbol}
-                  </span>
-                ) : null}
-                <span className="rounded-full px-3 py-2 font-extrabold text-slate-800">{t.profile}</span>
+                {t.login}
               </button>
-              <button
-                type="button"
-                className="cursor-pointer rounded-full border-0 bg-rose-50 px-4 py-3 font-extrabold text-rose-700 transition hover:-translate-y-0.5 hover:bg-rose-100"
-                onClick={handleLogout}
-              >
-                {t.logout}
-              </button>
-            </div>
-          ) : (
-            <button
-              type="button"
-              className="pill cursor-pointer border-0 bg-white ring-1 ring-black/5 shadow-sm"
-              onClick={() => {
-                resetAuthMessages();
-                setAuthMode("login");
-                setAuthOpen(true);
-              }}
-            >
-              {t.login}
-            </button>
-          )}
+            )}
 
-          <LanguageToggle locale={locale} onChange={setLocaleState} />
-        </nav>
+            <LanguageToggle locale={locale} onChange={setLocaleState} />
+          </div>
+        </div>
       </div>
 
       {authOpen ? (

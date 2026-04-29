@@ -29,29 +29,15 @@ export default function GenitoriPage() {
     { label: locale === "it" ? "Serie" : "Streak", value: `${progress.streak} ${locale === "it" ? "giorni" : "days"}`, accent: "from-emerald-400 to-teal-500" },
   ];
   const historyPreview = progress.history.slice(0, 8);
+  const hasHistory = progress.totalSessions > 0;
 
   return (
     <div className="space-y-6">
       <section className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-violet-600 via-purple-500 to-indigo-500 p-6 text-white shadow-[0_30px_90px_rgba(88,28,135,0.3)] md:p-8">
-        <div className="absolute inset-y-8 right-8 hidden w-72 rounded-[28px] border border-white/20 bg-white/12 p-4 backdrop-blur md:block">
-          <div className="rounded-[20px] bg-white/90 p-4 text-slate-900 shadow-lg">
-            <div className="flex items-center justify-between">
-              <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-500">Export</p>
-              <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-black text-blue-700">Word</span>
-            </div>
-            <div className="mt-4 grid grid-cols-2 gap-3 text-sm font-bold">
-              <div className="rounded-2xl border border-slate-200 p-3">Report PDF</div>
-              <div className="rounded-2xl border border-slate-200 p-3">CSV</div>
-              <div className="rounded-2xl border border-slate-200 p-3">Badge</div>
-              <div className="rounded-2xl border border-slate-200 p-3">Word</div>
-            </div>
-          </div>
-        </div>
-
         <div className="absolute -top-16 left-2 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-cyan-300/20 blur-2xl" />
 
-        <div className="relative max-w-3xl">
+        <div className="relative max-w-4xl">
           <h1 className="section-title text-4xl font-black leading-tight md:text-5xl">
             {locale === "it" ? "Controllo chiaro, visivo e immediato." : "Clear, visual and immediate monitoring."}
           </h1>
@@ -60,6 +46,11 @@ export default function GenitoriPage() {
               ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e fotografia rapida del percorso. Più vicino a un prodotto moderno, meno a un semplice riepilogo."
               : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path. Closer to a modern product than a simple summary."}
           </p>
+          <div className="mt-6 inline-flex max-w-xl rounded-[24px] border border-white/20 bg-white/12 px-4 py-4 text-sm font-bold leading-6 text-white/90 backdrop-blur">
+            {locale === "it"
+              ? "Esportazione report in preparazione: la rimuoviamo da questa versione pubblica per non mostrare funzioni non ancora disponibili."
+              : "Report export is in preparation: we are removing it from this public version so unfinished features are not shown as available."}
+          </div>
         </div>
 
         <div className="relative mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -78,43 +69,60 @@ export default function GenitoriPage() {
                 <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Overview</p>
                 <h2 className="section-title mt-2 text-4xl font-black text-slate-900">{locale === "it" ? "Panoramica generale" : "General overview"}</h2>
               </div>
-              <div className="flex gap-2 rounded-full bg-slate-100 p-1 text-xs font-black text-slate-500">
-                <span className="rounded-full bg-white px-3 py-2 text-slate-900 shadow-sm">Live</span>
-                <span className="px-3 py-2">Locale</span>
-              </div>
             </div>
 
             <div className="mt-6 rounded-[28px] border border-slate-100 bg-slate-50/80 p-4">
               <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
                 <div className="rounded-[24px] bg-white p-4 shadow-sm">
                   <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Andamento" : "Trend"}</p>
-                  <div className="mt-5 flex h-48 items-end gap-3 rounded-[20px] bg-gradient-to-b from-slate-50 to-white px-4 pb-4 pt-8">
-                    {[28, 44, 36, 58, 42, 67, 61, 78].map((value, index) => (
-                      <div key={index} className="flex flex-1 flex-col items-center gap-2">
-                        <div
-                          className="w-full rounded-t-[14px] bg-gradient-to-t from-fuchsia-500 via-violet-500 to-cyan-400"
-                          style={{ height: `${value}%` }}
-                        />
-                        <span className="text-[10px] font-black uppercase tracking-wide text-slate-400">
-                          {index + 1}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
+                  {hasHistory ? (
+                    <div className="mt-5 flex h-48 items-end gap-3 rounded-[20px] bg-gradient-to-b from-slate-50 to-white px-4 pb-4 pt-8">
+                      {historyPreview
+                        .slice(0, 8)
+                        .reverse()
+                        .map((item, index) => {
+                          const value = item.total === 0 ? 0 : Math.max(12, Math.round((item.correct / item.total) * 100));
+
+                          return (
+                            <div key={item.id} className="flex flex-1 flex-col items-center gap-2">
+                              <div
+                                className="w-full rounded-t-[14px] bg-gradient-to-t from-fuchsia-500 via-violet-500 to-cyan-400"
+                                style={{ height: `${value}%` }}
+                              />
+                              <span className="text-[10px] font-black uppercase tracking-wide text-slate-400">
+                                {index + 1}
+                              </span>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  ) : (
+                    <EmptyChartState
+                      title={locale === "it" ? "Nessuna sessione ancora completata" : "No sessions completed yet"}
+                      description={locale === "it" ? "Il grafico comparirà dopo le prime attività concluse dal bambino." : "The chart will appear after the child's first completed activities."}
+                    />
+                  )}
                 </div>
 
                 <div className="rounded-[24px] bg-white p-4 shadow-sm">
                   <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Distribuzione" : "Distribution"}</p>
-                  <div className="mt-6 flex items-center justify-center">
-                    <div className="relative flex h-52 w-52 items-center justify-center rounded-full bg-[conic-gradient(from_180deg,#22d3ee_0_25%,#6366f1_25%_55%,#f97316_55%_78%,#ec4899_78%_100%)] p-5">
-                      <div className="flex h-full w-full items-center justify-center rounded-full bg-white text-center">
-                        <div>
-                          <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Totale" : "Total"}</p>
-                          <p className="mt-2 mb-0 text-4xl font-black text-slate-900">{progress.totalExercises}</p>
+                  {hasHistory ? (
+                    <div className="mt-6 flex items-center justify-center">
+                      <div className="relative flex h-52 w-52 items-center justify-center rounded-full bg-[conic-gradient(from_180deg,#22d3ee_0_25%,#6366f1_25%_55%,#f97316_55%_78%,#ec4899_78%_100%)] p-5">
+                        <div className="flex h-full w-full items-center justify-center rounded-full bg-white text-center">
+                          <div>
+                            <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Totale" : "Total"}</p>
+                            <p className="mt-2 mb-0 text-4xl font-black text-slate-900">{progress.totalExercises}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  ) : (
+                    <EmptyChartState
+                      title={locale === "it" ? "Distribuzione disponibile dopo i primi dati" : "Distribution available after the first data"}
+                      description={locale === "it" ? "Quando ci saranno esercizi svolti, qui vedrai la ripartizione del lavoro." : "Once exercises have been completed, you will see the distribution of the work here."}
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -266,6 +274,17 @@ function SummaryRow({ label, value, tone }: { label: string; value: string; tone
           <p className="mt-2 mb-0 text-3xl font-black text-slate-900">{value}</p>
         </div>
         <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${tone} shadow-lg`} />
+      </div>
+    </div>
+  );
+}
+
+function EmptyChartState({ title, description }: { title: string; description: string }) {
+  return (
+    <div className="mt-5 flex min-h-48 items-center justify-center rounded-[20px] border border-dashed border-slate-200 bg-slate-50 px-5 py-6 text-center">
+      <div className="max-w-xs">
+        <p className="m-0 text-base font-black text-slate-900">{title}</p>
+        <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600">{description}</p>
       </div>
     </div>
   );

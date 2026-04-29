@@ -51,6 +51,11 @@ export default async function TopicPage({
           <div className="rounded-[26px] bg-slate-50 p-5">
             <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{locale === "it" ? "Ingresso CPA" : "CPA entry point"}</p>
             <p className="mt-3 mb-0 text-lg font-black text-slate-900">{cpaStageLabel(topicMeta.cpaStage, locale)}</p>
+            <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600">
+              {locale === "it"
+                ? "CPA significa Concreto, Pittorico, Astratto: si parte da materiali o immagini semplici e poi si arriva al ragionamento simbolico."
+                : "CPA stands for Concrete, Pictorial, Abstract: children start with simple objects or images and gradually move to symbolic reasoning."}
+            </p>
           </div>
         </div>
 
@@ -75,7 +80,7 @@ export default async function TopicPage({
         <div className="mt-6 rounded-[26px] bg-slate-50 p-5">
           <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{locale === "it" ? "Disponibilità" : "Availability"}</p>
           <p className="mt-2 mb-0 text-3xl font-black text-slate-900">
-            {exercises.length} {locale === "it" ? "esercizi nel topic" : "exercises in this topic"}
+            {formatTopicExerciseCount(exercises.length, locale)}
           </p>
           <p className="mt-2 mb-0 text-base font-bold text-slate-600">
             {locale === "it" ? "Ogni sessione ne propone un mix breve e ben distribuito." : "Each session offers a short and well-balanced mix."}
@@ -110,7 +115,7 @@ export default async function TopicPage({
                 >
                   {item.label}
                   <span className="mt-2 block text-sm text-slate-500">
-                    {item.count} {locale === "it" ? "esercizi disponibili" : "exercises available"}
+                    {formatExerciseCount(item.count, locale)}
                   </span>
                 </Link>
               ))}
@@ -153,4 +158,14 @@ export default async function TopicPage({
       </aside>
     </div>
   );
+}
+
+function formatExerciseCount(count: number, locale: "it" | "en") {
+  if (locale === "it") return `${count} ${count === 1 ? "esercizio disponibile" : "esercizi disponibili"}`;
+  return `${count} ${count === 1 ? "exercise available" : "exercises available"}`;
+}
+
+function formatTopicExerciseCount(count: number, locale: "it" | "en") {
+  if (locale === "it") return `${count} ${count === 1 ? "esercizio nel topic" : "esercizi nel topic"}`;
+  return `${count} ${count === 1 ? "exercise in this topic" : "exercises in this topic"}`;
 }

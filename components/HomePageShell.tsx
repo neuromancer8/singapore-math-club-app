@@ -251,11 +251,24 @@ function LearnerDashboard({
             </div>
             <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-slate-600">{status.description}</p>
 
+            {progress.totalSessions === 0 ? (
+              <div className="mt-6 rounded-[26px] border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 px-5 py-4 shadow-sm">
+                <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-orange-600">
+                  {locale === "it" ? "Azione consigliata" : "Recommended action"}
+                </p>
+                <p className="mt-2 mb-0 text-base font-black leading-7 text-slate-900">
+                  {locale === "it"
+                    ? "Inizia con una sessione breve nella classe attiva: è il modo più semplice per vedere subito progressi e risultati."
+                    : "Start with a short session in the active grade: it is the easiest way to see progress and results right away."}
+                </p>
+              </div>
+            ) : null}
+
             <div className="mt-7 flex flex-wrap gap-3">
               <Link
                 href={nextActionHref}
                 onClick={() => setCurrentGrade(activeGrade)}
-                className="cta-primary"
+                className="cta-primary min-w-[16rem] text-lg"
               >
                 {t.continueIn} {labelForGradeShort(activeGrade, locale)}
               </Link>
