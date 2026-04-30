@@ -134,13 +134,13 @@ export function ExerciseCard({
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.5fr_0.9fr]">
-      <section className="card overflow-hidden p-5 md:p-7">
+    <div className="grid gap-6 xl:grid-cols-[1.5fr_0.9fr]">
+      <section className="card overflow-hidden p-4 sm:p-5 md:p-7">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <div className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade, locale)}</div>
-            <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{topicLabel(topic, topicTitle, locale)}</h1>
-            <p className="mt-3 mb-0 text-base font-bold text-slate-600">
+            <h1 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{topicLabel(topic, topicTitle, locale)}</h1>
+            <p className="mt-3 mb-0 text-sm font-bold text-slate-600 sm:text-base">
               {locale === "it"
                 ? `Esercizio ${index + 1} di ${sessionExercises.length}. Sessione breve, guidata e con feedback immediato.`
                 : `Exercise ${index + 1} of ${sessionExercises.length}. A short, guided session with immediate feedback.`}
@@ -169,7 +169,7 @@ export function ExerciseCard({
             <span className="pill bg-white ring-1 ring-black/5">{labelForDifficultyFilter(difficultyFilter, locale)}</span>
           </div>
 
-          <h2 className="mt-4 text-2xl font-black text-slate-900">{exercisePrompt}</h2>
+          <h2 className="mt-4 text-xl font-black text-slate-900 sm:text-2xl">{exercisePrompt}</h2>
 
           {exerciseVisualModel ? (
             <div className="soft-card mt-4 p-4 text-base font-bold text-slate-700">{exerciseVisualModel}</div>
@@ -189,13 +189,13 @@ export function ExerciseCard({
           ) : null}
         </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           {!checked ? (
-            <button type="button" className="cta-primary border-0" onClick={validateCurrent} disabled={!canCheck}>
+            <button type="button" className="cta-primary w-full border-0 sm:w-auto" onClick={validateCurrent} disabled={!canCheck}>
               {locale === "it" ? "Controlla" : "Check"}
             </button>
           ) : (
-            <button type="button" className="cta-primary border-0" onClick={goNext}>
+            <button type="button" className="cta-primary w-full border-0 sm:w-auto" onClick={goNext}>
               {index === sessionExercises.length - 1
                 ? locale === "it" ? "Vai ai risultati" : "Go to results"
                 : locale === "it" ? "Prossimo esercizio" : "Next exercise"}
@@ -205,43 +205,43 @@ export function ExerciseCard({
       </section>
 
       <aside className="space-y-4">
-        <div className="card p-5">
-          <h2 className="section-title m-0 text-3xl font-black text-slate-900">{locale === "it" ? "Metodo" : "Method"}</h2>
+        <div className="card p-4 sm:p-5">
+          <h2 className="section-title m-0 text-2xl font-black text-slate-900 sm:text-3xl">{locale === "it" ? "Metodo" : "Method"}</h2>
           <div className="mt-4 space-y-3">
             {methodSteps.map((step) => (
-              <div key={step} className="rounded-[20px] bg-slate-50 px-4 py-3 text-base font-black text-slate-700">
+              <div key={step} className="rounded-[20px] bg-slate-50 px-4 py-3 text-sm font-black text-slate-700 sm:text-base">
                 {step}
               </div>
             ))}
           </div>
           <div className="mt-4 rounded-[20px] border border-slate-100 bg-white px-4 py-4 shadow-sm">
             <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Suggerimento del momento" : "Current tip"}</p>
-            <p className="mt-2 mb-0 text-base font-bold leading-7 text-slate-700">{pedagogicalTip}</p>
+            <p className="mt-2 mb-0 text-sm font-bold leading-6 text-slate-700 sm:text-base sm:leading-7">{pedagogicalTip}</p>
           </div>
         </div>
         <div className="soft-card p-5">
           <h3 className="m-0 text-xl font-black text-slate-900">{locale === "it" ? "Progressi" : "Progress"}</h3>
-          <p className="mt-3 mb-0 text-base font-bold text-slate-700">
+          <p className="mt-3 mb-0 text-sm font-bold text-slate-700 sm:text-base">
             {locale === "it" ? "Corrette finora" : "Correct so far"}: {correctCount} {locale === "it" ? "su" : "of"} {sessionExercises.length}
           </p>
-          <p className="mt-2 mb-0 text-base font-bold text-slate-700">{locale === "it" ? "Risposte completate" : "Completed answers"}: {results.length}</p>
-          <p className="mt-2 mb-0 text-base font-bold text-slate-700">
+          <p className="mt-2 mb-0 text-sm font-bold text-slate-700 sm:text-base">{locale === "it" ? "Risposte completate" : "Completed answers"}: {results.length}</p>
+          <p className="mt-2 mb-0 text-sm font-bold text-slate-700 sm:text-base">
             {locale === "it" ? "Mancano ancora" : "Still remaining"}: {remainingExercises < 0 ? 0 : remainingExercises}
           </p>
         </div>
         <div className="rounded-[28px] border border-white/50 bg-white/75 p-5 shadow-[0_16px_50px_rgba(15,23,42,0.07)] backdrop-blur">
           <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Obiettivo della sessione" : "Session goal"}</p>
-          <p className="mt-3 mb-0 text-lg font-black leading-8 text-slate-900">
+          <p className="mt-3 mb-0 text-base font-black leading-7 text-slate-900 sm:text-lg sm:leading-8">
             {mode === "adaptive"
               ? locale === "it" ? adaptiveProfile.helper : adaptiveHelperText(adaptiveProfile.label)
               : locale === "it"
                 ? "Arriva almeno a 2 stelle per consolidare questo argomento e costruire sicurezza nel ragionamento."
                 : "Reach at least 2 stars to strengthen this topic and build confidence in reasoning."}
           </p>
-          <p className="mt-3 mb-0 text-sm font-bold leading-7 text-slate-600">
+          <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600 sm:leading-7">
             {getAdaptiveNarrative(topicHistory, locale)}
           </p>
-          <p className="mt-3 mb-0 text-sm font-bold leading-7 text-slate-600">
+          <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600 sm:leading-7">
             {locale === "it"
               ? `Arco della sessione: ${sessionArc.byStage.Concrete} concreti, ${sessionArc.byStage.Pittorico} pittorici, ${sessionArc.byStage.Astratto} astratti.`
               : `Session arc: ${sessionArc.byStage.Concrete} concrete, ${sessionArc.byStage.Pittorico} pictorial, ${sessionArc.byStage.Astratto} abstract.`}
@@ -272,7 +272,7 @@ function renderAnswerArea(
               key={option}
               type="button"
               onClick={() => onChange(answerValue)}
-              className={`rounded-[22px] border px-4 py-4 text-left text-lg font-black ${answer === answerValue ? "border-transparent bg-[var(--secondary)] text-white" : "border-slate-200 bg-white text-slate-800"}`}
+              className={`rounded-[22px] border px-4 py-4 text-left text-base font-black sm:text-lg ${answer === answerValue ? "border-transparent bg-[var(--secondary)] text-white" : "border-slate-200 bg-white text-slate-800"}`}
             >
               {option}
             </button>
@@ -284,7 +284,7 @@ function renderAnswerArea(
 
   return (
     <label className="block">
-      <span className="mb-3 block text-base font-black text-slate-700">{locale === "it" ? "Scrivi la risposta" : "Write the answer"}</span>
+      <span className="mb-3 block text-sm font-black text-slate-700 sm:text-base">{locale === "it" ? "Scrivi la risposta" : "Write the answer"}</span>
       <input
         type="text"
         inputMode="numeric"
@@ -295,7 +295,7 @@ function renderAnswerArea(
             onSubmit();
           }
         }}
-        className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-2xl font-black text-slate-900"
+        className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-xl font-black text-slate-900 sm:text-2xl"
         placeholder={locale === "it" ? "Es. 12" : "E.g. 12"}
       />
     </label>

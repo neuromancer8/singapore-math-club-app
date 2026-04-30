@@ -32,16 +32,16 @@ export default function GenitoriPage() {
   const hasHistory = progress.totalSessions > 0;
 
   return (
-    <div className="space-y-6">
-      <section className="relative overflow-hidden rounded-[36px] bg-gradient-to-br from-violet-600 via-purple-500 to-indigo-500 p-6 text-white shadow-[0_30px_90px_rgba(88,28,135,0.3)] md:p-8">
+    <div className="space-y-5 sm:space-y-6">
+      <section className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-violet-600 via-purple-500 to-indigo-500 p-5 text-white shadow-[0_30px_90px_rgba(88,28,135,0.3)] sm:rounded-[36px] sm:p-6 md:p-8">
         <div className="absolute -top-16 left-2 h-48 w-48 rounded-full bg-white/10 blur-2xl" />
         <div className="absolute bottom-0 right-1/3 h-40 w-40 rounded-full bg-cyan-300/20 blur-2xl" />
 
         <div className="relative max-w-4xl">
-          <h1 className="section-title text-4xl font-black leading-tight md:text-5xl">
+          <h1 className="section-title text-3xl font-black leading-tight sm:text-4xl md:text-5xl">
             {locale === "it" ? "Controllo chiaro, visivo e immediato." : "Clear, visual and immediate monitoring."}
           </h1>
-          <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-white/85">
+          <p className="mt-5 max-w-2xl text-base font-bold leading-7 text-white/85 sm:text-lg sm:leading-8">
             {locale === "it"
               ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e fotografia rapida del percorso. Più vicino a un prodotto moderno, meno a un semplice riepilogo."
               : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path. Closer to a modern product than a simple summary."}
@@ -53,30 +53,30 @@ export default function GenitoriPage() {
           </div>
         </div>
 
-        <div className="relative mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="relative mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {metrics.map((metric) => (
             <Metric key={metric.label} label={metric.label} value={metric.value} accent={metric.accent} />
           ))}
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.35fr_0.9fr]">
+      <section className="grid gap-6 2xl:grid-cols-[1.35fr_0.9fr]">
         <div className="relative">
           <div className="absolute inset-x-8 top-0 h-16 rounded-[28px] bg-gradient-to-r from-violet-400 to-blue-400 opacity-25 blur-2xl" />
-          <div className="relative rounded-[34px] border border-slate-200/70 bg-white p-5 shadow-[0_22px_80px_rgba(15,23,42,0.08)] md:p-6">
+          <div className="relative rounded-[28px] border border-slate-200/70 bg-white p-4 shadow-[0_22px_80px_rgba(15,23,42,0.08)] sm:rounded-[34px] sm:p-5 md:p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
                 <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Overview</p>
-                <h2 className="section-title mt-2 text-4xl font-black text-slate-900">{locale === "it" ? "Panoramica generale" : "General overview"}</h2>
+                <h2 className="section-title mt-2 text-3xl font-black text-slate-900 sm:text-4xl">{locale === "it" ? "Panoramica generale" : "General overview"}</h2>
               </div>
             </div>
 
             <div className="mt-6 rounded-[28px] border border-slate-100 bg-slate-50/80 p-4">
-              <div className="grid gap-4 lg:grid-cols-[1.05fr_0.95fr]">
+              <div className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
                 <div className="rounded-[24px] bg-white p-4 shadow-sm">
                   <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Andamento" : "Trend"}</p>
                   {hasHistory ? (
-                    <div className="mt-5 flex h-48 items-end gap-3 rounded-[20px] bg-gradient-to-b from-slate-50 to-white px-4 pb-4 pt-8">
+                    <div className="mt-5 flex h-40 items-end gap-2 rounded-[20px] bg-gradient-to-b from-slate-50 to-white px-3 pb-3 pt-6 sm:h-48 sm:gap-3 sm:px-4 sm:pb-4 sm:pt-8">
                       {historyPreview
                         .slice(0, 8)
                         .reverse()
@@ -108,11 +108,11 @@ export default function GenitoriPage() {
                   <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Distribuzione" : "Distribution"}</p>
                   {hasHistory ? (
                     <div className="mt-6 flex items-center justify-center">
-                      <div className="relative flex h-52 w-52 items-center justify-center rounded-full bg-[conic-gradient(from_180deg,#22d3ee_0_25%,#6366f1_25%_55%,#f97316_55%_78%,#ec4899_78%_100%)] p-5">
+                      <div className="relative flex h-44 w-44 items-center justify-center rounded-full bg-[conic-gradient(from_180deg,#22d3ee_0_25%,#6366f1_25%_55%,#f97316_55%_78%,#ec4899_78%_100%)] p-4 sm:h-52 sm:w-52 sm:p-5">
                         <div className="flex h-full w-full items-center justify-center rounded-full bg-white text-center">
                           <div>
                             <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Totale" : "Total"}</p>
-                            <p className="mt-2 mb-0 text-4xl font-black text-slate-900">{progress.totalExercises}</p>
+                          <p className="mt-2 mb-0 text-3xl font-black text-slate-900 sm:text-4xl">{progress.totalExercises}</p>
                           </div>
                         </div>
                       </div>
@@ -129,7 +129,7 @@ export default function GenitoriPage() {
 
             <div className="mt-6 grid gap-4">
               {getGrades().map((grade) => (
-                <div key={grade.value} className="rounded-[26px] border border-slate-100 bg-white p-4 shadow-sm">
+                <div key={grade.value} className="rounded-[24px] border border-slate-100 bg-white p-4 shadow-sm sm:rounded-[26px]">
                   {(() => {
                     const gradeProgress = progress.byGrade[grade.value];
                     const gradeAccuracy =
@@ -141,7 +141,7 @@ export default function GenitoriPage() {
                       <>
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
-                      <h3 className="m-0 text-xl font-black text-slate-900">{gradeLabel(grade.value, locale)}</h3>
+                      <h3 className="m-0 text-lg font-black text-slate-900 sm:text-xl">{gradeLabel(grade.value, locale)}</h3>
                       <p className="mt-1 mb-0 text-sm font-bold text-slate-600">{locale === "it" ? grade.subtitle : gradeSubtitle(grade.value)}</p>
                     </div>
                     <span className="pill bg-slate-100 text-slate-800">{gradeLabel(grade.value, locale)}</span>
@@ -195,7 +195,7 @@ export default function GenitoriPage() {
             </div>
 
             <div className="mt-5 rounded-[24px] border border-slate-100 bg-white p-4 shadow-sm">
-              <div className="grid grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {[
                   { label: locale === "it" ? "Sessioni" : "Sessions", value: progress.totalSessions },
                   { label: locale === "it" ? "Corrette" : "Correct", value: progress.totalCorrect },
@@ -204,7 +204,7 @@ export default function GenitoriPage() {
                 ].map((item) => (
                   <div key={item.label} className="rounded-[18px] bg-slate-50 px-3 py-4 text-center">
                     <p className="m-0 text-[11px] font-black uppercase tracking-[0.18em] text-slate-400">{item.label}</p>
-                    <p className="mt-2 mb-0 text-2xl font-black text-slate-900">{item.value}</p>
+                    <p className="mt-2 mb-0 text-xl font-black text-slate-900 sm:text-2xl">{item.value}</p>
                   </div>
                 ))}
               </div>
@@ -228,7 +228,7 @@ export default function GenitoriPage() {
               {historyPreview.length > 0 ? (
                 historyPreview.map((item) => (
                   <div key={item.id} className="rounded-[24px] border border-slate-100 bg-white p-4 shadow-sm">
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
                       <div>
                         <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{gradeLabel(item.grade, locale)}</p>
                         <p className="mt-2 mb-0 text-lg font-black text-slate-900">{topicName(item.topic, item.grade, locale)}</p>
@@ -236,7 +236,7 @@ export default function GenitoriPage() {
                           {item.correct}/{item.total} {locale === "it" ? "corrette" : "correct"}, {item.stars} {locale === "it" ? "stelle" : "stars"}
                         </p>
                       </div>
-                      <span className="text-sm font-black text-slate-500">
+                      <span className="text-sm font-black text-slate-500 sm:text-right">
                         {new Date(item.completedAt).toLocaleDateString(locale === "it" ? "it-IT" : "en-US")}
                       </span>
                     </div>
@@ -257,10 +257,10 @@ export default function GenitoriPage() {
 
 function Metric({ label, value, accent }: { label: string; value: string; accent: string }) {
   return (
-    <div className="rounded-[28px] border border-white/20 bg-white/10 p-5 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur">
+    <div className="rounded-[24px] border border-white/20 bg-white/10 p-4 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] backdrop-blur sm:rounded-[28px] sm:p-5">
       <div className={`h-1.5 w-20 rounded-full bg-gradient-to-r ${accent}`} />
       <p className="mt-4 mb-0 text-xs font-black uppercase tracking-[0.22em] text-white/65">{label}</p>
-      <p className="mt-3 mb-0 text-4xl font-black">{value}</p>
+      <p className="mt-3 mb-0 text-3xl font-black sm:text-4xl">{value}</p>
     </div>
   );
 }
@@ -271,9 +271,9 @@ function SummaryRow({ label, value, tone }: { label: string; value: string; tone
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
-          <p className="mt-2 mb-0 text-3xl font-black text-slate-900">{value}</p>
+          <p className="mt-2 mb-0 text-2xl font-black text-slate-900 sm:text-3xl">{value}</p>
         </div>
-        <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${tone} shadow-lg`} />
+        <div className={`h-12 w-12 rounded-2xl bg-gradient-to-br ${tone} shadow-lg sm:h-14 sm:w-14`} />
       </div>
     </div>
   );

@@ -18,21 +18,21 @@ export default function RisultatiPage() {
 
   if (!session) {
     return (
-      <div className="card overflow-hidden p-6 md:p-8">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="card overflow-hidden p-5 sm:p-6 md:p-8">
+        <div className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
           <div>
             <span className="pill bg-[var(--surface-soft)] text-slate-900">{locale === "it" ? "Primo accesso" : "First access"}</span>
-            <h1 className="section-title mt-4 text-4xl font-black text-slate-900">{locale === "it" ? "Nessun risultato disponibile" : "No results available"}</h1>
-            <p className="mt-4 text-lg font-bold leading-8 text-slate-600">
+            <h1 className="section-title mt-4 text-3xl font-black text-slate-900 sm:text-4xl">{locale === "it" ? "Nessun risultato disponibile" : "No results available"}</h1>
+            <p className="mt-4 text-base font-bold leading-7 text-slate-600 sm:text-lg sm:leading-8">
               {locale === "it"
                 ? "Qui compariranno stelle, badge e progressi dopo la prima sessione completata. Per iniziare basta scegliere una classe e un argomento."
                 : "Stars, badges and progress will appear here after the first completed session. To begin, simply choose a class and a topic."}
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href="/" className="cta-primary">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <Link href="/" className="cta-primary w-full sm:w-auto">
                 {locale === "it" ? "Torna alla home" : "Back to home"}
               </Link>
-              <Link href="/classe/seconda" className="cta-secondary">
+              <Link href="/classe/seconda" className="cta-secondary w-full sm:w-auto">
                 {locale === "it" ? "Inizia dalla seconda" : "Start from second grade"}
               </Link>
             </div>
@@ -54,12 +54,12 @@ export default function RisultatiPage() {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-      <section className="card overflow-hidden p-6 md:p-7">
+    <div className="grid gap-6 xl:grid-cols-[1.2fr_0.8fr]">
+      <section className="card overflow-hidden p-5 sm:p-6 md:p-7">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(session.grade, locale)}</span>
-            <h1 className="section-title mt-3 text-4xl font-black text-slate-900">{locale === "it" ? "Sessione completata" : "Session completed"}</h1>
+            <h1 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{locale === "it" ? "Sessione completata" : "Session completed"}</h1>
             <p className="mt-3 mb-0 text-base font-bold text-slate-600">{messageForStars(session.stars, locale)}</p>
           </div>
           <div className="text-3xl">
@@ -71,7 +71,7 @@ export default function RisultatiPage() {
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Metric label={locale === "it" ? "Corrette" : "Correct"} value={`${session.correct}/${session.total}`} />
           <Metric label={locale === "it" ? "Serie" : "Streak"} value={`${session.streak} ${locale === "it" ? "giorni" : "days"}`} />
           <Metric label={locale === "it" ? "Argomento" : "Topic"} value={topicLabel(session.topic, session.topic.replaceAll("-", " "), locale)} />
@@ -86,7 +86,7 @@ export default function RisultatiPage() {
           </p>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <InsightCard
             label={locale === "it" ? "Accuratezza" : "Accuracy"}
             value={`${Math.round((session.correct / session.total) * 100)}%`}
@@ -113,13 +113,13 @@ export default function RisultatiPage() {
         <BadgePanel badges={session.badgeUnlocked ? [session.badgeUnlocked] : []} locale={locale} />
         <div className="card p-5">
           <div className="flex flex-col gap-3">
-            <Link href={`/sessione/${session.grade}/${session.topic}`} className="cta-secondary">
+            <Link href={`/sessione/${session.grade}/${session.topic}`} className="cta-secondary w-full">
               {locale === "it" ? "Ripeti lo stesso argomento" : "Repeat the same topic"}
             </Link>
-            <Link href={`/classe/${session.grade}`} className="cta-primary">
+            <Link href={`/classe/${session.grade}`} className="cta-primary w-full">
               {locale === "it" ? "Continua nella classe" : "Continue in the class"}
             </Link>
-            <Link href="/genitori" className="cta-secondary">
+            <Link href="/genitori" className="cta-secondary w-full">
               {locale === "it" ? "Vai alla dashboard" : "Go to dashboard"}
             </Link>
           </div>
@@ -147,7 +147,7 @@ function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-[22px] bg-slate-50 p-4">
       <p className="m-0 text-sm font-extrabold uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-2 mb-0 text-2xl font-black text-slate-900">{value}</p>
+      <p className="mt-2 mb-0 text-xl font-black text-slate-900 sm:text-2xl">{value}</p>
     </div>
   );
 }
@@ -164,7 +164,7 @@ function InsightCard({
   return (
     <div className="rounded-[22px] bg-white p-4 shadow-sm ring-1 ring-black/5">
       <p className="m-0 text-sm font-extrabold uppercase tracking-wide text-slate-500">{label}</p>
-      <p className="mt-2 mb-0 text-3xl font-black text-slate-900">{value}</p>
+      <p className="mt-2 mb-0 text-2xl font-black text-slate-900 sm:text-3xl">{value}</p>
       <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600">{description}</p>
     </div>
   );

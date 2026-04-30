@@ -84,8 +84,8 @@ function PublicHome({ totalExercises, totalTopics, locale }: { totalExercises: n
         ];
 
   return (
-    <div className="space-y-8 px-2 py-4 md:space-y-10">
-      <section className="relative overflow-hidden rounded-[38px] border border-white/55 bg-white/70 px-6 py-8 shadow-[0_25px_90px_rgba(15,23,42,0.08)] backdrop-blur md:px-8 md:py-10">
+    <div className="space-y-6 px-1 py-3 sm:px-2 sm:py-4 md:space-y-10">
+      <section className="relative overflow-hidden rounded-[30px] border border-white/55 bg-white/70 px-4 py-6 shadow-[0_25px_90px_rgba(15,23,42,0.08)] backdrop-blur sm:px-6 sm:py-8 md:rounded-[38px] md:px-8 md:py-10">
         <div className="absolute -top-20 right-8 h-44 w-44 rounded-full bg-fuchsia-300/30 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-cyan-300/30 blur-3xl" />
         <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -93,14 +93,14 @@ function PublicHome({ totalExercises, totalTopics, locale }: { totalExercises: n
             <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
               {t.publicBadge}
             </div>
-            <h1 className="section-title mt-5 max-w-3xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
+            <h1 className="section-title mt-5 max-w-3xl text-3xl font-black leading-tight text-slate-900 sm:text-4xl md:text-5xl">
               {t.publicTitle}
             </h1>
-            <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-slate-600">
+            <p className="mt-5 max-w-2xl text-base font-bold leading-7 text-slate-600 sm:text-lg sm:leading-8">
               {t.publicDescription}
             </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <HomeStat label={t.classes} value={String(grades.length)} tone="from-orange-400 to-amber-300" />
               <HomeStat label={t.topics} value={String(totalTopics)} tone="from-cyan-400 to-blue-400" />
               <HomeStat label={t.exercises} value={String(totalExercises)} tone="from-fuchsia-500 to-violet-500" />
@@ -125,10 +125,10 @@ function PublicHome({ totalExercises, totalTopics, locale }: { totalExercises: n
         </div>
       </section>
 
-      <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <section className="grid gap-6 xl:grid-cols-[1.1fr_0.9fr]">
         <div className="card p-6 md:p-8">
           <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.whyWorks}</p>
-          <h2 className="section-title mt-3 text-4xl font-black text-slate-900">{t.clearLearning}</h2>
+          <h2 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{t.clearLearning}</h2>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
             {featureCards.map(([title, description]) => (
               <FeatureCard key={title} title={title} description={description} />
@@ -138,7 +138,7 @@ function PublicHome({ totalExercises, totalTopics, locale }: { totalExercises: n
 
         <div className="card p-6 md:p-8">
           <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.readyToGrow}</p>
-          <h2 className="section-title mt-3 text-4xl font-black text-slate-900">{t.phaseTwoBase}</h2>
+          <h2 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{t.phaseTwoBase}</h2>
           <div className="mt-6 space-y-4">
             {growthItems.map((item) => (
               <div key={item} className="rounded-[24px] bg-slate-50 px-4 py-4 text-base font-black text-slate-800">
@@ -225,8 +225,8 @@ function LearnerDashboard({
   const avatar = getAvatarOption(session.avatarId);
 
   return (
-    <div className="space-y-8 px-2 py-4 md:space-y-10">
-      <section className="relative overflow-hidden rounded-[38px] border border-white/55 bg-white/75 px-6 py-8 shadow-[0_25px_90px_rgba(15,23,42,0.08)] backdrop-blur md:px-8 md:py-10">
+    <div className="space-y-6 px-1 py-3 sm:px-2 sm:py-4 md:space-y-10">
+      <section className="relative overflow-hidden rounded-[30px] border border-white/55 bg-white/75 px-4 py-6 shadow-[0_25px_90px_rgba(15,23,42,0.08)] backdrop-blur sm:px-6 sm:py-8 md:rounded-[38px] md:px-8 md:py-10">
         <div className="absolute -top-16 left-8 h-40 w-40 rounded-full bg-amber-300/35 blur-3xl" />
         <div className="absolute bottom-0 right-8 h-44 w-44 rounded-full bg-cyan-300/30 blur-3xl" />
         <div className="relative grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
@@ -234,22 +234,22 @@ function LearnerDashboard({
             <div className="inline-flex rounded-full bg-[var(--surface-soft)] px-4 py-2 text-sm font-black text-slate-900 shadow-sm">
               {t.personalDashboard}
             </div>
-            <div className="mt-5 flex flex-wrap items-center gap-5">
-              <div className={`flex h-24 w-24 items-center justify-center rounded-[32px] bg-gradient-to-br ${avatar.gradient} text-5xl shadow-lg ring-4 ring-white`}>
+            <div className="mt-5 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5">
+              <div className={`flex h-20 w-20 items-center justify-center rounded-[26px] bg-gradient-to-br ${avatar.gradient} text-4xl shadow-lg ring-4 ring-white sm:h-24 sm:w-24 sm:rounded-[32px] sm:text-5xl`}>
                 <span aria-hidden="true">{avatar.symbol}</span>
               </div>
-              <h1 className="section-title m-0 max-w-2xl text-4xl font-black leading-tight text-slate-900 md:text-5xl">
+              <h1 className="section-title m-0 max-w-2xl text-3xl font-black leading-tight text-slate-900 sm:text-4xl md:text-5xl">
                 {t.helloPrefix} {session.firstName}, {t.helloSuffix}
               </h1>
             </div>
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
               <ProfileInfo label={t.fullName} value={session.fullName} />
               <ProfileInfo label={t.avatar} value={avatarLabel(avatar, locale)} />
               <ProfileInfo label={t.startingClass} value={gradeLabel(session.learnerGrade, locale)} />
               <ProfileInfo label={t.currentClass} value={gradeLabel(activeGrade, locale)} />
               <ProfileInfo label={t.pathStatus} value={status.title} />
             </div>
-            <p className="mt-5 max-w-3xl text-lg font-bold leading-8 text-slate-600">{status.description}</p>
+            <p className="mt-5 max-w-3xl text-base font-bold leading-7 text-slate-600 sm:text-lg sm:leading-8">{status.description}</p>
 
             {progress.totalSessions === 0 ? (
               <div className="mt-6 rounded-[26px] border border-amber-200 bg-gradient-to-r from-amber-50 to-orange-50 px-5 py-4 shadow-sm">
@@ -264,15 +264,15 @@ function LearnerDashboard({
               </div>
             ) : null}
 
-            <div className="mt-7 flex flex-wrap gap-3">
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
                 href={nextActionHref}
                 onClick={() => setCurrentGrade(activeGrade)}
-                className="cta-primary min-w-[16rem] text-lg"
+                className="cta-primary w-full text-center text-base sm:min-w-[16rem] sm:w-auto sm:text-lg"
               >
                 {t.continueIn} {labelForGradeShort(activeGrade, locale)}
               </Link>
-              <Link href="/risultati" className="cta-secondary">
+              <Link href="/risultati" className="cta-secondary w-full text-center sm:w-auto">
                 {t.latestResults}
               </Link>
             </div>
@@ -308,17 +308,17 @@ function LearnerDashboard({
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+      <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <HomeStat label={t.sessionsDone} value={String(progress.totalSessions)} tone="from-orange-400 to-amber-300" />
         <HomeStat label={t.averageAccuracy} value={`${accuracy}%`} tone="from-cyan-400 to-blue-400" />
         <HomeStat label={t.activeTopics} value={String(totalTopics)} tone="from-fuchsia-500 to-violet-500" />
         <HomeStat label={t.availableExercises} value={String(totalExercises)} tone="from-emerald-400 to-teal-400" />
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[1.15fr_0.85fr]">
+      <section className="grid gap-6 2xl:grid-cols-[1.15fr_0.85fr]">
         <div className="card p-6 md:p-8">
           <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.educationPathStatus}</p>
-          <h2 className="section-title mt-3 text-4xl font-black text-slate-900">{t.classVision}</h2>
+          <h2 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{t.classVision}</h2>
           <div className="mt-6 space-y-4">
             {grades.map((grade) => {
               const item = progress.byGrade[grade.value];
@@ -333,7 +333,7 @@ function LearnerDashboard({
                     </div>
                     <span className="pill bg-white ring-1 ring-black/5">{gradeLabel(grade.value, locale)}</span>
                   </div>
-                  <div className="mt-4 grid gap-3 md:grid-cols-3">
+                  <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     <MiniMetric label={locale === "it" ? "Sessioni" : "Sessions"} value={String(item.totalSessions)} />
                     <MiniMetric label={locale === "it" ? "Accuratezza" : "Accuracy"} value={`${itemAccuracy}%`} />
                     <MiniMetric label={locale === "it" ? "Migliori stelle" : "Best stars"} value={String(item.bestStars)} />
@@ -350,7 +350,7 @@ function LearnerDashboard({
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.pathwayMap}</p>
-                <h3 className="section-title mt-2 text-3xl font-black text-slate-900">
+                <h3 className="section-title mt-2 text-2xl font-black text-slate-900 sm:text-3xl">
                   {t.nextLessons} {gradeLabel(activeGrade, locale)}
                 </h3>
               </div>
@@ -386,7 +386,7 @@ function LearnerDashboard({
         <div className="space-y-6">
           <div className="card p-6 md:p-8">
             <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.nextAction}</p>
-            <h2 className="section-title mt-3 text-4xl font-black text-slate-900">{t.whatNow}</h2>
+            <h2 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{t.whatNow}</h2>
             <div className="mt-5 space-y-4">
               <FeatureCard
                 title={locale === "it" ? "Continua la classe attiva" : "Continue the active class"}
@@ -428,7 +428,7 @@ function StepCard({ title, text }: { title: string; text: string }) {
   return (
     <div className="rounded-[24px] bg-slate-50 p-4">
       <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{title}</p>
-      <p className="mt-2 mb-0 text-xl font-black text-slate-900">{text}</p>
+      <p className="mt-2 mb-0 text-lg font-black text-slate-900 sm:text-xl">{text}</p>
     </div>
   );
 }
@@ -437,7 +437,7 @@ function ProfileInfo({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-[24px] bg-white/85 px-4 py-4 shadow-sm ring-1 ring-black/5">
       <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
-      <p className="mt-2 mb-0 text-xl font-black text-slate-900">{value}</p>
+      <p className="mt-2 mb-0 text-lg font-black text-slate-900 sm:text-xl">{value}</p>
     </div>
   );
 }
@@ -446,7 +446,7 @@ function MiniMetric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-[22px] bg-white px-4 py-4 shadow-sm ring-1 ring-black/5">
       <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
-      <p className="mt-2 mb-0 text-2xl font-black text-slate-900">{value}</p>
+      <p className="mt-2 mb-0 text-xl font-black text-slate-900 sm:text-2xl">{value}</p>
     </div>
   );
 }
@@ -456,7 +456,7 @@ function HomeStat({ label, value, tone }: { label: string; value: string; tone: 
     <div className="rounded-[24px] bg-white/88 p-4 shadow-sm">
       <div className={`h-2 w-16 rounded-full bg-gradient-to-r ${tone}`} />
       <p className="mt-3 mb-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{label}</p>
-      <p className="mt-2 mb-0 text-3xl font-black text-slate-900">{value}</p>
+      <p className="mt-2 mb-0 text-2xl font-black text-slate-900 sm:text-3xl">{value}</p>
     </div>
   );
 }
@@ -464,8 +464,8 @@ function HomeStat({ label, value, tone }: { label: string; value: string; tone: 
 function FeatureCard({ title, description }: { title: string; description: string }) {
   return (
     <div className="rounded-[26px] bg-slate-50 p-5">
-      <h3 className="m-0 text-xl font-black text-slate-900">{title}</h3>
-      <p className="mt-3 mb-0 text-base font-bold leading-7 text-slate-600">{description}</p>
+      <h3 className="m-0 text-lg font-black text-slate-900 sm:text-xl">{title}</h3>
+      <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600 sm:text-base sm:leading-7">{description}</p>
     </div>
   );
 }

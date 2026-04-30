@@ -56,14 +56,14 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
   const t = gradeStartText[locale];
 
   return (
-    <div className="rounded-[34px] border border-white/60 bg-white/85 p-6 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur md:p-7">
+    <div className="rounded-[28px] border border-white/60 bg-white/85 p-5 shadow-[0_22px_80px_rgba(15,23,42,0.08)] backdrop-blur sm:rounded-[34px] sm:p-6 md:p-7">
       <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{t.stage}</p>
-      <h2 className="section-title mt-3 text-4xl font-black text-slate-900">{t.title}</h2>
-      <p className="mt-3 text-base font-bold leading-7 text-slate-600">
+      <h2 className="section-title mt-3 text-3xl font-black text-slate-900 sm:text-4xl">{t.title}</h2>
+      <p className="mt-3 text-sm font-bold leading-6 text-slate-600 sm:text-base sm:leading-7">
         {t.description}
       </p>
 
-      <div className={`mt-6 grid gap-4 ${compact ? "grid-cols-1" : "md:grid-cols-3"}`}>
+      <div className={`mt-6 grid gap-4 ${compact ? "grid-cols-1" : "sm:grid-cols-2 xl:grid-cols-3"}`}>
         {grades.map((grade) => {
           const gradeProgress = progress?.byGrade?.[grade.value];
           const lastPlayed = gradeProgress?.lastPlayedAt
@@ -83,7 +83,7 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
                 <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade.value, locale)}</span>
                 <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-400">{gradeProgress?.totalSessions ?? 0} {t.sessions}</span>
               </div>
-              <h3 className={`${compact ? "mt-3 text-2xl leading-tight" : "mt-4 text-2xl"} font-black text-slate-900`}>
+              <h3 className={`${compact ? "mt-3 text-xl leading-tight sm:text-2xl" : "mt-4 text-xl sm:text-2xl"} font-black text-slate-900`}>
                 {t.iAmIn} {labelForCta(grade.value, locale)}
               </h3>
               <p className={`${compact ? "mt-2 text-sm leading-6" : "mt-3 text-base leading-7"} font-bold text-slate-600`}>{t.subtitles[grade.value]}</p>
