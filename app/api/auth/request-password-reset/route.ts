@@ -9,7 +9,11 @@ export async function POST(request: Request) {
   const result = await requestPasswordReset(body?.email ?? "");
 
   if (!result.success) {
-    return NextResponse.json({ success: false, reason: result.reason }, { status: 400 });
+    if (result.reason === "invalid") {
+      return NextResponse.json({ success: false, reason: result.reason }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true, delivered: true });
   }
 
   const origin = new URL(request.url).origin;

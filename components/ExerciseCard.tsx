@@ -10,6 +10,7 @@ import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
 import { cpaStageLabel, difficultyLabel, exerciseTypeLabel, getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
+import { formatCount } from "@/lib/format";
 
 type AnswerValue = string;
 
@@ -38,23 +39,33 @@ export function ExerciseCard({
   const [locale, setLocale] = useState<Locale>("it");
 
   useEffect(() => {
-    const progress = getProgress();
-    const history = progress.history.filter((item) => item.grade === grade && item.topic === topic).slice(0, 6);
+    let cancelled = false;
 
-    setTopicHistory(history);
-    setSessionExercises(
-      buildSessionExercises({
-        exercises,
-        difficultyFilter,
-        mode,
-        history,
-      }),
-    );
-    setIndex(0);
-    setAnswers({});
-    setChecked(false);
-    setResults([]);
-    setLocale(getLocale());
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      const progress = getProgress();
+      const history = progress.history.filter((item) => item.grade === grade && item.topic === topic).slice(0, 6);
+
+      setTopicHistory(history);
+      setSessionExercises(
+        buildSessionExercises({
+          exercises,
+          difficultyFilter,
+          mode,
+          history,
+        }),
+      );
+      setIndex(0);
+      setAnswers({});
+      setChecked(false);
+      setResults([]);
+      setLocale(getLocale());
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [difficultyFilter, exercises, grade, mode, topic]);
 
   const exercise = sessionExercises[index];
@@ -146,7 +157,13 @@ export function ExerciseCard({
                 : `Exercise ${index + 1} of ${sessionExercises.length}. A short, guided session with immediate feedback.`}
             </p>
           </div>
-          <div className="text-2xl" aria-label={`${sessionStars} ${locale === "it" ? "stelle" : "stars"}`}>
+          <div
+            className="text-2xl"
+            aria-label={formatCount(sessionStars, locale, {
+              it: { singular: "stella", plural: "stelle" },
+              en: { singular: "star", plural: "stars" },
+            })}
+          >
             {Array.from({ length: 3 }).map((_, starIndex) => (
               <span key={starIndex} className={starIndex < sessionStars ? "opacity-100" : "opacity-25"}>
                 ★
@@ -178,7 +195,11 @@ export function ExerciseCard({
           <div className="mt-6">{renderAnswerArea(exercise, exerciseOptions, answer, setAnswer, checked ? goNext : validateCurrent, !checked && canCheck, locale)}</div>
 
           {checked && currentResult ? (
-            <div className={`mt-6 rounded-[24px] px-4 py-4 text-base font-bold ${currentResult.correct ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}`}>
+            <div
+              className={`mt-6 rounded-[24px] px-4 py-4 text-base font-bold ${currentResult.correct ? "bg-emerald-100 text-emerald-900" : "bg-rose-100 text-rose-900"}`}
+              role="status"
+              aria-live="polite"
+            >
               <p className="m-0">
                 {currentResult.correct
                   ? locale === "it" ? "Bravissimo! Risposta corretta." : "Great job! Correct answer."

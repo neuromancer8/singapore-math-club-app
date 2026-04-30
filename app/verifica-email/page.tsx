@@ -11,10 +11,19 @@ export default function VerifyEmailPage() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    let cancelled = false;
+
     if (!token) {
-      setStatus("error");
-      setMessage("Token non valido.");
-      return;
+      queueMicrotask(() => {
+        if (cancelled) return;
+
+        setStatus("error");
+        setMessage("Token non valido.");
+      });
+
+      return () => {
+        cancelled = true;
+      };
     }
 
     void fetch("/api/auth/verify-email", {
@@ -24,6 +33,8 @@ export default function VerifyEmailPage() {
     })
       .then(async (response) => {
         const body = (await response.json().catch(() => null)) as { success?: boolean; reason?: string } | null;
+        if (cancelled) return;
+
         if (!response.ok || !body?.success) {
           setStatus("error");
           setMessage(body?.reason === "expired" ? "Il link di verifica è scaduto." : "Il link di verifica non è valido.");
@@ -34,9 +45,15 @@ export default function VerifyEmailPage() {
         setMessage("Email verificata correttamente. Ora puoi accedere come genitore.");
       })
       .catch(() => {
+        if (cancelled) return;
+
         setStatus("error");
         setMessage("Non siamo riusciti a verificare l'email.");
       });
+
+    return () => {
+      cancelled = true;
+    };
   }, [token]);
 
   return (

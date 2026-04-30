@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   const learnerGrade = body?.learnerGrade;
 
-  if (!body?.firstName?.trim() || !isGrade(learnerGrade ?? "") || !isAvatarId(body.avatarId)) {
+  if (!body?.firstName?.trim() || !body.lastName?.trim() || !isGrade(learnerGrade ?? "") || !isAvatarId(body.avatarId)) {
     return NextResponse.json({ success: false }, { status: 400 });
   }
 

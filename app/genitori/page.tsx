@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
 import { topicsByGrade } from "@/data/topics";
 import { getGrades } from "@/lib/exercises";
+import { formatCount } from "@/lib/format";
 import { getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
 import type { Grade, SavedProgress } from "@/lib/types";
@@ -13,8 +14,18 @@ export default function GenitoriPage() {
   const [locale, setLocale] = useState<Locale>("it");
 
   useEffect(() => {
-    setLocale(getLocale());
-    setProgress(getProgress());
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      setLocale(getLocale());
+      setProgress(getProgress());
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (!progress) {
@@ -26,7 +37,7 @@ export default function GenitoriPage() {
     { label: locale === "it" ? "Sessioni" : "Sessions", value: String(progress.totalSessions), accent: "from-fuchsia-500 to-violet-500" },
     { label: locale === "it" ? "Accuratezza" : "Accuracy", value: `${accuracy}%`, accent: "from-cyan-400 to-blue-500" },
     { label: locale === "it" ? "Corrette" : "Correct", value: String(progress.totalCorrect), accent: "from-amber-400 to-orange-500" },
-    { label: locale === "it" ? "Serie" : "Streak", value: `${progress.streak} ${locale === "it" ? "giorni" : "days"}`, accent: "from-emerald-400 to-teal-500" },
+    { label: locale === "it" ? "Serie" : "Streak", value: formatCount(progress.streak, locale, { it: { singular: "giorno", plural: "giorni" }, en: { singular: "day", plural: "days" } }), accent: "from-emerald-400 to-teal-500" },
   ];
   const historyPreview = progress.history.slice(0, 8);
   const hasHistory = progress.totalSessions > 0;
@@ -43,13 +54,13 @@ export default function GenitoriPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-base font-bold leading-7 text-white/85 sm:text-lg sm:leading-8">
             {locale === "it"
-              ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e fotografia rapida del percorso. Più vicino a un prodotto moderno, meno a un semplice riepilogo."
-              : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path. Closer to a modern product than a simple summary."}
+              ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e una fotografia rapida del percorso."
+              : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path."}
           </p>
           <div className="mt-6 inline-flex max-w-xl rounded-[24px] border border-white/20 bg-white/12 px-4 py-4 text-sm font-bold leading-6 text-white/90 backdrop-blur">
             {locale === "it"
-              ? "Esportazione report in preparazione: la rimuoviamo da questa versione pubblica per non mostrare funzioni non ancora disponibili."
-              : "Report export is in preparation: we are removing it from this public version so unfinished features are not shown as available."}
+              ? "Report PDF e Word saranno disponibili in una prossima versione. Per ora la dashboard mostra i dati essenziali in modo chiaro."
+              : "PDF and Word reports will be available in a future version. For now, the dashboard shows the essential data clearly."}
           </div>
         </div>
 
@@ -66,7 +77,7 @@ export default function GenitoriPage() {
           <div className="relative rounded-[28px] border border-slate-200/70 bg-white p-4 shadow-[0_22px_80px_rgba(15,23,42,0.08)] sm:rounded-[34px] sm:p-5 md:p-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
-                <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">Overview</p>
+                <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">{locale === "it" ? "Sintesi" : "Overview"}</p>
                 <h2 className="section-title mt-2 text-3xl font-black text-slate-900 sm:text-4xl">{locale === "it" ? "Panoramica generale" : "General overview"}</h2>
               </div>
             </div>
@@ -169,7 +180,7 @@ export default function GenitoriPage() {
                         <div className="mt-4 rounded-[22px] bg-slate-50 p-4">
                           <p className="m-0 text-xs font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Storico classe" : "Class history"}</p>
                           <p className="mt-2 mb-0 text-sm font-black text-slate-800">
-                            {gradeProgress.totalSessions} {locale === "it" ? "sessioni" : "sessions"}, {gradeProgress.totalExercises} {locale === "it" ? "esercizi" : "exercises"}, {locale === "it" ? "migliori stelle" : "best stars"}: {gradeProgress.bestStars}
+                            {formatCount(gradeProgress.totalSessions, locale, { it: { singular: "sessione", plural: "sessioni" }, en: { singular: "session", plural: "sessions" } })}, {formatCount(gradeProgress.totalExercises, locale, { it: { singular: "esercizio", plural: "esercizi" }, en: { singular: "exercise", plural: "exercises" } })}, {locale === "it" ? "migliori stelle" : "best stars"}: {gradeProgress.bestStars}
                           </p>
                           <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
                             {locale === "it" ? "Argomenti recenti" : "Recent topics"}: {recentTopicList(gradeProgress.recentTopics, grade.value, locale, locale === "it" ? "nessuno" : "none")}
@@ -188,7 +199,7 @@ export default function GenitoriPage() {
           <div className="rounded-[32px] border border-white/60 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
             <div className="flex items-center justify-between">
               <div>
-                <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">Workspace</p>
+                <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{locale === "it" ? "Area dati" : "Workspace"}</p>
                 <h2 className="mt-2 text-3xl font-black text-slate-900">{locale === "it" ? "Stato attuale" : "Current status"}</h2>
               </div>
               <div className="rounded-full bg-emerald-100 px-3 py-2 text-xs font-black text-emerald-700">{locale === "it" ? "Sincronizzato" : "Synced"}</div>
@@ -233,7 +244,7 @@ export default function GenitoriPage() {
                         <p className="m-0 text-sm font-black uppercase tracking-[0.18em] text-slate-400">{gradeLabel(item.grade, locale)}</p>
                         <p className="mt-2 mb-0 text-lg font-black text-slate-900">{topicName(item.topic, item.grade, locale)}</p>
                         <p className="mt-2 mb-0 text-sm font-bold text-slate-600">
-                          {item.correct}/{item.total} {locale === "it" ? "corrette" : "correct"}, {item.stars} {locale === "it" ? "stelle" : "stars"}
+                          {item.correct}/{item.total} {locale === "it" ? "corrette" : "correct"}, {formatCount(item.stars, locale, { it: { singular: "stella", plural: "stelle" }, en: { singular: "star", plural: "stars" } })}
                         </p>
                       </div>
                       <span className="text-sm font-black text-slate-500 sm:text-right">

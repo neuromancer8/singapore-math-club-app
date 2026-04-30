@@ -23,16 +23,28 @@ export function HomePageShell({
   const [locale, setLocaleState] = useState<Locale>("it");
 
   useEffect(() => {
-    setLocaleState(getLocale());
-    setSession(getAuthSession() ?? null);
-    setProgress(getProgress());
+    let cancelled = false;
 
-     void loadAuthState({ refresh: false }).then(({ session: serverSession, progress: serverProgress }) => {
-      setSession(serverSession ?? null);
-      if (serverProgress) {
-        setProgress(serverProgress);
-      }
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      setLocaleState(getLocale());
+      setSession(getAuthSession() ?? null);
+      setProgress(getProgress());
+
+      void loadAuthState({ refresh: false }).then(({ session: serverSession, progress: serverProgress }) => {
+        if (cancelled) return;
+
+        setSession(serverSession ?? null);
+        if (serverProgress) {
+          setProgress(serverProgress);
+        }
+      });
     });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (!session || !progress) {

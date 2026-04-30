@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
+import { formatCount } from "@/lib/format";
 import { getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import { getLastSession } from "@/lib/progress";
 import type { StoredSessionResult } from "@/lib/types";
@@ -12,8 +13,18 @@ export default function RisultatiPage() {
   const [locale, setLocale] = useState<Locale>("it");
 
   useEffect(() => {
-    setLocale(getLocale());
-    setSession(getLastSession());
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      setLocale(getLocale());
+      setSession(getLastSession());
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   if (!session) {
@@ -73,7 +84,7 @@ export default function RisultatiPage() {
 
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <Metric label={locale === "it" ? "Corrette" : "Correct"} value={`${session.correct}/${session.total}`} />
-          <Metric label={locale === "it" ? "Serie" : "Streak"} value={`${session.streak} ${locale === "it" ? "giorni" : "days"}`} />
+          <Metric label={locale === "it" ? "Serie" : "Streak"} value={formatCount(session.streak, locale, { it: { singular: "giorno", plural: "giorni" }, en: { singular: "day", plural: "days" } })} />
           <Metric label={locale === "it" ? "Argomento" : "Topic"} value={topicLabel(session.topic, session.topic.replaceAll("-", " "), locale)} />
         </div>
 

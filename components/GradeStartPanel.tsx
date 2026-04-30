@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { grades } from "@/data/grades";
+import { formatCount } from "@/lib/format";
 import { getLocale, gradeLabel, type Locale } from "@/lib/i18n";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { Grade, SavedProgress } from "@/lib/types";
@@ -13,10 +14,8 @@ const gradeStartText = {
     title: "Inizia",
     description:
       "Ogni percorso mantiene lo storico della classe corrente e di quelle già svolte, così quando il bambino arriva in terza o in quarta restano visibili anche i passi fatti prima.",
-    sessions: "sessioni",
     iAmIn: "Sono di",
     history: "Storico",
-    exercises: "esercizi",
     lastAccess: "ultimo accesso",
     neverStarted: "Mai avviata",
     subtitles: {
@@ -30,10 +29,8 @@ const gradeStartText = {
     title: "Start",
     description:
       "Each path keeps the history of the current class and previous classes, so when the child reaches third or fourth grade the earlier steps remain visible.",
-    sessions: "sessions",
     iAmIn: "I am in",
     history: "History",
-    exercises: "exercises",
     lastAccess: "last access",
     neverStarted: "Never started",
     subtitles: {
@@ -49,8 +46,18 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
   const [locale, setLocaleState] = useState<Locale>(providedLocale ?? "it");
 
   useEffect(() => {
-    setProgress(getProgress());
-    setLocaleState(providedLocale ?? getLocale());
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+
+      setProgress(getProgress());
+      setLocaleState(providedLocale ?? getLocale());
+    });
+
+    return () => {
+      cancelled = true;
+    };
   }, [providedLocale]);
 
   const t = gradeStartText[locale];
@@ -81,7 +88,12 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
             >
               <div className="flex flex-wrap items-center gap-3">
                 <span className="pill bg-[var(--surface-soft)] text-slate-900">{gradeLabel(grade.value, locale)}</span>
-                <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-400">{gradeProgress?.totalSessions ?? 0} {t.sessions}</span>
+                <span className="text-sm font-black uppercase tracking-[0.16em] text-slate-400">
+                  {formatCount(gradeProgress?.totalSessions ?? 0, locale, {
+                    it: { singular: "sessione", plural: "sessioni" },
+                    en: { singular: "session", plural: "sessions" },
+                  })}
+                </span>
               </div>
               <h3 className={`${compact ? "mt-3 text-xl leading-tight sm:text-2xl" : "mt-4 text-xl sm:text-2xl"} font-black text-slate-900`}>
                 {t.iAmIn} {labelForCta(grade.value, locale)}
@@ -90,7 +102,13 @@ export function GradeStartPanel({ compact = false, locale: providedLocale }: { c
               <div className={`${compact ? "mt-4 rounded-[20px] px-4 py-3" : "mt-5 rounded-[22px] px-4 py-3"} bg-white ring-1 ring-black/5`}>
                 <p className="m-0 text-xs font-black uppercase tracking-[0.14em] text-slate-400">{t.history} {gradeLabel(grade.value, locale)}</p>
                 <p className="mt-2 mb-0 text-sm font-black leading-6 text-slate-800">
-                  {gradeProgress?.totalSessions ?? 0} {t.sessions}, {gradeProgress?.totalExercises ?? 0} {t.exercises}, {t.lastAccess}: {lastPlayed}
+                  {formatCount(gradeProgress?.totalSessions ?? 0, locale, {
+                    it: { singular: "sessione", plural: "sessioni" },
+                    en: { singular: "session", plural: "sessions" },
+                  })}, {formatCount(gradeProgress?.totalExercises ?? 0, locale, {
+                    it: { singular: "esercizio", plural: "esercizi" },
+                    en: { singular: "exercise", plural: "exercises" },
+                  })}, {t.lastAccess}: {lastPlayed}
                 </p>
               </div>
             </Link>

@@ -2,7 +2,7 @@ import { createHash, randomBytes, randomUUID } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { Pool } from "pg";
-import { getAvatarOption } from "@/lib/avatars";
+import { getAvatarOption, isAvatarId } from "@/lib/avatars";
 import { createEmptyProgress, normalizeProgress } from "@/lib/progress";
 import { hashPassword, verifyPassword } from "@/lib/server/password";
 import type {
@@ -127,6 +127,10 @@ function isValidEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizeEmail(value));
 }
 
+function isGrade(value: unknown): value is Grade {
+  return value === "seconda" || value === "terza" || value === "quarta";
+}
+
 function hashToken(token: string) {
   return createHash("sha256").update(token).digest("hex");
 }
@@ -205,11 +209,13 @@ async function readFileStore() {
       users: Array.isArray(parsed.users)
         ? parsed.users.map((user) => ({
             ...user,
-            emailVerifiedAt: null,
-            verificationTokenHash: null,
-            verificationTokenExpiresAt: null,
-            passwordResetTokenHash: null,
-            passwordResetTokenExpiresAt: null,
+            emailVerifiedAt: typeof user.emailVerifiedAt === "string" ? user.emailVerifiedAt : null,
+            verificationTokenHash: typeof user.verificationTokenHash === "string" ? user.verificationTokenHash : null,
+            verificationTokenExpiresAt:
+              typeof user.verificationTokenExpiresAt === "string" ? user.verificationTokenExpiresAt : null,
+            passwordResetTokenHash: typeof user.passwordResetTokenHash === "string" ? user.passwordResetTokenHash : null,
+            passwordResetTokenExpiresAt:
+              typeof user.passwordResetTokenExpiresAt === "string" ? user.passwordResetTokenExpiresAt : null,
           }))
         : [],
       learners: Array.isArray(parsed.learners) ? parsed.learners : [],
@@ -933,7 +939,9 @@ export async function registerParent(input: ParentRegistrationInput) {
     !input.parentLastName.trim() ||
     !input.childFirstName.trim() ||
     !input.childLastName.trim() ||
-    !isValidEmail(email)
+    !isValidEmail(email) ||
+    !isGrade(input.childGrade) ||
+    !isAvatarId(input.childAvatarId)
   ) {
     return { success: false as const, reason: "invalid" as const };
   }
