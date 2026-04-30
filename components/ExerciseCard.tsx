@@ -10,6 +10,7 @@ import { buildSessionExercises, getAdaptiveProfile } from "@/lib/session";
 import { cpaStageLabel, difficultyLabel, exerciseTypeLabel, getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
 import type { DifficultyFilter, Exercise, Grade, SessionAnswer, SessionHistoryItem, SessionMode } from "@/lib/types";
 import { ProgressBar } from "@/components/ProgressBar";
+import { BarModelVisual, ConcreteDotsVisual } from "@/components/BarModelVisual";
 import { formatCount } from "@/lib/format";
 
 type AnswerValue = string;
@@ -89,7 +90,8 @@ export function ExerciseCard({
   const exerciseVisualModel = locale === "en" && exercise.visualModelEn ? exercise.visualModelEn : exercise.visualModel;
   const pedagogicalTip = getPedagogicalTip(exercise, locale);
   const methodSteps = getPedagogicalSteps(locale, topicEntry?.cpaStage ?? "Concrete");
-  const stageLabel = cpaStageLabel(getExerciseStage(exercise), locale);
+  const exerciseStage = getExerciseStage(exercise);
+  const stageLabel = cpaStageLabel(exerciseStage, locale);
 
   const canCheck = String(answer).trim().length > 0;
   const currentResult = results.find((item) => item.exerciseId === exercise.id);
@@ -121,6 +123,7 @@ export function ExerciseCard({
         stars: summary.stars,
         streak: streakSeed,
         correctAnswers: correctCount,
+        totalQuestions: sessionExercises.length,
       });
       const badgeUnlocked = newBadges.find((badge) => !progress.badges.includes(badge));
 
@@ -188,7 +191,13 @@ export function ExerciseCard({
 
           <h2 className="mt-4 text-xl font-black text-slate-900 sm:text-2xl">{exercisePrompt}</h2>
 
-          {exerciseVisualModel ? (
+          {exercise.type === "bar-model" ? (
+            <BarModelVisual prompt={exercisePrompt} visualModel={exerciseVisualModel ?? exercise.barModel} locale={locale} />
+          ) : exerciseStage === "Concrete" && exercise.type === "multiple-choice" ? (
+            <ConcreteDotsVisual options={exerciseOptions} locale={locale} />
+          ) : null}
+
+          {exerciseVisualModel && exercise.type !== "bar-model" ? (
             <div className="soft-card mt-4 p-4 text-base font-bold text-slate-700">{exerciseVisualModel}</div>
           ) : null}
 

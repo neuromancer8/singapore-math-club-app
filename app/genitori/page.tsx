@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
+import { TeacherModeCard } from "@/components/TeacherModeCard";
 import { topicsByGrade } from "@/data/topics";
 import { getGrades } from "@/lib/exercises";
 import { formatCount } from "@/lib/format";
@@ -56,6 +57,11 @@ export default function GenitoriPage() {
             {locale === "it"
               ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e una fotografia rapida del percorso."
               : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path."}
+          </p>
+          <p className="mt-3 max-w-2xl text-sm font-bold leading-6 text-white/80">
+            {locale === "it"
+              ? "Nota: i dati sono salvati localmente in questo browser."
+              : "Note: data is saved locally in this browser."}
           </p>
           <div className="mt-6 inline-flex max-w-xl rounded-[24px] border border-white/20 bg-white/12 px-4 py-4 text-sm font-bold leading-6 text-white/90 backdrop-blur">
             {locale === "it"
@@ -223,6 +229,8 @@ export default function GenitoriPage() {
           </div>
 
           <BadgePanel badges={progress.badges} locale={locale} />
+
+          <TeacherModeCard locale={locale} />
 
           <div className="rounded-[32px] border border-white/60 bg-white/78 p-5 shadow-[0_20px_70px_rgba(15,23,42,0.08)] backdrop-blur">
             <h2 className="m-0 text-3xl font-black text-slate-900">{locale === "it" ? "Riepilogo salvato" : "Saved summary"}</h2>

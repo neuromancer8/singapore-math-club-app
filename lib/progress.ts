@@ -5,6 +5,8 @@ import type {
   SessionHistoryItem,
   StoredSessionResult,
 } from "@/lib/types";
+import { evaluateProgressBadges } from "@/lib/badges";
+import { UNLOCKED_BADGES_KEY } from "@/lib/user-preferences";
 
 const STORAGE_KEY = "singapore-math-progress";
 const LAST_SESSION_KEY = "singapore-math-last-session";
@@ -172,11 +174,14 @@ export function saveSessionResult(result: StoredSessionResult) {
     history: [nextHistoryEntry, ...current.history].slice(0, 40),
   };
 
+  next.badges = Array.from(new Set([...next.badges, ...evaluateProgressBadges(next)]));
+
   saveProgress(next);
   void syncProgressToServer(next);
 
   if (typeof window !== "undefined") {
     sessionStorage.setItem(LAST_SESSION_KEY, JSON.stringify(result));
+    localStorage.setItem(UNLOCKED_BADGES_KEY, JSON.stringify(next.badges));
   }
 
   return next;

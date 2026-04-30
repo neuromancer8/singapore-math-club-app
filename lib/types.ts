@@ -6,6 +6,8 @@ export type DifficultyFilter = "all" | "facile" | "media" | "avanzata";
 
 export type SessionMode = "standard" | "adaptive";
 
+export type CpaLevel = "concrete" | "pictorial" | "abstract";
+
 export type AvatarId =
   | "rocket"
   | "fox"
@@ -54,6 +56,9 @@ export interface Exercise {
   explanation: string;
   explanationEn?: string;
   difficulty: 1 | 2 | 3;
+  cpaLevel?: CpaLevel;
+  image?: string;
+  barModel?: string;
   visualModel?: string;
   visualModelEn?: string;
 }

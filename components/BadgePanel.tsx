@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { badgeCopy } from "@/lib/badges";
 
 export function BadgePanel({ badges, locale = "it" }: { badges: string[]; locale?: Locale }) {
   return (
@@ -8,7 +9,7 @@ export function BadgePanel({ badges, locale = "it" }: { badges: string[]; locale
         {badges.length > 0 ? (
           badges.map((badge) => (
             <span key={badge} className="pill bg-gradient-to-r from-fuchsia-500 via-violet-500 to-blue-500 text-white shadow-sm">
-              {badgeLabel(badge, locale)}
+              {badgeCopy(badge, locale).label}
             </span>
           ))
         ) : (
@@ -19,18 +20,4 @@ export function BadgePanel({ badges, locale = "it" }: { badges: string[]; locale
       </div>
     </div>
   );
-}
-
-function badgeLabel(badge: string, locale: Locale) {
-  if (locale === "it") return badge;
-
-  const labels: Record<string, string> = {
-    "Primo passo": "First step",
-    "Due stelle": "Two stars",
-    "Tre stelle": "Three stars",
-    "Occhio matematico": "Math eye",
-    "Costanza 3 giorni": "3-day streak",
-  };
-
-  return labels[badge] ?? badge;
 }

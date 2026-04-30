@@ -23,6 +23,7 @@ import {
 import { getLocale, gradeLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress } from "@/lib/progress";
 import type { AuthSession, AvatarId, Grade, LearnerProfile, ParentRegistrationInput, SavedProgress } from "@/lib/types";
+import { getDisplayNameOverride, OPEN_ONBOARDING_EVENT, saveDisplayNameOverride } from "@/lib/user-preferences";
 
 type AuthMode = "login" | "register" | "recover";
 
@@ -68,6 +69,8 @@ export function Header() {
   const [showRegistrationPassword, setShowRegistrationPassword] = useState(false);
   const [registrationConfirmPassword, setRegistrationConfirmPassword] = useState("");
   const [showRegistrationConfirmPassword, setShowRegistrationConfirmPassword] = useState(false);
+  const [displayNameDraft, setDisplayNameDraft] = useState("");
+  const [profileMessage, setProfileMessage] = useState("");
   const authStatusRef = useRef<HTMLDivElement | null>(null);
   const seedCredentials = getSeedCredentials();
   const t = uiText[locale];
@@ -147,6 +150,25 @@ export function Header() {
       authStatusRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
     });
   }, [authOpen, error, info, previewUrl]);
+
+  const profileLearnerId = session?.activeLearnerId;
+  const profileFullName = session?.fullName ?? "";
+
+  useEffect(() => {
+    if (!profileOpen || !profileLearnerId) return;
+
+    let cancelled = false;
+
+    queueMicrotask(() => {
+      if (cancelled) return;
+      setDisplayNameDraft(getDisplayNameOverride(profileLearnerId) ?? profileFullName);
+      setProfileMessage("");
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [profileOpen, profileLearnerId, profileFullName]);
 
   const activeAvatar = session ? getAvatarOption(session.avatarId) : undefined;
 
@@ -307,28 +329,40 @@ export function Header() {
     setSavingChild(false);
   }
 
+  function handleSaveDisplayName() {
+    if (!session) return;
+
+    saveDisplayNameOverride(session.activeLearnerId, displayNameDraft);
+    setProfileMessage(locale === "it" ? "Nome visualizzato salvato." : "Display name saved.");
+  }
+
+  function handleReplayOnboarding() {
+    window.dispatchEvent(new Event(OPEN_ONBOARDING_EVENT));
+    setProfileOpen(false);
+  }
+
   return (
-    <header className="sticky top-0 z-30 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="flex flex-col gap-4 rounded-[30px] border border-white/55 bg-white/72 px-5 py-4 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl md:px-6 lg:flex-row lg:items-center lg:justify-between">
-        <Link href="/" className="flex items-center gap-4">
-          <div className="overflow-hidden rounded-2xl bg-white px-3 py-2 shadow-sm ring-1 ring-black/5">
+    <header className="sticky top-0 z-30 mx-auto w-full max-w-7xl px-3 pt-3 sm:px-6 sm:pt-4 lg:px-8">
+      <div className="flex flex-col gap-3 rounded-[26px] border border-white/55 bg-white/72 px-3 py-3 shadow-[0_18px_60px_rgba(15,23,42,0.08)] backdrop-blur-xl sm:rounded-[30px] sm:px-5 sm:py-4 md:px-6 lg:flex-row lg:items-center lg:justify-between">
+        <Link href="/" className="flex min-w-0 items-center gap-3 sm:gap-4">
+          <div className="shrink-0 overflow-hidden rounded-2xl bg-white px-2 py-1.5 shadow-sm ring-1 ring-black/5 sm:px-3 sm:py-2">
             <Image
               src="/logo-rotary.jpg"
               alt={locale === "it" ? "Rotary Distretto 2041" : "Rotary District 2041"}
               width={170}
               height={66}
-              className="h-auto w-[140px] md:w-[170px]"
+              className="h-auto w-[60px] sm:w-[92px] md:w-[120px]"
               priority
             />
           </div>
-          <div>
-            <p className="section-title m-0 text-2xl font-black text-slate-900">Singapore Math Club</p>
-            <p className="m-0 text-sm font-extrabold text-slate-600">{t.appSubtitle}</p>
+          <div className="min-w-0">
+            <p className="section-title m-0 text-base font-black leading-tight text-slate-900 sm:text-xl md:text-2xl">Singapore Math Club</p>
+            <p className="m-0 hidden text-sm font-extrabold text-slate-600 sm:block">{t.appSubtitle}</p>
           </div>
         </Link>
 
-        <div className="flex flex-col gap-2 lg:items-end">
-          <nav className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+        <div className="flex min-w-0 flex-col gap-2 lg:w-auto lg:items-end">
+          <nav className="flex w-full flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
             {session ? (
               <>
                 <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">{t.navHome}</Link>
@@ -338,17 +372,17 @@ export function Header() {
             ) : null}
           </nav>
 
-          <div className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+          <div className="flex w-full flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
             {session && progress?.currentGrade ? (
-              <span className="rounded-full bg-slate-100 px-4 py-3 text-slate-600">
+              <span className="cursor-default rounded-full bg-slate-100 px-3 py-2 text-xs text-slate-600 sm:px-4 sm:py-3 sm:text-sm">
                 {t.activeClass}: {gradeLabel(progress.currentGrade, locale)}
               </span>
             ) : <span />}
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
+          <div className="flex w-full flex-wrap items-center gap-2 text-sm font-extrabold text-slate-800 lg:justify-end">
             {session ? (
-              <div className="flex items-center gap-2 rounded-full bg-white p-1 shadow-sm ring-1 ring-black/5">
+              <div className="flex flex-wrap items-center gap-2 rounded-[24px] bg-white p-1 shadow-sm ring-1 ring-black/5 sm:rounded-full">
                 <button
                   type="button"
                   className="flex cursor-pointer items-center gap-2 rounded-full border-0 bg-transparent px-1 py-0.5 transition hover:-translate-y-0.5"
@@ -364,7 +398,7 @@ export function Header() {
                 </button>
                 <button
                   type="button"
-                  className="cursor-pointer rounded-full border-0 bg-rose-50 px-4 py-3 font-extrabold text-rose-700 transition hover:-translate-y-0.5 hover:bg-rose-100"
+                  className="cursor-pointer rounded-full border-0 bg-rose-50 px-3 py-2 font-extrabold text-rose-700 transition hover:-translate-y-0.5 hover:bg-rose-100 sm:px-4 sm:py-3"
                   onClick={handleLogout}
                 >
                   {t.logout}
@@ -641,6 +675,44 @@ export function Header() {
                 </form>
               </section>
             </div>
+
+            <section className="card mt-6 p-6 md:p-8">
+              <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+                <div>
+                  <p className="m-0 text-sm font-black uppercase tracking-[0.2em] text-slate-400">
+                    {locale === "it" ? "Personalizzazione" : "Personalisation"}
+                  </p>
+                  <h3 className="section-title mt-3 text-3xl font-black text-slate-900">
+                    {locale === "it" ? "Nome visualizzato e tutorial" : "Display name and tutorial"}
+                  </h3>
+                  <p className="mt-3 mb-0 text-base font-bold leading-7 text-slate-600">
+                    {locale === "it"
+                      ? "Puoi scegliere come mostrare il nome nella dashboard e rivedere il tutorial iniziale quando serve."
+                      : "You can choose how the name appears in the dashboard and replay the initial tutorial whenever needed."}
+                  </p>
+                </div>
+                <button type="button" className="cta-secondary border-0" onClick={handleReplayOnboarding}>
+                  {locale === "it" ? "Rivedi il tutorial" : "Replay tutorial"}
+                </button>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-end">
+                <Field label={locale === "it" ? "Nome visualizzato" : "Display name"}>
+                  <input
+                    value={displayNameDraft}
+                    onChange={(event) => setDisplayNameDraft(event.target.value)}
+                    className="w-full rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-lg font-black text-slate-900"
+                  />
+                </Field>
+                <button type="button" className="cta-primary border-0" onClick={handleSaveDisplayName}>
+                  {locale === "it" ? "Salva nome" : "Save name"}
+                </button>
+              </div>
+              {profileMessage ? (
+                <p className="mt-3 mb-0 rounded-[20px] bg-emerald-100 px-4 py-3 text-sm font-black text-emerald-900" role="status">
+                  {profileMessage}
+                </p>
+              ) : null}
+            </section>
 
             <div className="mt-6">
               <AvatarPicker

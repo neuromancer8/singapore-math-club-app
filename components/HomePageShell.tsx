@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import { BadgeGallery } from "@/components/BadgeGallery";
 import { GradeStartPanel } from "@/components/GradeStartPanel";
+import { LocalStorageNotice } from "@/components/LocalStorageNotice";
+import { OnboardingModal } from "@/components/OnboardingModal";
 import { grades } from "@/data/grades";
 import { topicsByGrade } from "@/data/topics";
 import { avatarLabel, getAvatarOption } from "@/lib/avatars";
@@ -10,6 +13,7 @@ import { getAuthSession, loadAuthState } from "@/lib/auth";
 import { getLocale, gradeLabel, topicDescription, topicLabel, uiText, type Locale } from "@/lib/i18n";
 import { getProgress, setCurrentGrade } from "@/lib/progress";
 import type { AuthSession, Grade, SavedProgress } from "@/lib/types";
+import { DISPLAY_NAME_CHANGED_EVENT, getDisplayNameOverride } from "@/lib/user-preferences";
 
 export function HomePageShell({
   totalExercises,
@@ -48,17 +52,25 @@ export function HomePageShell({
   }, []);
 
   if (!session || !progress) {
-    return <PublicHome totalExercises={totalExercises} totalTopics={totalTopics} locale={locale} />;
+    return (
+      <>
+        <OnboardingModal locale={locale} />
+        <PublicHome totalExercises={totalExercises} totalTopics={totalTopics} locale={locale} />
+      </>
+    );
   }
 
   return (
-    <LearnerDashboard
-      session={session}
-      progress={progress}
-      totalExercises={totalExercises}
-      totalTopics={totalTopics}
-      locale={locale}
-    />
+    <>
+      <OnboardingModal locale={locale} />
+      <LearnerDashboard
+        session={session}
+        progress={progress}
+        totalExercises={totalExercises}
+        totalTopics={totalTopics}
+        locale={locale}
+      />
+    </>
   );
 }
 
@@ -177,6 +189,7 @@ function LearnerDashboard({
   totalTopics: number;
   locale: Locale;
 }) {
+  const [displayNameOverride, setDisplayNameOverride] = useState<string | null>(null);
   const activeGrade = progress.currentGrade ?? session.learnerGrade;
   const activeGradeProgress = progress.byGrade[activeGrade];
   const t = uiText[locale];
@@ -235,6 +248,23 @@ function LearnerDashboard({
     ...activeTopics.filter((topic) => completedTopicSet.has(topic.slug)),
   ].slice(0, 5);
   const avatar = getAvatarOption(session.avatarId);
+  const visibleFullName = displayNameOverride ?? session.fullName;
+  const visibleFirstName = visibleFullName.split(" ")[0] || session.firstName;
+
+  useEffect(() => {
+    let cancelled = false;
+    const syncName = () => {
+      if (cancelled) return;
+      setDisplayNameOverride(getDisplayNameOverride(session.activeLearnerId));
+    };
+
+    queueMicrotask(syncName);
+    window.addEventListener(DISPLAY_NAME_CHANGED_EVENT, syncName);
+    return () => {
+      cancelled = true;
+      window.removeEventListener(DISPLAY_NAME_CHANGED_EVENT, syncName);
+    };
+  }, [session.activeLearnerId]);
 
   return (
     <div className="space-y-6 px-1 py-3 sm:px-2 sm:py-4 md:space-y-10">
@@ -251,11 +281,12 @@ function LearnerDashboard({
                 <span aria-hidden="true">{avatar.symbol}</span>
               </div>
               <h1 className="section-title m-0 max-w-2xl text-3xl font-black leading-tight text-slate-900 sm:text-4xl md:text-5xl">
-                {t.helloPrefix} {session.firstName}, {t.helloSuffix}
+                {t.helloPrefix} {visibleFirstName}, {t.helloSuffix}
               </h1>
             </div>
+            <LocalStorageNotice locale={locale} />
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <ProfileInfo label={t.fullName} value={session.fullName} />
+              <ProfileInfo label={t.fullName} value={visibleFullName} />
               <ProfileInfo label={t.avatar} value={avatarLabel(avatar, locale)} />
               <ProfileInfo label={t.startingClass} value={gradeLabel(session.learnerGrade, locale)} />
               <ProfileInfo label={t.currentClass} value={gradeLabel(activeGrade, locale)} />
@@ -326,6 +357,8 @@ function LearnerDashboard({
         <HomeStat label={t.activeTopics} value={String(totalTopics)} tone="from-fuchsia-500 to-violet-500" />
         <HomeStat label={t.availableExercises} value={String(totalExercises)} tone="from-emerald-400 to-teal-400" />
       </section>
+
+      <BadgeGallery progress={progress} locale={locale} />
 
       <section className="grid gap-6 2xl:grid-cols-[1.15fr_0.85fr]">
         <div className="card p-6 md:p-8">
