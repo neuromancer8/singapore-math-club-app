@@ -9,7 +9,7 @@ const slides = {
     {
       title: "Benvenuto nel Singapore Math Club 🦊",
       body: "Un percorso su misura per imparare la matematica con il metodo Singapore. Ogni sessione è breve, guidata passo dopo passo e pensata per non stancare.",
-      visual: <NumberBlocks />,
+      visual: <LearningPathVisual locale="it" />,
     },
     {
       title: "Come funziona il metodo CPA?",
@@ -26,7 +26,7 @@ const slides = {
     {
       title: "Welcome to Singapore Math Club 🦊",
       body: "A personalised path for learning math with the Singapore method. Each session is short, guided step by step and designed to keep practice light.",
-      visual: <NumberBlocks />,
+      visual: <LearningPathVisual locale="en" />,
     },
     {
       title: "How does the CPA method work?",
@@ -142,18 +142,32 @@ export function OnboardingModal({ locale }: { locale: Locale }) {
   );
 }
 
-function NumberBlocks() {
+function LearningPathVisual({ locale }: { locale: Locale }) {
+  const labels = locale === "it" ? ["Concreto", "Disegno", "Idea"] : ["Concrete", "Draw", "Idea"];
+
   return (
-    <div className="max-w-full overflow-hidden rounded-[30px] bg-gradient-to-br from-amber-100 via-white to-cyan-100 p-5 text-center shadow-inner">
-      <div className="text-6xl" aria-hidden="true">
-        🧒
+    <div className="max-w-full overflow-hidden rounded-[30px] bg-gradient-to-br from-cyan-100 via-white to-amber-100 p-5 shadow-inner">
+      <div className="rounded-[26px] bg-white/85 p-4 shadow-sm">
+        <div className="flex items-center justify-center gap-3" aria-hidden="true">
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-100 text-3xl shadow-sm">🧱</span>
+          <span className="h-1 w-8 rounded-full bg-slate-200" />
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-cyan-100 text-3xl shadow-sm">🖼️</span>
+          <span className="h-1 w-8 rounded-full bg-slate-200" />
+          <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-100 text-3xl shadow-sm">💡</span>
+        </div>
+        <div className="mt-5 grid grid-cols-3 gap-2 text-center text-xs font-black uppercase tracking-[0.12em] text-slate-500">
+          {labels.map((label) => (
+            <span key={label}>{label}</span>
+          ))}
+        </div>
       </div>
-      <div className="mt-5 grid grid-cols-1 gap-2 min-[360px]:grid-cols-2 sm:grid-cols-4">
-        {[3, 7, 10, 4, 12, 8, 2, 6].map((number) => (
-          <div key={number} className="min-w-0 rounded-2xl bg-white px-3 py-3 text-xl font-black text-slate-900 shadow-sm">
-            {number}
-          </div>
-        ))}
+      <div className="mt-4 rounded-[24px] bg-white/70 p-4">
+        <div className="flex items-end justify-center gap-2" aria-hidden="true">
+          <span className="h-8 w-8 rounded-xl bg-orange-300" />
+          <span className="h-12 w-8 rounded-xl bg-cyan-300" />
+          <span className="h-16 w-8 rounded-xl bg-violet-300" />
+          <span className="h-10 w-8 rounded-xl bg-emerald-300" />
+        </div>
       </div>
     </div>
   );

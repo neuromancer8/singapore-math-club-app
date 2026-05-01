@@ -10,7 +10,6 @@ import { avatarLabel, avatarOptions, getAvatarOption } from "@/lib/avatars";
 import {
   createLearnerProfile,
   getAuthSession,
-  getSeedCredentials,
   loadAuthState,
   login,
   logout,
@@ -52,8 +51,8 @@ export function Header() {
   const [authOpen, setAuthOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [authMode, setAuthMode] = useState<AuthMode>("login");
-  const [email, setEmail] = useState<string>(getSeedCredentials()[0]?.email ?? "laura.rossi@demo-rotary.it");
-  const [password, setPassword] = useState<string>(getSeedCredentials()[0]?.password ?? "admin");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [registration, setRegistration] = useState<ParentRegistrationInput>(defaultRegistration);
   const [childForm, setChildForm] = useState(defaultChildForm);
   const [error, setError] = useState("");
@@ -72,7 +71,6 @@ export function Header() {
   const [displayNameDraft, setDisplayNameDraft] = useState("");
   const [profileMessage, setProfileMessage] = useState("");
   const authStatusRef = useRef<HTMLDivElement | null>(null);
-  const seedCredentials = getSeedCredentials();
   const t = uiText[locale];
   const hasParentIdentity = Boolean(registration.parentFirstName.trim() && registration.parentLastName.trim());
   const hasChildIdentity = Boolean(registration.childFirstName.trim() && registration.childLastName.trim());
@@ -580,14 +578,6 @@ export function Header() {
               </form>
             ) : null}
 
-            <div className="mt-5 rounded-[24px] bg-slate-50 p-4">
-              <p className="m-0 text-sm font-black uppercase tracking-[0.16em] text-slate-400">{t.demoCredentials}</p>
-              {seedCredentials.map((credential) => (
-                <p key={credential.email} className="mt-2 mb-0 text-base font-black text-slate-800">
-                  {credential.label}: {credential.email} / {credential.password}
-                </p>
-              ))}
-            </div>
           </div>
         </div>
       ) : null}
