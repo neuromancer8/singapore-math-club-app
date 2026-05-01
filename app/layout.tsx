@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { AuthGate } from "@/components/AuthGate";
 import { Header } from "@/components/Header";
+import { ScrollToTop } from "@/components/ScrollToTop";
 import { getServerLocale } from "@/lib/server-locale";
 
 export const metadata: Metadata = {
@@ -45,6 +46,7 @@ export default async function RootLayout({
     <html lang={locale}>
       <body>
         <AuthGate>
+          <ScrollToTop />
           <Header />
           <main className="mx-auto w-full max-w-7xl px-4 pb-12 pt-6 sm:px-6 lg:px-8">{children}</main>
           <footer className="mx-auto mt-4 w-full max-w-7xl px-4 pb-10 sm:px-6 lg:px-8">
