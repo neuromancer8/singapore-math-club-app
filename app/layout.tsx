@@ -5,9 +5,14 @@ import { Header } from "@/components/Header";
 import { getServerLocale } from "@/lib/server-locale";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://singapore-math-club-app-ja74.vercel.app"),
+  metadataBase: new URL("https://singaporemathclub.app"),
   title: "Singapore Math Club — Matematica Singapore per la primaria",
   description: "App gratuita di matematica Singapore per bambini delle elementari. Metodo CPA, esercizi graduati, dashboard per genitori.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   openGraph: {
     title: "Singapore Math Club",
     description: "Metodo CPA, esercizi graduati e progressi visibili per genitori e docenti.",
