@@ -25,6 +25,7 @@ export function buildPasswordResetUrl(origin: string, token: string) {
 export async function sendTransactionalEmail(message: EmailMessage, previewUrl: string): Promise<EmailResult> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
   const from = process.env.EMAIL_FROM?.trim() || "Singapore Math Club <noreply@singaporemathclub.app>";
+  const replyTo = process.env.EMAIL_REPLY_TO?.trim() || "singaporemathclubrotary@gmail.com";
 
   if (!apiKey) {
     return { delivered: false, previewUrl };
@@ -42,6 +43,7 @@ export async function sendTransactionalEmail(message: EmailMessage, previewUrl: 
       subject: message.subject,
       html: message.html,
       text: message.text,
+      reply_to: replyTo,
       tags: [{ name: "app", value: "singapore-math-club" }],
     }),
   });
