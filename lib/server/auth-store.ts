@@ -11,6 +11,7 @@ import type {
   AvatarId,
   Grade,
   LearnerProfile,
+  LearnerProgressSummary,
   ParentRegistrationInput,
   SavedProgress,
   SeedCredential,
@@ -105,6 +106,16 @@ const seedUsers: Array<
     parentFirstName: "Paolo",
     parentLastName: "Bianchi",
     learners: [{ id: "learner-marta", firstName: "Marta", lastName: "Bianchi", learnerGrade: "terza", avatarId: "fox" }],
+  },
+  {
+    id: "teacher-demo",
+    email: "docente@singaporemathclub.app",
+    password: "teacher123",
+    label: "Docente demo",
+    role: "teacher",
+    parentFirstName: "Docente",
+    parentLastName: "Demo",
+    learners: [{ id: "learner-demo-docente", firstName: "Classe", lastName: "Demo", learnerGrade: "seconda", avatarId: "star" }],
   },
 ];
 
@@ -254,6 +265,48 @@ async function migrateFileStore(store: FileStore) {
     return user;
   });
 
+  const seededAt = nowIso();
+  for (const seed of seedUsers) {
+    if (store.users.some((user) => user.id === seed.id || user.email === seed.email)) {
+      continue;
+    }
+
+    changed = true;
+    store.users.push({
+      id: seed.id,
+      email: seed.email,
+      passwordHash: hashPassword(seed.password),
+      role: seed.role,
+      parentFirstName: seed.parentFirstName,
+      parentLastName: seed.parentLastName,
+      emailVerifiedAt: seededAt,
+      verificationTokenHash: null,
+      verificationTokenExpiresAt: null,
+      passwordResetTokenHash: null,
+      passwordResetTokenExpiresAt: null,
+      createdAt: seededAt,
+      updatedAt: seededAt,
+    });
+
+    for (const learner of seed.learners) {
+      store.learners.push({
+        id: learner.id,
+        parentUserId: seed.id,
+        firstName: learner.firstName,
+        lastName: learner.lastName,
+        learnerGrade: learner.learnerGrade,
+        avatarId: learner.avatarId,
+        createdAt: seededAt,
+        updatedAt: seededAt,
+      });
+      store.progresses.push({
+        learnerId: learner.id,
+        data: createEmptyProgress(learner.learnerGrade),
+        updatedAt: seededAt,
+      });
+    }
+  }
+
   if (changed) {
     await writeFileStore(store);
   }
@@ -388,7 +441,32 @@ async function migrateDatabaseUsers() {
 
   try {
     for (const user of seedUsers) {
-      const updatedAt = nowIso();
+      const seededAt = nowIso();
+      await client.query(
+        `
+          INSERT INTO app_users (
+            id, username, password_hash, role, parent_first_name, parent_last_name,
+            email_verified_at, verification_token_hash, verification_token_expires_at,
+            password_reset_token_hash, password_reset_token_expires_at, created_at, updated_at
+          ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+          ON CONFLICT (id) DO NOTHING
+        `,
+        [
+          user.id,
+          user.email,
+          hashPassword(user.password),
+          user.role,
+          user.parentFirstName,
+          user.parentLastName,
+          seededAt,
+          null,
+          null,
+          null,
+          null,
+          seededAt,
+          seededAt,
+        ],
+      );
       await client.query(
         `
           UPDATE app_users
@@ -402,8 +480,28 @@ async function migrateDatabaseUsers() {
             updated_at = $7
           WHERE id = $1
         `,
-        [user.id, user.email, hashPassword(user.password), user.role, user.parentFirstName, user.parentLastName, updatedAt],
+        [user.id, user.email, hashPassword(user.password), user.role, user.parentFirstName, user.parentLastName, seededAt],
       );
+
+      for (const learner of user.learners) {
+        await client.query(
+          `
+            INSERT INTO learner_profiles (
+              id, parent_user_id, first_name, last_name, learner_grade, avatar_id, created_at, updated_at
+            ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+            ON CONFLICT (id) DO NOTHING
+          `,
+          [learner.id, user.id, learner.firstName, learner.lastName, learner.learnerGrade, learner.avatarId, seededAt, seededAt],
+        );
+        await client.query(
+          `
+            INSERT INTO app_progress (learner_id, data, updated_at)
+            VALUES ($1, $2::jsonb, $3)
+            ON CONFLICT (learner_id) DO NOTHING
+          `,
+          [learner.id, JSON.stringify(createEmptyProgress(learner.learnerGrade)), seededAt],
+        );
+      }
     }
   } finally {
     client.release();
@@ -480,6 +578,21 @@ export async function ensureAuthStore() {
 
 export function getSeedCredentials() {
   return seedUsers.map(({ email, password, label }) => ({ email, password, label }));
+}
+
+function buildLearnerProgressSummary(
+  user: StoredParentUser,
+  learner: StoredLearnerProfile,
+  progress: SavedProgress,
+  updatedAt?: string,
+): LearnerProgressSummary {
+  return {
+    learner: learnerProfileFromStored(learner),
+    parentEmail: user.email,
+    parentFullName: `${user.parentFirstName} ${user.parentLastName}`,
+    progress: normalizeProgress(progress),
+    updatedAt,
+  };
 }
 
 async function findFileUserByEmail(email: string) {
@@ -926,6 +1039,102 @@ export async function saveProgressForLearner(learnerId: string, progress: SavedP
   }
   await writeFileStore(store);
   return normalized;
+}
+
+export async function listLearnerProgressSummaries(viewer: AuthSession): Promise<LearnerProgressSummary[]> {
+  if (isDatabaseEnabled()) {
+    await ensureDatabaseSeeded();
+    const params = viewer.role === "teacher" || viewer.role === "admin" ? [] : [viewer.userId];
+    const where = params.length > 0 ? "WHERE u.id = $1" : "";
+    const result = await getPool().query(
+      `
+        SELECT
+          u.id AS "userId",
+          u.username AS email,
+          u.password_hash AS "passwordHash",
+          u.role,
+          u.parent_first_name AS "parentFirstName",
+          u.parent_last_name AS "parentLastName",
+          u.email_verified_at AS "emailVerifiedAt",
+          u.verification_token_hash AS "verificationTokenHash",
+          u.verification_token_expires_at AS "verificationTokenExpiresAt",
+          u.password_reset_token_hash AS "passwordResetTokenHash",
+          u.password_reset_token_expires_at AS "passwordResetTokenExpiresAt",
+          u.created_at AS "userCreatedAt",
+          u.updated_at AS "updatedAt",
+          l.id AS "learnerId",
+          l.parent_user_id AS "parentUserId",
+          l.first_name AS "firstName",
+          l.last_name AS "lastName",
+          l.learner_grade AS "learnerGrade",
+          l.avatar_id AS "avatarId",
+          l.created_at AS "learnerCreatedAt",
+          l.updated_at AS "learnerUpdatedAt",
+          p.data AS "progressData",
+          p.updated_at AS "progressUpdatedAt"
+        FROM learner_profiles l
+        JOIN app_users u ON u.id = l.parent_user_id
+        LEFT JOIN app_progress p ON p.learner_id = l.id
+        ${where}
+        ORDER BY l.learner_grade ASC, l.last_name ASC, l.first_name ASC
+      `,
+      params,
+    );
+
+    return result.rows.map((row) => {
+      const user: StoredParentUser = {
+        id: row.userId as string,
+        email: row.email as string,
+        passwordHash: row.passwordHash as string,
+        role: row.role as AuthSession["role"],
+        parentFirstName: row.parentFirstName as string,
+        parentLastName: row.parentLastName as string,
+        emailVerifiedAt: (row.emailVerifiedAt as string | null | undefined) ?? null,
+        verificationTokenHash: (row.verificationTokenHash as string | null | undefined) ?? null,
+        verificationTokenExpiresAt: (row.verificationTokenExpiresAt as string | null | undefined) ?? null,
+        passwordResetTokenHash: (row.passwordResetTokenHash as string | null | undefined) ?? null,
+        passwordResetTokenExpiresAt: (row.passwordResetTokenExpiresAt as string | null | undefined) ?? null,
+        createdAt: row.userCreatedAt as string,
+        updatedAt: row.updatedAt as string,
+      };
+      const learner: StoredLearnerProfile = {
+        id: row.learnerId as string,
+        parentUserId: row.parentUserId as string,
+        firstName: row.firstName as string,
+        lastName: row.lastName as string,
+        learnerGrade: row.learnerGrade as Grade,
+        avatarId: row.avatarId as AvatarId,
+        createdAt: row.learnerCreatedAt as string,
+        updatedAt: row.learnerUpdatedAt as string,
+      };
+
+      return buildLearnerProgressSummary(
+        user,
+        learner,
+        normalizeProgress((row.progressData as SavedProgress | null | undefined) ?? createEmptyProgress(learner.learnerGrade)),
+        row.progressUpdatedAt as string | undefined,
+      );
+    });
+  }
+
+  const store = await ensureFileSeeded();
+  const learnerRows = viewer.role === "teacher" || viewer.role === "admin"
+    ? store.learners
+    : store.learners.filter((learner) => learner.parentUserId === viewer.userId);
+
+  return learnerRows.flatMap((learner) => {
+    const user = store.users.find((item) => item.id === learner.parentUserId);
+    if (!user) return [];
+    const storedProgress = store.progresses.find((item) => item.learnerId === learner.id);
+    return [
+      buildLearnerProgressSummary(
+        user,
+        learner,
+        storedProgress?.data ?? createEmptyProgress(learner.learnerGrade),
+        storedProgress?.updatedAt,
+      ),
+    ];
+  });
 }
 
 export async function registerParent(input: ParentRegistrationInput) {

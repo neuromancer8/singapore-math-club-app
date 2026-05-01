@@ -18,6 +18,9 @@ Applicazione MVP in italiano per bambini della primaria che lavorano con il Sing
 - sessioni brevi con stelle, badge e feedback
 - storico progressi per classe
 - dashboard genitori e docenti
+- dashboard docente multi-alunno da dati cloud
+- export reali PDF, CSV e Word dalla dashboard
+- revisione pedagogica automatica per moduli, prerequisiti, difficoltà e copertura CPA
 
 ## Installazione
 
@@ -54,7 +57,12 @@ corepack pnpm start
 2. importa il progetto
 3. lascia `Next.js` come framework
 4. imposta `DATABASE_URL` se vuoi usare Postgres persistente online
-4. esegui il deploy
+5. per email reali con Resend imposta:
+   - `RESEND_API_KEY`
+   - `EMAIL_FROM=Singapore Math Club <noreply@singaporemathclub.app>`
+   - `NEXT_PUBLIC_APP_URL=https://singaporemathclub.app`
+6. in Resend verifica il dominio `singaporemathclub.app` e aggiungi i record DNS richiesti dal pannello Resend
+7. esegui il deploy
 
 Ogni nuovo push su `main` aggiorna automaticamente il sito.
 
@@ -62,12 +70,14 @@ Ogni nuovo push su `main` aggiorna automaticamente il sito.
 
 - `laura.rossi@demo-rotary.it / admin` - famiglia demo 1
 - `paolo.bianchi@demo-rotary.it / marco123` - famiglia demo 2
+- `docente@singaporemathclub.app / teacher123` - docente demo
 
-## Fase 2 suggerita
+## Stato fase 2
 
-- email reale per il genitore con recupero password
+- progressi cloud su PostgreSQL tramite `DATABASE_URL`
 - ruoli separati genitore / docente
-- sincronizzazione cloud completa dei progressi multi-dispositivo
 - profili multipli per famiglia o classe
-- analytics più dettagliate per docente
+- analytics docente multi-alunno
+- export PDF/CSV/Word
+- email reale tramite Resend appena sono presenti `RESEND_API_KEY` e dominio verificato
 - contenuti adattivi in base agli errori

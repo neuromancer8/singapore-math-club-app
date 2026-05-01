@@ -37,6 +37,8 @@ export interface Topic {
   cpaStage: "Concrete" | "Pittorico" | "Astratto";
   goals: string[];
   goalsEn: string[];
+  prerequisites?: string[];
+  teacherReview?: string;
 }
 
 export interface TopicCatalogEntry extends Topic {
@@ -173,4 +175,12 @@ export interface SavedProgress {
   currentGrade?: Grade;
   byGrade: Record<Grade, GradeProgressSummary>;
   history: SessionHistoryItem[];
+}
+
+export interface LearnerProgressSummary {
+  learner: LearnerProfile;
+  parentEmail: string;
+  parentFullName: string;
+  progress: SavedProgress;
+  updatedAt?: string;
 }

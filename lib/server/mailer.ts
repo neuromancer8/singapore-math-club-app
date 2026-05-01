@@ -11,7 +11,7 @@ type EmailResult = {
 };
 
 function appBaseUrl(fallbackOrigin: string) {
-  return process.env.NEXT_PUBLIC_APP_URL?.trim() || process.env.APP_BASE_URL?.trim() || fallbackOrigin;
+  return process.env.NEXT_PUBLIC_APP_URL?.trim() || process.env.APP_BASE_URL?.trim() || fallbackOrigin || "https://singaporemathclub.app";
 }
 
 export function buildVerificationUrl(origin: string, token: string) {
@@ -24,9 +24,9 @@ export function buildPasswordResetUrl(origin: string, token: string) {
 
 export async function sendTransactionalEmail(message: EmailMessage, previewUrl: string): Promise<EmailResult> {
   const apiKey = process.env.RESEND_API_KEY?.trim();
-  const from = process.env.EMAIL_FROM?.trim();
+  const from = process.env.EMAIL_FROM?.trim() || "Singapore Math Club <noreply@singaporemathclub.app>";
 
-  if (!apiKey || !from) {
+  if (!apiKey) {
     return { delivered: false, previewUrl };
   }
 
@@ -42,10 +42,12 @@ export async function sendTransactionalEmail(message: EmailMessage, previewUrl: 
       subject: message.subject,
       html: message.html,
       text: message.text,
+      tags: [{ name: "app", value: "singapore-math-club" }],
     }),
   });
 
   if (!response.ok) {
+    console.warn("Resend delivery failed", await response.text().catch(() => response.statusText));
     return { delivered: false, previewUrl };
   }
 

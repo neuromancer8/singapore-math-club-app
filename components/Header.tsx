@@ -368,6 +368,7 @@ export function Header() {
                 <Link href="/" className="pill bg-[var(--surface-soft)] shadow-sm">{t.navHome}</Link>
                 <Link href="/risultati" className="pill bg-white ring-1 ring-black/5 shadow-sm">{t.navResults}</Link>
                 <Link href="/genitori" className="pill bg-[var(--sky)] shadow-sm">{t.navParents}</Link>
+                <Link href="/docente" className="pill bg-white ring-1 ring-black/5 shadow-sm">{locale === "it" ? "Docente" : "Teacher"}</Link>
               </>
             ) : null}
           </nav>

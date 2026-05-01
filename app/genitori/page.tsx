@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { BadgePanel } from "@/components/BadgePanel";
 import { TeacherModeCard } from "@/components/TeacherModeCard";
 import { topicsByGrade } from "@/data/topics";
+import { loadAuthState } from "@/lib/auth";
 import { getGrades } from "@/lib/exercises";
 import { formatCount } from "@/lib/format";
 import { getLocale, gradeLabel, topicLabel, type Locale } from "@/lib/i18n";
@@ -22,6 +23,10 @@ export default function GenitoriPage() {
 
       setLocale(getLocale());
       setProgress(getProgress());
+      void loadAuthState({ refresh: false }).then(({ progress: cloudProgress }) => {
+        if (cancelled || !cloudProgress) return;
+        setProgress(cloudProgress);
+      });
     });
 
     return () => {
@@ -55,18 +60,18 @@ export default function GenitoriPage() {
           </h1>
           <p className="mt-5 max-w-2xl text-base font-bold leading-7 text-white/85 sm:text-lg sm:leading-8">
             {locale === "it"
-              ? "Un pannello per genitori e docenti con andamento, accuratezza, badge e una fotografia rapida del percorso."
-              : "A panel for parents and teachers with trends, accuracy, badges and a quick snapshot of the learning path."}
+              ? "Un pannello alimentato dai progressi cloud quando l'utente accede, con localStorage solo come fallback offline."
+              : "A dashboard powered by cloud progress when the user is signed in, with localStorage only as an offline fallback."}
           </p>
           <p className="mt-3 max-w-2xl text-sm font-bold leading-6 text-white/80">
             {locale === "it"
-              ? "Nota: i dati sono salvati localmente in questo browser."
-              : "Note: data is saved locally in this browser."}
+              ? "PostgreSQL conserva i progressi per profilo bambino e li ricarica su più dispositivi."
+              : "PostgreSQL stores progress per child profile and reloads it across devices."}
           </p>
-          <div className="mt-6 inline-flex max-w-xl rounded-[24px] border border-white/20 bg-white/12 px-4 py-4 text-sm font-bold leading-6 text-white/90 backdrop-blur">
-            {locale === "it"
-              ? "Report PDF e Word saranno disponibili in una prossima versione. Per ora la dashboard mostra i dati essenziali in modo chiaro."
-              : "PDF and Word reports will be available in a future version. For now, the dashboard shows the essential data clearly."}
+          <div className="mt-6 flex flex-wrap gap-3">
+            <ExportLink href="/api/progress/export?format=pdf" label="PDF" />
+            <ExportLink href="/api/progress/export?format=csv" label="CSV" />
+            <ExportLink href="/api/progress/export?format=word" label="Word" />
           </div>
         </div>
 
@@ -281,6 +286,17 @@ function Metric({ label, value, accent }: { label: string; value: string; accent
       <p className="mt-4 mb-0 text-xs font-black uppercase tracking-[0.22em] text-white/65">{label}</p>
       <p className="mt-3 mb-0 text-3xl font-black sm:text-4xl">{value}</p>
     </div>
+  );
+}
+
+function ExportLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      className="rounded-[18px] border border-white/25 bg-white/14 px-4 py-3 text-sm font-black text-white shadow-sm backdrop-blur transition hover:bg-white/22"
+      href={href}
+    >
+      Export {label}
+    </a>
   );
 }
 

@@ -18,6 +18,7 @@ const AUTH_TIMEOUT_MS = 24 * 60 * 60 * 1000;
 const seedCredentials: SeedCredential[] = [
   { email: "laura.rossi@demo-rotary.it", password: "admin", label: "Famiglia demo 1" },
   { email: "paolo.bianchi@demo-rotary.it", password: "marco123", label: "Famiglia demo 2" },
+  { email: "docente@singaporemathclub.app", password: "teacher123", label: "Docente demo" },
 ];
 
 function emptyAuthPayload(): AuthPayload {

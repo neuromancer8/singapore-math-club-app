@@ -42,8 +42,8 @@ export function TeacherModeCard({ locale }: { locale: Locale }) {
           <h2 className="mt-2 mb-0 text-2xl font-black text-slate-900">{locale === "it" ? "Codice classe" : "Class code"}</h2>
           <p className="mt-3 mb-0 text-sm font-bold leading-6 text-slate-600">
             {locale === "it"
-              ? "Funzione in arrivo: i docenti potranno vedere i progressi degli alunni collegati allo stesso codice classe."
-              : "Coming soon: teachers will be able to see the progress of pupils linked to the same class code."}
+              ? "La dashboard docente legge i progressi cloud di più alunni e li raggruppa in una vista unica."
+              : "The teacher dashboard reads cloud progress for multiple pupils and groups it in one view."}
           </p>
         </div>
       </div>
@@ -68,9 +68,9 @@ export function TeacherModeCard({ locale }: { locale: Locale }) {
         </p>
       ) : null}
       <div className="mt-4 rounded-[24px] bg-slate-50 p-4">
-        <p className="m-0 text-base font-black text-slate-900">
-          {locale === "it" ? "Prossimamente: dashboard docente multi-alunno" : "Coming soon: multi-pupil teacher dashboard"}
-        </p>
+        <a className="text-base font-black text-slate-900 underline underline-offset-4" href="/docente">
+          {locale === "it" ? "Apri dashboard docente multi-alunno" : "Open multi-pupil teacher dashboard"}
+        </a>
       </div>
     </section>
   );
